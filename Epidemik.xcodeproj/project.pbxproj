@@ -1,0 +1,703 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0010A42D1F8008A800D12495 /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0010A42C1F8008A800D12495 /* ButtonExtension.swift */; };
+		0010A42F1F800DD000D12495 /* ScrollSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0010A42E1F800DD000D12495 /* ScrollSelector.swift */; };
+		0011DBB81F6C0EBA004212E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0011DBB71F6C0EBA004212E1 /* AppDelegate.swift */; };
+		0011DBBA1F6C0EBA004212E1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0011DBB91F6C0EBA004212E1 /* ViewController.swift */; };
+		0011DBBD1F6C0EBA004212E1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0011DBBB1F6C0EBA004212E1 /* Main.storyboard */; };
+		0011DBBF1F6C0EBA004212E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0011DBBE1F6C0EBA004212E1 /* Assets.xcassets */; };
+		0011DBC21F6C0EBA004212E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0011DBC01F6C0EBA004212E1 /* LaunchScreen.storyboard */; };
+		0011DBCD1F6C0EBA004212E1 /* EpidemikTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0011DBCC1F6C0EBA004212E1 /* EpidemikTests.swift */; };
+		0011DBD81F6C0EBA004212E1 /* EpidemikUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0011DBD71F6C0EBA004212E1 /* EpidemikUITests.swift */; };
+		002963A81F9585D500464BC5 /* sickness.png in Resources */ = {isa = PBXBuildFile; fileRef = 002963A71F9585D400464BC5 /* sickness.png */; };
+		0032F3421F808295001A9633 /* MapOverlayCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0032F3411F808295001A9633 /* MapOverlayCreator.swift */; };
+		00356B9C1F9A935F004038BB /* sadface.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 00356B9B1F9A935F004038BB /* sadface.jpeg */; };
+		00356B9E1F9A9DD1004038BB /* smiley.png in Resources */ = {isa = PBXBuildFile; fileRef = 00356B9D1F9A9DD1004038BB /* smiley.png */; };
+		006858C91F8AA6F2007F6C7E /* DiseasePolygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006858C81F8AA6F2007F6C7E /* DiseasePolygon.swift */; };
+		0083AD251F795BD8007AEF87 /* SicknessScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0083AD241F795BD8007AEF87 /* SicknessScreen.swift */; };
+		0083AD271F795C50007AEF87 /* DiseaseNameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0083AD261F795C50007AEF87 /* DiseaseNameScreen.swift */; };
+		009CE9E21F8FFFFD00D224F0 /* MainHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009CE9E11F8FFFFD00D224F0 /* MainHolder.swift */; };
+		00A5E7A31F6C414D004535D9 /* ContinueArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A5E7A01F6C414D004535D9 /* ContinueArrow.swift */; };
+		00A5E7A41F6C414D004535D9 /* IntroHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A5E7A11F6C414D004535D9 /* IntroHolder.swift */; };
+		00A5E7A51F6C414D004535D9 /* NotificationsAsk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A5E7A21F6C414D004535D9 /* NotificationsAsk.swift */; };
+		00A5E7A71F6C415E004535D9 /* AppDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A5E7A61F6C415E004535D9 /* AppDescription.swift */; };
+		00A5E7A91F6C4170004535D9 /* GeneralAskScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A5E7A81F6C4170004535D9 /* GeneralAskScreen.swift */; };
+		00BC4F701F81746C0018D5D8 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BC4F6F1F81746C0018D5D8 /* Map.swift */; };
+		00CD77FA1F7843EA002B5C78 /* AddressAsk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CD77F91F7843EA002B5C78 /* AddressAsk.swift */; };
+		00CD77FD1F7844C1002B5C78 /* FileRW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CD77FC1F7844C1002B5C78 /* FileRW.swift */; };
+		00E9A4C71F8EFA6C008C95BD /* Disease.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E9A4C61F8EFA6C008C95BD /* Disease.swift */; };
+		00EBE4AF1F9D2BE6005A8E6B /* UserAgreementPt2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EBE4AE1F9D2BE6005A8E6B /* UserAgreementPt2.swift */; };
+		00EBE4B11F9D2EC1005A8E6B /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EBE4B01F9D2EC1005A8E6B /* ColorScheme.swift */; };
+		00F2F04E1F7F0B8300BC3120 /* UserAgreementPt1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F2F04D1F7F0B8300BC3120 /* UserAgreementPt1.swift */; };
+		00F2F0521F7F1ECD00BC3120 /* ButtonSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F2F0511F7F1ECD00BC3120 /* ButtonSelector.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0011DBC91F6C0EBA004212E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0011DBAC1F6C0EBA004212E1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0011DBB31F6C0EBA004212E1;
+			remoteInfo = Epidemik;
+		};
+		0011DBD41F6C0EBA004212E1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0011DBAC1F6C0EBA004212E1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0011DBB31F6C0EBA004212E1;
+			remoteInfo = Epidemik;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0010A42C1F8008A800D12495 /* ButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtension.swift; sourceTree = "<group>"; };
+		0010A42E1F800DD000D12495 /* ScrollSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollSelector.swift; sourceTree = "<group>"; };
+		0011DBB41F6C0EBA004212E1 /* Epidemik.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Epidemik.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0011DBB71F6C0EBA004212E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0011DBB91F6C0EBA004212E1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0011DBBC1F6C0EBA004212E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0011DBBE1F6C0EBA004212E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0011DBC11F6C0EBA004212E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0011DBC31F6C0EBA004212E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0011DBC81F6C0EBA004212E1 /* EpidemikTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EpidemikTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0011DBCC1F6C0EBA004212E1 /* EpidemikTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpidemikTests.swift; sourceTree = "<group>"; };
+		0011DBCE1F6C0EBA004212E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0011DBD31F6C0EBA004212E1 /* EpidemikUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EpidemikUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0011DBD71F6C0EBA004212E1 /* EpidemikUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpidemikUITests.swift; sourceTree = "<group>"; };
+		0011DBD91F6C0EBA004212E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		002963A71F9585D400464BC5 /* sickness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sickness.png; sourceTree = "<group>"; };
+		0032F3411F808295001A9633 /* MapOverlayCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapOverlayCreator.swift; sourceTree = "<group>"; };
+		00356B9B1F9A935F004038BB /* sadface.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sadface.jpeg; sourceTree = "<group>"; };
+		00356B9D1F9A9DD1004038BB /* smiley.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smiley.png; sourceTree = "<group>"; };
+		005459151F749FCF00F73872 /* Epidemik.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Epidemik.entitlements; sourceTree = "<group>"; };
+		006858C81F8AA6F2007F6C7E /* DiseasePolygon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseasePolygon.swift; sourceTree = "<group>"; };
+		0083AD241F795BD8007AEF87 /* SicknessScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SicknessScreen.swift; sourceTree = "<group>"; };
+		0083AD261F795C50007AEF87 /* DiseaseNameScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseNameScreen.swift; sourceTree = "<group>"; };
+		009CE9E11F8FFFFD00D224F0 /* MainHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHolder.swift; sourceTree = "<group>"; };
+		00A5E7A01F6C414D004535D9 /* ContinueArrow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContinueArrow.swift; sourceTree = "<group>"; };
+		00A5E7A11F6C414D004535D9 /* IntroHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroHolder.swift; sourceTree = "<group>"; };
+		00A5E7A21F6C414D004535D9 /* NotificationsAsk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsAsk.swift; sourceTree = "<group>"; };
+		00A5E7A61F6C415E004535D9 /* AppDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDescription.swift; sourceTree = "<group>"; };
+		00A5E7A81F6C4170004535D9 /* GeneralAskScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralAskScreen.swift; sourceTree = "<group>"; };
+		00BC4F6F1F81746C0018D5D8 /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
+		00CD77F91F7843EA002B5C78 /* AddressAsk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressAsk.swift; sourceTree = "<group>"; };
+		00CD77FC1F7844C1002B5C78 /* FileRW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileRW.swift; sourceTree = "<group>"; };
+		00E9A4C61F8EFA6C008C95BD /* Disease.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Disease.swift; sourceTree = "<group>"; };
+		00EBE4AE1F9D2BE6005A8E6B /* UserAgreementPt2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAgreementPt2.swift; sourceTree = "<group>"; };
+		00EBE4B01F9D2EC1005A8E6B /* ColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
+		00F2F04D1F7F0B8300BC3120 /* UserAgreementPt1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAgreementPt1.swift; sourceTree = "<group>"; };
+		00F2F0511F7F1ECD00BC3120 /* ButtonSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSelector.swift; sourceTree = "<group>"; };
+		00F2F0551F7F1F8C00BC3120 /* checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0011DBB11F6C0EBA004212E1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0011DBC51F6C0EBA004212E1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0011DBD01F6C0EBA004212E1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0011DBAB1F6C0EBA004212E1 = {
+			isa = PBXGroup;
+			children = (
+				0011DBB61F6C0EBA004212E1 /* Epidemik */,
+				0011DBCB1F6C0EBA004212E1 /* EpidemikTests */,
+				0011DBD61F6C0EBA004212E1 /* EpidemikUITests */,
+				0011DBB51F6C0EBA004212E1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0011DBB51F6C0EBA004212E1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0011DBB41F6C0EBA004212E1 /* Epidemik.app */,
+				0011DBC81F6C0EBA004212E1 /* EpidemikTests.xctest */,
+				0011DBD31F6C0EBA004212E1 /* EpidemikUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0011DBB61F6C0EBA004212E1 /* Epidemik */ = {
+			isa = PBXGroup;
+			children = (
+				00F2F04F1F7F1E1400BC3120 /* General */,
+				0083AD231F795BB3007AEF87 /* Map */,
+				0083AD221F795BA9007AEF87 /* Sickness Registration */,
+				005459151F749FCF00F73872 /* Epidemik.entitlements */,
+				0011DBE51F6C3D63004212E1 /* Start Up */,
+				0011DBB71F6C0EBA004212E1 /* AppDelegate.swift */,
+				0011DBB91F6C0EBA004212E1 /* ViewController.swift */,
+				0011DBBB1F6C0EBA004212E1 /* Main.storyboard */,
+				0011DBBE1F6C0EBA004212E1 /* Assets.xcassets */,
+				002963A71F9585D400464BC5 /* sickness.png */,
+				00356B9B1F9A935F004038BB /* sadface.jpeg */,
+				00356B9D1F9A9DD1004038BB /* smiley.png */,
+				00F2F0551F7F1F8C00BC3120 /* checked.png */,
+				0011DBC01F6C0EBA004212E1 /* LaunchScreen.storyboard */,
+				0011DBC31F6C0EBA004212E1 /* Info.plist */,
+				00CD77FC1F7844C1002B5C78 /* FileRW.swift */,
+				009CE9E11F8FFFFD00D224F0 /* MainHolder.swift */,
+				00EBE4B01F9D2EC1005A8E6B /* ColorScheme.swift */,
+			);
+			path = Epidemik;
+			sourceTree = "<group>";
+		};
+		0011DBCB1F6C0EBA004212E1 /* EpidemikTests */ = {
+			isa = PBXGroup;
+			children = (
+				0011DBCC1F6C0EBA004212E1 /* EpidemikTests.swift */,
+				0011DBCE1F6C0EBA004212E1 /* Info.plist */,
+			);
+			path = EpidemikTests;
+			sourceTree = "<group>";
+		};
+		0011DBD61F6C0EBA004212E1 /* EpidemikUITests */ = {
+			isa = PBXGroup;
+			children = (
+				0011DBD71F6C0EBA004212E1 /* EpidemikUITests.swift */,
+				0011DBD91F6C0EBA004212E1 /* Info.plist */,
+			);
+			path = EpidemikUITests;
+			sourceTree = "<group>";
+		};
+		0011DBE51F6C3D63004212E1 /* Start Up */ = {
+			isa = PBXGroup;
+			children = (
+				00A5E7A81F6C4170004535D9 /* GeneralAskScreen.swift */,
+				00A5E7A61F6C415E004535D9 /* AppDescription.swift */,
+				00A5E7A01F6C414D004535D9 /* ContinueArrow.swift */,
+				00A5E7A11F6C414D004535D9 /* IntroHolder.swift */,
+				00A5E7A21F6C414D004535D9 /* NotificationsAsk.swift */,
+				00CD77F91F7843EA002B5C78 /* AddressAsk.swift */,
+				00F2F04D1F7F0B8300BC3120 /* UserAgreementPt1.swift */,
+				00EBE4AE1F9D2BE6005A8E6B /* UserAgreementPt2.swift */,
+			);
+			name = "Start Up";
+			sourceTree = "<group>";
+		};
+		0083AD221F795BA9007AEF87 /* Sickness Registration */ = {
+			isa = PBXGroup;
+			children = (
+				0083AD241F795BD8007AEF87 /* SicknessScreen.swift */,
+				0083AD261F795C50007AEF87 /* DiseaseNameScreen.swift */,
+			);
+			name = "Sickness Registration";
+			sourceTree = "<group>";
+		};
+		0083AD231F795BB3007AEF87 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				0032F3411F808295001A9633 /* MapOverlayCreator.swift */,
+				00BC4F6F1F81746C0018D5D8 /* Map.swift */,
+				006858C81F8AA6F2007F6C7E /* DiseasePolygon.swift */,
+				00E9A4C61F8EFA6C008C95BD /* Disease.swift */,
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
+		00F2F04F1F7F1E1400BC3120 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				00F2F0511F7F1ECD00BC3120 /* ButtonSelector.swift */,
+				0010A42C1F8008A800D12495 /* ButtonExtension.swift */,
+				0010A42E1F800DD000D12495 /* ScrollSelector.swift */,
+			);
+			name = General;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0011DBB31F6C0EBA004212E1 /* Epidemik */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0011DBDC1F6C0EBA004212E1 /* Build configuration list for PBXNativeTarget "Epidemik" */;
+			buildPhases = (
+				0011DBB01F6C0EBA004212E1 /* Sources */,
+				0011DBB11F6C0EBA004212E1 /* Frameworks */,
+				0011DBB21F6C0EBA004212E1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Epidemik;
+			productName = Epidemik;
+			productReference = 0011DBB41F6C0EBA004212E1 /* Epidemik.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0011DBC71F6C0EBA004212E1 /* EpidemikTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0011DBDF1F6C0EBA004212E1 /* Build configuration list for PBXNativeTarget "EpidemikTests" */;
+			buildPhases = (
+				0011DBC41F6C0EBA004212E1 /* Sources */,
+				0011DBC51F6C0EBA004212E1 /* Frameworks */,
+				0011DBC61F6C0EBA004212E1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0011DBCA1F6C0EBA004212E1 /* PBXTargetDependency */,
+			);
+			name = EpidemikTests;
+			productName = EpidemikTests;
+			productReference = 0011DBC81F6C0EBA004212E1 /* EpidemikTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		0011DBD21F6C0EBA004212E1 /* EpidemikUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0011DBE21F6C0EBA004212E1 /* Build configuration list for PBXNativeTarget "EpidemikUITests" */;
+			buildPhases = (
+				0011DBCF1F6C0EBA004212E1 /* Sources */,
+				0011DBD01F6C0EBA004212E1 /* Frameworks */,
+				0011DBD11F6C0EBA004212E1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0011DBD51F6C0EBA004212E1 /* PBXTargetDependency */,
+			);
+			name = EpidemikUITests;
+			productName = EpidemikUITests;
+			productReference = 0011DBD31F6C0EBA004212E1 /* EpidemikUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0011DBAC1F6C0EBA004212E1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				KnownAssetTags = (
+					New,
+				);
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = "RBradford Studios";
+				TargetAttributes = {
+					0011DBB31F6C0EBA004212E1 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 637YQRHJ3C;
+						LastSwiftMigration = 0900;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
+					};
+					0011DBC71F6C0EBA004212E1 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 637YQRHJ3C;
+						LastSwiftMigration = 0900;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 0011DBB31F6C0EBA004212E1;
+					};
+					0011DBD21F6C0EBA004212E1 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 637YQRHJ3C;
+						LastSwiftMigration = 0900;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 0011DBB31F6C0EBA004212E1;
+					};
+				};
+			};
+			buildConfigurationList = 0011DBAF1F6C0EBA004212E1 /* Build configuration list for PBXProject "Epidemik" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0011DBAB1F6C0EBA004212E1;
+			productRefGroup = 0011DBB51F6C0EBA004212E1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0011DBB31F6C0EBA004212E1 /* Epidemik */,
+				0011DBC71F6C0EBA004212E1 /* EpidemikTests */,
+				0011DBD21F6C0EBA004212E1 /* EpidemikUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0011DBB21F6C0EBA004212E1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0011DBC21F6C0EBA004212E1 /* LaunchScreen.storyboard in Resources */,
+				002963A81F9585D500464BC5 /* sickness.png in Resources */,
+				00356B9C1F9A935F004038BB /* sadface.jpeg in Resources */,
+				0011DBBF1F6C0EBA004212E1 /* Assets.xcassets in Resources */,
+				00356B9E1F9A9DD1004038BB /* smiley.png in Resources */,
+				0011DBBD1F6C0EBA004212E1 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0011DBC61F6C0EBA004212E1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0011DBD11F6C0EBA004212E1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0011DBB01F6C0EBA004212E1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00CD77FA1F7843EA002B5C78 /* AddressAsk.swift in Sources */,
+				00E9A4C71F8EFA6C008C95BD /* Disease.swift in Sources */,
+				00A5E7A91F6C4170004535D9 /* GeneralAskScreen.swift in Sources */,
+				0010A42F1F800DD000D12495 /* ScrollSelector.swift in Sources */,
+				0083AD251F795BD8007AEF87 /* SicknessScreen.swift in Sources */,
+				00BC4F701F81746C0018D5D8 /* Map.swift in Sources */,
+				00EBE4B11F9D2EC1005A8E6B /* ColorScheme.swift in Sources */,
+				009CE9E21F8FFFFD00D224F0 /* MainHolder.swift in Sources */,
+				00F2F0521F7F1ECD00BC3120 /* ButtonSelector.swift in Sources */,
+				00A5E7A31F6C414D004535D9 /* ContinueArrow.swift in Sources */,
+				00CD77FD1F7844C1002B5C78 /* FileRW.swift in Sources */,
+				0011DBBA1F6C0EBA004212E1 /* ViewController.swift in Sources */,
+				0010A42D1F8008A800D12495 /* ButtonExtension.swift in Sources */,
+				0083AD271F795C50007AEF87 /* DiseaseNameScreen.swift in Sources */,
+				00A5E7A41F6C414D004535D9 /* IntroHolder.swift in Sources */,
+				0032F3421F808295001A9633 /* MapOverlayCreator.swift in Sources */,
+				006858C91F8AA6F2007F6C7E /* DiseasePolygon.swift in Sources */,
+				00A5E7A51F6C414D004535D9 /* NotificationsAsk.swift in Sources */,
+				00EBE4AF1F9D2BE6005A8E6B /* UserAgreementPt2.swift in Sources */,
+				00F2F04E1F7F0B8300BC3120 /* UserAgreementPt1.swift in Sources */,
+				00A5E7A71F6C415E004535D9 /* AppDescription.swift in Sources */,
+				0011DBB81F6C0EBA004212E1 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0011DBC41F6C0EBA004212E1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0011DBCD1F6C0EBA004212E1 /* EpidemikTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0011DBCF1F6C0EBA004212E1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0011DBD81F6C0EBA004212E1 /* EpidemikUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0011DBCA1F6C0EBA004212E1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0011DBB31F6C0EBA004212E1 /* Epidemik */;
+			targetProxy = 0011DBC91F6C0EBA004212E1 /* PBXContainerItemProxy */;
+		};
+		0011DBD51F6C0EBA004212E1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0011DBB31F6C0EBA004212E1 /* Epidemik */;
+			targetProxy = 0011DBD41F6C0EBA004212E1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		0011DBBB1F6C0EBA004212E1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0011DBBC1F6C0EBA004212E1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		0011DBC01F6C0EBA004212E1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0011DBC11F6C0EBA004212E1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0011DBDA1F6C0EBA004212E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0011DBDB1F6C0EBA004212E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0011DBDD1F6C0EBA004212E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Epidemik/Epidemik.entitlements;
+				DEVELOPMENT_TEAM = 637YQRHJ3C;
+				INFOPLIST_FILE = Epidemik/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.rbradford.thaumavor.Epidemik;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		0011DBDE1F6C0EBA004212E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Epidemik/Epidemik.entitlements;
+				DEVELOPMENT_TEAM = 637YQRHJ3C;
+				INFOPLIST_FILE = Epidemik/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.rbradford.thaumavor.Epidemik;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		0011DBE01F6C0EBA004212E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 637YQRHJ3C;
+				INFOPLIST_FILE = EpidemikTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.thaumavor.rbradford.EpidemikTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Epidemik.app/Epidemik";
+			};
+			name = Debug;
+		};
+		0011DBE11F6C0EBA004212E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 637YQRHJ3C;
+				INFOPLIST_FILE = EpidemikTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.thaumavor.rbradford.EpidemikTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Epidemik.app/Epidemik";
+			};
+			name = Release;
+		};
+		0011DBE31F6C0EBA004212E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 637YQRHJ3C;
+				INFOPLIST_FILE = EpidemikUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.thaumavor.rbradford.EpidemikUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
+				TEST_TARGET_NAME = Epidemik;
+			};
+			name = Debug;
+		};
+		0011DBE41F6C0EBA004212E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 637YQRHJ3C;
+				INFOPLIST_FILE = EpidemikUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.thaumavor.rbradford.EpidemikUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
+				TEST_TARGET_NAME = Epidemik;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0011DBAF1F6C0EBA004212E1 /* Build configuration list for PBXProject "Epidemik" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0011DBDA1F6C0EBA004212E1 /* Debug */,
+				0011DBDB1F6C0EBA004212E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0011DBDC1F6C0EBA004212E1 /* Build configuration list for PBXNativeTarget "Epidemik" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0011DBDD1F6C0EBA004212E1 /* Debug */,
+				0011DBDE1F6C0EBA004212E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0011DBDF1F6C0EBA004212E1 /* Build configuration list for PBXNativeTarget "EpidemikTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0011DBE01F6C0EBA004212E1 /* Debug */,
+				0011DBE11F6C0EBA004212E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0011DBE21F6C0EBA004212E1 /* Build configuration list for PBXNativeTarget "EpidemikUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0011DBE31F6C0EBA004212E1 /* Debug */,
+				0011DBE41F6C0EBA004212E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0011DBAC1F6C0EBA004212E1 /* Project object */;
+}
