@@ -61,7 +61,9 @@ public class TrendsView: UIView {
 				return
 			}
 			let responseString = String(data: data!, encoding: .utf8)
-			self.processTrends(response: responseString!)
+			DispatchQueue.main.sync {
+				self.processTrends(response: responseString!)
+			}
 			
 		}
 		task.resume()
@@ -71,7 +73,7 @@ public class TrendsView: UIView {
 		let indivTrends = response.characters.split { $0 == "\n"}.map(String.init)
 		for text in indivTrends {
 			let parts = text.characters.split { $0 == ","}.map(String.init)
-			let currentTrend = Trend(name: parts[0], weight: Double(parts[1])!)
+			let currentTrend = Trend(name: parts[0], weight: Double(parts[1])!, width: Double(self.frame.width))
 			trends.append(currentTrend)
 		}
 		outputTrends()
@@ -85,13 +87,11 @@ public class TrendsView: UIView {
 	}
 	
 	func displayTrends() {
-		DispatchQueue.main.sync {
-			let startShift = self.frame.height / 4
-			for i in 0 ..< trends.count {
-				let toDisplay = trends[i].toUILabel(width: Double(self.frame.width))
-				toDisplay.frame.origin.y = CGFloat(i) * toDisplay.frame.height + startShift
-				self.addSubview(toDisplay)
-			}
+		let startShift = self.frame.height / 6
+		for i in 0 ..< trends.count {
+			let toDisplay = trends[i]
+			toDisplay.frame.origin.y = CGFloat(i) * (6.0/5.0*toDisplay.frame.height) + startShift
+			self.addSubview(toDisplay)
 		}
 	}
 	

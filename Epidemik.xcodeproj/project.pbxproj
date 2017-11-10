@@ -16,10 +16,7 @@
 		0011DBC21F6C0EBA004212E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0011DBC01F6C0EBA004212E1 /* LaunchScreen.storyboard */; };
 		0011DBCD1F6C0EBA004212E1 /* EpidemikTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0011DBCC1F6C0EBA004212E1 /* EpidemikTests.swift */; };
 		0011DBD81F6C0EBA004212E1 /* EpidemikUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0011DBD71F6C0EBA004212E1 /* EpidemikUITests.swift */; };
-		002963A81F9585D500464BC5 /* sickness.png in Resources */ = {isa = PBXBuildFile; fileRef = 002963A71F9585D400464BC5 /* sickness.png */; };
 		0032F3421F808295001A9633 /* MapOverlayCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0032F3411F808295001A9633 /* MapOverlayCreator.swift */; };
-		00356B9C1F9A935F004038BB /* sadface.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 00356B9B1F9A935F004038BB /* sadface.jpeg */; };
-		00356B9E1F9A9DD1004038BB /* smiley.png in Resources */ = {isa = PBXBuildFile; fileRef = 00356B9D1F9A9DD1004038BB /* smiley.png */; };
 		006858C91F8AA6F2007F6C7E /* DiseasePolygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006858C81F8AA6F2007F6C7E /* DiseasePolygon.swift */; };
 		0083AD251F795BD8007AEF87 /* SicknessScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0083AD241F795BD8007AEF87 /* SicknessScreen.swift */; };
 		0083AD271F795C50007AEF87 /* DiseaseNameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0083AD261F795C50007AEF87 /* DiseaseNameScreen.swift */; };
@@ -32,8 +29,6 @@
 		00BC4F701F81746C0018D5D8 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BC4F6F1F81746C0018D5D8 /* Map.swift */; };
 		00CD77FA1F7843EA002B5C78 /* AddressAsk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CD77F91F7843EA002B5C78 /* AddressAsk.swift */; };
 		00CD77FD1F7844C1002B5C78 /* FileRW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CD77FC1F7844C1002B5C78 /* FileRW.swift */; };
-		00D07DBF1FB36FC400510909 /* trends.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D07DBE1FB36FC400510909 /* trends.png */; };
-		00D07DC11FB3707200510909 /* globe2.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D07DC01FB3707200510909 /* globe2.png */; };
 		00D665511FB5348F00C3C680 /* Trend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D665501FB5348F00C3C680 /* Trend.swift */; };
 		00E9A4C71F8EFA6C008C95BD /* Disease.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E9A4C61F8EFA6C008C95BD /* Disease.swift */; };
 		00EBE4AF1F9D2BE6005A8E6B /* UserAgreementPt2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EBE4AE1F9D2BE6005A8E6B /* UserAgreementPt2.swift */; };
@@ -76,10 +71,7 @@
 		0011DBD31F6C0EBA004212E1 /* EpidemikUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EpidemikUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0011DBD71F6C0EBA004212E1 /* EpidemikUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpidemikUITests.swift; sourceTree = "<group>"; };
 		0011DBD91F6C0EBA004212E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		002963A71F9585D400464BC5 /* sickness.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sickness.png; sourceTree = "<group>"; };
 		0032F3411F808295001A9633 /* MapOverlayCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapOverlayCreator.swift; sourceTree = "<group>"; };
-		00356B9B1F9A935F004038BB /* sadface.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sadface.jpeg; sourceTree = "<group>"; };
-		00356B9D1F9A9DD1004038BB /* smiley.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smiley.png; sourceTree = "<group>"; };
 		005459151F749FCF00F73872 /* Epidemik.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Epidemik.entitlements; sourceTree = "<group>"; };
 		006858C81F8AA6F2007F6C7E /* DiseasePolygon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseasePolygon.swift; sourceTree = "<group>"; };
 		0083AD241F795BD8007AEF87 /* SicknessScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SicknessScreen.swift; sourceTree = "<group>"; };
@@ -93,15 +85,12 @@
 		00BC4F6F1F81746C0018D5D8 /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		00CD77F91F7843EA002B5C78 /* AddressAsk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressAsk.swift; sourceTree = "<group>"; };
 		00CD77FC1F7844C1002B5C78 /* FileRW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileRW.swift; sourceTree = "<group>"; };
-		00D07DBE1FB36FC400510909 /* trends.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trends.png; sourceTree = "<group>"; };
-		00D07DC01FB3707200510909 /* globe2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = globe2.png; sourceTree = "<group>"; };
 		00D665501FB5348F00C3C680 /* Trend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trend.swift; sourceTree = "<group>"; };
 		00E9A4C61F8EFA6C008C95BD /* Disease.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Disease.swift; sourceTree = "<group>"; };
 		00EBE4AE1F9D2BE6005A8E6B /* UserAgreementPt2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAgreementPt2.swift; sourceTree = "<group>"; };
 		00EBE4B01F9D2EC1005A8E6B /* ColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
 		00F2F04D1F7F0B8300BC3120 /* UserAgreementPt1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAgreementPt1.swift; sourceTree = "<group>"; };
 		00F2F0511F7F1ECD00BC3120 /* ButtonSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSelector.swift; sourceTree = "<group>"; };
-		00F2F0551F7F1F8C00BC3120 /* checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked.png; sourceTree = "<group>"; };
 		00FC190F1FB3DEB700D8FD97 /* TrendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -163,12 +152,6 @@
 				0011DBB91F6C0EBA004212E1 /* ViewController.swift */,
 				0011DBBB1F6C0EBA004212E1 /* Main.storyboard */,
 				0011DBBE1F6C0EBA004212E1 /* Assets.xcassets */,
-				002963A71F9585D400464BC5 /* sickness.png */,
-				00D07DBE1FB36FC400510909 /* trends.png */,
-				00356B9B1F9A935F004038BB /* sadface.jpeg */,
-				00356B9D1F9A9DD1004038BB /* smiley.png */,
-				00D07DC01FB3707200510909 /* globe2.png */,
-				00F2F0551F7F1F8C00BC3120 /* checked.png */,
 				0011DBC01F6C0EBA004212E1 /* LaunchScreen.storyboard */,
 				0011DBC31F6C0EBA004212E1 /* Info.plist */,
 				00CD77FC1F7844C1002B5C78 /* FileRW.swift */,
@@ -372,12 +355,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0011DBC21F6C0EBA004212E1 /* LaunchScreen.storyboard in Resources */,
-				00D07DC11FB3707200510909 /* globe2.png in Resources */,
-				00D07DBF1FB36FC400510909 /* trends.png in Resources */,
-				002963A81F9585D500464BC5 /* sickness.png in Resources */,
-				00356B9C1F9A935F004038BB /* sadface.jpeg in Resources */,
 				0011DBBF1F6C0EBA004212E1 /* Assets.xcassets in Resources */,
-				00356B9E1F9A9DD1004038BB /* smiley.png in Resources */,
 				0011DBBD1F6C0EBA004212E1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
