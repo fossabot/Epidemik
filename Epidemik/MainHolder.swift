@@ -13,6 +13,7 @@ public class MainHolder: UIView {
 	
 	var mapView: Map!
 	var sicknessScreen: SicknessScreen!
+	var trendsView: TrendsView!
 	var mapBlur: UIVisualEffectView!
 	
 	var mapButton: UIButton!
@@ -24,6 +25,7 @@ public class MainHolder: UIView {
 		initMap()
 		initMapBlur()
 		initSickness()
+		initTrends()
 		initChangeButtons()
 	}
 	
@@ -53,46 +55,60 @@ public class MainHolder: UIView {
 		mapView.addSubview(mapBlur) //if you have more UIViews, use an insertSubview API to place it where needed
 	}
 	
+	func initTrends() {
+		trendsView = TrendsView(frame: CGRect(x: self.frame.width, y: 0, width: self.frame.width, height: self.frame.height))
+	}
+	
 	@objc func transisitionToMap(_ sender: UIButton?) {
-		print("Pressed")
-		if(sicknessScreen.frame.origin.x == 0) {
-			UIView.animate(withDuration: 0.5, animations: {
-				//self.mapBlur.frame.origin.x += self.frame.width
-				self.mapBlur.alpha = 0
-				self.mapButton.alpha = 1
-				
-				self.sicknessScreen.frame.origin.x += self.frame.width
-				self.sickButton.alpha = 0.5
-			})
-		}
+		UIView.animate(withDuration: 0.5, animations: {
+			//self.mapBlur.frame.origin.x += self.frame.width
+			self.mapBlur.alpha = 0
+			self.mapButton.alpha = 1
+			self.sickButton.alpha = 0.5
+			self.trendsButton.alpha = 0.5
+			self.sicknessScreen.alpha = 0
+			
+			self.sicknessScreen.frame.origin.x = self.frame.width
+			
+			self.trendsView.frame.origin.x = self.frame.width
+		})
 	}
 	
 	@objc func transisitionToSick(_ sender: UIButton?) {
-		print("Pressed")
 		if(sicknessScreen.frame.origin.x != 0) {
-			UIView.animate(withDuration: 0.5, animations: {
-				//self.mapBlur.frame.origin.x -= self.frame.width
-				self.mapBlur.alpha = 1
-				self.mapButton.alpha = 0.5
-				
-				self.sicknessScreen.frame.origin.x -= self.frame.width
-				self.sickButton.alpha = 1
-			})
+			if(trendsView.frame.origin.x == 0 && sicknessScreen.frame.origin.x < 0) {
+				sicknessScreen.frame.origin.x = -self.frame.width
+			} else {
+				sicknessScreen.frame.origin.x = self.frame.width
+			}
 		}
+		UIView.animate(withDuration: 0.5, animations: {
+			//self.mapBlur.frame.origin.x -= self.frame.width
+			self.mapBlur.alpha = 1
+			
+			self.mapButton.alpha = 0.5
+			self.trendsButton.alpha = 0.5
+			self.sickButton.alpha = 1
+			
+			self.sicknessScreen.alpha = 1
+			self.sicknessScreen.frame.origin.x = 0
+			self.trendsView.frame.origin.x = self.frame.width
+			
+		})
 	}
 	
 	@objc func transisitionToTrends(_ sender: UIButton?) {
-		print("Pressed")
-		if(sicknessScreen.frame.origin.x != 0) {
-			UIView.animate(withDuration: 0.5, animations: {
-				//self.mapBlur.frame.origin.x -= self.frame.width
-				self.mapBlur.alpha = 1
-				self.mapButton.alpha = 0.5
-				
-				self.sicknessScreen.frame.origin.x -= self.frame.width
-				self.sickButton.alpha = 1
-			})
-		}
+		UIView.animate(withDuration: 0.5, animations: {
+			self.mapBlur.alpha = 1
+			self.mapButton.alpha = 0.5
+			self.sickButton.alpha = 0.5
+			self.trendsButton.alpha = 1
+			
+			self.sicknessScreen.alpha = 0
+			self.sicknessScreen.frame.origin.x = -self.frame.width
+			
+			self.trendsView.frame.origin.x = 0
+		})
 	}
 	
 	func initChangeButtons() {
@@ -109,7 +125,7 @@ public class MainHolder: UIView {
 		//changeButton.backgroundColor = UIColor(displayP3Red: 58.0/255.0, green: 64.0/255.0, blue: 0, alpha: 1)
 		trendsButton.addTarget(self, action: #selector(MainHolder.transisitionToTrends(_:)), for: .touchUpInside)
 		trendsButton.setImage(trendsImage, for: .normal)
-		trendsButton.alpha = 1
+		trendsButton.alpha = 0.5
 		self.addSubview(trendsButton)
 	}
 	

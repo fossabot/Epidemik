@@ -39,6 +39,7 @@
 		00EBE4B11F9D2EC1005A8E6B /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EBE4B01F9D2EC1005A8E6B /* ColorScheme.swift */; };
 		00F2F04E1F7F0B8300BC3120 /* UserAgreementPt1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F2F04D1F7F0B8300BC3120 /* UserAgreementPt1.swift */; };
 		00F2F0521F7F1ECD00BC3120 /* ButtonSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F2F0511F7F1ECD00BC3120 /* ButtonSelector.swift */; };
+		00FC19101FB3DEB700D8FD97 /* TrendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FC190F1FB3DEB700D8FD97 /* TrendsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,7 @@
 		00F2F04D1F7F0B8300BC3120 /* UserAgreementPt1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAgreementPt1.swift; sourceTree = "<group>"; };
 		00F2F0511F7F1ECD00BC3120 /* ButtonSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSelector.swift; sourceTree = "<group>"; };
 		00F2F0551F7F1F8C00BC3120 /* checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked.png; sourceTree = "<group>"; };
+		00FC190F1FB3DEB700D8FD97 /* TrendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 		0011DBB61F6C0EBA004212E1 /* Epidemik */ = {
 			isa = PBXGroup;
 			children = (
+				00FC190E1FB3DEA900D8FD97 /* Trends */,
 				00F2F04F1F7F1E1400BC3120 /* General */,
 				0083AD231F795BB3007AEF87 /* Map */,
 				0083AD221F795BA9007AEF87 /* Sickness Registration */,
@@ -234,6 +237,14 @@
 				0010A42E1F800DD000D12495 /* ScrollSelector.swift */,
 			);
 			name = General;
+			sourceTree = "<group>";
+		};
+		00FC190E1FB3DEA900D8FD97 /* Trends */ = {
+			isa = PBXGroup;
+			children = (
+				00FC190F1FB3DEB700D8FD97 /* TrendsView.swift */,
+			);
+			name = Trends;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -393,6 +404,7 @@
 				00E9A4C71F8EFA6C008C95BD /* Disease.swift in Sources */,
 				00A5E7A91F6C4170004535D9 /* GeneralAskScreen.swift in Sources */,
 				0010A42F1F800DD000D12495 /* ScrollSelector.swift in Sources */,
+				00FC19101FB3DEB700D8FD97 /* TrendsView.swift in Sources */,
 				0083AD251F795BD8007AEF87 /* SicknessScreen.swift in Sources */,
 				00BC4F701F81746C0018D5D8 /* Map.swift in Sources */,
 				00EBE4B11F9D2EC1005A8E6B /* ColorScheme.swift in Sources */,
