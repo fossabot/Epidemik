@@ -45,6 +45,7 @@ class ViewController: UIViewController {
 	func initMainScreen() {
 		let view = MainHolder(frame: self.view.frame)
 		self.view.addSubview(view)
+		self.view.sendSubview(toBack: view)
 	}
 	
 	// Creates the view that holds all the intro screens
