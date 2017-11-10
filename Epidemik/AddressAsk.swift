@@ -48,6 +48,7 @@ public class AddressAsk: GeneralAskScreen {
 	
 	func checkAddress(address: String) {
 		if (address != "") {
+			FileRW.writeFile(fileName: self.FILE_NAME, contents: address)
 			let geocoder = CLGeocoder()
 			geocoder.geocodeAddressString(address, completionHandler: {(placemarks, error) -> Void in
 				if(error != nil) {
@@ -58,7 +59,6 @@ public class AddressAsk: GeneralAskScreen {
 					self.endEditing(true)
 					let appDelegate = UIApplication.shared.delegate as! AppDelegate
 					appDelegate.sendDeviceTokenToServer(latitude: String(describing: location!.coordinate.latitude), longitude: String(describing: location!.coordinate.longitude))
-					FileRW.writeFile(fileName: self.FILE_NAME, contents: address)
 				} else {
 					self.setError()
 				}
