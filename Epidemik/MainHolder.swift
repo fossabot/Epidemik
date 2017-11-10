@@ -61,7 +61,6 @@ public class MainHolder: UIView {
 	
 	@objc func transisitionToMap(_ sender: UIButton?) {
 		UIView.animate(withDuration: 0.5, animations: {
-			//self.mapBlur.frame.origin.x += self.frame.width
 			self.mapBlur.alpha = 0
 			self.mapButton.alpha = 1
 			self.sickButton.alpha = 0.5
@@ -83,7 +82,6 @@ public class MainHolder: UIView {
 			}
 		}
 		UIView.animate(withDuration: 0.5, animations: {
-			//self.mapBlur.frame.origin.x -= self.frame.width
 			self.mapBlur.alpha = 1
 			
 			self.mapButton.alpha = 0.5

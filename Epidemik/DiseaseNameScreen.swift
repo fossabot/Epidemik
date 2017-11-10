@@ -118,6 +118,9 @@ public class DiseaseNameScreen: UIView {
 		UIView.animate(withDuration: 0.5, animations: {
 			self.frame.origin.x += self.frame.width
 			self.superScreen.sicknessButton.frame.origin.x += self.frame.width
+		}, completion: {
+			(value: Bool) in
+			self.removeFromSuperview()
 		})
 	}
 	
