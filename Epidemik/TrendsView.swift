@@ -10,13 +10,15 @@ import Foundation
 import UIKit
 import CoreLocation
 
-public class TrendsView: UIView {
+public class TrendsView: UIScrollView {
 	
 	var trends = Array<Trend>()
 	
 	public override init(frame: CGRect) {
 		super.init(frame: frame)
 		getAddressInfo()
+		self.isScrollEnabled = true
+		self.autoresizingMask = UIViewAutoresizing.flexibleHeight
 	}
 	
 	required public init?(coder aDecoder: NSCoder) {
@@ -92,6 +94,9 @@ public class TrendsView: UIView {
 			let toDisplay = trends[i]
 			toDisplay.frame.origin.y = CGFloat(i) * (6.0/5.0*toDisplay.frame.height) + startShift
 			self.addSubview(toDisplay)
+		}
+		if(trends.count > 0) {
+			self.contentSize = CGSize(width: self.frame.width, height: (trends.last?.frame.origin.y)! + (trends.last?.frame.height)!)
 		}
 	}
 	
