@@ -8,20 +8,91 @@
 
 import Foundation
 import UIKit
+import CoreLocation
 
 public class TrendsView: UIView {
 	
+	var trends = Array<Trend>()
+	
 	public override init(frame: CGRect) {
 		super.init(frame: frame)
-		self.backgroundColor = UIColor.clear
+		getAddressInfo()
 	}
 	
 	required public init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
 	}
 	
-	func getTrends() {
+	func getAddressInfo() {
+		let address = FileRW.readFile(fileName: "address.epi")
 		
+		let date = NSDate()
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateFormat = "yyyy-MM-dd"
+		let dateString = dateFormatter.string(from:date as Date)
+		
+		if (address != "") {
+			let geocoder = CLGeocoder()
+			geocoder.geocodeAddressString(address!, completionHandler: {(placemarks, error) -> Void in
+				if(error != nil) {
+				} else if let buffer = placemarks?[0] {
+					let location = buffer.location;
+					self.getTrends(latitude: (location?.coordinate.latitude)!, longitude: (location?.coordinate.longitude)!)
+				}
+			})
+		}
+	}
+	
+	func getTrends(latitude: Double, longitude: Double) {
+		var request = URLRequest(url: URL(string: "https://rbradford.thaumavor.io/iOS_Programs/Epidemik/getTrends.php")!)
+		request.httpMethod = "POST"
+		let postString = "latitude=" + String(latitude) + "&longitude=" + String(longitude) +
+		"&get=hi"
+		request.httpBody = postString.data(using: .utf8)
+		let task = URLSession.shared.dataTask(with: request) { data, response, error in
+			
+			guard let _ = data, error == nil else {
+				print("error=\(String(describing: error))")
+				return
+			}
+			if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
+				print("statusCode should be 200, but is \(httpStatus.statusCode)")
+				print("response = \(String(describing: response))")
+				return
+			}
+			let responseString = String(data: data!, encoding: .utf8)
+			self.processTrends(response: responseString!)
+			
+		}
+		task.resume()
+	}
+	
+	func processTrends(response: String) {
+		let indivTrends = response.characters.split { $0 == "\n"}.map(String.init)
+		for text in indivTrends {
+			let parts = text.characters.split { $0 == ","}.map(String.init)
+			let currentTrend = Trend(name: parts[0], weight: Double(parts[1])!)
+			trends.append(currentTrend)
+		}
+		outputTrends()
+		displayTrends()
+	}
+	
+	func outputTrends() {
+		for trend in trends {
+			print(trend.toString())
+		}
+	}
+	
+	func displayTrends() {
+		DispatchQueue.main.sync {
+			let startShift = self.frame.height / 4
+			for i in 0 ..< trends.count {
+				let toDisplay = trends[i].toUILabel(width: Double(self.frame.width))
+				toDisplay.frame.origin.y = CGFloat(i) * toDisplay.frame.height + startShift
+				self.addSubview(toDisplay)
+			}
+		}
 	}
 	
 }

@@ -34,6 +34,7 @@
 		00CD77FD1F7844C1002B5C78 /* FileRW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CD77FC1F7844C1002B5C78 /* FileRW.swift */; };
 		00D07DBF1FB36FC400510909 /* trends.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D07DBE1FB36FC400510909 /* trends.png */; };
 		00D07DC11FB3707200510909 /* globe2.png in Resources */ = {isa = PBXBuildFile; fileRef = 00D07DC01FB3707200510909 /* globe2.png */; };
+		00D665511FB5348F00C3C680 /* Trend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D665501FB5348F00C3C680 /* Trend.swift */; };
 		00E9A4C71F8EFA6C008C95BD /* Disease.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E9A4C61F8EFA6C008C95BD /* Disease.swift */; };
 		00EBE4AF1F9D2BE6005A8E6B /* UserAgreementPt2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EBE4AE1F9D2BE6005A8E6B /* UserAgreementPt2.swift */; };
 		00EBE4B11F9D2EC1005A8E6B /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EBE4B01F9D2EC1005A8E6B /* ColorScheme.swift */; };
@@ -94,6 +95,7 @@
 		00CD77FC1F7844C1002B5C78 /* FileRW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileRW.swift; sourceTree = "<group>"; };
 		00D07DBE1FB36FC400510909 /* trends.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trends.png; sourceTree = "<group>"; };
 		00D07DC01FB3707200510909 /* globe2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = globe2.png; sourceTree = "<group>"; };
+		00D665501FB5348F00C3C680 /* Trend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trend.swift; sourceTree = "<group>"; };
 		00E9A4C61F8EFA6C008C95BD /* Disease.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Disease.swift; sourceTree = "<group>"; };
 		00EBE4AE1F9D2BE6005A8E6B /* UserAgreementPt2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAgreementPt2.swift; sourceTree = "<group>"; };
 		00EBE4B01F9D2EC1005A8E6B /* ColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 			isa = PBXGroup;
 			children = (
 				00FC190F1FB3DEB700D8FD97 /* TrendsView.swift */,
+				00D665501FB5348F00C3C680 /* Trend.swift */,
 			);
 			name = Trends;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 				009CE9E21F8FFFFD00D224F0 /* MainHolder.swift in Sources */,
 				00F2F0521F7F1ECD00BC3120 /* ButtonSelector.swift in Sources */,
 				00A5E7A31F6C414D004535D9 /* ContinueArrow.swift in Sources */,
+				00D665511FB5348F00C3C680 /* Trend.swift in Sources */,
 				00CD77FD1F7844C1002B5C78 /* FileRW.swift in Sources */,
 				0011DBBA1F6C0EBA004212E1 /* ViewController.swift in Sources */,
 				0010A42D1F8008A800D12495 /* ButtonExtension.swift in Sources */,

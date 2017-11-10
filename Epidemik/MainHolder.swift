@@ -57,6 +57,7 @@ public class MainHolder: UIView {
 	
 	func initTrends() {
 		trendsView = TrendsView(frame: CGRect(x: self.frame.width, y: 0, width: self.frame.width, height: self.frame.height))
+		self.addSubview(trendsView)
 	}
 	
 	@objc func transisitionToMap(_ sender: UIButton?) {
