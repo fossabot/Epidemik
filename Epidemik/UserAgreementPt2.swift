@@ -15,6 +15,7 @@ public class UserAgreementPt2: GeneralAskScreen {
 	override public init(frame: CGRect, holder: IntroHolder) {
 		super.init(frame: frame, holder: holder)
 		self.continueArrow.setTitle("Agree", for: UIControlState.normal)
+		self.backgroundColor = COLORS.COLOR_5
 		super.initDescription(text: "Your Data Will Be Used Solely for Research Purposes")
 	}
 	

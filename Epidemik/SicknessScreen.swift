@@ -44,7 +44,7 @@ public class SicknessScreen: UIView {
 		sicknessButton.layer.borderWidth = 2.0
 		sicknessButton.layer.borderColor = UIColor.clear.cgColor
 		sicknessButton.setTitle("Am Sick :(", for: UIControlState.normal)
-		sicknessButton.titleLabel?.font = UIFont(name: "Helvetica-Bold", size: 30)
+		sicknessButton.titleLabel?.font = UIFont(name: "Helvetica", size: 30)
 		sicknessButton.backgroundColor = COLORS.COLOR_1
 		sicknessButton.addTarget(self, action: #selector(SicknessScreen.amSick(_:)), for: .touchUpInside)
 		self.addSubview(sicknessButton)
@@ -72,7 +72,7 @@ public class SicknessScreen: UIView {
 		healthyButton.layer.borderWidth = 2.0
 		healthyButton.layer.borderColor = UIColor.clear.cgColor
 		healthyButton.backgroundColor = COLORS.COLOR_5
-		healthyButton.titleLabel?.font = UIFont(name: "Helvetica-Bold", size: 30)
+		healthyButton.titleLabel?.font = UIFont(name: "Helvetica", size: 30)
 		healthyButton.setTitleColor(UIColor.black, for: .normal)
 		healthyButton.setTitle("Am Healthy!", for: UIControlState.normal)
 		healthyButton.addTarget(self, action: #selector(SicknessScreen.amHealthy(_:)), for: .touchUpInside)

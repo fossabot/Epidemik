@@ -48,7 +48,7 @@ public class DiseaseNameScreen: UIView {
 	// Creates the sad face graphic on the screen
 	func initSadFace() {
 		let frame = CGRect(x: self.frame.width/4, y: 15, width: self.frame.width/2, height: self.frame.width/2)
-		let image = UIImage(named: "sadface.jpeg")
+		let image = UIImage(named: "sadface.png")
 		sadFace = UIImageView(image: image)
 		sadFace.frame = frame
 		
@@ -68,7 +68,7 @@ public class DiseaseNameScreen: UIView {
 		selectorTitle.text = "Select Your Illness"
 		selectorTitle.textAlignment = .center
 		selectorTitle.backgroundColor = UIColor.clear
-		selectorTitle.font = UIFont(name: "Helvetica-Bold", size: 20)
+		selectorTitle.font = UIFont(name: "Helvetica", size: 20)
 		self.addSubview(selectorTitle)
 	}
 	

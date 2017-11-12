@@ -83,8 +83,8 @@ public class GeneralAskScreen: UIView {
 	// Draws text centered in the screen of size 50, font Helvetica-Bold
 	// String -> Image
 	func initDescription(text: String) {
-		descriptionText = UITextView(frame: CGRect(x: 30, y: self.frame.height/3, width: self.frame.width - 60, height: 3*self.frame.height/4))
-		descriptionText.font = UIFont(name: "Helvetica-Bold", size: 50)
+		descriptionText = UITextView(frame: CGRect(x: 30, y: self.frame.height/2-15, width: self.frame.width - 60, height: 3*self.frame.height/4))
+		descriptionText.font = UIFont(name: "Helvetica", size: 30)
 		descriptionText.backgroundColor = UIColor.clear
 		descriptionText.textAlignment = NSTextAlignment.center
 		descriptionText.isEditable = false

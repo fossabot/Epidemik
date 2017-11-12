@@ -72,9 +72,9 @@ public class TrendsView: UIScrollView {
 	}
 	
 	func processTrends(response: String) {
-		let indivTrends = response.characters.split { $0 == "\n"}.map(String.init)
+		let indivTrends = response.split { $0 == "\n"}.map(String.init)
 		for text in indivTrends {
-			let parts = text.characters.split { $0 == ","}.map(String.init)
+			let parts = text.split { $0 == ","}.map(String.init)
 			let currentTrend = Trend(name: parts[0], weight: Double(parts[1])!, width: Double(self.frame.width))
 			trends.append(currentTrend)
 		}
