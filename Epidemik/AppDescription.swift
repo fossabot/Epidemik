@@ -14,6 +14,7 @@ public class AppDescription: GeneralAskScreen {
 	override public init(frame: CGRect, holder: IntroHolder) {
 		super.init(frame: frame, holder: holder)
 		self.continueArrow.setTitle("Continue", for: UIControlState.normal)
+		self.backgroundColor = COLORS.COLOR_5
 		super.initDescription(text: "Epidemik is a Crowd Sourced Disease Data Collector")
 	}
 	
