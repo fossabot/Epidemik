@@ -17,13 +17,25 @@ public class SicknessScreen: UIView {
 	var healthyButton: UIButton!
 	public var sicknessButton: UIButton!
 	
+	var buttonWidth: CGFloat!
+	var buttonHeight: CGFloat!
+	
+	let buttonChampher = CGFloat(40.0)
+	let buttonFont = UIFont(name: "Helvetica-Bold", size: 22)
+	
 	override init (frame: CGRect) {
 		super.init(frame: frame)
+		initButtonPerams()
 		initButton()
 	}
 	
 	required public init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
+	}
+	
+	func initButtonPerams() {
+		buttonHeight = self.frame.height/6
+		buttonWidth = 7*CGFloat(insetX)
 	}
 	
 	// Inits the button that the user can press
@@ -32,7 +44,7 @@ public class SicknessScreen: UIView {
 	func initButton() {
 		print(FileRW.readFile(fileName: FILE_NAME))
 		if (FileRW.readFile(fileName: FILE_NAME) == nil || FileRW.readFile(fileName: FILE_NAME) == "") {
-			initSickButton(x: CGFloat(insetX))
+			initSickButton(x: self.frame.width/2 - buttonWidth/2)
 		} else {
 			initHealthyButton()
 		}
@@ -40,12 +52,10 @@ public class SicknessScreen: UIView {
 	
 	// Creates the button that the user can press to say they are sick
 	func initSickButton(x: CGFloat) {
-	 sicknessButton = UIButton(frame: CGRect(x: x, y: 2*(self.frame.height)/6, width: self.frame.width - 2*CGFloat(insetX), height: self.frame.height/4))
-		sicknessButton.layer.cornerRadius = 20
-		sicknessButton.layer.borderWidth = 2.0
-		sicknessButton.layer.borderColor = UIColor.clear.cgColor
-		sicknessButton.setTitle("Am Sick :(", for: UIControlState.normal)
-		sicknessButton.titleLabel?.font = UIFont(name: "Helvetica", size: 30)
+		sicknessButton = UIButton(frame: CGRect(x: x, y: self.frame.height/2 - buttonHeight/2, width: buttonWidth, height: buttonHeight))
+		sicknessButton.layer.cornerRadius = buttonChampher
+		sicknessButton.setTitle("SICK :(", for: UIControlState.normal)
+		sicknessButton.titleLabel?.font = buttonFont
 		sicknessButton.backgroundColor = COLORS.COLOR_1
 		sicknessButton.addTarget(self, action: #selector(SicknessScreen.amSick(_:)), for: .touchUpInside)
 		self.addSubview(sicknessButton)
@@ -68,14 +78,12 @@ public class SicknessScreen: UIView {
 	
 	// Creates the button that the user can say they are healthy in
 	func initHealthyButton() {
-		healthyButton = UIButton(frame: CGRect(x: CGFloat(insetX), y: 2*(self.frame.height)/6, width: self.frame.width - 2*CGFloat(insetX), height: self.frame.height/4))
-		healthyButton.layer.cornerRadius = 20
-		healthyButton.layer.borderWidth = 2.0
-		healthyButton.layer.borderColor = UIColor.clear.cgColor
+		healthyButton = UIButton(frame: CGRect(x: self.frame.width/2 - buttonWidth/2, y: self.frame.height/2 - buttonHeight/2, width: buttonWidth, height: buttonHeight))
+		healthyButton.layer.cornerRadius = buttonChampher
 		healthyButton.backgroundColor = COLORS.COLOR_5
-		healthyButton.titleLabel?.font = UIFont(name: "Helvetica", size: 30)
+		healthyButton.titleLabel?.font = buttonFont
 		healthyButton.setTitleColor(UIColor.black, for: .normal)
-		healthyButton.setTitle("Am Healthy!", for: UIControlState.normal)
+		healthyButton.setTitle("HEALTHY!", for: UIControlState.normal)
 		healthyButton.addTarget(self, action: #selector(SicknessScreen.amHealthy(_:)), for: .touchUpInside)
 		self.addSubview(healthyButton)
 	}
@@ -93,7 +101,7 @@ public class SicknessScreen: UIView {
 		if(sicknessButton != nil) {
 			sicknessButton.removeFromSuperview()
 		}
-		initSickButton(x: CGFloat(insetX) + 2*self.frame.width)
+		initSickButton(x: self.frame.width/2 - buttonWidth/2 + 2*self.frame.width)
 		let smileyView = UIImageView(image: UIImage(named: "smiley"))
 		smileyView.frame = CGRect(x: 1*self.frame.width+(self.frame.width-self.frame.height/4)/2, y: 3*self.frame.height/8, width: self.frame.height/4, height: self.frame.height/4)
 		self.addSubview(smileyView)
