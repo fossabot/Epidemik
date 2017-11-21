@@ -15,12 +15,14 @@ public class ScrollSelector: UIView, UIPickerViewDataSource, UIPickerViewDelegat
 	
 	var delayPicker: UIPickerView!
 	var items: Array<String>?
+	var allItems: Array<String>!
 	var timeTextField: UITextField?
 	
 	init(frame: CGRect, items: Array<String>) {
 		super.init(frame: frame)
 		
 		self.items = items
+		self.allItems = items
 		
 		delayPicker = UIPickerView()
 		delayPicker.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
@@ -46,7 +48,9 @@ public class ScrollSelector: UIView, UIPickerViewDataSource, UIPickerViewDelegat
 	}
 	
 	public func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-		timeTextField?.text = items![row]
+		if items != nil && row < items!.count {
+			timeTextField?.text = self.items![row]
+		}
 	}
 	
 	func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
@@ -59,6 +63,19 @@ public class ScrollSelector: UIView, UIPickerViewDataSource, UIPickerViewDelegat
 	
 	public func numberOfComponents(in pickerView: UIPickerView) -> Int {
 		return 1
+	}
+	
+	public func limitItems(search: String) {
+		if(search != "") {
+			items = allItems.filter({ (toTest) -> Bool in
+				(toTest.contains(search))
+			})
+		} else {
+			items = allItems
+		}
+		delayPicker?.dataSource = self
+		delayPicker?.delegate = self
+		delayPicker.updateFocusIfNeeded()
 	}
 }
 
