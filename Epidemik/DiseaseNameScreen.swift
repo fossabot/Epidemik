@@ -60,19 +60,47 @@ public class DiseaseNameScreen: UIView {
 	}
 	
 	func initTextBox() {
-		searchBox = UITextField(frame: CGRect(x: 0, y: self.frame.width/2+15, width: self.frame.width, height: 30))
+		searchBox = UITextField(frame: CGRect(x: 0, y: self.frame.width/2+30, width: self.frame.width, height: 30))
 		searchBox.textAlignment = .center
 		searchBox.backgroundColor = UIColor.clear
 		searchBox.font = UIFont(name: "Helvetica", size: 20)
 		searchBox.text = "Search for your disease..."
 		searchBox.clearsOnBeginEditing = true
 		searchBox.addTarget(self, action: Selector("updateSearch:"), for: UIControlEvents.allEditingEvents)
+		searchBox.addTarget(self, action: Selector("slideAllUp:"), for: UIControlEvents.editingDidBegin)
+		searchBox.addTarget(self, action: Selector("slideAllDown:"), for: UIControlEvents.editingDidEnd)
 		self.addSubview(searchBox)
 	}
 	
 	@objc func updateSearch(_ sender: UITextField?) {
 		diseaseSelector.limitItems(search: searchBox!.text!)
 	}
+	
+	@objc func slideAllUp(_ sender: UITextField?) {
+		let slideUp = self.frame.width/2 + 15
+		UIView.animate(withDuration: 0.5, animations: {
+			self.sadFace.frame.origin.y -= slideUp
+			self.searchBox.frame.origin.y -= slideUp
+			self.diseaseSelector.frame.origin.y -= slideUp
+			self.submitButton.frame.origin.y -= slideUp
+			self.backButton.frame.origin.y -= slideUp
+		})
+	}
+	
+	@objc func slideAllDown(_ sender: UITextField?) {
+		if(sadFace.frame.origin.y > 0) {
+			return
+		}
+		let slideDown = self.frame.width/2 + 15
+		UIView.animate(withDuration: 0.5, animations: {
+			self.sadFace.frame.origin.y += slideDown
+			self.searchBox.frame.origin.y += slideDown
+			self.diseaseSelector.frame.origin.y += slideDown
+			self.submitButton.frame.origin.y += slideDown
+			self.backButton.frame.origin.y += slideDown
+		})
+	}
+	
 	
 	// A LevelSelector is a set of buttons in the middle of the screen
 	// Creates the selector that lets the user say how sick they are
@@ -82,7 +110,7 @@ public class DiseaseNameScreen: UIView {
 	}
 	
 	func initDiseaseSelectorTitle() {
-		let selectorTitle = UITextView(frame: CGRect(x: 0, y: self.frame.width/2+15, width: self.frame.width, height: 30))
+		let selectorTitle = UITextView(frame: CGRect(x: 0, y: self.frame.width/2+30, width: self.frame.width, height: 30))
 		selectorTitle.text = "Select Your Illness"
 		selectorTitle.textAlignment = .center
 		selectorTitle.backgroundColor = UIColor.clear
