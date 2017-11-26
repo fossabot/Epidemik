@@ -42,7 +42,6 @@ public class SicknessScreen: UIView {
 	// If they are already sick, it will Say "Healthy Again!"
 	// If they are healthy, it will say "Sick :("
 	func initButton() {
-		print(FileRW.readFile(fileName: FILE_NAME))
 		if (FileRW.readFile(fileName: FILE_NAME) == nil || FileRW.readFile(fileName: FILE_NAME) == "") {
 			initSickButton(x: self.frame.width/2 - buttonWidth/2)
 		} else {
@@ -141,6 +140,7 @@ public class SicknessScreen: UIView {
 				return
 			}
 			let responseString = String(data: data!, encoding: .utf8)
+            print(responseString)
 		}
 		task.resume()
 	}

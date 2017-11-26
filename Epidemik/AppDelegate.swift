@@ -51,15 +51,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	}
 	
 	func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-		// Convert token to string
 		let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
-		
-		// Print it to conso le
 		self.deviceToken = deviceTokenString
-
-		//print("APNs device token: \(deviceTokenString)")
-		
-		// Persist it in your backend in case it's new
 	}
 	
 	func sendDeviceTokenToServer(latitude: String, longitude: String) {
@@ -68,7 +61,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		let postString = "deviceToken="+self.deviceToken! + "&latitude=" + latitude + "&longitude=" + longitude
 		//let postString = ""
 		request.httpBody = postString.data(using: .utf8)
-		print("Sending")
 		let task = URLSession.shared.dataTask(with: request) { data, response, error in
 		
 			guard let _ = data, error == nil else {
@@ -84,7 +76,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			print(responseString ?? "")
 		}
 		task.resume()
-		print(task.state.rawValue)
 	}
 	
 	func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {

@@ -110,7 +110,6 @@ class Map: UIView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 		var currentDate = start
 		DispatchQueue.global().async {
 			while(currentDate < end) {
-				self.overlayCreator.filterDate(date: currentDate)
 				self.overlayCreator.processArray()
 				DispatchQueue.global().sync {
 					self.overlayCreator.createOverlays()

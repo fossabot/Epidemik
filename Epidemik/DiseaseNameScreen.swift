@@ -219,7 +219,7 @@ public class DiseaseNameScreen: UIView {
 		var request = URLRequest(url: URL(string: "https://rbradford.thaumavor.io/iOS_Programs/Epidemik/recieveDisease.php")!)
 		request.httpMethod = "POST"
 		let postString = "date="+date + "&latitude=" + latitude + "&longitude=" + longitude
-			+ "&disease_name=" + diseaseName
+			+ "&disease_name=" + diseaseName + "&deviceID=" + UIDevice.current.identifierForVendor!.uuidString
 		FileRW.writeFile(fileName: "sickness.epi", contents: postString)
 		request.httpBody = postString.data(using: .utf8)
 		let task = URLSession.shared.dataTask(with: request) { data, response, error in

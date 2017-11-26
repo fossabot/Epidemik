@@ -32,7 +32,6 @@ public class GeneralAskScreen: UIView {
 	}
 	
 	public override func draw(_ rect: CGRect) {
-		print("Hello")
 		var path = UIBezierPath()
 		path.move(to: CGPoint(x: 0, y: self.frame.height-100))
 		path.addLine(to: CGPoint(x: 100, y: self.frame.height))

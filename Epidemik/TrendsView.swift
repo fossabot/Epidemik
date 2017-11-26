@@ -78,14 +78,7 @@ public class TrendsView: UIScrollView {
 			let currentTrend = Trend(name: parts[0], weight: Double(parts[1])!, width: Double(self.frame.width))
 			trends.append(currentTrend)
 		}
-		outputTrends()
 		displayTrends()
-	}
-	
-	func outputTrends() {
-		for trend in trends {
-			print(trend.toString())
-		}
 	}
 	
 	func displayTrends() {
