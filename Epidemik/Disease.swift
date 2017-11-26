@@ -20,7 +20,6 @@ public class Disease {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         self.date_healthy = dateFormatter.date(from: date_healthy)!
-        print(String(describing: self.date_healthy))
         
 		self.lat = lat
 		self.long = long

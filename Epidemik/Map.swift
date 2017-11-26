@@ -22,6 +22,8 @@ class Map: UIView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 	
 	var overlayCreator: MapOverlayCreator!
 	
+	var filterBar: TimeSelector!
+	
 	var CIRCUMFRENCE_OF_EARTH = 400750000.0 //In Meters
 	
 	// Creates the map view, given a view frame, a lat,long width in meters, and a start lat,long in degrees
@@ -36,11 +38,21 @@ class Map: UIView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 		initMap()
 		
 		initGestureControls()
+		
+		initTimeSelector()
 		//self.animateVsTime(start: newDate!, end: Date())
 	}
 	
 	required public init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
+	}
+	
+	// Nothing -> Nothing
+	// Inits the bar that can be used to selcted the filter date
+	func initTimeSelector() {
+		let frame = CGRect(x: self.frame.width/8, y: self.frame.height/16, width: self.frame.width*3/4, height: self.frame.height/16)
+		filterBar = TimeSelector(frame: frame, map: self)
+		self.addSubview(filterBar)
 	}
 	
 	// Nothing -> Map
@@ -106,17 +118,11 @@ class Map: UIView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 		}
 	}
 	
-	func animateVsTime(start: Date, end: Date) {
-		var currentDate = start
-		DispatchQueue.global().async {
-			while(currentDate < end) {
-				self.overlayCreator.processArray()
-				DispatchQueue.global().sync {
-					self.overlayCreator.createOverlays()
-				}
-				currentDate += (end.timeIntervalSinceNow - start.timeIntervalSinceNow) / 1000
-				usleep(10000)
-			}
-		}
+	func filterDate(ratio: Double) {
+		let sixMonths = -15770000.0
+		let newDate = Date().addingTimeInterval(sixMonths*ratio)
+		overlayCreator.filterDate(newDate: newDate)
+		print(ratio)
 	}
+	
 }

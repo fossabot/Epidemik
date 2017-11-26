@@ -32,6 +32,8 @@ public class MapOverlayCreator {
     var map: MKMapView!
     
     var averageIntensity: Double = 1.0
+	
+	var filterDate = Date()
     
     init(map: MKMapView, longWidth: Double, latWidth: Double, startLong: Double, startLat: Double) {
         self.startLat = startLat
@@ -91,7 +93,7 @@ public class MapOverlayCreator {
             self.datapoints.append(newDisease)
         }
         self.toUseDatapoints = datapoints.filter({
-            $0.date_healthy > Date()
+            ($0.date_healthy > filterDate && $0.date < filterDate)
         })
     }
     
@@ -189,4 +191,11 @@ public class MapOverlayCreator {
         datapoints = [Disease]()
         getArray(latitude: newStartLat, longitude: newStartLong, rangeLong: longWidth, rangeLat: latWidth)
     }
+	
+	func filterDate(newDate: Date) { //Need to make way more efficient
+		self.filterDate = newDate
+		self.loadTextToArray()
+		self.processArray()
+		self.createOverlays()
+	}
 }
