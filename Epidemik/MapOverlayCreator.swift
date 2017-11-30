@@ -245,8 +245,6 @@ public class MapOverlayCreator {
 			self.processArray()
 			self.createOverlays()
 		}
-		print(toGet)
-		print(toUseDatapoints.count)
     }
 	
 	func filterDate(newDate: Date) { //Need to make way more efficient
@@ -257,4 +255,5 @@ public class MapOverlayCreator {
 		self.processArray()
 		self.createOverlays()
 	}
+	
 }

@@ -26,6 +26,8 @@ class Map: UIView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 	
 	var CIRCUMFRENCE_OF_EARTH = 400750000.0 //In Meters
 	
+	var playButton: UIButton!
+	
 	// Creates the map view, given a view frame, a lat,long width in meters, and a start lat,long in degrees
 	init(frame: CGRect, realLatWidth: Double, realLongWidth: Double, startLong: Double, startLat: Double) {
 		super.init(frame: frame)
@@ -40,6 +42,8 @@ class Map: UIView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 		initGestureControls()
 		
 		initTimeSelector()
+		
+		initPlayButton()
 		//self.animateVsTime(start: newDate!, end: Date())
 	}
 	
@@ -55,6 +59,17 @@ class Map: UIView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 		self.addSubview(filterBar)
 	}
 	
+	// Nothing -> Nothing
+	// inits the play button
+	func initPlayButton() {
+		playButton = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+		playButton.backgroundColor = UIColor.red
+		self.addSubview(playButton)
+		
+		let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.animateVsTime(sender:)));
+		playButton.addGestureRecognizer(gestureRecognizer)
+	}
+	
 	// Nothing -> Map
 	// Uses the MapKit to create the map display
 	// As of now, cannot be moved or touched or interacted with
@@ -63,7 +78,7 @@ class Map: UIView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 		mapView.mapType = MKMapType.mutedStandard
 		mapView.delegate = self
 		let center = CLLocationCoordinate2D(latitude: CLLocationDegrees(39), longitude: CLLocationDegrees(-98))
-		let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: CLLocationDegrees(0.1), longitudeDelta: CLLocationDegrees(0.1)))
+		let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: CLLocationDegrees(120), longitudeDelta: CLLocationDegrees(120)))
 		mapView.setRegion(region, animated: true)
 		self.addSubview(mapView)
 		
@@ -119,10 +134,24 @@ class Map: UIView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 	}
 	
 	func filterDate(ratio: Double) {
-		let sixMonths = -15770000.0
-		let newDate = Date().addingTimeInterval(sixMonths*ratio)
+		let sixMonths = 15770000.0
+		let newDate = Date().addingTimeInterval(sixMonths*ratio - sixMonths)
 		overlayCreator.filterDate(newDate: newDate)
-		print(ratio)
+	}
+	
+	@objc func animateVsTime(sender:UIGestureRecognizer) {
+		let today = Date()
+		DispatchQueue.global().async {
+			for i in 1 ..< 100 {
+				let sixMonths = 15770000.0
+				let newDate = today.addingTimeInterval(sixMonths*Double(i)/100.0 - sixMonths)
+				DispatchQueue.main.sync {
+					self.overlayCreator.filterDate(newDate: newDate)
+					self.filterBar.updateBar(ratio: Double(i)/100.0)
+				}
+				usleep(50000)
+			}
+		}
 	}
 	
 }
