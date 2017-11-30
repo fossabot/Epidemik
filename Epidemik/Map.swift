@@ -63,7 +63,7 @@ class Map: UIView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 		mapView.mapType = MKMapType.mutedStandard
 		mapView.delegate = self
 		let center = CLLocationCoordinate2D(latitude: CLLocationDegrees(39), longitude: CLLocationDegrees(-98))
-		let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: CLLocationDegrees(120), longitudeDelta: CLLocationDegrees(120)))
+		let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: CLLocationDegrees(0.1), longitudeDelta: CLLocationDegrees(0.1)))
 		mapView.setRegion(region, animated: true)
 		self.addSubview(mapView)
 		
