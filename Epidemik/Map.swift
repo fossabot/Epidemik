@@ -93,7 +93,7 @@ class Map: UIView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 		
 		let polygonView = MKPolygonRenderer(overlay: overlay)
 		let power = CGFloat(dataPolygon.intensity / overlayCreator.averageIntensity)
-		let color = UIColor(displayP3Red: power*185.0/255.0, green: 35.0/255.0, blue: 58.0/255.0, alpha: power)
+		let color = UIColor(displayP3Red: power*185.0/255.0, green: 35.0/255.0, blue: 58.0/255.0, alpha: power*2.0/4.0)
 		polygonView.strokeColor = color
 		polygonView.fillColor = color
 		return polygonView

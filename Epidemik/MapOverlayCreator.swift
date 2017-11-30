@@ -18,9 +18,9 @@ public class MapOverlayCreator {
     var latWidth: Double!
     var longWidth: Double!
     
-    var numXY = 100.0
+    var numXY = 50.0
     
-    var latLongDisease = [[Double]](repeating: [Double](repeating: 0.0, count: 100), count: 100)
+	var latLongDisease: [[Double]]
     
     var datapoints = Array<Disease>()
     var toUseDatapoints = Array<Disease>()
@@ -36,6 +36,7 @@ public class MapOverlayCreator {
 	var filterDate = Date()
     
     init(map: MKMapView, longWidth: Double, latWidth: Double, startLong: Double, startLat: Double) {
+		self.latLongDisease = [[Double]](repeating: [Double](repeating: 0.0, count: Int(numXY)), count: Int(numXY))
         self.startLat = startLat
         self.startLong = startLong
         self.latWidth = latWidth
@@ -48,20 +49,13 @@ public class MapOverlayCreator {
     // Draws the given data loaded to the array from the server
     func createOverlays() {
         averageIntensity = Double(toUseDatapoints.count)
-        var realPointCounts = 0.0
+        var realPointCounts = 1.0
         map.removeOverlays(map.overlays)
         let intervalLat = latWidth / numXY
         let intervalLong = longWidth / numXY
-        
-        for lat in 0 ..< latLongDisease.count {
-            for long in 0 ..< latLongDisease[lat].count {
-                if((latLongDisease[lat][long]) > 0.2) {
-                    realPointCounts += 1.0
-                }
-            }
-        }
-        averageIntensity /= realPointCounts
-        
+		
+		var newPolys = [DiseasePolygon]()
+		
         for lat in 0 ..< latLongDisease.count {
             for long in 0 ..< latLongDisease[lat].count {
                 if((latLongDisease[lat][long]) > 0.2) {
@@ -72,11 +66,17 @@ public class MapOverlayCreator {
                     
                     let polygon = DiseasePolygon(coordinates: &points, count: points.count)
                     polygon.intensity = (latLongDisease[lat][long])
-                    map.add(polygon)
+					realPointCounts += 1
+                    newPolys.append(polygon)
                 }
             }
         }
-    }
+		averageIntensity /= realPointCounts
+
+		newPolys.map {
+			map.add($0)
+		}
+	}
     
     // Processes the text from the server and loads it to a local array
     func loadTextToArray() {
@@ -140,43 +140,7 @@ public class MapOverlayCreator {
         }
         task.resume()
     }
-    
-    func shiftArray(posnsRight: Int, posnsUp: Int) {
-        if(posnsUp < 0) {
-            for _ in 0 ..< abs(posnsUp) {
-                latLongDisease.remove(at: 0)
-                latLongDisease.append(Array<Double>())
-                let last = latLongDisease.count - 1
-                for _ in 0 ..< Int(numXY) {
-                    latLongDisease[last].append(0.0)
-                }
-            }
-        } else if(posnsUp > 0) {
-            for _ in 0 ..< posnsUp {
-                latLongDisease.removeLast()
-                latLongDisease.insert(Array<Double>(), at: 0)
-                for _ in 0 ..< Int(numXY) {
-                    latLongDisease[0].append(0.0)
-                }
-            }
-        }
-        if (posnsRight < 0) {
-            for long in 0 ..< latLongDisease.count {
-                for _ in 0 ..< abs(posnsRight) {
-                    latLongDisease[long].remove(at: 0)
-                    latLongDisease[long].append(0.0)
-                }
-            }
-        }
-        if (posnsRight > 0) {
-            for long in 0 ..< latLongDisease.count {
-                for _ in 0 ..< posnsRight {
-                    latLongDisease[long].removeLast()
-                    latLongDisease[long].insert(0.0, at: 0)
-                }
-            }
-        }
-    }
+
     
     func updateOverlay() {
         let latWidth = map.region.span.latitudeDelta*2
@@ -194,7 +158,9 @@ public class MapOverlayCreator {
 	
 	func filterDate(newDate: Date) { //Need to make way more efficient
 		self.filterDate = newDate
-		self.loadTextToArray()
+		self.toUseDatapoints = datapoints.filter({
+			($0.date_healthy > filterDate && $0.date < filterDate)
+		})
 		self.processArray()
 		self.createOverlays()
 	}
