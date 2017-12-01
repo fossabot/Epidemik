@@ -11,27 +11,27 @@ import UIKit
 import MapKit
 
 public class MapOverlayCreator {
-    
-    var startLong: Double!
-    var startLat: Double!
-    
-    var latWidth: Double!
-    var longWidth: Double!
-    
-    var numXY = 70.0
-    
-	var latLongDisease: [[Double]]
-    
-    var datapoints = Array<Disease>()
-    var toUseDatapoints = Array<Disease>()
-    
-    var RADIUS_OF_EARTH = 6371000.0 //In Meters
-    
-    var toDraw = ""
-    
-    var map: MKMapView!
-    
-    var averageIntensity: Double = 1.0
+	
+	var startLong: Double!
+	var startLat: Double!
+	
+	var latWidth: Double!
+	var longWidth: Double!
+	
+	var numXY = 70.0
+	
+	var latLongDisease: [[DiseasePolygon?]]
+	
+	var datapoints = Array<Disease>()
+	var toUseDatapoints = Array<Disease>()
+	
+	var RADIUS_OF_EARTH = 6371000.0 //In Meters
+	
+	var toDraw = ""
+	
+	var map: MKMapView!
+	
+	var averageIntensity: Double = 1.0
 	
 	var filterDate = Date()
 	
@@ -40,10 +40,10 @@ public class MapOverlayCreator {
 	
 	var maxLat: Double!
 	var maxLong: Double!
-    
-    init(map: MKMapView, longWidth: Double, latWidth: Double, startLong: Double, startLat: Double) {
-		self.latLongDisease = [[Double]](repeating: [Double](repeating: 0.0, count: Int(numXY)), count: Int(numXY))
-        self.startLat = startLat
+	
+	init(map: MKMapView, longWidth: Double, latWidth: Double, startLong: Double, startLat: Double) {
+		self.latLongDisease = [[DiseasePolygon]](repeating: [DiseasePolygon](repeating: DiseasePolygon(), count: Int(numXY)), count: Int(numXY))
+		self.startLat = startLat
 		self.startLong = startLong
 		
 		self.minLat = startLat
@@ -52,48 +52,58 @@ public class MapOverlayCreator {
 		self.maxLat = latWidth + startLat
 		self.maxLong = longWidth + startLong
 		
-        self.latWidth = latWidth
-        self.longWidth = longWidth
+		self.latWidth = latWidth
+		self.longWidth = longWidth
 		
-        self.map = map
+		self.map = map
 		getArray(dataRange: [[startLat, startLong, longWidth, latWidth]])
-    }
-    
-    // Draws the given data loaded to the array from the server
-    func createOverlays() {
-        averageIntensity = 0
-        var realPointCounts = 1.0
-        map.removeOverlays(map.overlays)
-        let intervalLat = latWidth / numXY
-        let intervalLong = longWidth / numXY
-		
-		var newPolys = [DiseasePolygon]()
-		
-        for lat in 0 ..< latLongDisease.count {
-            for long in 0 ..< latLongDisease[lat].count {
-                if((latLongDisease[lat][long]) > 0.2) {
-                    let realLat = (Double(lat)*intervalLat+startLat)
-                    let realLong = (Double(long)*intervalLong+startLong)
-                    let scale = latWidth / numXY
-                    var points=[CLLocationCoordinate2DMake(realLat,  realLong),CLLocationCoordinate2DMake(realLat+scale,  realLong),CLLocationCoordinate2DMake(realLat+scale,  realLong+scale),CLLocationCoordinate2DMake(realLat,  realLong+scale)]
-                    
-                    let polygon = DiseasePolygon(coordinates: &points, count: points.count)
-                    polygon.intensity = (latLongDisease[lat][long])
-					averageIntensity += polygon.intensity
+	}
+	
+	// Combine create and process into one
+	
+	// Processes the array, and makes the visual graphic look slightly nicer
+	func processArray() {
+		map.removeOverlays(map.overlays)
+		latLongDisease = [[DiseasePolygon?]](repeating: [DiseasePolygon?](repeating: nil, count: Int(numXY)), count: Int(numXY))
+		var realPointCounts = 1.0
+		let intervalLat = latWidth / numXY
+		let intervalLong = longWidth / numXY
+		for data in toUseDatapoints {
+			let deltaLat = data.lat - startLat
+			let deltaLong = data.long - startLong
+			if deltaLong > 0 && deltaLat > 0 && deltaLat < latWidth && deltaLong < longWidth {
+				let posnLat =  Int(floor(deltaLat / (latWidth / numXY)))
+				let posnLong = Int(floor(deltaLong / (longWidth / numXY)))
+				
+				let realLat = (Double(posnLat)*intervalLat+startLat)
+				let realLong = (Double(posnLong)*intervalLong+startLong)
+				let scale = latWidth / numXY
+				var points=[CLLocationCoordinate2DMake(realLat,  realLong),CLLocationCoordinate2DMake(realLat+scale,  realLong),CLLocationCoordinate2DMake(realLat+scale,  realLong+scale),CLLocationCoordinate2DMake(realLat,  realLong+scale)]
+				if latLongDisease[posnLat][posnLong] == nil {
+					latLongDisease[posnLat][posnLong] = DiseasePolygon(coordinates: &points, count: points.count)
+					averageIntensity += latLongDisease[posnLat][posnLong]!.intensity
 					realPointCounts += 1
-                    newPolys.append(polygon)
-                }
-            }
-        }
+				}
+				averageIntensity += 1
+				latLongDisease[posnLat][posnLong]!.intensity += 1
+			}
+		}
+		
 		averageIntensity /= realPointCounts
-
-		newPolys.map {
-			map.add($0)
+		
+		latLongDisease.map {
+			$0.map {
+				if($0 != nil && $0!.intensity > 0.1) {
+					if $0 != nil {
+						map.add($0!)
+					}
+				}
+			}
 		}
 	}
-    
-    // Processes the text from the server and loads it to a local array
-    func loadTextToArray() {
+	
+	// Processes the text from the server and loads it to a local array
+	func loadTextToArray() {
 		//let startTime = Date().timeIntervalSince1970
 		let latArray = toDraw.split(separator: "\n")
 		for lat in 0 ..< latArray.count {
@@ -110,27 +120,13 @@ public class MapOverlayCreator {
 		self.toUseDatapoints = datapoints.filter({
 			($0.date_healthy > filterDate && $0.date < filterDate)
 		})
-
+		
 		//let endTime = Date().timeIntervalSince1970
 		//print(String(endTime - startTime) + " Time")
-    }
-    
-    // Processes the array, and makes the visual graphic look slightly nicer
-    func processArray() {
-        latLongDisease = [[Double]](repeating: [Double](repeating: 0.0, count: Int(numXY)), count: Int(numXY))
-        for data in toUseDatapoints {
-            let deltaLat = data.lat - startLat
-            let deltaLong = data.long - startLong
-            if deltaLong > 0 && deltaLat > 0 && deltaLat < latWidth && deltaLong < longWidth {
-                let posnLat =  Int(floor(deltaLat / (latWidth / numXY)))
-                let posnLong = Int(floor(deltaLong / (longWidth / numXY)))
-                latLongDisease[posnLat][posnLong] += 1
-            }
-        }
-    }
-    
-    // Loads the text from the server given a lat, long, lat width, long height
-    // Calls the text->array, process, and draw
+	}
+	
+	// Loads the text from the server given a lat, long, lat width, long height
+	// Calls the text->array, process, and draw
 	public func getArray(dataRange: [[Double]]) {
 		var allData = dataRange
 		let currentData = dataRange.first
@@ -139,48 +135,47 @@ public class MapOverlayCreator {
 		let rangeLong = currentData![2]
 		let rangeLat = currentData![3]
 		allData.remove(at: 0)
-        var request = URLRequest(url: URL(string: "https://rbradford.thaumavor.io/iOS_Programs/Epidemik/getCurrentData.php")!)
-        request.httpMethod = "POST"
-        let postString = "latitude=" + String(latitude) + "&longitude=" + String(longitude) +
-            "&rangeLong=" + String(rangeLong) + "&rangeLat=" + String(rangeLat)
-        request.httpBody = postString.data(using: .utf8)
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            
-            guard let _ = data, error == nil else {
-                print("error=\(String(describing: error))")
-                return
-            }
-            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
-                print("statusCode should be 200, but is \(httpStatus.statusCode)")
-                print("response = \(String(describing: response))")
-                return
-            }
-            let responseString = String(data: data!, encoding: .utf8)
-            self.toDraw += responseString!
+		var request = URLRequest(url: URL(string: "https://rbradford.thaumavor.io/iOS_Programs/Epidemik/getCurrentData.php")!)
+		request.httpMethod = "POST"
+		let postString = "latitude=" + String(latitude) + "&longitude=" + String(longitude) +
+			"&rangeLong=" + String(rangeLong) + "&rangeLat=" + String(rangeLat)
+		request.httpBody = postString.data(using: .utf8)
+		let task = URLSession.shared.dataTask(with: request) { data, response, error in
+			
+			guard let _ = data, error == nil else {
+				print("error=\(String(describing: error))")
+				return
+			}
+			if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
+				print("statusCode should be 200, but is \(httpStatus.statusCode)")
+				print("response = \(String(describing: response))")
+				return
+			}
+			let responseString = String(data: data!, encoding: .utf8)
+			self.toDraw += responseString!
 			if allData.count == 0 {
 				DispatchQueue.main.sync {
 					self.loadTextToArray()
 					self.processArray()
-					self.createOverlays()
 				}
 			} else {
 				self.getArray(dataRange: allData)
 			}
-        }
-        task.resume()
-    }
-
-    
-    func updateOverlay() {
-        let latWidth = map.region.span.latitudeDelta*2
-        let longWidth = map.region.span.longitudeDelta*2
-        let newStartLat = map.region.center.latitude - latWidth/2
-        let newStartLong = map.region.center.longitude - longWidth/2
-        
-        self.startLat = newStartLat
-        self.startLong = newStartLong
-        self.latWidth = latWidth
-        self.longWidth = longWidth
+		}
+		task.resume()
+	}
+	
+	
+	func updateOverlay() {
+		let latWidth = map.region.span.latitudeDelta*2
+		let longWidth = map.region.span.longitudeDelta*2
+		let newStartLat = map.region.center.latitude - latWidth/2
+		let newStartLong = map.region.center.longitude - longWidth/2
+		
+		self.startLat = newStartLat
+		self.startLong = newStartLong
+		self.latWidth = latWidth
+		self.longWidth = longWidth
 		
 		var newMinLat = startLat!
 		if newMinLat > minLat {
@@ -216,7 +211,7 @@ public class MapOverlayCreator {
 			let latWidth = newMaxLat - newMinLat
 			let latCord = newMinLat
 			toGet.append([latCord, longCord, longWidth, latWidth])
-
+			
 		}
 		if newMaxLat > maxLat {
 			let longWidth = maxLong - minLong
@@ -243,9 +238,8 @@ public class MapOverlayCreator {
 			getArray(dataRange: toGet)
 		} else {
 			self.processArray()
-			self.createOverlays()
 		}
-    }
+	}
 	
 	func filterDate(newDate: Date) { //Need to make way more efficient
 		self.filterDate = newDate
@@ -253,7 +247,6 @@ public class MapOverlayCreator {
 			($0.date_healthy > filterDate && $0.date < filterDate)
 		})
 		self.processArray()
-		self.createOverlays()
 	}
 	
 }
