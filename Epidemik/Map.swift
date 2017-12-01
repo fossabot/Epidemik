@@ -22,7 +22,11 @@ class Map: UIView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 	
 	var overlayCreator: MapOverlayCreator!
 	
+	var filterBar: TimeSelector!
+	
 	var CIRCUMFRENCE_OF_EARTH = 400750000.0 //In Meters
+	
+	var playButton: UIButton!
 	
 	// Creates the map view, given a view frame, a lat,long width in meters, and a start lat,long in degrees
 	init(frame: CGRect, realLatWidth: Double, realLongWidth: Double, startLong: Double, startLat: Double) {
@@ -36,11 +40,36 @@ class Map: UIView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 		initMap()
 		
 		initGestureControls()
+		
+		initTimeSelector()
+		
+		initPlayButton()
 		//self.animateVsTime(start: newDate!, end: Date())
 	}
 	
 	required public init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
+	}
+	
+	// Nothing -> Nothing
+	// Inits the bar that can be used to selcted the filter date
+	func initTimeSelector() {
+		let frame = CGRect(x: self.frame.width/8+10, y: self.frame.height/16, width: self.frame.width*3/4, height: self.frame.height/16)
+		filterBar = TimeSelector(frame: frame, map: self)
+		self.addSubview(filterBar)
+	}
+	
+	// Nothing -> Nothing
+	// inits the play button
+	func initPlayButton() {
+		playButton = UIButton(frame: CGRect(x: self.frame.width/8 - self.frame.height/16, y: self.frame.height/16, width: self.frame.height/16, height: self.frame.height/16))
+		playButton.backgroundColor = UIColor.clear
+		let image = UIImage(named: "play.png")
+		playButton.setBackgroundImage(image, for: .normal)
+		self.addSubview(playButton)
+		
+		let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.animateVsTime(sender:)));
+		playButton.addGestureRecognizer(gestureRecognizer)
 	}
 	
 	// Nothing -> Map
@@ -81,7 +110,7 @@ class Map: UIView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 		
 		let polygonView = MKPolygonRenderer(overlay: overlay)
 		let power = CGFloat(dataPolygon.intensity / overlayCreator.averageIntensity)
-		let color = UIColor(displayP3Red: power*185.0/255.0, green: 35.0/255.0, blue: 58.0/255.0, alpha: power)
+		let color = UIColor(displayP3Red: power*185.0/255.0, green: 35.0/255.0, blue: 58.0/255.0, alpha: power*2.0/4.0)
 		polygonView.strokeColor = color
 		polygonView.fillColor = color
 		return polygonView
@@ -106,17 +135,25 @@ class Map: UIView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 		}
 	}
 	
-	func animateVsTime(start: Date, end: Date) {
-		var currentDate = start
+	func filterDate(ratio: Double) {
+		let sixMonths = 15770000.0
+		let newDate = Date().addingTimeInterval(sixMonths*ratio - sixMonths)
+		overlayCreator.filterDate(newDate: newDate)
+	}
+	
+	@objc func animateVsTime(sender:UIGestureRecognizer) {
+		let today = Date()
 		DispatchQueue.global().async {
-			while(currentDate < end) {
-				self.overlayCreator.processArray()
-				DispatchQueue.global().sync {
-					self.overlayCreator.createOverlays()
+			for i in 1 ..< 101 {
+				let sixMonths = 15770000.0
+				let newDate = today.addingTimeInterval(sixMonths*Double(i)/100.0 - sixMonths)
+				DispatchQueue.main.sync {
+					self.overlayCreator.filterDate(newDate: newDate)
+					self.filterBar.updateBar(ratio: Double(i)/100.0)
 				}
-				currentDate += (end.timeIntervalSinceNow - start.timeIntervalSinceNow) / 1000
-				usleep(10000)
+				usleep(100000)
 			}
 		}
 	}
+	
 }
