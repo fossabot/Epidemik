@@ -18,7 +18,7 @@ public class MapOverlayCreator {
 	var latWidth: Double!
 	var longWidth: Double!
 	
-	var numXY = 70.0
+	var numXY = 50.0
 	
 	var latLongDisease: [[DiseasePolygon?]]
 	
@@ -60,9 +60,8 @@ public class MapOverlayCreator {
 	}
 	
 	// Combine create and process into one
-	
 	// Processes the array, and makes the visual graphic look slightly nicer
-	func processArray() {
+	func createOverlays() {
 		map.removeOverlays(map.overlays)
 		latLongDisease = [[DiseasePolygon?]](repeating: [DiseasePolygon?](repeating: nil, count: Int(numXY)), count: Int(numXY))
 		var realPointCounts = 1.0
@@ -156,7 +155,7 @@ public class MapOverlayCreator {
 			if allData.count == 0 {
 				DispatchQueue.main.sync {
 					self.loadTextToArray()
-					self.processArray()
+					self.createOverlays()
 				}
 			} else {
 				self.getArray(dataRange: allData)
@@ -237,7 +236,7 @@ public class MapOverlayCreator {
 		if toGet.count > 0 {
 			getArray(dataRange: toGet)
 		} else {
-			self.processArray()
+			self.createOverlays()
 		}
 	}
 	
@@ -246,7 +245,7 @@ public class MapOverlayCreator {
 		self.toUseDatapoints = datapoints.filter({
 			($0.date_healthy > filterDate && $0.date < filterDate)
 		})
-		self.processArray()
+		self.createOverlays()
 	}
 	
 }
