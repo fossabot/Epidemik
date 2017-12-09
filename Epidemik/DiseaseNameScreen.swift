@@ -66,9 +66,9 @@ public class DiseaseNameScreen: UIView {
 		searchBox.font = UIFont(name: "Helvetica", size: 20)
 		searchBox.text = "Search for your disease..."
 		searchBox.clearsOnBeginEditing = true
-		searchBox.addTarget(self, action: Selector("updateSearch:"), for: UIControlEvents.allEditingEvents)
-		searchBox.addTarget(self, action: Selector("slideAllUp:"), for: UIControlEvents.editingDidBegin)
-		searchBox.addTarget(self, action: Selector("slideAllDown:"), for: UIControlEvents.editingDidEnd)
+		searchBox.addTarget(self, action: #selector(updateSearch), for: UIControlEvents.allEditingEvents)
+		searchBox.addTarget(self, action: #selector(slideAllUp), for: UIControlEvents.editingDidBegin)
+		searchBox.addTarget(self, action: #selector(slideAllDown), for: UIControlEvents.editingDidEnd)
 		self.addSubview(searchBox)
 	}
 	
@@ -142,7 +142,7 @@ public class DiseaseNameScreen: UIView {
 		submitButton.setTitle("SUBMIT", for: .normal)
 		submitButton.titleLabel?.font = UIFont(name: "Helvetica-Bold", size: 20)
 		submitButton.backgroundColor = COLORS.COLOR_2
-		submitButton.addTarget(self, action: Selector(("gatherAndSendInfo:")), for: .touchUpInside)
+		submitButton.addTarget(self, action: #selector(gatherAndSendInfo), for: .touchUpInside)
 		submitButton.layer.cornerRadius = 15
 		self.addSubview(submitButton)
 	}
@@ -154,7 +154,7 @@ public class DiseaseNameScreen: UIView {
 		backButton.setTitle("BACK", for: .normal)
 		backButton.backgroundColor = COLORS.COLOR_4
 		backButton.titleLabel?.font = UIFont(name: "Helvetica-Bold", size: 20)
-		backButton.addTarget(self, action: Selector(("back:")), for: .touchUpInside)
+		backButton.addTarget(self, action: #selector(back), for: .touchUpInside)
 		backButton.layer.cornerRadius = 15
 		self.addSubview(backButton)
 	}
@@ -234,7 +234,7 @@ public class DiseaseNameScreen: UIView {
 				return
 			}
 			let responseString = String(data: data!, encoding: .utf8)
-			print(responseString)
+			print(responseString ?? "")
 		}
 		task.resume()
 	}

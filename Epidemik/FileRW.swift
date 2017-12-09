@@ -52,7 +52,6 @@ public class FileRW {
 	}
 	
 	public static func deleteFile(fileName: String) {
-		let file = fileName //this is the file. we will write to and read from it
 		
 		if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
 			
@@ -65,7 +64,7 @@ public class FileRW {
 	}
 	
 	public static func fileExists(fileName: String) -> Bool {
-		if FileRW.readFile(fileName: fileName) as? String == nil {
+		if FileRW.readFile(fileName: fileName) == nil {
 			return false
 		}
 		return true

@@ -20,6 +20,7 @@
 		006858C91F8AA6F2007F6C7E /* DiseasePolygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006858C81F8AA6F2007F6C7E /* DiseasePolygon.swift */; };
 		0083AD251F795BD8007AEF87 /* SicknessScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0083AD241F795BD8007AEF87 /* SicknessScreen.swift */; };
 		0083AD271F795C50007AEF87 /* DiseaseNameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0083AD261F795C50007AEF87 /* DiseaseNameScreen.swift */; };
+		008DE0341FD7381B0049EDD3 /* CannotRun.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008DE0331FD7381B0049EDD3 /* CannotRun.swift */; };
 		009CE9E21F8FFFFD00D224F0 /* MainHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009CE9E11F8FFFFD00D224F0 /* MainHolder.swift */; };
 		00A5E7A31F6C414D004535D9 /* ContinueArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A5E7A01F6C414D004535D9 /* ContinueArrow.swift */; };
 		00A5E7A41F6C414D004535D9 /* IntroHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A5E7A11F6C414D004535D9 /* IntroHolder.swift */; };
@@ -77,6 +78,7 @@
 		006858C81F8AA6F2007F6C7E /* DiseasePolygon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseasePolygon.swift; sourceTree = "<group>"; };
 		0083AD241F795BD8007AEF87 /* SicknessScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SicknessScreen.swift; sourceTree = "<group>"; };
 		0083AD261F795C50007AEF87 /* DiseaseNameScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseNameScreen.swift; sourceTree = "<group>"; };
+		008DE0331FD7381B0049EDD3 /* CannotRun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CannotRun.swift; sourceTree = "<group>"; };
 		009CE9E11F8FFFFD00D224F0 /* MainHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHolder.swift; sourceTree = "<group>"; };
 		00A5E7A01F6C414D004535D9 /* ContinueArrow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContinueArrow.swift; sourceTree = "<group>"; };
 		00A5E7A11F6C414D004535D9 /* IntroHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroHolder.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				00CD77F91F7843EA002B5C78 /* AddressAsk.swift */,
 				00F2F04D1F7F0B8300BC3120 /* UserAgreementPt1.swift */,
 				00EBE4AE1F9D2BE6005A8E6B /* UserAgreementPt2.swift */,
+				008DE0331FD7381B0049EDD3 /* CannotRun.swift */,
 			);
 			name = "Start Up";
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				008DE0341FD7381B0049EDD3 /* CannotRun.swift in Sources */,
 				00CD77FA1F7843EA002B5C78 /* AddressAsk.swift in Sources */,
 				00E9A4C71F8EFA6C008C95BD /* Disease.swift in Sources */,
 				00A5E7A91F6C4170004535D9 /* GeneralAskScreen.swift in Sources */,
@@ -577,7 +581,7 @@
 				CODE_SIGN_ENTITLEMENTS = Epidemik/Epidemik.entitlements;
 				DEVELOPMENT_TEAM = 637YQRHJ3C;
 				INFOPLIST_FILE = Epidemik/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.rbradford.thaumavor.Epidemik;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -593,7 +597,7 @@
 				CODE_SIGN_ENTITLEMENTS = Epidemik/Epidemik.entitlements;
 				DEVELOPMENT_TEAM = 637YQRHJ3C;
 				INFOPLIST_FILE = Epidemik/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.rbradford.thaumavor.Epidemik;
 				PRODUCT_NAME = "$(TARGET_NAME)";

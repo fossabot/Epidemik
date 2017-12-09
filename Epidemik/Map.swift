@@ -77,7 +77,7 @@ class Map: UIView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 	// As of now, cannot be moved or touched or interacted with
 	func initMap() {
 		mapView = MKMapView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
-		mapView.mapType = MKMapType.mutedStandard
+		mapView.mapType = MKMapType.standard
 		mapView.delegate = self
 		let center = CLLocationCoordinate2D(latitude: CLLocationDegrees(39), longitude: CLLocationDegrees(-98))
 		let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: CLLocationDegrees(120), longitudeDelta: CLLocationDegrees(120)))

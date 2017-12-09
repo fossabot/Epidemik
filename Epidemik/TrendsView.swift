@@ -28,11 +28,6 @@ public class TrendsView: UIScrollView {
 	func getAddressInfo() {
 		let address = FileRW.readFile(fileName: "address.epi")
 		
-		let date = NSDate()
-		let dateFormatter = DateFormatter()
-		dateFormatter.dateFormat = "yyyy-MM-dd"
-		let dateString = dateFormatter.string(from:date as Date)
-		
 		if (address != "") {
 			let geocoder = CLGeocoder()
 			geocoder.geocodeAddressString(address!, completionHandler: {(placemarks, error) -> Void in

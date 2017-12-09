@@ -90,7 +90,7 @@ public class MapOverlayCreator {
 		
 		averageIntensity /= realPointCounts
 		
-		latLongDisease.map {
+		let _ = latLongDisease.map {
 			$0.map {
 				if($0 != nil && $0!.intensity > 0.1) {
 					if $0 != nil {
