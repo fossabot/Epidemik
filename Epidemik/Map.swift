@@ -27,7 +27,7 @@ class Map: UIView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 	var CIRCUMFRENCE_OF_EARTH = 400750000.0 //In Meters
 	
 	var playButton: UIButton!
-	
+		
 	// Creates the map view, given a view frame, a lat,long width in meters, and a start lat,long in degrees
 	init(frame: CGRect, realLatWidth: Double, realLongWidth: Double, startLong: Double, startLat: Double) {
 		super.init(frame: frame)

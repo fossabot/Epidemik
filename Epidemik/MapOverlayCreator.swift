@@ -103,6 +103,10 @@ public class MapOverlayCreator {
 				}
 			}
 		}
+		finishFiltering()
+	}
+	
+	func finishFiltering() {
 		if(toFilter.count > 0) {
 			toFilter.remove(at: 0)
 		}
@@ -249,16 +253,20 @@ public class MapOverlayCreator {
 	}
 	
 	func filterDates() {
-		while toFilter.count > 0 {
-			if(!filtering) {
-				filtering = true
-				filterDate = toFilter.first!
-				self.toUseDatapoints = datapoints.filter({
-					($0.date_healthy > filterDate && $0.date < filterDate)
-				})
-				self.createOverlays()
-			} else {
-				usleep(10000)
+		DispatchQueue.global().async {
+			while self.toFilter.count > 0 {
+				if(!self.filtering) {
+					self.filtering = true
+					self.filterDate = self.toFilter.first!
+					self.toUseDatapoints = self.datapoints.filter({
+						($0.date_healthy > self.filterDate && $0.date < self.filterDate)
+					})
+					DispatchQueue.main.sync {
+						self.createOverlays()
+					}
+				} else {
+					usleep(10000)
+				}
 			}
 		}
 	}
