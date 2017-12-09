@@ -41,6 +41,10 @@ public class MapOverlayCreator {
 	var maxLat: Double!
 	var maxLong: Double!
 	
+	var toFilter = Array<Date>()
+	
+	var filtering = false
+	
 	init(map: MKMapView, longWidth: Double, latWidth: Double, startLong: Double, startLat: Double) {
 		self.latLongDisease = [[DiseasePolygon]](repeating: [DiseasePolygon](repeating: DiseasePolygon(), count: Int(numXY)), count: Int(numXY))
 		self.startLat = startLat
@@ -99,6 +103,10 @@ public class MapOverlayCreator {
 				}
 			}
 		}
+		if(toFilter.count > 0) {
+			toFilter.remove(at: 0)
+		}
+		filtering = false
 	}
 	
 	// Processes the text from the server and loads it to a local array
@@ -240,12 +248,26 @@ public class MapOverlayCreator {
 		}
 	}
 	
+	func filterDates() {
+		while toFilter.count > 0 {
+			if(!filtering) {
+				filtering = true
+				filterDate = toFilter.first!
+				self.toUseDatapoints = datapoints.filter({
+					($0.date_healthy > filterDate && $0.date < filterDate)
+				})
+				self.createOverlays()
+			} else {
+				usleep(10000)
+			}
+		}
+	}
+	
 	func filterDate(newDate: Date) { //Need to make way more efficient
-		self.filterDate = newDate
-		self.toUseDatapoints = datapoints.filter({
-			($0.date_healthy > filterDate && $0.date < filterDate)
-		})
-		self.createOverlays()
+		toFilter.append(newDate)
+		if toFilter.count == 1 {
+			filterDates()
+		}
 	}
 	
 }
