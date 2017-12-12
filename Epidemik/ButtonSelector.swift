@@ -22,7 +22,7 @@ public class ButtonSelector: UIView {
 		initButtons(items: items)
 	}
 	
-	@objc func buttonPressed(_ sender: UIButton?) {
+	@objc func buttonPressed(sender: UIButton!) {
 		self.currentSelected = (sender as! ButtonExtension).ID
 		UIView.animate(withDuration: 0.1, animations: {
 			self.selectorFrame.frame = CGRect(x: (sender?.frame.origin.x)!, y: 0, width: self.selectorFrame.frame.width, height: self.selectorFrame.frame.height)
@@ -46,7 +46,7 @@ public class ButtonSelector: UIView {
 		for item in items {
 			let currentButton = ButtonExtension(frame: baseFrame)
 			currentButton.ID = id
-			currentButton.addTarget(self, action: #selector(ButtonSelector.buttonPressed(_:)), for: .touchUpInside)
+			currentButton.addTarget(self, action: #selector(ButtonSelector.buttonPressed), for: .touchUpInside)
 			currentButton.setTitle(item, for: UIControlState.normal)
 			buttons.append(currentButton)
 			baseFrame.origin.x += self.frame.width/CGFloat(items.count)

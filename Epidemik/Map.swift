@@ -117,7 +117,7 @@ class Map: UIView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 	}
 	
 	func initGestureControls() {
-		let panGesture = UIPanGestureRecognizer(target: self, action: #selector(self.didDragMap(_:)))
+		let panGesture = UIPanGestureRecognizer(target: self, action: #selector(didDragMap))
 		// make your class the delegate of the pan gesture
 		panGesture.delegate = self
 		
@@ -129,7 +129,7 @@ class Map: UIView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 		return true
 	}
 	
-	@objc func didDragMap(_ sender: UIGestureRecognizer) {
+	@objc func didDragMap(sender: UIGestureRecognizer!) {
 		if sender.state == .ended {
 			overlayCreator.updateOverlay()
 		}

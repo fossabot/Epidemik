@@ -55,11 +55,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		self.deviceToken = deviceTokenString
 	}
 	
-	func sendDeviceTokenToServer(latitude: String, longitude: String) {
+	func sendDeviceTokenToServer(latitude: String, longitude: String, transition: AddressAsk) {
 		var request = URLRequest(url: URL(string: "https://rbradford.thaumavor.io/iOS_Programs/Epidemik/Notifications/recieveDeviceID.php")!)
 		request.httpMethod = "POST"
 		let postString = "deviceToken="+self.deviceToken! + "&latitude=" + latitude + "&longitude=" + longitude
-		//let postString = ""
 		request.httpBody = postString.data(using: .utf8)
 		let task = URLSession.shared.dataTask(with: request) { data, response, error in
 		
@@ -73,7 +72,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 				return
 			}
 			let responseString = String(data: data!, encoding: .utf8)
-			print(responseString ?? "")
+			print(responseString)
+			print("recieved")
+			transition.transitonProperly(result: responseString!)
 		}
 		task.resume()
 	}

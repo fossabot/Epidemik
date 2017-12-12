@@ -17,9 +17,9 @@ public class ContinueArrow: UIButton {
 		self.holder = holder
 		super.init(frame: frame)
 		self.backgroundColor = COLORS.COLOR_3
-		self.addTarget(self, action: #selector(getter: next), for: .touchUpInside)
 		self.layer.cornerRadius = 20
 		self.titleLabel?.font = UIFont(name: "Helvetica-Bold", size: 30)
+		self.addTarget(self, action: #selector(ContinueArrow.next(_:)), for: .touchUpInside)
 	}
 	
 	required public init?(coder aDecoder: NSCoder) {

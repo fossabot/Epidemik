@@ -22,22 +22,18 @@ public class IntroHolder: UIView {
 	
 	var currentID = 0
 	
-	var done = false
+	var shouldDisplay = true
+	
+	var vc = UIApplication.shared.delegate?.window??.rootViewController as! ViewController
 	
 	public override init(frame: CGRect) {
 		introScreens = Array<GeneralAskScreen>()
 		super.init(frame: frame)
 		
-		self.backgroundColor = UIColor.white
 		
 		
 		createAskObjects()
 		addObjectsToScreen()
-		
-		if(introScreens.count == 0) {
-			slideSelfAway(duration: 0)
-			return
-		}
 	}
 	
 	func createAskObjects() {
@@ -46,7 +42,6 @@ public class IntroHolder: UIView {
 		addressScreen = AddressAsk(frame: CGRect(x: self.frame.width, y: 0, width: self.frame.width, height: self.frame.height), holder: self)
 		userAgreementPt1 = UserAgreementPt1(frame: CGRect(x: self.frame.width, y: 0, width: self.frame.width, height: self.frame.height), holder: self)
 		userAgreementPt2 = UserAgreementPt2(frame: CGRect(x: self.frame.width, y: 0, width: self.frame.width, height: self.frame.height), holder: self)
-		usleep(50000)
 	}
 	
 	func addObjectsToScreen() {
@@ -97,31 +92,40 @@ public class IntroHolder: UIView {
 	}
 	
 	func slideSelfAway(duration: Double) {
-		getLocation(duration: duration)
+		self.vc.initMainScreen()
+		UIView.animate(withDuration: duration, animations: {
+			self.frame.origin.y -= self.frame.height
+		})
 	}
 	
-	func getLocation(duration: Double) {
-		let address = FileRW.readFile(fileName: "address.epi")!
-		print(address)
+	func getLocation() {
+		let address = FileRW.readFile(fileName: "address.epi")
+		if address == nil {
+			self.shouldDisplay = true
+			self.vc.useIntroHolder()
+			return
+		}
 		let geocoder = CLGeocoder()
-		geocoder.geocodeAddressString(address, completionHandler: {(placemarks, error) -> Void in
+		geocoder.geocodeAddressString(address!, completionHandler: {(placemarks, error) -> Void in
 			if(error != nil) {
 			} else if let buffer = placemarks?[0] {
 				let location = buffer.location;
 				self.endEditing(true)
-				self.checkActiveRegion(latitude: (location?.coordinate.latitude)!, longitude: (location?.coordinate.longitude)!, duration: duration)
+				self.checkActiveRegion(latitude: (location?.coordinate.latitude)!, longitude: (location?.coordinate.longitude)!)
 			} else {
+				self.showCannotRun()
+				self.shouldDisplay = true
+				self.vc.useIntroHolder()
 			}
 		})
 	}
 	
-	func checkActiveRegion(latitude: Double, longitude: Double, duration: Double) {
+	func checkActiveRegion(latitude: Double, longitude: Double) {
 		var request = URLRequest(url: URL(string: "https://rbradford.thaumavor.io/iOS_Programs/Epidemik/isActive.php")!)
 		request.httpMethod = "POST"
 		let postString = "latitude=" + String(latitude) + "&longitude=" + String(longitude)
 		request.httpBody = postString.data(using: .utf8)
 		let task = URLSession.shared.dataTask(with: request) { data, response, error in
-			
 			guard let _ = data, error == nil else {
 				print("error=\(String(describing: error))")
 				return
@@ -132,20 +136,22 @@ public class IntroHolder: UIView {
 				return
 			}
 			let responseString = String(data: data!, encoding: .utf8)
+			
 			DispatchQueue.main.sync {
-				if(responseString == "1") {
-					let vc = UIApplication.shared.delegate?.window??.rootViewController as! ViewController
-					vc.initMainScreen()
-					UIView.animate(withDuration: duration, animations: {
-						self.frame.origin.y -= self.frame.height
-					})
+				if(responseString == "0") {
+					self.showCannotRun()
+					self.shouldDisplay = true
+					self.vc.useIntroHolder()
 				} else {
-					let cannotRun = CannotRun(frame: CGRect(x: self.frame.width, y: 0, width: self.frame.width, height: self.frame.height), holder: self)
-					self.addSubview(cannotRun)
-					UIView.animate(withDuration: 0.5, animations: {
-						cannotRun.frame.origin.x -= self.frame.width
-					})
+					if(self.introScreens.count == 0) {
+						self.shouldDisplay = false
+						self.vc.useIntroHolder()
+					} else {
+						self.shouldDisplay = true
+						self.vc.useIntroHolder()
+					}
 				}
+				
 			}
 			
 		}
@@ -153,6 +159,7 @@ public class IntroHolder: UIView {
 	}
 	
 	func goToNext() {
+		print("Going")
 		if(currentID+1 == introScreens.count) {
 			slideSelfAway(duration: 0.5)
 			return
@@ -162,6 +169,14 @@ public class IntroHolder: UIView {
 			self.introScreens[self.currentID].frame = CGRect(x: -self.frame.width, y: 0, width: self.frame.width, height: self.frame.height)
 		})
 		currentID += 1
+	}
+	
+	func showCannotRun() {
+		let cannotRun = CannotRun(frame: CGRect(x: self.frame.width, y: 0, width: self.frame.width, height: self.frame.height), holder: self)
+		self.addSubview(cannotRun)
+		UIView.animate(withDuration: 0.5, animations: {
+			cannotRun.frame.origin.x -= self.frame.width
+		})
 	}
 	
 }

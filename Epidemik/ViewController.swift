@@ -27,10 +27,19 @@ class ViewController: UIViewController {
 
 	var introView: IntroHolder!
 	
+	var introGraphic: UIView!
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		self.displayIntroGraphics()
 		self.initHolder()
 		// Do any additional setup after loading the view, typically from a nib.
+	}
+	
+	func displayIntroGraphics() {
+		introGraphic = UIView(frame: self.view.frame)
+		introGraphic.backgroundColor = UIColor.blue
+		self.view.addSubview(introGraphic)
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -50,8 +59,32 @@ class ViewController: UIViewController {
 	
 	// Creates the view that holds all the intro screens
 	func initHolder() {
-		introView = IntroHolder(frame: self.view.frame) //Calls initDatabase when done
+		introView = IntroHolder(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)) //Calls initDatabase when done
 		self.view.addSubview(introView)
+		self.view.sendSubview(toBack: introView)
+		introView.getLocation()
+	}
+	
+	func useIntroHolder() {
+		if introView.shouldDisplay {
+			UIView.animate(withDuration: 0.5, animations: {
+				self.introGraphic.frame.origin.x -= self.view.frame.width
+			}, completion: {
+				(value: Bool) in
+				self.introGraphic.removeFromSuperview()
+			})
+		} else {
+			self.initMainScreen()
+			usleep(500000)
+			UIView.animate(withDuration: 0.5, animations: {
+				self.introGraphic.frame.origin.x -= self.view.frame.width
+				self.introView.frame.origin.x -= self.view.frame.width
+			}, completion: {
+				(value: Bool) in
+				self.introView.removeFromSuperview()
+				self.introGraphic.removeFromSuperview()
+			})
+		}
 	}
 
 

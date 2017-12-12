@@ -31,7 +31,6 @@ public class AddressAsk: GeneralAskScreen {
 	
 	override func askForPermission() {
 		getAddress(message: "What is Your Address?")
-
 	}
 	
 	func getAddress(message: String) {
@@ -56,16 +55,26 @@ public class AddressAsk: GeneralAskScreen {
 					self.setError()
 				} else if let buffer = placemarks?[0] {
 					let location = buffer.location;
-					self.holder.goToNext()
 					self.endEditing(true)
 					let appDelegate = UIApplication.shared.delegate as! AppDelegate
-					appDelegate.sendDeviceTokenToServer(latitude: String(describing: location!.coordinate.latitude), longitude: String(describing: location!.coordinate.longitude))
+					appDelegate.sendDeviceTokenToServer(latitude: String(describing: location!.coordinate.latitude), longitude: String(describing: location!.coordinate.longitude), transition: self)
 				} else {
 					self.setError()
 				}
 			})
 		} else {
 			setError()
+		}
+	}
+	
+	func transitonProperly(result: String) {
+		DispatchQueue.main.sync {
+			print(result)
+			if(result == "0") {
+				holder.showCannotRun()
+			} else {
+				holder.goToNext()
+			}
 		}
 	}
 	
