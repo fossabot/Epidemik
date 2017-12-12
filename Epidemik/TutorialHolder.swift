@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import CoreLocation
 
-public class IntroHolder: UIView {
+public class TutorialHolder: UIView {
 	
 	var introScreens: Array<GeneralAskScreen>!
 	
@@ -45,14 +45,14 @@ public class IntroHolder: UIView {
 	}
 	
 	func addObjectsToScreen() {
-		if notificationScreen.shouldAdd == false {
-			return
+		if  addressScreen.shouldAdd == false && notificationScreen.shouldAdd == false {
+			
 		}
 		if(descriptionScreen.shouldAdd == true) {
 			initDescription()
 			initUserAgreement()
 		}
-		if(notificationScreen.shouldAdd == true) {
+		if(addressScreen.shouldAdd == true || notificationScreen.shouldAdd == true) {
 			initNotifications()
 		}
 		if(addressScreen.shouldAdd) {

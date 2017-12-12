@@ -12,7 +12,7 @@ import UserNotifications
 
 public class NotificationAsk: GeneralAskScreen {
 	
-	override public init(frame: CGRect, holder: IntroHolder) {
+	override public init(frame: CGRect, holder: TutorialHolder) {
 		super.init(frame: frame, holder: holder)
 		super.initDescription(text: "We Will Notifify You About Coming Diseases")
 		self.continueArrow.setTitle("Agree", for: UIControlState.normal)

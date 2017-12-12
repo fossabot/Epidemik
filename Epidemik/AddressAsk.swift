@@ -14,7 +14,7 @@ public class AddressAsk: GeneralAskScreen {
 	
 	var FILE_NAME = "address.epi"
 
-	override public init(frame: CGRect, holder: IntroHolder) {
+	override public init(frame: CGRect, holder: TutorialHolder) {
 		super.init(frame: frame, holder: holder)
 		super.initDescription(text: "We Need Your Address to Properely Analyze Your Data")
 		self.backgroundColor = COLORS.COLOR_5

@@ -11,9 +11,9 @@ import UIKit
 
 public class ContinueArrow: UIButton {
 	
-	var holder: IntroHolder!
+	var holder: TutorialHolder!
 	
-	public init(frame: CGRect, holder: IntroHolder) {
+	public init(frame: CGRect, holder: TutorialHolder) {
 		self.holder = holder
 		super.init(frame: frame)
 		self.backgroundColor = COLORS.COLOR_3

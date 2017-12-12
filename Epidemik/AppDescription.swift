@@ -11,7 +11,7 @@ import UIKit
 
 public class AppDescription: GeneralAskScreen {
 	
-	override public init(frame: CGRect, holder: IntroHolder) {
+	override public init(frame: CGRect, holder: TutorialHolder) {
 		super.init(frame: frame, holder: holder)
 		self.continueArrow.setTitle("Continue", for: UIControlState.normal)
 		self.backgroundColor = COLORS.COLOR_5

@@ -11,7 +11,7 @@ import UIKit
 
 public class UserAgreementPt1: GeneralAskScreen {
 	
-	override public init(frame: CGRect, holder: IntroHolder) {
+	override public init(frame: CGRect, holder: TutorialHolder) {
 		super.init(frame: frame, holder: holder)
 		self.continueArrow.setTitle("Agree", for: UIControlState.normal)
 		super.initDescription(text: "Your Data Will Be Anonymous and Encrypted")

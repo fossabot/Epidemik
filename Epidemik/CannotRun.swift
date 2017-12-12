@@ -11,7 +11,7 @@ import UIKit
 
 public class CannotRun: GeneralAskScreen {
 	
-	override public init(frame: CGRect, holder: IntroHolder) {
+	override public init(frame: CGRect, holder: TutorialHolder) {
 		super.init(frame: frame, holder: holder)
 		self.continueArrow.removeFromSuperview()
 		super.initDescription(text: "Your region is not supported yet. Check back later!")

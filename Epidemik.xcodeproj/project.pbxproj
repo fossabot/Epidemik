@@ -23,7 +23,7 @@
 		008DE0341FD7381B0049EDD3 /* CannotRun.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008DE0331FD7381B0049EDD3 /* CannotRun.swift */; };
 		009CE9E21F8FFFFD00D224F0 /* MainHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009CE9E11F8FFFFD00D224F0 /* MainHolder.swift */; };
 		00A5E7A31F6C414D004535D9 /* ContinueArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A5E7A01F6C414D004535D9 /* ContinueArrow.swift */; };
-		00A5E7A41F6C414D004535D9 /* IntroHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A5E7A11F6C414D004535D9 /* IntroHolder.swift */; };
+		00A5E7A41F6C414D004535D9 /* TutorialHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A5E7A11F6C414D004535D9 /* TutorialHolder.swift */; };
 		00A5E7A51F6C414D004535D9 /* NotificationsAsk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A5E7A21F6C414D004535D9 /* NotificationsAsk.swift */; };
 		00A5E7A71F6C415E004535D9 /* AppDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A5E7A61F6C415E004535D9 /* AppDescription.swift */; };
 		00A5E7A91F6C4170004535D9 /* GeneralAskScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A5E7A81F6C4170004535D9 /* GeneralAskScreen.swift */; };
@@ -81,7 +81,7 @@
 		008DE0331FD7381B0049EDD3 /* CannotRun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CannotRun.swift; sourceTree = "<group>"; };
 		009CE9E11F8FFFFD00D224F0 /* MainHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHolder.swift; sourceTree = "<group>"; };
 		00A5E7A01F6C414D004535D9 /* ContinueArrow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContinueArrow.swift; sourceTree = "<group>"; };
-		00A5E7A11F6C414D004535D9 /* IntroHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroHolder.swift; sourceTree = "<group>"; };
+		00A5E7A11F6C414D004535D9 /* TutorialHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialHolder.swift; sourceTree = "<group>"; };
 		00A5E7A21F6C414D004535D9 /* NotificationsAsk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsAsk.swift; sourceTree = "<group>"; };
 		00A5E7A61F6C415E004535D9 /* AppDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDescription.swift; sourceTree = "<group>"; };
 		00A5E7A81F6C4170004535D9 /* GeneralAskScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralAskScreen.swift; sourceTree = "<group>"; };
@@ -189,7 +189,7 @@
 				00A5E7A81F6C4170004535D9 /* GeneralAskScreen.swift */,
 				00A5E7A61F6C415E004535D9 /* AppDescription.swift */,
 				00A5E7A01F6C414D004535D9 /* ContinueArrow.swift */,
-				00A5E7A11F6C414D004535D9 /* IntroHolder.swift */,
+				00A5E7A11F6C414D004535D9 /* TutorialHolder.swift */,
 				00A5E7A21F6C414D004535D9 /* NotificationsAsk.swift */,
 				00CD77F91F7843EA002B5C78 /* AddressAsk.swift */,
 				00F2F04D1F7F0B8300BC3120 /* UserAgreementPt1.swift */,
@@ -404,7 +404,7 @@
 				0011DBBA1F6C0EBA004212E1 /* ViewController.swift in Sources */,
 				0010A42D1F8008A800D12495 /* ButtonExtension.swift in Sources */,
 				0083AD271F795C50007AEF87 /* DiseaseNameScreen.swift in Sources */,
-				00A5E7A41F6C414D004535D9 /* IntroHolder.swift in Sources */,
+				00A5E7A41F6C414D004535D9 /* TutorialHolder.swift in Sources */,
 				0032F3421F808295001A9633 /* MapOverlayCreator.swift in Sources */,
 				006858C91F8AA6F2007F6C7E /* DiseasePolygon.swift in Sources */,
 				00A5E7A51F6C414D004535D9 /* NotificationsAsk.swift in Sources */,

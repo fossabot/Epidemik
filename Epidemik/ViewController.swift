@@ -25,13 +25,14 @@ import MapKit
 
 class ViewController: UIViewController {
 
-	var introView: IntroHolder!
+	var appWalkThrough: TutorialHolder!
 	
 	var introGraphic: UIView!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		self.displayIntroGraphics()
+		usleep(500000)
 		self.initHolder()
 		// Do any additional setup after loading the view, typically from a nib.
 	}
@@ -59,14 +60,14 @@ class ViewController: UIViewController {
 	
 	// Creates the view that holds all the intro screens
 	func initHolder() {
-		introView = IntroHolder(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)) //Calls initDatabase when done
-		self.view.addSubview(introView)
-		self.view.sendSubview(toBack: introView)
-		introView.getLocation()
+		appWalkThrough = TutorialHolder(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)) //Calls initDatabase when done
+		self.view.addSubview(appWalkThrough)
+		self.view.sendSubview(toBack: appWalkThrough)
+		appWalkThrough.getLocation()
 	}
 	
 	func useIntroHolder() {
-		if introView.shouldDisplay {
+		if appWalkThrough.shouldDisplay {
 			UIView.animate(withDuration: 0.5, animations: {
 				self.introGraphic.frame.origin.x -= self.view.frame.width
 			}, completion: {
@@ -75,13 +76,12 @@ class ViewController: UIViewController {
 			})
 		} else {
 			self.initMainScreen()
-			usleep(500000)
 			UIView.animate(withDuration: 0.5, animations: {
 				self.introGraphic.frame.origin.x -= self.view.frame.width
-				self.introView.frame.origin.x -= self.view.frame.width
+				self.appWalkThrough.frame.origin.x -= self.view.frame.width
 			}, completion: {
 				(value: Bool) in
-				self.introView.removeFromSuperview()
+				self.appWalkThrough.removeFromSuperview()
 				self.introGraphic.removeFromSuperview()
 			})
 		}

@@ -11,14 +11,14 @@ import UIKit
 
 public class GeneralAskScreen: UIView {
 
-	var holder: IntroHolder!
+	var holder: TutorialHolder!
 	var shouldAdd: Bool = true
 	
 	var continueArrow: ContinueArrow!
 
 	var descriptionText: UITextView!
 	
-	public init(frame: CGRect, holder: IntroHolder) {
+	public init(frame: CGRect, holder: TutorialHolder) {
 		self.holder = holder
 		super.init(frame: frame)
 		setShouldAdd()
