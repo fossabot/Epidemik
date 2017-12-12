@@ -27,7 +27,10 @@ class Map: UIView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 	var CIRCUMFRENCE_OF_EARTH = 400750000.0 //In Meters
 	
 	var playButton: UIButton!
-		
+	
+	var totalOverlays = 0
+	var overlaysDraw = 0
+	
 	// Creates the map view, given a view frame, a lat,long width in meters, and a start lat,long in degrees
 	init(frame: CGRect, realLatWidth: Double, realLongWidth: Double, startLong: Double, startLat: Double) {
 		super.init(frame: frame)
@@ -93,7 +96,7 @@ class Map: UIView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 		let longWidth = region.span.longitudeDelta
 		let startLat = region.center.latitude
 		let startLong = region.center.longitude
-		overlayCreator = MapOverlayCreator(map: self.mapView, longWidth: longWidth, latWidth: latWidth, startLong: startLong - longWidth/2, startLat: startLat - latWidth/2)
+		overlayCreator = MapOverlayCreator(map: self, longWidth: longWidth, latWidth: latWidth, startLong: startLong - longWidth/2, startLat: startLat - latWidth/2)
 	}
 	
 	func updateOverlays() {
@@ -102,7 +105,7 @@ class Map: UIView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 		let longWidth = region.span.longitudeDelta
 		let startLat = region.center.latitude
 		let startLong = region.center.longitude
-		overlayCreator = MapOverlayCreator(map: self.mapView, longWidth: longWidth, latWidth: latWidth, startLong: startLong - longWidth/2, startLat: startLat - latWidth/2)
+		overlayCreator = MapOverlayCreator(map: self, longWidth: longWidth, latWidth: latWidth, startLong: startLong - longWidth/2, startLat: startLat - latWidth/2)
 	}
 	
 	func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
@@ -113,6 +116,10 @@ class Map: UIView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 		let color = UIColor(displayP3Red: power*185.0/255.0, green: 35.0/255.0, blue: 58.0/255.0, alpha: power*2.0/4.0)
 		polygonView.strokeColor = color
 		polygonView.fillColor = color
+		overlaysDraw += 1
+		if(overlaysDraw == totalOverlays-1) {
+			overlayCreator.finishFiltering()
+		}
 		return polygonView
 	}
 	
@@ -151,7 +158,7 @@ class Map: UIView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 					self.overlayCreator.filterDate(newDate: newDate)
 					self.filterBar.updateBar(ratio: Double(i)/100.0)
 				}
-				usleep(100000)
+				usleep(200000)
 			}
 		}
 	}

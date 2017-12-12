@@ -140,7 +140,6 @@ public class SicknessScreen: UIView {
 				return
 			}
 			let responseString = String(data: data!, encoding: .utf8)
-            print(responseString ?? "")
 			
 		}
 		task.resume()

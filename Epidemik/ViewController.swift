@@ -33,8 +33,7 @@ class ViewController: UIViewController {
 		super.viewDidLoad()
 		self.displayIntroGraphics() //Display the intro graphic again
 									//Maybe have it do something fancy?
-		usleep(500000)
-		self.initHolder()
+		self.initWalkthrough()
 		// Do any additional setup after loading the view, typically from a nib.
 	}
 	
@@ -42,6 +41,7 @@ class ViewController: UIViewController {
 		introGraphic = UIView(frame: self.view.frame)
 		introGraphic.backgroundColor = UIColor.blue
 		self.view.addSubview(introGraphic)
+		usleep(500000)
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -60,32 +60,39 @@ class ViewController: UIViewController {
 	}
 	
 	// Creates the view that holds all the intro screens
-	func initHolder() {
+	func initWalkthrough() {
 		appWalkThrough = TutorialHolder(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)) //Calls initDatabase when done
 		self.view.addSubview(appWalkThrough)
 		self.view.sendSubview(toBack: appWalkThrough)
-		appWalkThrough.getLocation()
+		appWalkThrough.checkLocation()
 	}
 	
-	func useIntroHolder() {
+	func displayWalkthroughOrMainView() {
 		if appWalkThrough.shouldDisplay {
-			UIView.animate(withDuration: 0.5, animations: {
-				self.introGraphic.frame.origin.x -= self.view.frame.width
-			}, completion: {
-				(value: Bool) in
-				self.introGraphic.removeFromSuperview()
-			})
+			removeIntroGraphics()
 		} else {
 			self.initMainScreen()
-			UIView.animate(withDuration: 0.5, animations: {
-				self.introGraphic.frame.origin.x -= self.view.frame.width
-				self.appWalkThrough.frame.origin.x -= self.view.frame.width
-			}, completion: {
-				(value: Bool) in
-				self.appWalkThrough.removeFromSuperview()
-				self.introGraphic.removeFromSuperview()
-			})
+			removeIntroGraphics()
+			removeWalkthrough()
 		}
+	}
+	
+	func removeIntroGraphics() {
+		UIView.animate(withDuration: 0.5, animations: {
+			self.introGraphic.frame.origin.x -= self.view.frame.width
+		}, completion: {
+			(value: Bool) in
+			self.introGraphic.removeFromSuperview()
+		})
+	}
+	
+	func removeWalkthrough() {
+		UIView.animate(withDuration: 0.5, animations: {
+			self.appWalkThrough.frame.origin.x -= self.view.frame.width
+		}, completion: {
+			(value: Bool) in
+			self.appWalkThrough.removeFromSuperview()
+		})
 	}
 
 

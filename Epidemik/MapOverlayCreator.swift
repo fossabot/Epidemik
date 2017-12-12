@@ -29,7 +29,7 @@ public class MapOverlayCreator {
 	
 	var toDraw = ""
 	
-	var map: MKMapView!
+	var map: Map!
 	
 	var averageIntensity: Double = 1.0
 	
@@ -45,7 +45,7 @@ public class MapOverlayCreator {
 	
 	var filtering = false
 	
-	init(map: MKMapView, longWidth: Double, latWidth: Double, startLong: Double, startLat: Double) {
+	init(map: Map, longWidth: Double, latWidth: Double, startLong: Double, startLat: Double) {
 		self.latLongDisease = [[DiseasePolygon]](repeating: [DiseasePolygon](repeating: DiseasePolygon(), count: Int(numXY)), count: Int(numXY))
 		self.startLat = startLat
 		self.startLong = startLong
@@ -66,7 +66,8 @@ public class MapOverlayCreator {
 	// Combine create and process into one
 	// Processes the array, and makes the visual graphic look slightly nicer
 	func createOverlays() {
-		map.removeOverlays(map.overlays)
+		map.overlaysDraw = 0
+		map.mapView.removeOverlays(map.mapView.overlays)
 		latLongDisease = [[DiseasePolygon?]](repeating: [DiseasePolygon?](repeating: nil, count: Int(numXY)), count: Int(numXY))
 		var realPointCounts = 1.0
 		let intervalLat = latWidth / numXY
@@ -93,17 +94,22 @@ public class MapOverlayCreator {
 		}
 		
 		averageIntensity /= realPointCounts
+		map.totalOverlays = Int(realPointCounts)
+		
+		if(map.totalOverlays == 1) {
+			finishFiltering()
+			return
+		}
 		
 		let _ = latLongDisease.map {
 			$0.map {
 				if($0 != nil && $0!.intensity > 0.1) {
 					if $0 != nil {
-						map.add($0!)
+						map.mapView.add($0!)
 					}
 				}
 			}
 		}
-		finishFiltering()
 	}
 	
 	func finishFiltering() {
@@ -178,10 +184,11 @@ public class MapOverlayCreator {
 	
 	
 	func updateOverlay() {
-		let latWidth = map.region.span.latitudeDelta*2
-		let longWidth = map.region.span.longitudeDelta*2
-		let newStartLat = map.region.center.latitude - latWidth/2
-		let newStartLong = map.region.center.longitude - longWidth/2
+		
+		let latWidth = map.mapView.region.span.latitudeDelta*2
+		let longWidth = map.mapView.region.span.longitudeDelta*2
+		let newStartLat = map.mapView.region.center.latitude - latWidth/2
+		let newStartLong = map.mapView.region.center.longitude - longWidth/2
 		
 		self.startLat = newStartLat
 		self.startLong = newStartLong

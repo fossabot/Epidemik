@@ -20,28 +20,26 @@ public class TutorialHolder: UIView {
 	var userAgreementPt1: UserAgreementPt1!
 	var userAgreementPt2: UserAgreementPt2!
 	
-	var currentID = 0
-	
 	var shouldDisplay = true
 	
 	var vc = UIApplication.shared.delegate?.window??.rootViewController as! ViewController
 	
 	public override init(frame: CGRect) {
 		tutorialScreens = Array<GeneralAskScreen>()
+		
 		super.init(frame: frame)
-		
-		
-		
+
 		createAskObjects()
 		addObjectsToScreen()
 	}
 	
 	func createAskObjects() {
-		descriptionScreen = AppDescription(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height), holder: self)
-		notificationScreen = NotificationAsk(frame: CGRect(x: self.frame.width, y: 0, width: self.frame.width, height: self.frame.height), holder: self)
-		addressScreen = AddressAsk(frame: CGRect(x: self.frame.width, y: 0, width: self.frame.width, height: self.frame.height), holder: self)
-		userAgreementPt1 = UserAgreementPt1(frame: CGRect(x: self.frame.width, y: 0, width: self.frame.width, height: self.frame.height), holder: self)
-		userAgreementPt2 = UserAgreementPt2(frame: CGRect(x: self.frame.width, y: 0, width: self.frame.width, height: self.frame.height), holder: self)
+		descriptionScreen = AppDescription(frame: self.frame, holder: self)
+		let offsetFrame = CGRect(x: self.frame.width, y: 0, width: self.frame.width, height: self.frame.height)
+		notificationScreen = NotificationAsk(frame: offsetFrame, holder: self)
+		addressScreen = AddressAsk(frame: offsetFrame, holder: self)
+		userAgreementPt1 = UserAgreementPt1(frame: offsetFrame, holder: self)
+		userAgreementPt2 = UserAgreementPt2(frame: offsetFrame, holder: self)
 	}
 	
 	func addObjectsToScreen() {
@@ -61,26 +59,25 @@ public class TutorialHolder: UIView {
 	}
 	
 	func initUserAgreement() {
-		tutorialScreens.append(userAgreementPt1)
-		self.addSubview(userAgreementPt1)
-		
-		tutorialScreens.append(userAgreementPt2)
-		self.addSubview(userAgreementPt2)
+		addTutorialView(view: userAgreementPt1)
+		addTutorialView(view: userAgreementPt2)
 	}
 	
 	func initDescription() {
-		tutorialScreens.append(descriptionScreen)
-		self.addSubview(descriptionScreen)
+		addTutorialView(view: descriptionScreen)
 	}
 	
 	func initNotifications() {
-		tutorialScreens.append(notificationScreen)
-		self.addSubview(notificationScreen)
+		addTutorialView(view: notificationScreen)
 	}
 	
 	func initAddress() {
-		tutorialScreens.append(addressScreen)
-		self.addSubview(addressScreen)
+		addTutorialView(view: addressScreen)
+	}
+	
+	func addTutorialView(view: GeneralAskScreen) {
+		tutorialScreens.append(view)
+		self.addSubview(view)
 	}
 	
 	required public init?(coder aDecoder: NSCoder) {
@@ -88,9 +85,10 @@ public class TutorialHolder: UIView {
 	}
 	
 	func askNext() {
-		tutorialScreens[currentID].askForPermission()
+		tutorialScreens[0].askForPermission()
 	}
 	
+	//Called when the app has verified the address
 	func slideSelfAway(duration: Double) {
 		self.vc.initMainScreen()
 		UIView.animate(withDuration: duration, animations: {
@@ -98,11 +96,11 @@ public class TutorialHolder: UIView {
 		})
 	}
 	
-	func getLocation() {
+	func checkLocation() {
 		let address = FileRW.readFile(fileName: "address.epi")
 		if address == nil {
 			self.shouldDisplay = true
-			self.vc.useIntroHolder()
+			self.vc.displayWalkthroughOrMainView()
 			return
 		}
 		let geocoder = CLGeocoder()
@@ -113,9 +111,10 @@ public class TutorialHolder: UIView {
 				self.endEditing(true)
 				self.checkActiveRegion(latitude: (location?.coordinate.latitude)!, longitude: (location?.coordinate.longitude)!)
 			} else {
-				self.showCannotRun()
+				self.addressScreen.shouldAdd = true
+				self.addObjectsToScreen()
 				self.shouldDisplay = true
-				self.vc.useIntroHolder()
+				self.vc.displayWalkthroughOrMainView()
 			}
 		})
 	}
@@ -141,16 +140,14 @@ public class TutorialHolder: UIView {
 				if(responseString == "0") {
 					self.showCannotRun()
 					self.shouldDisplay = true
-					self.vc.useIntroHolder()
 				} else {
 					if(self.tutorialScreens.count == 0) {
 						self.shouldDisplay = false
-						self.vc.useIntroHolder()
 					} else {
 						self.shouldDisplay = true
-						self.vc.useIntroHolder()
 					}
 				}
+				self.vc.displayWalkthroughOrMainView()
 				
 			}
 			
@@ -159,16 +156,15 @@ public class TutorialHolder: UIView {
 	}
 	
 	func goToNext() {
-		print("Going")
-		if(currentID+1 == tutorialScreens.count) {
+		if(1 == tutorialScreens.count) {
 			slideSelfAway(duration: 0.5)
 			return
 		}
 		UIView.animate(withDuration: 0.5, animations: {
-			self.tutorialScreens[self.currentID+1].frame = self.tutorialScreens[self.currentID].frame
-			self.tutorialScreens[self.currentID].frame = CGRect(x: -self.frame.width, y: 0, width: self.frame.width, height: self.frame.height)
+			self.tutorialScreens[1].frame = self.tutorialScreens[0].frame
+			self.tutorialScreens[0].frame = CGRect(x: -self.frame.width, y: 0, width: self.frame.width, height: self.frame.height)
 		})
-		currentID += 1
+		self.tutorialScreens.remove(at: 0)
 	}
 	
 	func showCannotRun() {
