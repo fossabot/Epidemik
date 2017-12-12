@@ -26,7 +26,8 @@ public class AddressAsk: GeneralAskScreen {
 	}
 	
 	override func setShouldAdd() {
-		self.shouldAdd = true
+		let currentAddress = FileRW.readFile(fileName: FILE_NAME)
+		self.shouldAdd = currentAddress == nil || currentAddress == ""
 	}
 	
 	override func askForPermission() {

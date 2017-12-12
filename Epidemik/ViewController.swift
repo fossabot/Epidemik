@@ -31,7 +31,8 @@ class ViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		self.displayIntroGraphics()
+		self.displayIntroGraphics() //Display the intro graphic again
+									//Maybe have it do something fancy?
 		usleep(500000)
 		self.initHolder()
 		// Do any additional setup after loading the view, typically from a nib.

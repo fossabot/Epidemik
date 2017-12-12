@@ -12,7 +12,7 @@ import CoreLocation
 
 public class TutorialHolder: UIView {
 	
-	var introScreens: Array<GeneralAskScreen>!
+	var tutorialScreens: Array<GeneralAskScreen>!
 	
 	var descriptionScreen: AppDescription!
 	var notificationScreen: NotificationAsk!
@@ -27,7 +27,7 @@ public class TutorialHolder: UIView {
 	var vc = UIApplication.shared.delegate?.window??.rootViewController as! ViewController
 	
 	public override init(frame: CGRect) {
-		introScreens = Array<GeneralAskScreen>()
+		tutorialScreens = Array<GeneralAskScreen>()
 		super.init(frame: frame)
 		
 		
@@ -45,8 +45,8 @@ public class TutorialHolder: UIView {
 	}
 	
 	func addObjectsToScreen() {
-		if  addressScreen.shouldAdd == false && notificationScreen.shouldAdd == false {
-			
+		if  addressScreen.shouldAdd == false {
+			return
 		}
 		if(descriptionScreen.shouldAdd == true) {
 			initDescription()
@@ -61,25 +61,25 @@ public class TutorialHolder: UIView {
 	}
 	
 	func initUserAgreement() {
-		introScreens.append(userAgreementPt1)
+		tutorialScreens.append(userAgreementPt1)
 		self.addSubview(userAgreementPt1)
 		
-		introScreens.append(userAgreementPt2)
+		tutorialScreens.append(userAgreementPt2)
 		self.addSubview(userAgreementPt2)
 	}
 	
 	func initDescription() {
-		introScreens.append(descriptionScreen)
+		tutorialScreens.append(descriptionScreen)
 		self.addSubview(descriptionScreen)
 	}
 	
 	func initNotifications() {
-		introScreens.append(notificationScreen)
+		tutorialScreens.append(notificationScreen)
 		self.addSubview(notificationScreen)
 	}
 	
 	func initAddress() {
-		introScreens.append(addressScreen)
+		tutorialScreens.append(addressScreen)
 		self.addSubview(addressScreen)
 	}
 	
@@ -88,7 +88,7 @@ public class TutorialHolder: UIView {
 	}
 	
 	func askNext() {
-		introScreens[currentID].askForPermission()
+		tutorialScreens[currentID].askForPermission()
 	}
 	
 	func slideSelfAway(duration: Double) {
@@ -143,7 +143,7 @@ public class TutorialHolder: UIView {
 					self.shouldDisplay = true
 					self.vc.useIntroHolder()
 				} else {
-					if(self.introScreens.count == 0) {
+					if(self.tutorialScreens.count == 0) {
 						self.shouldDisplay = false
 						self.vc.useIntroHolder()
 					} else {
@@ -160,13 +160,13 @@ public class TutorialHolder: UIView {
 	
 	func goToNext() {
 		print("Going")
-		if(currentID+1 == introScreens.count) {
+		if(currentID+1 == tutorialScreens.count) {
 			slideSelfAway(duration: 0.5)
 			return
 		}
 		UIView.animate(withDuration: 0.5, animations: {
-			self.introScreens[self.currentID+1].frame = self.introScreens[self.currentID].frame
-			self.introScreens[self.currentID].frame = CGRect(x: -self.frame.width, y: 0, width: self.frame.width, height: self.frame.height)
+			self.tutorialScreens[self.currentID+1].frame = self.tutorialScreens[self.currentID].frame
+			self.tutorialScreens[self.currentID].frame = CGRect(x: -self.frame.width, y: 0, width: self.frame.width, height: self.frame.height)
 		})
 		currentID += 1
 	}
