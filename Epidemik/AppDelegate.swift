@@ -74,7 +74,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 				return
 			}
 			let responseString = String(data: data!, encoding: .utf8)
-			print(responseString)
 			if transition != nil {
 				transition!.transitonProperly(result: responseString!)
 			}

@@ -98,6 +98,24 @@ public class SettingsView: UIView {
 	func initDetailSelector() {
 		detailSelector = DetailSelector(frame: CGRect(x: (self.frame.width-smallButtonWidth)/2, y: 2*smallButtonGap+smallButtonHeight, width: smallButtonWidth, height: smallButtonHeight), overlayCreator: mainView.mapView.overlayCreator)
 		self.addSubview(detailSelector)
+		
+		
+		let textOffset = CGFloat(10)
+
+		createDetailTextBox(x: 0, y: 2*smallButtonGap+smallButtonHeight+textOffset, message: "High Preformance")
+
+		createDetailTextBox(x: (self.frame.width+smallButtonWidth)/2, y: 2*smallButtonGap+smallButtonHeight+textOffset, message: "High Detail")
+	}
+	
+	func createDetailTextBox(x: CGFloat, y: CGFloat, message: String) {
+		let toAdd = UITextView(frame: CGRect(x: x, y: y, width: (self.frame.width-smallButtonWidth)/2, height: smallButtonHeight))
+		toAdd.text = message
+		toAdd.font = UIFont(name: "Helvetica", size: 11)
+		toAdd.textColor = UIColor.white
+		toAdd.backgroundColor = UIColor.clear
+		toAdd.textAlignment = NSTextAlignment.center
+		toAdd.isEditable = false
+		self.addSubview(toAdd)
 	}
 	
 	func initDone() {
@@ -111,7 +129,6 @@ public class SettingsView: UIView {
 	}
 	
 	@objc func removeSelf(_ sender: UIButton?) {
-		
 		UIView.animate(withDuration: 0.5, animations: {
 			self.frame.origin.y -= self.frame.height
 		}, completion: {
