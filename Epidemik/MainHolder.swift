@@ -27,6 +27,7 @@ public class MainHolder: UIView {
 		initSickness()
 		initTrends()
 		initChangeButtons()
+		initSettings()
 	}
 	
 	required public init?(coder aDecoder: NSCoder) {
@@ -143,6 +144,24 @@ public class MainHolder: UIView {
 		mapButton.setImage(mapImage, for: .normal)
 		mapButton.alpha = 0.5
 		self.addSubview(mapButton)
+	}
+	
+	func initSettings() {
+		let settingsImage = UIImage(named: "settings.png")
+		let settingsButton = UIButton(frame: CGRect(x: 3*self.frame.width/32-self.frame.height/32, y: self.frame.height/16, width: self.frame.height/16, height: self.frame.height/16))
+		settingsButton.backgroundColor = UIColor.clear
+		settingsButton.setImage(settingsImage, for: .normal)
+		settingsButton.addTarget(self, action: #selector(MainHolder.showSettings(_:)), for: .touchUpInside)
+		self.addSubview(settingsButton)
+	}
+	
+	@objc func showSettings(_ sender: UIButton?) {
+		let settingsScreen = SettingsView(frame: CGRect(x: 0, y: -self.frame.height, width: self.frame.width, height: self.frame.height))
+		self.addSubview(settingsScreen)
+		UIView.animate(withDuration: 0.5, animations: {
+			settingsScreen.frame.origin.y += self.frame.height
+		})
+		
 	}
 	
 }

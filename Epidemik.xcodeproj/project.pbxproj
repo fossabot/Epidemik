@@ -16,6 +16,7 @@
 		0011DBC21F6C0EBA004212E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0011DBC01F6C0EBA004212E1 /* LaunchScreen.storyboard */; };
 		0011DBCD1F6C0EBA004212E1 /* EpidemikTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0011DBCC1F6C0EBA004212E1 /* EpidemikTests.swift */; };
 		0011DBD81F6C0EBA004212E1 /* EpidemikUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0011DBD71F6C0EBA004212E1 /* EpidemikUITests.swift */; };
+		0018BCD81FE0BDB7008DCDE5 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0018BCD71FE0BDB7008DCDE5 /* SettingsView.swift */; };
 		0032F3421F808295001A9633 /* MapOverlayCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0032F3411F808295001A9633 /* MapOverlayCreator.swift */; };
 		006858C91F8AA6F2007F6C7E /* DiseasePolygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006858C81F8AA6F2007F6C7E /* DiseasePolygon.swift */; };
 		0083AD251F795BD8007AEF87 /* SicknessScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0083AD241F795BD8007AEF87 /* SicknessScreen.swift */; };
@@ -73,6 +74,7 @@
 		0011DBD31F6C0EBA004212E1 /* EpidemikUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EpidemikUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0011DBD71F6C0EBA004212E1 /* EpidemikUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpidemikUITests.swift; sourceTree = "<group>"; };
 		0011DBD91F6C0EBA004212E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0018BCD71FE0BDB7008DCDE5 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		0032F3411F808295001A9633 /* MapOverlayCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapOverlayCreator.swift; sourceTree = "<group>"; };
 		005459151F749FCF00F73872 /* Epidemik.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Epidemik.entitlements; sourceTree = "<group>"; };
 		006858C81F8AA6F2007F6C7E /* DiseasePolygon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseasePolygon.swift; sourceTree = "<group>"; };
@@ -146,6 +148,8 @@
 		0011DBB61F6C0EBA004212E1 /* Epidemik */ = {
 			isa = PBXGroup;
 			children = (
+				009CE9E11F8FFFFD00D224F0 /* MainHolder.swift */,
+				0018BCD61FE0BDA7008DCDE5 /* Settings */,
 				00FC190E1FB3DEA900D8FD97 /* Trends */,
 				00F2F04F1F7F1E1400BC3120 /* General */,
 				0083AD231F795BB3007AEF87 /* Map */,
@@ -159,7 +163,6 @@
 				0011DBC01F6C0EBA004212E1 /* LaunchScreen.storyboard */,
 				0011DBC31F6C0EBA004212E1 /* Info.plist */,
 				00CD77FC1F7844C1002B5C78 /* FileRW.swift */,
-				009CE9E11F8FFFFD00D224F0 /* MainHolder.swift */,
 				00EBE4B01F9D2EC1005A8E6B /* ColorScheme.swift */,
 			);
 			path = Epidemik;
@@ -197,6 +200,14 @@
 				008DE0331FD7381B0049EDD3 /* CannotRun.swift */,
 			);
 			name = "Start Up";
+			sourceTree = "<group>";
+		};
+		0018BCD61FE0BDA7008DCDE5 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				0018BCD71FE0BDB7008DCDE5 /* SettingsView.swift */,
+			);
+			name = Settings;
 			sourceTree = "<group>";
 		};
 		0083AD221F795BA9007AEF87 /* Sickness Registration */ = {
@@ -408,6 +419,7 @@
 				0032F3421F808295001A9633 /* MapOverlayCreator.swift in Sources */,
 				006858C91F8AA6F2007F6C7E /* DiseasePolygon.swift in Sources */,
 				00A5E7A51F6C414D004535D9 /* NotificationsAsk.swift in Sources */,
+				0018BCD81FE0BDB7008DCDE5 /* SettingsView.swift in Sources */,
 				00EBE4AF1F9D2BE6005A8E6B /* UserAgreementPt2.swift in Sources */,
 				00F2F04E1F7F0B8300BC3120 /* UserAgreementPt1.swift in Sources */,
 				00EE1AA31FCB4D58006FDBFD /* TimeSelector.swift in Sources */,

@@ -18,7 +18,7 @@ public class MapOverlayCreator {
 	var latWidth: Double!
 	var longWidth: Double!
 	
-	var numXY = 50.0
+	var numXY = 30.0
 	
 	var latLongDisease: [[DiseasePolygon?]]
 	
@@ -121,7 +121,6 @@ public class MapOverlayCreator {
 	
 	// Processes the text from the server and loads it to a local array
 	func loadTextToArray() {
-		//let startTime = Date().timeIntervalSince1970
 		let latArray = toDraw.split(separator: "\n")
 		for lat in 0 ..< latArray.count {
 			let longArray = latArray[lat].split(separator: ",")
@@ -137,9 +136,6 @@ public class MapOverlayCreator {
 		self.toUseDatapoints = datapoints.filter({
 			($0.date_healthy > filterDate && $0.date < filterDate)
 		})
-		
-		//let endTime = Date().timeIntervalSince1970
-		//print(String(endTime - startTime) + " Time")
 	}
 	
 	// Loads the text from the server given a lat, long, lat width, long height
@@ -184,7 +180,6 @@ public class MapOverlayCreator {
 	
 	
 	func updateOverlay() {
-		
 		let latWidth = map.mapView.region.span.latitudeDelta*2
 		let longWidth = map.mapView.region.span.longitudeDelta*2
 		let newStartLat = map.mapView.region.center.latitude - latWidth/2
@@ -272,7 +267,7 @@ public class MapOverlayCreator {
 						self.createOverlays()
 					}
 				} else {
-					usleep(10000)
+					usleep(5000)
 				}
 			}
 		}

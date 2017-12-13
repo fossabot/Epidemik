@@ -47,6 +47,7 @@ class Map: UIView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 		initTimeSelector()
 		
 		initPlayButton()
+		
 		//self.animateVsTime(start: newDate!, end: Date())
 	}
 	
@@ -57,7 +58,7 @@ class Map: UIView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 	// Nothing -> Nothing
 	// Inits the bar that can be used to selcted the filter date
 	func initTimeSelector() {
-		let frame = CGRect(x: self.frame.width/8+10, y: self.frame.height/16, width: self.frame.width*3/4, height: self.frame.height/16)
+		let frame = CGRect(x: self.frame.width*3/16, y: self.frame.height/16, width: self.frame.width*5/8, height: self.frame.height/16)
 		filterBar = TimeSelector(frame: frame, map: self)
 		self.addSubview(filterBar)
 	}
@@ -65,7 +66,7 @@ class Map: UIView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 	// Nothing -> Nothing
 	// inits the play button
 	func initPlayButton() {
-		playButton = UIButton(frame: CGRect(x: self.frame.width/8 - self.frame.height/16, y: self.frame.height/16, width: self.frame.height/16, height: self.frame.height/16))
+		playButton = UIButton(frame: CGRect(x: self.frame.width*13/16 + self.frame.height/64, y: self.frame.height/16, width: self.frame.height/16, height: self.frame.height/16))
 		playButton.backgroundColor = UIColor.clear
 		let image = UIImage(named: "play.png")
 		playButton.setBackgroundImage(image, for: .normal)
@@ -158,7 +159,7 @@ class Map: UIView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 					self.overlayCreator.filterDate(newDate: newDate)
 					self.filterBar.updateBar(ratio: Double(i)/100.0)
 				}
-				usleep(200000)
+				usleep(100000)
 			}
 		}
 	}
