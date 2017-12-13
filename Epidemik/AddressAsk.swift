@@ -38,7 +38,7 @@ public class AddressAsk: GeneralAskScreen {
 		let alert = UIAlertController(title: "Address", message: message, preferredStyle: UIAlertControllerStyle.alert)
 		alert.addAction(UIAlertAction(title: "Ok", style: .default, handler:{ (alertAction:UIAlertAction) in
 			let textf1 = alert.textFields![0] as UITextField
-			self.checkAddress(address: textf1.text!)
+			self.convertToCordinates(address: textf1.text!)
 		}))
 		alert.addTextField(configurationHandler: {(textField: UITextField) in
 			textField.placeholder = "1 Main St. New York, NY"
@@ -47,7 +47,7 @@ public class AddressAsk: GeneralAskScreen {
 		UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
 	}
 	
-	func checkAddress(address: String) {
+	func convertToCordinates(address: String) {
 		if (address != "") {
 			FileRW.writeFile(fileName: self.FILE_NAME, contents: address)
 			let geocoder = CLGeocoder()

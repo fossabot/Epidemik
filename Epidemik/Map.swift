@@ -41,13 +41,13 @@ class Map: MKMapView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 		
 		initMapPrefs()
 		
+		initOverlayCreator()
+		
 		initGestureControls()
 		
 		initTimeSelector()
 		
 		initPlayButton()
-		
-		self.isRotateEnabled = false
 		
 		//self.animateVsTime(start: newDate!, end: Date())
 	}
@@ -86,8 +86,7 @@ class Map: MKMapView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 		let center = CLLocationCoordinate2D(latitude: CLLocationDegrees(39), longitude: CLLocationDegrees(-98))
 		let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: CLLocationDegrees(120), longitudeDelta: CLLocationDegrees(120)))
 		self.setRegion(region, animated: true)
-		
-		initOverlayCreator()
+		self.isRotateEnabled = false
 	}
 	
 	func initOverlayCreator() {
