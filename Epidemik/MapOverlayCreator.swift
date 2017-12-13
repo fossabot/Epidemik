@@ -67,7 +67,7 @@ public class MapOverlayCreator {
 	// Processes the array, and makes the visual graphic look slightly nicer
 	func createOverlays() {
 		map.overlaysDraw = 0
-		map.mapView.removeOverlays(map.mapView.overlays)
+		map.removeOverlays(map.overlays)
 		latLongDisease = [[DiseasePolygon?]](repeating: [DiseasePolygon?](repeating: nil, count: Int(numXY)), count: Int(numXY))
 		var realPointCounts = 1.0
 		let intervalLat = latWidth / numXY
@@ -83,6 +83,10 @@ public class MapOverlayCreator {
 				let realLong = (Double(posnLong)*intervalLong+startLong)
 				let scale = latWidth / numXY
 				var points=[CLLocationCoordinate2DMake(realLat,  realLong),CLLocationCoordinate2DMake(realLat+scale,  realLong),CLLocationCoordinate2DMake(realLat+scale,  realLong+scale),CLLocationCoordinate2DMake(realLat,  realLong+scale)]
+				if posnLat >= latLongDisease.count || posnLong >= latLongDisease[posnLat].count {
+					continue
+				}
+				
 				if latLongDisease[posnLat][posnLong] == nil {
 					latLongDisease[posnLat][posnLong] = DiseasePolygon(coordinates: &points, count: points.count)
 					averageIntensity += latLongDisease[posnLat][posnLong]!.intensity
@@ -105,7 +109,7 @@ public class MapOverlayCreator {
 			$0.map {
 				if($0 != nil && $0!.intensity > 0.1) {
 					if $0 != nil {
-						map.mapView.add($0!)
+						map.add($0!)
 					}
 				}
 			}
@@ -180,10 +184,10 @@ public class MapOverlayCreator {
 	
 	
 	func updateOverlay() {
-		let latWidth = map.mapView.region.span.latitudeDelta*2
-		let longWidth = map.mapView.region.span.longitudeDelta*2
-		let newStartLat = map.mapView.region.center.latitude - latWidth/2
-		let newStartLong = map.mapView.region.center.longitude - longWidth/2
+		let latWidth = map.region.span.latitudeDelta*2
+		let longWidth = map.region.span.longitudeDelta*2
+		let newStartLat = map.region.center.latitude - latWidth/2
+		let newStartLong = map.region.center.longitude - longWidth/2
 		
 		self.startLat = newStartLat
 		self.startLong = newStartLong

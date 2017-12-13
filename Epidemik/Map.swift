@@ -10,14 +10,13 @@ import Foundation
 import MapKit
 import UIKit
 
-class Map: UIView, MKMapViewDelegate, UIGestureRecognizerDelegate {
+class Map: MKMapView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 	
 	var longWidth: Double!
 	var latWidth: Double!
 	var startLong: Double!
 	var startLat: Double!
 	
-	var mapView: MKMapView!
 	var mapOverlay: MKOverlay!
 	
 	var overlayCreator: MapOverlayCreator!
@@ -40,13 +39,15 @@ class Map: UIView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 		latWidth = (Double(realLatWidth) * 360 / (CIRCUMFRENCE_OF_EARTH))
 		longWidth = (Double(realLongWidth) * 360 / (CIRCUMFRENCE_OF_EARTH))
 		
-		initMap()
+		initMapPrefs()
 		
 		initGestureControls()
 		
 		initTimeSelector()
 		
 		initPlayButton()
+		
+		self.isRotateEnabled = false
 		
 		//self.animateVsTime(start: newDate!, end: Date())
 	}
@@ -79,20 +80,18 @@ class Map: UIView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 	// Nothing -> Map
 	// Uses the MapKit to create the map display
 	// As of now, cannot be moved or touched or interacted with
-	func initMap() {
-		mapView = MKMapView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
-		mapView.mapType = MKMapType.standard
-		mapView.delegate = self
+	func initMapPrefs() {
+		self.mapType = MKMapType.standard
+		self.delegate = self
 		let center = CLLocationCoordinate2D(latitude: CLLocationDegrees(39), longitude: CLLocationDegrees(-98))
 		let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: CLLocationDegrees(120), longitudeDelta: CLLocationDegrees(120)))
-		mapView.setRegion(region, animated: true)
-		self.addSubview(mapView)
+		self.setRegion(region, animated: true)
 		
 		initOverlayCreator()
 	}
 	
 	func initOverlayCreator() {
-		let region = mapView.region
+		let region = self.region
 		let latWidth = region.span.latitudeDelta
 		let longWidth = region.span.longitudeDelta
 		let startLat = region.center.latitude
@@ -101,7 +100,7 @@ class Map: UIView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 	}
 	
 	func updateOverlays() {
-		let region = mapView.region
+		let region = self.region
 		let latWidth = region.span.latitudeDelta
 		let longWidth = region.span.longitudeDelta
 		let startLat = region.center.latitude
@@ -130,7 +129,7 @@ class Map: UIView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 		panGesture.delegate = self
 		
 		// add the gesture to the mapView
-		mapView.addGestureRecognizer(panGesture)
+		self.addGestureRecognizer(panGesture)
 	}
 	
 	func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {

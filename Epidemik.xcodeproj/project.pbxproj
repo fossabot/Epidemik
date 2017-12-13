@@ -29,6 +29,8 @@
 		00A5E7A71F6C415E004535D9 /* AppDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A5E7A61F6C415E004535D9 /* AppDescription.swift */; };
 		00A5E7A91F6C4170004535D9 /* GeneralAskScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A5E7A81F6C4170004535D9 /* GeneralAskScreen.swift */; };
 		00BC4F701F81746C0018D5D8 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BC4F6F1F81746C0018D5D8 /* Map.swift */; };
+		00BD462D1FE19AF50009A4B5 /* BarSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BD462C1FE19AF50009A4B5 /* BarSelector.swift */; };
+		00BD462F1FE19C620009A4B5 /* DetailSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BD462E1FE19C620009A4B5 /* DetailSelector.swift */; };
 		00CD77FA1F7843EA002B5C78 /* AddressAsk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CD77F91F7843EA002B5C78 /* AddressAsk.swift */; };
 		00CD77FD1F7844C1002B5C78 /* FileRW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CD77FC1F7844C1002B5C78 /* FileRW.swift */; };
 		00D665511FB5348F00C3C680 /* Trend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D665501FB5348F00C3C680 /* Trend.swift */; };
@@ -88,6 +90,8 @@
 		00A5E7A61F6C415E004535D9 /* AppDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDescription.swift; sourceTree = "<group>"; };
 		00A5E7A81F6C4170004535D9 /* GeneralAskScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralAskScreen.swift; sourceTree = "<group>"; };
 		00BC4F6F1F81746C0018D5D8 /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
+		00BD462C1FE19AF50009A4B5 /* BarSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarSelector.swift; sourceTree = "<group>"; };
+		00BD462E1FE19C620009A4B5 /* DetailSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSelector.swift; sourceTree = "<group>"; };
 		00CD77F91F7843EA002B5C78 /* AddressAsk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressAsk.swift; sourceTree = "<group>"; };
 		00CD77FC1F7844C1002B5C78 /* FileRW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileRW.swift; sourceTree = "<group>"; };
 		00D665501FB5348F00C3C680 /* Trend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trend.swift; sourceTree = "<group>"; };
@@ -162,8 +166,6 @@
 				0011DBBE1F6C0EBA004212E1 /* Assets.xcassets */,
 				0011DBC01F6C0EBA004212E1 /* LaunchScreen.storyboard */,
 				0011DBC31F6C0EBA004212E1 /* Info.plist */,
-				00CD77FC1F7844C1002B5C78 /* FileRW.swift */,
-				00EBE4B01F9D2EC1005A8E6B /* ColorScheme.swift */,
 			);
 			path = Epidemik;
 			sourceTree = "<group>";
@@ -206,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				0018BCD71FE0BDB7008DCDE5 /* SettingsView.swift */,
+				00BD462E1FE19C620009A4B5 /* DetailSelector.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -234,9 +237,12 @@
 		00F2F04F1F7F1E1400BC3120 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				00CD77FC1F7844C1002B5C78 /* FileRW.swift */,
+				00EBE4B01F9D2EC1005A8E6B /* ColorScheme.swift */,
 				00F2F0511F7F1ECD00BC3120 /* ButtonSelector.swift */,
 				0010A42C1F8008A800D12495 /* ButtonExtension.swift */,
 				0010A42E1F800DD000D12495 /* ScrollSelector.swift */,
+				00BD462C1FE19AF50009A4B5 /* BarSelector.swift */,
 			);
 			name = General;
 			sourceTree = "<group>";
@@ -402,6 +408,7 @@
 				00CD77FA1F7843EA002B5C78 /* AddressAsk.swift in Sources */,
 				00E9A4C71F8EFA6C008C95BD /* Disease.swift in Sources */,
 				00A5E7A91F6C4170004535D9 /* GeneralAskScreen.swift in Sources */,
+				00BD462F1FE19C620009A4B5 /* DetailSelector.swift in Sources */,
 				0010A42F1F800DD000D12495 /* ScrollSelector.swift in Sources */,
 				00FC19101FB3DEB700D8FD97 /* TrendsView.swift in Sources */,
 				0083AD251F795BD8007AEF87 /* SicknessScreen.swift in Sources */,
@@ -420,6 +427,7 @@
 				006858C91F8AA6F2007F6C7E /* DiseasePolygon.swift in Sources */,
 				00A5E7A51F6C414D004535D9 /* NotificationsAsk.swift in Sources */,
 				0018BCD81FE0BDB7008DCDE5 /* SettingsView.swift in Sources */,
+				00BD462D1FE19AF50009A4B5 /* BarSelector.swift in Sources */,
 				00EBE4AF1F9D2BE6005A8E6B /* UserAgreementPt2.swift in Sources */,
 				00F2F04E1F7F0B8300BC3120 /* UserAgreementPt1.swift in Sources */,
 				00EE1AA31FCB4D58006FDBFD /* TimeSelector.swift in Sources */,

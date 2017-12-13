@@ -15,7 +15,13 @@ public class SettingsView: UIView {
 	var smallButtonHeight: CGFloat!
 	var smallButtonGap: CGFloat!
 	
-	override public init(frame: CGRect) {
+	var addressChanger: UIButton!
+	var detailSelector: BarSelector!
+	
+	var mainView: MainHolder!
+	
+	public init(frame: CGRect, mainView: MainHolder) {
+		self.mainView = mainView
 		super.init(frame: frame)
 		smallButtonWidth = 3*frame.width/5
 		smallButtonHeight = self.frame.height/8
@@ -24,20 +30,26 @@ public class SettingsView: UIView {
 		self.backgroundColor = COLORS.COLOR_1
 		initAddressChanger()
 		initDone()
+		initDetailSelector()
 	}
 	
 	func initAddressChanger() {
-		let change = UIButton(frame: CGRect(x: (self.frame.width-smallButtonWidth)/2, y: smallButtonGap, width: smallButtonWidth, height: smallButtonHeight))
-		change.backgroundColor = COLORS.COLOR_4
-		change.addTarget(self, action: #selector(SettingsView.changeAddress(_:)), for: .touchUpInside)
-		change.layer.cornerRadius = 20
-		change.titleLabel?.font = UIFont(name: "Helvetica", size: 23)
-		change.setTitle("Change Address", for: .normal)
-		self.addSubview(change)
+		addressChanger = UIButton(frame: CGRect(x: (self.frame.width-smallButtonWidth)/2, y: smallButtonGap, width: smallButtonWidth, height: smallButtonHeight))
+		addressChanger.backgroundColor = COLORS.COLOR_4
+		addressChanger.addTarget(self, action: #selector(SettingsView.changeAddress(_:)), for: .touchUpInside)
+		addressChanger.layer.cornerRadius = 20
+		addressChanger.titleLabel?.font = UIFont(name: "Helvetica", size: 23)
+		addressChanger.setTitle("Change Address", for: .normal)
+		self.addSubview(addressChanger)
 	}
 	
 	@objc func changeAddress(_ sender: UIButton?) {
 		
+	}
+	
+	func initDetailSelector() {
+		detailSelector = DetailSelector(frame: CGRect(x: (self.frame.width-smallButtonWidth)/2, y: 2*smallButtonGap+smallButtonHeight, width: smallButtonWidth, height: smallButtonHeight), overlayCreator: mainView.mapView.overlayCreator)
+		self.addSubview(detailSelector)
 	}
 	
 	func initDone() {
