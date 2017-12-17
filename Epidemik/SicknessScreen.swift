@@ -12,7 +12,6 @@ import UIKit
 public class SicknessScreen: UIView {
 	
 	var insetX = 30.0
-	var FILE_NAME = "sickness.epi"
 	
 	var healthyButton: UIButton!
 	public var sicknessButton: UIButton!
@@ -42,10 +41,12 @@ public class SicknessScreen: UIView {
 	// If they are already sick, it will Say "Healthy Again!"
 	// If they are healthy, it will say "Sick :("
 	func initButton() {
-		if (FileRW.readFile(fileName: FILE_NAME) == nil || FileRW.readFile(fileName: FILE_NAME) == "") {
-			initSickButton(x: self.frame.width/2 - buttonWidth/2)
-		} else {
+		if (Reporting.isUserSick()) {
 			initHealthyButton()
+			QuickTouch.initHealthyQuickTouch()
+		} else {
+			initSickButton(x: self.frame.width/2 - buttonWidth/2)
+			QuickTouch.initSickQuickTouch()
 		}
 	}
 	
@@ -63,7 +64,7 @@ public class SicknessScreen: UIView {
 	// Handles Sickness button presses
 	// - Creates the disease name categorizer
 	// UIButton -> Nothing
-	@objc func amSick(_ sender: UIButton?) {		
+	@objc func amSick(_ sender: UIButton?) {
 		let diseaseSelector = DiseaseNameScreen(frame: CGRect(x: self.frame.width, y: 0, width: self.frame.width, height: self.frame.height), superScreen: self)
 		self.addSubview(diseaseSelector)
 		UIView.animate(withDuration: 0.5, animations: {
@@ -91,7 +92,7 @@ public class SicknessScreen: UIView {
 	// Wipes the current sickness report from the server
 	// Puts the sickness button on the screen
 	@objc func amHealthy(_ sender: UIButton?) {
-		clearCurrentData()
+		Reporting.amHealthy()
 		replaceHealthyButton()
 	}
 	
@@ -113,36 +114,6 @@ public class SicknessScreen: UIView {
 			self.healthyButton.removeFromSuperview()
 			smileyView.removeFromSuperview()
 		})
-		
-	}
-	
-	// Sends the prior post request to the server and clears it from the database
-	// Also wipes the file from the phone
-	func clearCurrentData() {
-		var request = URLRequest(url: URL(string: "https://rbradford.thaumavor.io/iOS_Programs/Epidemik/recieveDisease.php")!)
-		request.httpMethod = "POST"
-		if(!FileRW.fileExists(fileName: FILE_NAME)) {
-			return
-		}
-		var postString = FileRW.readFile(fileName: FILE_NAME)! as String
-		postString += "&delete=true"
-		FileRW.writeFile(fileName: FILE_NAME, contents: "")
-		request.httpBody = postString.data(using: .utf8)
-		let task = URLSession.shared.dataTask(with: request) { data, response, error in
-			
-			guard let _ = data, error == nil else {
-				print("error=\(String(describing: error))")
-				return
-			}
-			if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
-				print("statusCode should be 200, but is \(httpStatus.statusCode)")
-				print("response = \(String(describing: response))")
-				return
-			}
-			let responseString = String(data: data!, encoding: .utf8)
-			
-		}
-		task.resume()
 	}
 	
 }

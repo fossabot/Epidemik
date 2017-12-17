@@ -185,62 +185,11 @@ public class DiseaseNameScreen: UIView {
 	
 	// Recieves a button press from the send button and sends the sickness report to the server
 	@objc func gatherAndSendInfo(_ sender: UIButton?) {
-		let address = FileRW.readFile(fileName: "address.epi")
-		let diseaseName = diseaseSelector.timeTextField?.text
-		
-		let date = NSDate()
-		let dateFormatter = DateFormatter()
-		dateFormatter.dateFormat = "yyyy-MM-dd"
-		let dateString = dateFormatter.string(from:date as Date)
-		
-		if (address != "" && diseaseName != "") {
-			let geocoder = CLGeocoder()
-			geocoder.geocodeAddressString(address!, completionHandler: {(placemarks, error) -> Void in
-				if(error != nil) {
-					self.setError()
-				} else if let buffer = placemarks?[0] {
-					let location = buffer.location;
-					self.endEditing(true)
-					self.sendToServer(latitude: String(describing: location!.coordinate.latitude), longitude: String(describing: location!.coordinate.longitude), diseaseName: diseaseName!, date: dateString)
-					self.superScreen.initHealthyButton()
-					self.superScreen.healthyButton.frame.origin.x += self.frame.width
-					self.forwards()
-				} else {
-					self.setError()
-				}
-			})
-		} else {
-			setError()
-		}
-	}
-	
-	// Sends the sickness data to the server
-	func sendToServer(latitude: String, longitude: String, diseaseName: String, date: String) {
-		var request = URLRequest(url: URL(string: "https://rbradford.thaumavor.io/iOS_Programs/Epidemik/recieveDisease.php")!)
-		request.httpMethod = "POST"
-		let postString = "date="+date + "&latitude=" + latitude + "&longitude=" + longitude
-			+ "&disease_name=" + diseaseName + "&deviceID=" + UIDevice.current.identifierForVendor!.uuidString
-		FileRW.writeFile(fileName: "sickness.epi", contents: postString)
-		request.httpBody = postString.data(using: .utf8)
-		let task = URLSession.shared.dataTask(with: request) { data, response, error in
-			
-			guard let _ = data, error == nil else {
-				print("error=\(String(describing: error))")
-				return
-			}
-			if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
-				print("statusCode should be 200, but is \(httpStatus.statusCode)")
-				print("response = \(String(describing: response))")
-				return
-			}
-			let responseString = String(data: data!, encoding: .utf8)
-			print(responseString ?? "")
-		}
-		task.resume()
-	}
-	
-	func setError() {
-		
+		Reporting.amSick(diseaseName: diseaseSelector.timeTextField!.text!)
+		self.endEditing(true)
+		self.superScreen.initHealthyButton()
+		self.superScreen.healthyButton.frame.origin.x += self.frame.width
+		self.forwards()
 	}
 	
 	

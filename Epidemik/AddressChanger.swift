@@ -39,7 +39,7 @@ public class ADDRESS {
 					let location = buffer.location;
 					currentView.endEditing(true)
 					let appDelegate = UIApplication.shared.delegate as! AppDelegate
-					appDelegate.sendDeviceTokenToServer(latitude: String(describing: location!.coordinate.latitude), longitude: String(describing: location!.coordinate.longitude), viewController:  UIApplication.shared.delegate?.window??.rootViewController as! ViewController)
+					appDelegate.sendDeviceTokenToServer(latitude: String(describing: location!.coordinate.latitude), longitude: String(describing: location!.coordinate.longitude), viewController:  UIApplication.shared.delegate?.window??.rootViewController as? ViewController)
 				} else {
 					self.setError(currentView: currentView)
 				}

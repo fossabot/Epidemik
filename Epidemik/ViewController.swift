@@ -31,6 +31,8 @@ class ViewController: UIViewController {
 	
 	var introGraphic: UIView!
 	
+	var shouldDisplaySicknessSelector = false
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		self.displayIntroGraphics() //Display the intro graphic again
@@ -59,6 +61,9 @@ class ViewController: UIViewController {
 		mainView = MainHolder(frame: self.view.frame)
 		self.view.addSubview(mainView)
 		self.view.sendSubview(toBack: mainView)
+		if shouldDisplaySicknessSelector == true {
+			self.displayDiseaseSelector()
+		}
 	}
 	
 	// Creates the view that holds all the intro screens
@@ -108,6 +113,21 @@ class ViewController: UIViewController {
 		UIView.animate(withDuration: 0.5, animations: {
 			cannotRun.frame.origin.x -= self.view.frame.width
 		})
+	}
+	
+	func refreshSicknessScreen() {
+		if mainView != nil {
+			mainView.refreshSicknessScreen()
+		}
+	}
+	
+	func displayDiseaseSelector() {
+		if mainView != nil {
+			mainView.displayDiseaseSelector()
+			shouldDisplaySicknessSelector = false
+		} else {
+			shouldDisplaySicknessSelector = true
+		}
 	}
 	
 	

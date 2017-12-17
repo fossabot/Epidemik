@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0008CE2C1FE6CFA1006FD767 /* QuickTouch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0008CE2B1FE6CFA1006FD767 /* QuickTouch.swift */; };
+		0008CE2E1FE6D158006FD767 /* ReportingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0008CE2D1FE6D158006FD767 /* ReportingService.swift */; };
 		0010A42D1F8008A800D12495 /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0010A42C1F8008A800D12495 /* ButtonExtension.swift */; };
 		0010A42F1F800DD000D12495 /* ScrollSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0010A42E1F800DD000D12495 /* ScrollSelector.swift */; };
 		0011DBB81F6C0EBA004212E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0011DBB71F6C0EBA004212E1 /* AppDelegate.swift */; };
@@ -62,6 +64,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0008CE2B1FE6CFA1006FD767 /* QuickTouch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickTouch.swift; sourceTree = "<group>"; };
+		0008CE2D1FE6D158006FD767 /* ReportingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportingService.swift; sourceTree = "<group>"; };
 		0010A42C1F8008A800D12495 /* ButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtension.swift; sourceTree = "<group>"; };
 		0010A42E1F800DD000D12495 /* ScrollSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollSelector.swift; sourceTree = "<group>"; };
 		0011DBB41F6C0EBA004212E1 /* Epidemik.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Epidemik.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,6 +135,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0008CE2A1FE6CF93006FD767 /* QuickTouch */ = {
+			isa = PBXGroup;
+			children = (
+				0008CE2B1FE6CFA1006FD767 /* QuickTouch.swift */,
+			);
+			name = QuickTouch;
+			sourceTree = "<group>";
+		};
 		0011DBAB1F6C0EBA004212E1 = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +166,7 @@
 		0011DBB61F6C0EBA004212E1 /* Epidemik */ = {
 			isa = PBXGroup;
 			children = (
+				0008CE2A1FE6CF93006FD767 /* QuickTouch */,
 				009CE9E11F8FFFFD00D224F0 /* MainHolder.swift */,
 				0018BCD61FE0BDA7008DCDE5 /* Settings */,
 				00FC190E1FB3DEA900D8FD97 /* Trends */,
@@ -220,6 +233,7 @@
 			children = (
 				0083AD241F795BD8007AEF87 /* SicknessScreen.swift */,
 				0083AD261F795C50007AEF87 /* DiseaseNameScreen.swift */,
+				0008CE2D1FE6D158006FD767 /* ReportingService.swift */,
 			);
 			name = "Sickness Registration";
 			sourceTree = "<group>";
@@ -434,6 +448,8 @@
 				00BD462D1FE19AF50009A4B5 /* BarSelector.swift in Sources */,
 				00EBE4AF1F9D2BE6005A8E6B /* UserAgreementPt2.swift in Sources */,
 				00F2F04E1F7F0B8300BC3120 /* UserAgreementPt1.swift in Sources */,
+				0008CE2C1FE6CFA1006FD767 /* QuickTouch.swift in Sources */,
+				0008CE2E1FE6D158006FD767 /* ReportingService.swift in Sources */,
 				00EE1AA31FCB4D58006FDBFD /* TimeSelector.swift in Sources */,
 				00A5E7A71F6C415E004535D9 /* AppDescription.swift in Sources */,
 				0011DBB81F6C0EBA004212E1 /* AppDelegate.swift in Sources */,

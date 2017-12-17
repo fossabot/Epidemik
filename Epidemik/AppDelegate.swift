@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	}
 	
 	func applicationWillEnterForeground(_ application: UIApplication) {
-		// Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+		refreshSicknessScreen(application: application)
 	}
 	
 	func applicationDidBecomeActive(_ application: UIApplication) {
@@ -74,7 +74,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			}
 			let responseString = String(data: data!, encoding: .utf8)
 			if viewController != nil {
-				print(responseString)
 				DispatchQueue.main.sync {
 					if(responseString == "0") {
 						viewController!.showCannotRun()
@@ -89,7 +88,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	
 	func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
 	}
+
+	func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+		completionHandler(shouldPerformActionFor(shortcutItem: shortcutItem, application: application))
+	}
 	
+	private func shouldPerformActionFor(shortcutItem: UIApplicationShortcutItem, application: UIApplication) -> Bool {
+		let shortcutType = shortcutItem.type
+		let shortcutIdentifier = shortcutType.components(separatedBy: ".").last
+		switch shortcutIdentifier! {
+		case "HealthyButton":
+			Reporting.amHealthy()
+			refreshSicknessScreen(application: application)
+		case "CommonColdButton":
+			Reporting.amSick(diseaseName: "Common Cold")
+			refreshSicknessScreen(application: application)
+		case "FluButton":
+			Reporting.amSick(diseaseName: "Flu")
+			refreshSicknessScreen(application: application)
+		case "MoreButton":
+			displayDiseaseSelector(application: application)
+		default:
+			displayDiseaseSelector(application: application)
+		}
+		return false
+	}
 	
+	func refreshSicknessScreen(application: UIApplication) {
+		let vc = application.keyWindow?.rootViewController as! ViewController
+		vc.refreshSicknessScreen()
+	}
+	
+	func displayDiseaseSelector(application: UIApplication) {
+		let vc = application.keyWindow?.rootViewController as! ViewController
+		vc.refreshSicknessScreen()
+		vc.displayDiseaseSelector()
+		
+	}
 }
 

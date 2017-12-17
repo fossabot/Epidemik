@@ -20,6 +20,8 @@ public class MainHolder: UIView {
 	var sickButton: UIButton!
 	var trendsButton: UIButton!
 	
+	var settingsButton: UIButton!
+	
 	var settings: SettingsView!
 	var isSettings = false
 	
@@ -151,10 +153,11 @@ public class MainHolder: UIView {
 	
 	func initSettings() {
 		let settingsImage = UIImage(named: "settings.png")
-		let settingsButton = UIButton(frame: CGRect(x: 3*self.frame.width/32-self.frame.height/32, y: self.frame.height/16, width: self.frame.height/16, height: self.frame.height/16))
+		settingsButton = UIButton(frame: CGRect(x: 3*self.frame.width/32-self.frame.height/32, y: self.frame.height/16, width: self.frame.height/16, height: self.frame.height/16))
 		settingsButton.backgroundColor = UIColor.clear
 		settingsButton.setImage(settingsImage, for: .normal)
 		settingsButton.addTarget(self, action: #selector(MainHolder.showSettings(_:)), for: .touchUpInside)
+		settingsButton.window?.windowLevel = UIWindowLevelStatusBar
 		self.addSubview(settingsButton)
 	}
 	
@@ -165,6 +168,24 @@ public class MainHolder: UIView {
 		UIView.animate(withDuration: 0.5, animations: {
 			self.settings.frame.origin.y += self.frame.height
 		})
+	}
+	
+	func refreshSicknessScreen() {
+		if(sicknessScreen != nil) {
+			let currentX = sicknessScreen.frame.origin.x
+			sicknessScreen.removeFromSuperview()
+			initSickness()
+			sicknessScreen.frame.origin.x = currentX
+			transisitionToSick(nil)
+			self.bringSubview(toFront: settingsButton)
+			self.bringSubview(toFront: mapButton)
+			self.bringSubview(toFront: trendsButton)
+			self.bringSubview(toFront: sickButton)
+		}
+	}
+	
+	func displayDiseaseSelector() {
+		sicknessScreen.amSick(nil)
 	}
 	
 }
