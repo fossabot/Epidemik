@@ -20,6 +20,9 @@ public class MainHolder: UIView {
 	var sickButton: UIButton!
 	var trendsButton: UIButton!
 	
+	var settings: SettingsView!
+	var isSettings = false
+	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		initMap()
@@ -156,12 +159,12 @@ public class MainHolder: UIView {
 	}
 	
 	@objc func showSettings(_ sender: UIButton?) {
-		let settingsScreen = SettingsView(frame: CGRect(x: 0, y: -self.frame.height, width: self.frame.width, height: self.frame.height), mainView: self)
-		self.addSubview(settingsScreen)
+		isSettings = true
+		settings = SettingsView(frame: CGRect(x: 0, y: -self.frame.height, width: self.frame.width, height: self.frame.height), mainView: self)
+		self.addSubview(settings)
 		UIView.animate(withDuration: 0.5, animations: {
-			settingsScreen.frame.origin.y += self.frame.height
+			self.settings.frame.origin.y += self.frame.height
 		})
-		
 	}
 	
 }

@@ -11,36 +11,36 @@ import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+	
 	var window: UIWindow?
 	var deviceToken: String?
 	var introHolder: TutorialHolder?
-
+	
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 		// Override point for customization after application launch.
 		//sendDeviceTokenToServer()
 		//sendTestPOST()
 		return true
 	}
-
+	
 	func applicationWillResignActive(_ application: UIApplication) {
 		// Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
 		// Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
 	}
-
+	
 	func applicationDidEnterBackground(_ application: UIApplication) {
 		// Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
 		// If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 	}
-
+	
 	func applicationWillEnterForeground(_ application: UIApplication) {
 		// Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
 	}
-
+	
 	func applicationDidBecomeActive(_ application: UIApplication) {
 		// Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 	}
-
+	
 	func applicationWillTerminate(_ application: UIApplication) {
 		// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 	}
@@ -49,7 +49,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		if introHolder != nil {
 			introHolder!.goToNext()
 		}
-		
 	}
 	
 	func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
@@ -57,13 +56,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		self.deviceToken = deviceTokenString
 	}
 	
-	func sendDeviceTokenToServer(latitude: String, longitude: String, transition: AddressAsk?) {
+	func sendDeviceTokenToServer(latitude: String, longitude: String, viewController: ViewController?) {
 		var request = URLRequest(url: URL(string: "https://rbradford.thaumavor.io/iOS_Programs/Epidemik/Notifications/recieveDeviceID.php")!)
 		request.httpMethod = "POST"
 		let postString = "deviceToken="+self.deviceToken! + "&latitude=" + latitude + "&longitude=" + longitude
 		request.httpBody = postString.data(using: .utf8)
 		let task = URLSession.shared.dataTask(with: request) { data, response, error in
-		
+			
 			guard let _ = data, error == nil else {
 				print("error=\(String(describing: error))")
 				return
@@ -74,8 +73,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 				return
 			}
 			let responseString = String(data: data!, encoding: .utf8)
-			if transition != nil {
-				transition!.transitonProperly(result: responseString!)
+			if viewController != nil {
+				print(responseString)
+				DispatchQueue.main.sync {
+					if(responseString == "0") {
+						viewController!.showCannotRun()
+					} else {
+						viewController!.showMainView()
+					}
+				}
 			}
 		}
 		task.resume()
@@ -83,7 +89,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	
 	func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
 	}
-
-
+	
+	
 }
 

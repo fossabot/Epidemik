@@ -19,9 +19,7 @@ public class TutorialHolder: UIView {
 	var addressScreen: AddressAsk!
 	var userAgreementPt1: UserAgreementPt1!
 	var userAgreementPt2: UserAgreementPt2!
-	
-	var shouldDisplay = true
-	
+		
 	var vc = UIApplication.shared.delegate?.window??.rootViewController as! ViewController
 	
 	public override init(frame: CGRect) {
@@ -99,8 +97,7 @@ public class TutorialHolder: UIView {
 	func checkLocation() {
 		let address = FileRW.readFile(fileName: "address.epi")
 		if address == nil {
-			self.shouldDisplay = true
-			self.vc.displayWalkthroughOrMainView()
+			self.vc.removeIntroGraphics()
 			return
 		}
 		let geocoder = CLGeocoder()
@@ -113,8 +110,7 @@ public class TutorialHolder: UIView {
 			} else {
 				self.addressScreen.shouldAdd = true
 				self.addObjectsToScreen()
-				self.shouldDisplay = true
-				self.vc.displayWalkthroughOrMainView()
+				self.vc.removeIntroGraphics()
 			}
 		})
 	}
@@ -138,16 +134,16 @@ public class TutorialHolder: UIView {
 			
 			DispatchQueue.main.sync {
 				if(responseString == "0") {
-					self.showCannotRun()
-					self.shouldDisplay = true
+					self.vc.showCannotRun()
 				} else {
 					if(self.tutorialScreens.count == 0) {
-						self.shouldDisplay = false
+						self.vc.initMainScreen()
+						self.vc.removeIntroGraphics()
+						self.vc.removeWalkthrough()
 					} else {
-						self.shouldDisplay = true
+						self.vc.removeIntroGraphics()
 					}
 				}
-				self.vc.displayWalkthroughOrMainView()
 				
 			}
 			
@@ -167,12 +163,5 @@ public class TutorialHolder: UIView {
 		self.tutorialScreens.remove(at: 0)
 	}
 	
-	func showCannotRun() {
-		let cannotRun = CannotRun(frame: CGRect(x: self.frame.width, y: 0, width: self.frame.width, height: self.frame.height), holder: self)
-		self.addSubview(cannotRun)
-		UIView.animate(withDuration: 0.5, animations: {
-			cannotRun.frame.origin.x -= self.frame.width
-		})
-	}
 	
 }

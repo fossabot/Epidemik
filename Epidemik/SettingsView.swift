@@ -22,8 +22,6 @@ public class SettingsView: UIView {
 	
 	var mainView: MainHolder!
 	
-	var FILE_NAME = "address.epi"
-	
 	public init(frame: CGRect, mainView: MainHolder) {
 		self.mainView = mainView
 		super.init(frame: frame)
@@ -48,51 +46,8 @@ public class SettingsView: UIView {
 	}
 	
 	@objc func changeAddress(_ sender: UIButton?) {
-		updateDeviceToken()
-		getAddress(message: "What is Your New Address?")
-	}
-	
-	func getAddress(message: String) {
-		let alert = UIAlertController(title: "Address", message: message, preferredStyle: UIAlertControllerStyle.alert)
-		alert.addAction(UIAlertAction(title: "Ok", style: .default, handler:{ (alertAction:UIAlertAction) in
-			let textf1 = alert.textFields![0] as UITextField
-			self.convertToCordinates(address: textf1.text!)
-		}))
-		alert.addTextField(configurationHandler: {(textField: UITextField) in
-			textField.placeholder = "1 Main St. New York, NY"
-			textField.isSecureTextEntry = false
-		})
-		UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
-	}
-	
-	func convertToCordinates(address: String) {
-		if (address != "") {
-			FileRW.writeFile(fileName: self.FILE_NAME, contents: address)
-			let geocoder = CLGeocoder()
-			geocoder.geocodeAddressString(address, completionHandler: {(placemarks, error) -> Void in
-				if(error != nil) {
-					self.setError()
-				} else if let buffer = placemarks?[0] {
-					let location = buffer.location;
-					self.endEditing(true)
-					let appDelegate = UIApplication.shared.delegate as! AppDelegate
-					appDelegate.sendDeviceTokenToServer(latitude: String(describing: location!.coordinate.latitude), longitude: String(describing: location!.coordinate.longitude), transition: nil)
-				} else {
-					self.setError()
-				}
-			})
-		} else {
-			setError()
-		}
-	}
-	
-	func setError() {
-		getAddress(message: "Please Enter A Valid Address")
-	}
-	
-	func updateDeviceToken() {
-		UNUserNotificationCenter.current().requestAuthorization(options:[.alert, .sound]){ (granted, error) in }
-		UIApplication.shared.registerForRemoteNotifications()
+		ADDRESS.updateDeviceToken()
+		ADDRESS.askForNewAddress(message: "What is Your New Address?", currentView: self)
 	}
 	
 	func initDetailSelector() {
@@ -101,9 +56,9 @@ public class SettingsView: UIView {
 		
 		
 		let textOffset = CGFloat(10)
-
+		
 		createDetailTextBox(x: 0, y: 2*smallButtonGap+smallButtonHeight+textOffset, message: "High Preformance")
-
+		
 		createDetailTextBox(x: (self.frame.width+smallButtonWidth)/2, y: 2*smallButtonGap+smallButtonHeight+textOffset, message: "High Detail")
 	}
 	

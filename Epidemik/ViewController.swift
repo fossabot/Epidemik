@@ -12,27 +12,29 @@ import MapKit
 //Crowd Sourced Disease
 
 //App Parts
-	//Map
-		//Can be displayed versus time
-	//Notifications for disease
-		//When a disease is spreading in an area
-	//Disease Reporting
-		//Allows the user to say when they are sick
-		//Allows the user to report when they are better
-		//Say what type of sickness they have?
-	//Startup Screen
-		//User reports where they live
+//Map
+//Can be displayed versus time
+//Notifications for disease
+//When a disease is spreading in an area
+//Disease Reporting
+//Allows the user to say when they are sick
+//Allows the user to report when they are better
+//Say what type of sickness they have?
+//Startup Screen
+//User reports where they live
 
 class ViewController: UIViewController {
-
+	
 	var appWalkThrough: TutorialHolder!
+	
+	var mainView: MainHolder!
 	
 	var introGraphic: UIView!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		self.displayIntroGraphics() //Display the intro graphic again
-									//Maybe have it do something fancy?
+		//Maybe have it do something fancy?
 		self.initWalkthrough()
 		// Do any additional setup after loading the view, typically from a nib.
 	}
@@ -43,20 +45,20 @@ class ViewController: UIViewController {
 		self.view.addSubview(introGraphic)
 		usleep(500000)
 	}
-
+	
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
 	}
-
+	
 	// Creates the main screen that handles the three seperate views
 	// - Left: Map
 	// - Middle: Sickness Screen
 	// - Right: Trends
 	func initMainScreen() {
-		let view = MainHolder(frame: self.view.frame)
-		self.view.addSubview(view)
-		self.view.sendSubview(toBack: view)
+		mainView = MainHolder(frame: self.view.frame)
+		self.view.addSubview(mainView)
+		self.view.sendSubview(toBack: mainView)
 	}
 	
 	// Creates the view that holds all the intro screens
@@ -65,16 +67,6 @@ class ViewController: UIViewController {
 		self.view.addSubview(appWalkThrough)
 		self.view.sendSubview(toBack: appWalkThrough)
 		appWalkThrough.checkLocation()
-	}
-	
-	func displayWalkthroughOrMainView() {
-		if appWalkThrough.shouldDisplay {
-			removeIntroGraphics()
-		} else {
-			self.initMainScreen()
-			removeIntroGraphics()
-			removeWalkthrough()
-		}
 	}
 	
 	func removeIntroGraphics() {
@@ -94,7 +86,30 @@ class ViewController: UIViewController {
 			self.appWalkThrough.removeFromSuperview()
 		})
 	}
-
-
+	
+	func showMainView() {
+		if (mainView == nil) {
+			initMainScreen()
+		}
+		if mainView.isSettings {
+			self.mainView.settings.removeSelf(nil)
+		}
+		self.mainView.frame = CGRect(x: self.view.frame.width, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+		self.view.bringSubview(toFront: self.mainView)
+		UIView.animate(withDuration: 0.5, animations: {
+			self.mainView.frame.origin.x -= self.view.frame.width
+		})
+		
+	}
+	
+	func showCannotRun() {
+		let cannotRun = CannotRun(frame: CGRect(x: self.view.frame.width, y: 0, width: self.view.frame.width, height: self.view.frame.height), holder: self.appWalkThrough)
+		self.view.addSubview(cannotRun)
+		UIView.animate(withDuration: 0.5, animations: {
+			cannotRun.frame.origin.x -= self.view.frame.width
+		})
+	}
+	
+	
 }
 
