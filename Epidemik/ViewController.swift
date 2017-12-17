@@ -35,6 +35,7 @@ class ViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		print(FileRW.readFile(fileName: "address.epi"))
 		self.displayIntroGraphics() //Display the intro graphic again
 		//Maybe have it do something fancy?
 		self.initWalkthrough()
