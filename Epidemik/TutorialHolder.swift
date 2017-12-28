@@ -19,7 +19,9 @@ public class TutorialHolder: UIView {
 	var addressScreen: AddressAsk!
 	var userAgreementPt1: UserAgreementPt1!
 	var userAgreementPt2: UserAgreementPt2!
-		
+	var userAgreementPt3: UserAgreementPt3!
+	var userAgreementPt4: UserAgreementPt4!
+	
 	var vc = UIApplication.shared.delegate?.window??.rootViewController as! ViewController
 	
 	public override init(frame: CGRect) {
@@ -38,6 +40,8 @@ public class TutorialHolder: UIView {
 		addressScreen = AddressAsk(frame: offsetFrame, holder: self)
 		userAgreementPt1 = UserAgreementPt1(frame: offsetFrame, holder: self)
 		userAgreementPt2 = UserAgreementPt2(frame: offsetFrame, holder: self)
+		userAgreementPt3 = UserAgreementPt3(frame: offsetFrame, holder: self)
+		userAgreementPt4 = UserAgreementPt4(frame: offsetFrame, holder: self)
 	}
 	
 	func addObjectsToScreen() {
@@ -59,6 +63,8 @@ public class TutorialHolder: UIView {
 	func initUserAgreement() {
 		addTutorialView(view: userAgreementPt1)
 		addTutorialView(view: userAgreementPt2)
+		addTutorialView(view: userAgreementPt3)
+		addTutorialView(view: userAgreementPt4)
 	}
 	
 	func initDescription() {

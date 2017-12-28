@@ -31,6 +31,8 @@
 		006858C91F8AA6F2007F6C7E /* DiseasePolygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006858C81F8AA6F2007F6C7E /* DiseasePolygon.swift */; };
 		0079189B1FF56C4900DB03D3 /* TransitionControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0079189A1FF56C4900DB03D3 /* TransitionControls.swift */; };
 		0079189D1FF58D8700DB03D3 /* Diseases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0079189C1FF58D8700DB03D3 /* Diseases.swift */; };
+		0079189F1FF591CB00DB03D3 /* UserAgreementPt3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0079189E1FF591CB00DB03D3 /* UserAgreementPt3.swift */; };
+		007918A11FF591D600DB03D3 /* UserAgreementPt4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007918A01FF591D600DB03D3 /* UserAgreementPt4.swift */; };
 		0083AD251F795BD8007AEF87 /* SicknessScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0083AD241F795BD8007AEF87 /* SicknessScreen.swift */; };
 		0083AD271F795C50007AEF87 /* DiseaseNameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0083AD261F795C50007AEF87 /* DiseaseNameScreen.swift */; };
 		008DE0341FD7381B0049EDD3 /* CannotRun.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008DE0331FD7381B0049EDD3 /* CannotRun.swift */; };
@@ -126,6 +128,8 @@
 		006858C81F8AA6F2007F6C7E /* DiseasePolygon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseasePolygon.swift; sourceTree = "<group>"; };
 		0079189A1FF56C4900DB03D3 /* TransitionControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionControls.swift; sourceTree = "<group>"; };
 		0079189C1FF58D8700DB03D3 /* Diseases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diseases.swift; sourceTree = "<group>"; };
+		0079189E1FF591CB00DB03D3 /* UserAgreementPt3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAgreementPt3.swift; sourceTree = "<group>"; };
+		007918A01FF591D600DB03D3 /* UserAgreementPt4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAgreementPt4.swift; sourceTree = "<group>"; };
 		0083AD241F795BD8007AEF87 /* SicknessScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SicknessScreen.swift; sourceTree = "<group>"; };
 		0083AD261F795C50007AEF87 /* DiseaseNameScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseNameScreen.swift; sourceTree = "<group>"; };
 		008DE0331FD7381B0049EDD3 /* CannotRun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CannotRun.swift; sourceTree = "<group>"; };
@@ -287,6 +291,8 @@
 				00CD77F91F7843EA002B5C78 /* AddressAsk.swift */,
 				00F2F04D1F7F0B8300BC3120 /* UserAgreementPt1.swift */,
 				00EBE4AE1F9D2BE6005A8E6B /* UserAgreementPt2.swift */,
+				0079189E1FF591CB00DB03D3 /* UserAgreementPt3.swift */,
+				007918A01FF591D600DB03D3 /* UserAgreementPt4.swift */,
 				008DE0331FD7381B0049EDD3 /* CannotRun.swift */,
 			);
 			name = "Start Up";
@@ -561,6 +567,8 @@
 				00BC4F701F81746C0018D5D8 /* Map.swift in Sources */,
 				00EBE4B11F9D2EC1005A8E6B /* ColorScheme.swift in Sources */,
 				009CE9E21F8FFFFD00D224F0 /* MainHolder.swift in Sources */,
+				007918A11FF591D600DB03D3 /* UserAgreementPt4.swift in Sources */,
+				0079189F1FF591CB00DB03D3 /* UserAgreementPt3.swift in Sources */,
 				00F2F0521F7F1ECD00BC3120 /* ButtonSelector.swift in Sources */,
 				00A5E7A31F6C414D004535D9 /* ContinueArrow.swift in Sources */,
 				00BD46311FE1C6F20009A4B5 /* AddressChanger.swift in Sources */,
