@@ -24,6 +24,7 @@ public class SettingsView: UIView {
 	
 	public init(frame: CGRect, mainView: MainHolder) {
 		self.mainView = mainView
+		self.mainView.endEditing(true)
 		super.init(frame: frame)
 		smallButtonWidth = 3*frame.width/5
 		smallButtonHeight = self.frame.height/8
