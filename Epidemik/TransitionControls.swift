@@ -31,6 +31,7 @@ open class TransitionControls: NSObject {
 		swipeRight = UISwipeGestureRecognizer()
 		swipeRight!.addTarget(self, action: #selector(TransitionControls.transitionLeft))
 		swipeRight!.direction = .right
+		
 		mainView.addGestureRecognizer(swipeLeft!)
 		mainView.addGestureRecognizer(swipeRight!)
 		mainView.isUserInteractionEnabled = true

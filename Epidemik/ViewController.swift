@@ -35,7 +35,6 @@ class ViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		print(FileRW.readFile(fileName: "address.epi"))
 		self.displayIntroGraphics() //Display the intro graphic again
 		//Maybe have it do something fancy?
 		self.initWalkthrough()
@@ -44,7 +43,7 @@ class ViewController: UIViewController {
 	
 	func displayIntroGraphics() {
 		introGraphic = UIView(frame: self.view.frame)
-		introGraphic.backgroundColor = UIColor.blue
+		introGraphic.backgroundColor = UIColor.white
 		self.view.addSubview(introGraphic)
 		usleep(500000)
 	}
