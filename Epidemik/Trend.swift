@@ -53,7 +53,12 @@ public class Trend: UIView {
 	func initLabel() {
 		let toReturn = UITextView(frame: CGRect(x: self.frame.height, y: 0, width: self.frame.width, height: 100))
 		toReturn.text = "Name: " + name + "\n  Infection Chance: " + String(round(10*weight)/10) + "%"
-		toReturn.font = UIFont(name: "Helvetica", size: 20)
+		if self.frame.width > 350 {
+			toReturn.font = UIFont(name: "Helvetica", size: 20)
+		} else {
+			toReturn.font = UIFont(name: "Helvetica", size: 15)
+		}
+		
 		toReturn.backgroundColor = UIColor.clear
 		toReturn.isEditable = false
 		toReturn.isSelectable = false

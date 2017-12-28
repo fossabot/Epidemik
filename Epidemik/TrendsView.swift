@@ -28,7 +28,7 @@ public class TrendsView: UIScrollView {
 	func getAddressInfo() {
 		let address = FileRW.readFile(fileName: "address.epi")
 		
-		if (address != "") {
+		if (address != nil && address != "") {
 			let geocoder = CLGeocoder()
 			geocoder.geocodeAddressString(address!, completionHandler: {(placemarks, error) -> Void in
 				if(error != nil) {

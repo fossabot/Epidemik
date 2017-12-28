@@ -61,6 +61,8 @@ class Map: MKMapView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 	func initTimeSelector() {
 		let frame = CGRect(x: self.frame.width*3/16, y: self.frame.height/16, width: self.frame.width*5/8, height: self.frame.height/16)
 		filterBar = TimeSelector(frame: frame, map: self)
+		filterBar.setTitle("Timeline", for: .normal)
+		filterBar.titleLabel!.font = UIFont(name: "Helvetica", size: 15)
 		self.addSubview(filterBar)
 	}
 	

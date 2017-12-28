@@ -46,9 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	}
 	
 	func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-		if introHolder != nil {
-			introHolder!.goToNext()
-		}
+
 	}
 	
 	func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
@@ -57,6 +55,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	}
 	
 	func sendDeviceTokenToServer(latitude: String, longitude: String, viewController: ViewController?) {
+		if deviceToken == nil {
+			deviceToken = "0"
+		}
 		var request = URLRequest(url: URL(string: "https://rbradford.thaumavor.io/iOS_Programs/Epidemik/Notifications/recieveDeviceID.php")!)
 		request.httpMethod = "POST"
 		let postString = "deviceToken="+self.deviceToken! + "&latitude=" + latitude + "&longitude=" + longitude

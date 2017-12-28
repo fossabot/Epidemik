@@ -97,6 +97,7 @@ public class TutorialHolder: UIView {
 	func checkLocation() {
 		let address = FileRW.readFile(fileName: "address.epi")
 		if address == nil {
+			self.addressScreen.shouldAdd = true
 			self.vc.removeIntroGraphics()
 			return
 		}

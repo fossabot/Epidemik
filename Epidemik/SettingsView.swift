@@ -65,7 +65,8 @@ public class SettingsView: UIView {
 	func createDetailTextBox(x: CGFloat, y: CGFloat, message: String) {
 		let toAdd = UITextView(frame: CGRect(x: x, y: y, width: (self.frame.width-smallButtonWidth)/2, height: smallButtonHeight))
 		toAdd.text = message
-		toAdd.font = UIFont(name: "Helvetica", size: 11)
+		toAdd.font = UIFont(name: "Helvetica", size: 9)
+		toAdd.isSelectable = false
 		toAdd.textColor = UIColor.white
 		toAdd.backgroundColor = UIColor.clear
 		toAdd.textAlignment = NSTextAlignment.center

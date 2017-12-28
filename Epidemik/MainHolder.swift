@@ -12,7 +12,7 @@ import UIKit
 public class MainHolder: UIView {
 	
 	var mapView: Map!
-	var sicknessScreen: SicknessScreen!
+	var sicknessView: SicknessScreen!
 	var trendsView: TrendsView!
 	var mapBlur: UIVisualEffectView!
 	
@@ -25,6 +25,8 @@ public class MainHolder: UIView {
 	var settings: SettingsView!
 	var isSettings = false
 	
+	var transControls: TransitionControls!
+	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		initMap()
@@ -33,6 +35,7 @@ public class MainHolder: UIView {
 		initTrends()
 		initChangeButtons()
 		initSettings()
+		initTransition()
 	}
 	
 	required public init?(coder aDecoder: NSCoder) {
@@ -40,8 +43,8 @@ public class MainHolder: UIView {
 	}
 	
 	func initSickness() {
-		sicknessScreen = SicknessScreen(frame: self.frame)
-		self.addSubview(sicknessScreen)
+		sicknessView = SicknessScreen(frame: self.frame)
+		self.addSubview(sicknessView)
 	}
 	
 	func initMap() {
@@ -71,20 +74,20 @@ public class MainHolder: UIView {
 			self.mapButton.alpha = 1
 			self.sickButton.alpha = 0.5
 			self.trendsButton.alpha = 0.5
-			self.sicknessScreen.alpha = 0
+			self.sicknessView.alpha = 0
 			
-			self.sicknessScreen.frame.origin.x = self.frame.width
+			self.sicknessView.frame.origin.x = self.frame.width
 			
 			self.trendsView.frame.origin.x = self.frame.width
 		})
 	}
 	
 	@objc func transisitionToSick(_ sender: UIButton?) {
-		if(sicknessScreen.frame.origin.x != 0) {
-			if(trendsView.frame.origin.x == 0 && sicknessScreen.frame.origin.x < 0) {
-				sicknessScreen.frame.origin.x = -self.frame.width
+		if(sicknessView.frame.origin.x != 0) {
+			if(trendsView.frame.origin.x == 0 && sicknessView.frame.origin.x < 0) {
+				sicknessView.frame.origin.x = -self.frame.width
 			} else {
-				sicknessScreen.frame.origin.x = self.frame.width
+				sicknessView.frame.origin.x = self.frame.width
 			}
 		}
 		UIView.animate(withDuration: 0.5, animations: {
@@ -94,8 +97,8 @@ public class MainHolder: UIView {
 			self.trendsButton.alpha = 0.5
 			self.sickButton.alpha = 1
 			
-			self.sicknessScreen.alpha = 1
-			self.sicknessScreen.frame.origin.x = 0
+			self.sicknessView.alpha = 1
+			self.sicknessView.frame.origin.x = 0
 			self.trendsView.frame.origin.x = self.frame.width
 			
 		})
@@ -108,8 +111,8 @@ public class MainHolder: UIView {
 			self.sickButton.alpha = 0.5
 			self.trendsButton.alpha = 1
 			
-			self.sicknessScreen.alpha = 0
-			self.sicknessScreen.frame.origin.x = -self.frame.width
+			self.sicknessView.alpha = 0
+			self.sicknessView.frame.origin.x = -self.frame.width
 			
 			self.trendsView.frame.origin.x = 0
 		})
@@ -123,7 +126,7 @@ public class MainHolder: UIView {
 	
 	func initTrendsButton() {
 		let trendsImage = UIImage(named: "trends.png")
-		trendsButton = UIButton(frame: CGRect(x: self.frame.width - 55, y: self.frame.height - 55, width: 50, height: 50))
+		trendsButton = UIButton(frame: CGRect(x: self.frame.width - 55, y: self.frame.height - 65, width: 50, height: 50))
 		trendsButton.backgroundColor = UIColor.clear
 		trendsButton.addTarget(self, action: #selector(MainHolder.transisitionToTrends(_:)), for: .touchUpInside)
 		trendsButton.setImage(trendsImage, for: .normal)
@@ -133,7 +136,7 @@ public class MainHolder: UIView {
 	
 	func initSickButton() {
 		let sickImage = UIImage(named: "sickness.png")
-		sickButton = UIButton(frame: CGRect(x: self.frame.width/2 - 25, y: self.frame.height - 55, width: 50, height: 50))
+		sickButton = UIButton(frame: CGRect(x: self.frame.width/2 - 25, y: self.frame.height - 65, width: 50, height: 50))
 		sickButton.backgroundColor = UIColor.clear
 		sickButton.addTarget(self, action: #selector(MainHolder.transisitionToSick(_:)), for: .touchUpInside)
 		sickButton.setImage(sickImage, for: .normal)
@@ -143,7 +146,7 @@ public class MainHolder: UIView {
 	
 	func initMapButton() {
 		let mapImage = UIImage(named: "globe2")
-		mapButton = UIButton(frame: CGRect(x: 5, y: self.frame.height - 55, width: 50, height: 50))
+		mapButton = UIButton(frame: CGRect(x: 5, y: self.frame.height - 65, width: 50, height: 50))
 		mapButton.backgroundColor = UIColor.clear
 		mapButton.addTarget(self, action: #selector(MainHolder.transisitionToMap(_:)), for: .touchUpInside)
 		mapButton.setImage(mapImage, for: .normal)
@@ -171,11 +174,11 @@ public class MainHolder: UIView {
 	}
 	
 	func refreshSicknessScreen() {
-		if(sicknessScreen != nil) {
-			let currentX = sicknessScreen.frame.origin.x
-			sicknessScreen.removeFromSuperview()
+		if(sicknessView != nil) {
+			let currentX = sicknessView.frame.origin.x
+			sicknessView.removeFromSuperview()
 			initSickness()
-			sicknessScreen.frame.origin.x = currentX
+			sicknessView.frame.origin.x = currentX
 			transisitionToSick(nil)
 			self.bringSubview(toFront: settingsButton)
 			self.bringSubview(toFront: mapButton)
@@ -185,7 +188,11 @@ public class MainHolder: UIView {
 	}
 	
 	func displayDiseaseSelector() {
-		sicknessScreen.amSick(nil)
+		sicknessView.amSick(nil)
+	}
+	
+	func initTransition() {
+		transControls = TransitionControls(mainView: self)
 	}
 	
 }

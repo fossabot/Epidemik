@@ -23,7 +23,7 @@ public class GeneralAskScreen: UIView {
 		super.init(frame: frame)
 		setShouldAdd()
 		self.backgroundColor = COLORS.COLOR_4
-		continueArrow = ContinueArrow(frame: CGRect(x: 30, y: 30, width: self.frame.width-60, height: self.frame.height/4), holder: holder)
+		continueArrow = ContinueArrow(frame: CGRect(x: 30, y: 40, width: self.frame.width-60, height: self.frame.height/4), holder: holder)
 		self.addSubview(continueArrow)
 	}
 	
