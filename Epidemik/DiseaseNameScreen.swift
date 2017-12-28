@@ -122,7 +122,7 @@ public class DiseaseNameScreen: UIView {
 	// A DiseaseSelector is a scrollable selector in the middle of the screen
 	// Creates the selector that lets the user select which disease they have
 	func initDiseaseSelector() {
-		diseaseSelector = ScrollSelector(frame: CGRect(x: 0, y: 4*self.frame.height/16, width: self.frame.width, height: 3*self.frame.height/8), items: ["Common Cold", "Flu" , "Measels", "Mumps", "Other"])
+		diseaseSelector = ScrollSelector(frame: CGRect(x: 0, y: 4*self.frame.height/16, width: self.frame.width, height: 3*self.frame.height/8), items: DISEASE_LIST.diseases)
 		self.addSubview(diseaseSelector)
 	}
 	

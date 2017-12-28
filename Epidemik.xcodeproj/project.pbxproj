@@ -30,6 +30,7 @@
 		0032F3421F808295001A9633 /* MapOverlayCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0032F3411F808295001A9633 /* MapOverlayCreator.swift */; };
 		006858C91F8AA6F2007F6C7E /* DiseasePolygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006858C81F8AA6F2007F6C7E /* DiseasePolygon.swift */; };
 		0079189B1FF56C4900DB03D3 /* TransitionControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0079189A1FF56C4900DB03D3 /* TransitionControls.swift */; };
+		0079189D1FF58D8700DB03D3 /* Diseases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0079189C1FF58D8700DB03D3 /* Diseases.swift */; };
 		0083AD251F795BD8007AEF87 /* SicknessScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0083AD241F795BD8007AEF87 /* SicknessScreen.swift */; };
 		0083AD271F795C50007AEF87 /* DiseaseNameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0083AD261F795C50007AEF87 /* DiseaseNameScreen.swift */; };
 		008DE0341FD7381B0049EDD3 /* CannotRun.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008DE0331FD7381B0049EDD3 /* CannotRun.swift */; };
@@ -124,6 +125,7 @@
 		005459151F749FCF00F73872 /* Epidemik.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Epidemik.entitlements; sourceTree = "<group>"; };
 		006858C81F8AA6F2007F6C7E /* DiseasePolygon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseasePolygon.swift; sourceTree = "<group>"; };
 		0079189A1FF56C4900DB03D3 /* TransitionControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionControls.swift; sourceTree = "<group>"; };
+		0079189C1FF58D8700DB03D3 /* Diseases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diseases.swift; sourceTree = "<group>"; };
 		0083AD241F795BD8007AEF87 /* SicknessScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SicknessScreen.swift; sourceTree = "<group>"; };
 		0083AD261F795C50007AEF87 /* DiseaseNameScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseNameScreen.swift; sourceTree = "<group>"; };
 		008DE0331FD7381B0049EDD3 /* CannotRun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CannotRun.swift; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 				0083AD241F795BD8007AEF87 /* SicknessScreen.swift */,
 				0083AD261F795C50007AEF87 /* DiseaseNameScreen.swift */,
 				0008CE2D1FE6D158006FD767 /* ReportingService.swift */,
+				0079189C1FF58D8700DB03D3 /* Diseases.swift */,
 			);
 			name = "Sickness Registration";
 			sourceTree = "<group>";
@@ -550,6 +553,7 @@
 				00CD77FA1F7843EA002B5C78 /* AddressAsk.swift in Sources */,
 				00E9A4C71F8EFA6C008C95BD /* Disease.swift in Sources */,
 				00A5E7A91F6C4170004535D9 /* GeneralAskScreen.swift in Sources */,
+				0079189D1FF58D8700DB03D3 /* Diseases.swift in Sources */,
 				00BD462F1FE19C620009A4B5 /* DetailSelector.swift in Sources */,
 				0010A42F1F800DD000D12495 /* ScrollSelector.swift in Sources */,
 				00FC19101FB3DEB700D8FD97 /* TrendsView.swift in Sources */,

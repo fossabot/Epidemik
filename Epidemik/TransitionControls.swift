@@ -24,6 +24,7 @@ open class TransitionControls: NSObject {
 	}
 
 	func initSwipeControl() {
+		
 		swipeLeft = UISwipeGestureRecognizer()
 		swipeLeft!.addTarget(self, action: #selector(TransitionControls.transitionRight))
 		swipeLeft!.direction = .left
@@ -38,6 +39,8 @@ open class TransitionControls: NSObject {
 	}
 	
 	@objc func transitionLeft(sender: UIGestureRecognizer!) {
+		mainView.endEditing(true)
+
 		if mainView.trendsView.frame.origin.x == 0.0 {
 			mainView.transisitionToSick(nil)
 		} else if mainView.sicknessView.frame.origin.x == 0.0 {
@@ -46,6 +49,8 @@ open class TransitionControls: NSObject {
 	}
 	
 	@objc func transitionRight(sender: UIGestureRecognizer!) {
+		mainView.endEditing(true)
+
 		if mainView.sicknessView.frame.origin.x == 0.0 {
 			mainView.transisitionToTrends(nil)
 		}
