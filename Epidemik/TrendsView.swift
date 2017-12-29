@@ -84,7 +84,7 @@ public class TrendsView: UIScrollView {
 			self.addSubview(toDisplay)
 		}
 		if(trends.count > 0) {
-			self.contentSize = CGSize(width: self.frame.width, height: (trends.last?.frame.origin.y)! + (trends.last?.frame.height)!)
+			self.contentSize = CGSize(width: self.frame.width, height: (trends.last?.frame.origin.y)! + 2*(trends.last?.frame.height)!)
 		}
 	}
 	
