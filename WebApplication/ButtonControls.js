@@ -39,7 +39,7 @@ function getInfection(lat, long) {
     var postString = "date=" + today +
             "&latitude=" + lat +
             "&longitude=" + long +
-            "&disease_name=" + "Common Cold" +
+            "&disease_name=" + "General Sickness" +
             "&deviceID=" + getDeviceID();
     localStorage['sickRequest'] = postString;
     sendPOST(postString);
