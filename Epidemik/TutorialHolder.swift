@@ -20,7 +20,6 @@ public class TutorialHolder: UIView {
 	var userAgreementPt1: UserAgreementPt1!
 	var userAgreementPt2: UserAgreementPt2!
 	var userAgreementPt3: UserAgreementPt3!
-	var userAgreementPt4: UserAgreementPt4!
 	
 	var vc = UIApplication.shared.delegate?.window??.rootViewController as! ViewController
 	
@@ -41,7 +40,6 @@ public class TutorialHolder: UIView {
 		userAgreementPt1 = UserAgreementPt1(frame: offsetFrame, holder: self)
 		userAgreementPt2 = UserAgreementPt2(frame: offsetFrame, holder: self)
 		userAgreementPt3 = UserAgreementPt3(frame: offsetFrame, holder: self)
-		userAgreementPt4 = UserAgreementPt4(frame: offsetFrame, holder: self)
 	}
 	
 	func addObjectsToScreen() {
@@ -64,7 +62,6 @@ public class TutorialHolder: UIView {
 		addTutorialView(view: userAgreementPt1)
 		addTutorialView(view: userAgreementPt2)
 		addTutorialView(view: userAgreementPt3)
-		addTutorialView(view: userAgreementPt4)
 	}
 	
 	func initDescription() {
@@ -113,49 +110,19 @@ public class TutorialHolder: UIView {
 			} else if let buffer = placemarks?[0] {
 				let location = buffer.location;
 				self.endEditing(true)
-				self.checkActiveRegion(latitude: (location?.coordinate.latitude)!, longitude: (location?.coordinate.longitude)!)
+				if(self.tutorialScreens.count == 0) {
+					self.vc.initMainScreen()
+					self.vc.removeIntroGraphics()
+					self.vc.removeWalkthrough()
+				} else {
+					self.vc.removeIntroGraphics()
+				}
 			} else {
 				self.addressScreen.shouldAdd = true
 				self.addObjectsToScreen()
 				self.vc.removeIntroGraphics()
 			}
 		})
-	}
-	
-	func checkActiveRegion(latitude: Double, longitude: Double) {
-		var request = URLRequest(url: URL(string: "https://rbradford.thaumavor.io/iOS_Programs/Epidemik/isActive.php")!)
-		request.httpMethod = "POST"
-		let postString = "latitude=" + String(latitude) + "&longitude=" + String(longitude)
-		request.httpBody = postString.data(using: .utf8)
-		let task = URLSession.shared.dataTask(with: request) { data, response, error in
-			guard let _ = data, error == nil else {
-				print("error=\(String(describing: error))")
-				return
-			}
-			if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
-				print("statusCode should be 200, but is \(httpStatus.statusCode)")
-				print("response = \(String(describing: response))")
-				return
-			}
-			let responseString = String(data: data!, encoding: .utf8)
-			
-			DispatchQueue.main.sync {
-				if(responseString == "0") {
-					self.vc.showCannotRun()
-				} else {
-					if(self.tutorialScreens.count == 0) {
-						self.vc.initMainScreen()
-						self.vc.removeIntroGraphics()
-						self.vc.removeWalkthrough()
-					} else {
-						self.vc.removeIntroGraphics()
-					}
-				}
-				
-			}
-			
-		}
-		task.resume()
 	}
 	
 	func goToNext() {

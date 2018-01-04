@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="stylesheet.css"></head>
+</head>
+<body style="margin: 0;">
+    <div id="map">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src = "DeviceID.js"></script>
+        <script src = "ButtonControls.js"></script>
+        <script src = "DiseasePolygon.js"></script>
+        <script src = "Disease.js"></script>
+        <script src = "MapOverlayCreator.js"></script>
+        <script src = "Map.js"></script>
+        <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQDNSjsR5fSbsRwOOoPLMLRL1_WsEoUtY&callback=initMap">
+        </script>
+    </div>
+    <input class="healthy" id="sickOrHealthy" type="button" value="Healthy" onclick="handleClick()">
+    <script> updateButtonUI(); </script>
+</body>
+</html>

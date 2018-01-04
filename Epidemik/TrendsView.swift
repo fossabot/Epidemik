@@ -73,6 +73,9 @@ public class TrendsView: UIScrollView {
 			let currentTrend = Trend(name: parts[0], weight: Double(parts[1])!, width: Double(self.frame.width))
 			trends.append(currentTrend)
 		}
+		if trends.count == 0 {
+			trends.append(Trend(name: Trend.nothing, weight: 0, width: Double(self.frame.width)))
+		}
 		displayTrends()
 	}
 	
@@ -86,6 +89,14 @@ public class TrendsView: UIScrollView {
 		if(trends.count > 0) {
 			self.contentSize = CGSize(width: self.frame.width, height: (trends.last?.frame.origin.y)! + 2*(trends.last?.frame.height)!)
 		}
+	}
+	
+	func updateTrends() {
+		for trend in trends {
+			trend.removeFromSuperview()
+		}
+		trends = Array<Trend>()
+		getAddressInfo()
 	}
 	
 }

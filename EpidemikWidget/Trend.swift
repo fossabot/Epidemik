@@ -13,7 +13,8 @@ public class Trend: UIView {
 	
 	var name: String!
 	var weight: Double!
-	
+	public static var nothing = "Nothing Spreading"
+
 	init(name: String, weight: Double, width: Double) {
 		self.name = name
 		self.weight = weight
@@ -63,13 +64,16 @@ public class Trend: UIView {
 	
 	func getAppropriateDiseaseImage() -> UIImage {
 		var properName = ""
-		switch name {
-		case "Common Cold" : properName="sickness2.png"
-		case "Flu" : properName="sickness3.png"
-		case "Measels" : properName="sickness4.png"
-		case "Mumps" : properName="sickness5.png"
-		case .none: properName="sickness6.png"
-		case .some(_): properName="sickness6.png"
+		let randomID = Int(arc4random_uniform(5))
+		switch randomID {
+		case 0 : properName="sickness2.png"
+		case 1 : properName="sickness3.png"
+		case 2 : properName="sickness4.png"
+		case 3 : properName="sickness5.png"
+		default: properName="sickness6.png"
+		}
+		if name == Trend.nothing {
+			properName = "smiley.png"
 		}
 		return UIImage(named: properName)!
 		

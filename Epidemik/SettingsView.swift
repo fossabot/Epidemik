@@ -19,7 +19,8 @@ public class SettingsView: UIView {
 	
 	var addressChanger: UIButton!
 	var detailSelector: BarSelector!
-	
+	var bugReporter: UIButton!
+
 	var mainView: MainHolder!
 	
 	public init(frame: CGRect, mainView: MainHolder) {
@@ -34,6 +35,7 @@ public class SettingsView: UIView {
 		initAddressChanger()
 		initDone()
 		initDetailSelector()
+		initBugReporter()
 	}
 	
 	func initAddressChanger() {
@@ -54,13 +56,25 @@ public class SettingsView: UIView {
 	func initDetailSelector() {
 		detailSelector = DetailSelector(frame: CGRect(x: (self.frame.width-smallButtonWidth)/2, y: 2*smallButtonGap+smallButtonHeight, width: smallButtonWidth, height: smallButtonHeight), overlayCreator: mainView.mapView.overlayCreator)
 		self.addSubview(detailSelector)
-		
-		
 		let textOffset = CGFloat(10)
-		
 		createDetailTextBox(x: 0, y: 2*smallButtonGap+smallButtonHeight+textOffset, message: "High Preformance")
-		
 		createDetailTextBox(x: (self.frame.width+smallButtonWidth)/2, y: 2*smallButtonGap+smallButtonHeight+textOffset, message: "High Detail")
+	}
+	
+	func initBugReporter() {
+		bugReporter = UIButton(frame: CGRect(x: (self.frame.width-smallButtonWidth)/2, y: 3*smallButtonGap+2*smallButtonHeight, width: smallButtonWidth, height: smallButtonHeight))
+		bugReporter.backgroundColor = COLORS.COLOR_4
+		bugReporter.addTarget(self, action: #selector(SettingsView.reportBug(_:)), for: .touchUpInside)
+		bugReporter.layer.cornerRadius = 20
+		bugReporter.titleLabel?.font = UIFont(name: "Helvetica", size: 23)
+		bugReporter.setTitle("Report a Bug", for: .normal)
+		self.addSubview(bugReporter)
+	}
+	
+	@objc func reportBug(_ sender: UIButton?) {
+		UIApplication.shared.open(URL(string: "http://rbradford.thaumavor.io/contact.html")!, options: [:], completionHandler: { (notUsed) in
+			self.removeFromSuperview()
+		})
 	}
 	
 	func createDetailTextBox(x: CGFloat, y: CGFloat, message: String) {

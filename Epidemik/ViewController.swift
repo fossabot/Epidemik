@@ -107,14 +107,6 @@ class ViewController: UIViewController {
 		
 	}
 	
-	func showCannotRun() {
-		let cannotRun = CannotRun(frame: CGRect(x: self.view.frame.width, y: 0, width: self.view.frame.width, height: self.view.frame.height), holder: self.appWalkThrough)
-		self.view.addSubview(cannotRun)
-		UIView.animate(withDuration: 0.5, animations: {
-			cannotRun.frame.origin.x -= self.view.frame.width
-		})
-	}
-	
 	func refreshSicknessScreen() {
 		if mainView != nil {
 			mainView.refreshSicknessScreen()
@@ -130,6 +122,12 @@ class ViewController: UIViewController {
 		}
 	}
 	
+	func updateTrends() {
+		if mainView != nil && mainView.trendsView
+			!= nil {
+			mainView.trendsView.updateTrends()
+		}
+	}
 	
 }
 

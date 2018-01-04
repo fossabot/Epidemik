@@ -74,6 +74,9 @@ public class TrendsWidgetView: UIScrollView {
 			trends.append(currentTrend)
 		}
 		filterOnlyTop3()
+		if realTrends.count == 0 {
+			realTrends.append(Trend(name: Trend.nothing, weight: 0, width: Double(self.frame.width)))
+		}
 		displayTrends()
 	}
 	

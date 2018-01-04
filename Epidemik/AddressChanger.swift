@@ -38,6 +38,8 @@ public class ADDRESS {
 				} else if let buffer = placemarks?[0] {
 					let location = buffer.location;
 					currentView.endEditing(true)
+					let vc = UIApplication.shared.delegate?.window??.rootViewController as! ViewController
+					vc.updateTrends()
 					let appDelegate = UIApplication.shared.delegate as! AppDelegate
 					appDelegate.sendDeviceTokenToServer(latitude: String(describing: location!.coordinate.latitude), longitude: String(describing: location!.coordinate.longitude), viewController:  UIApplication.shared.delegate?.window??.rootViewController as? ViewController)
 				} else {

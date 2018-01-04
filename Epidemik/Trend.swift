@@ -13,6 +13,7 @@ public class Trend: UIView {
 	
 	var name: String!
 	var weight: Double!
+	public static var nothing = "Nothing Spreading"
 	
 	init(name: String, weight: Double, width: Double) {
 		self.name = name
@@ -74,6 +75,9 @@ public class Trend: UIView {
 			case 2 : properName="sickness4.png"
 			case 3 : properName="sickness5.png"
 			default: properName="sickness6.png"
+		}
+		if name == Trend.nothing {
+			properName = "smiley.png"
 		}
 		return UIImage(named: properName)!
 		

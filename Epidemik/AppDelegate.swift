@@ -76,11 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			let responseString = String(data: data!, encoding: .utf8)
 			if viewController != nil {
 				DispatchQueue.main.sync {
-					if(responseString == "0") {
-						viewController!.showCannotRun()
-					} else {
-						viewController!.showMainView()
-					}
+					viewController!.showMainView()
 				}
 			}
 		}
