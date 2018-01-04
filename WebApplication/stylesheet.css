@@ -62,3 +62,45 @@ and open the template in the editor.
   opacity: 1;
   right: 0;
 }
+
+.trendsButton {   
+    border: none;
+    display: inline-block;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 4%;
+    height: 8%;
+    left: 0%;
+    top: 0px;
+    position: absolute;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+#trendsView { 
+    position: relative; 
+    border: 0px solid green; 
+    background: #4CAF50; 
+    width: 0px; 
+    height: 50%;
+    overflow:hidden;
+    white-space: nowrap;
+
+}
+
+#trend {
+    width: 90%;
+    left: 5%;
+    top: 10px;
+    background: #4CAF50; 
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    position: relative;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+}

@@ -15,15 +15,13 @@ function handleClick() {
         isSick = false;
         localStorage['sickRequest'] = null;
     } else { //Handle Becoming Sick
-        if ("geolocation" in navigator) {
-            navigator.geolocation.getCurrentPosition(getInfection, handleError);
-        }
+        getLocation(getInfection);
         isSick = true;
     }
     updateButtonUI();
 }
 
-function getInfection(location) {
+function getInfection(lat, long) {
     var today = new Date();
     var dd = today.getDate();
     var mm = today.getMonth() + 1; //January is 0!
@@ -35,12 +33,12 @@ function getInfection(location) {
     if (mm < 10) {
         mm = '0' + mm;
     }
-    localStorage['lat'] = location.coords.latitude;
-    localStorage['long'] = location.coords.longitude;
+    localStorage['lat'] = lat;
+    localStorage['long'] = long;
     var today = yyyy + '-' + mm + '-' + dd;
     var postString = "date=" + today +
-            "&latitude=" + location.coords.latitude +
-            "&longitude=" + location.coords.longitude +
+            "&latitude=" + lat +
+            "&longitude=" + long +
             "&disease_name=" + "Common Cold" +
             "&deviceID=" + getDeviceID();
     localStorage['sickRequest'] = postString;

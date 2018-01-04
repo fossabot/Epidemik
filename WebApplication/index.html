@@ -5,6 +5,7 @@
 <body style="margin: 0;">
     <div id="map">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src = "GetLocation.js"></script>
         <script src = "DeviceID.js"></script>
         <script src = "ButtonControls.js"></script>
         <script src = "DiseasePolygon.js"></script>
@@ -15,7 +16,15 @@
                 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQDNSjsR5fSbsRwOOoPLMLRL1_WsEoUtY&callback=initMap">
         </script>
     </div>
-    <button class="healthy" id="sickOrHealthy" value="sick" onclick="handleClick()"><span>Sick</span></button>
-    <script> updateButtonUI(); </script>
+    <div class="buttons"> 
+        <button class="healthy" id="sickOrHealthy" value="sick" onclick="handleClick()"><span>Sick</span></button>
+        <img class="trendsButton" id="trendsButton" src="hamburgButton.png" onclick="DoSomething();" />
+    </div>
+    <div id="trendsView">
+        <div id="trend">Trends</div>
+    </div>
+    <script src = "TrendsAnimation.js"></script>
+    <script src = "CreateTrends.js"></script>
+    <script> updateButtonUI();</script>
 </body>
 </html>
