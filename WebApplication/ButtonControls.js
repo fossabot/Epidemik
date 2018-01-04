@@ -4,25 +4,23 @@
  * and open the template in the editor.
  */
 
-var isSick = (localStorage.getItem("sickRequest") !== "null");
+var isSick = (localStorage.getItem("sickRequest") !== null)
+&& (localStorage.getItem("sickRequest") !== "null") && (localStorage.getItem("sickRequest") !== undefined);
 
 function handleClick() {
     if (isSick) { //Handle Becoming Healthy
         var toSend = localStorage['sickRequest'] || "";
         toSend += "&delete=true";
         sendPOST(toSend);
-        document.getElementById("sickOrHealthy").style.backgroundColor = "rgb(83, 28, 69)";
-        document.getElementById("sickOrHealthy").setAttribute("value", "Sick");
         isSick = false;
         localStorage['sickRequest'] = null;
     } else { //Handle Becoming Sick
         if ("geolocation" in navigator) {
             navigator.geolocation.getCurrentPosition(getInfection, handleError);
         }
-        document.getElementById("sickOrHealthy").style.backgroundColor = "#4CAF50";
-        document.getElementById("sickOrHealthy").setAttribute("value", "Healthy");
         isSick = true;
     }
+    updateButtonUI();
 }
 
 function getInfection(location) {
@@ -37,6 +35,8 @@ function getInfection(location) {
     if (mm < 10) {
         mm = '0' + mm;
     }
+    localStorage['lat'] = location.coords.latitude;
+    localStorage['long'] = location.coords.longitude;
     var today = yyyy + '-' + mm + '-' + dd;
     var postString = "date=" + today +
             "&latitude=" + location.coords.latitude +
@@ -61,11 +61,11 @@ function handleError(error) {
 function updateButtonUI() {
     if (isSick) { //Handle Becoming Healthy
         document.getElementById("sickOrHealthy").style.backgroundColor = "#4CAF50";
-        document.getElementById("sickOrHealthy").setAttribute("value", "Healthy");
+        document.getElementById("sickOrHealthy").getElementsByTagName("span")[0].innerHTML = "Healthy";
     } else { //Handle Becoming Sick
         localStorage['sickRequest'] = null;
         document.getElementById("sickOrHealthy").style.backgroundColor = "rgb(83, 28, 69)";
-        document.getElementById("sickOrHealthy").setAttribute("value", "Sick");
+        document.getElementById("sickOrHealthy").getElementsByTagName("span")[0].innerHTML = "Sick";
     }
 }
 

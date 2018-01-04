@@ -15,7 +15,6 @@ function initMap() {
         disableDefaultUI: true
     });
     this.map.addListener('bounds_changed', function () {
-        clearOverlays(map);
         addOverlays(map);
     });
     getData(this.map);

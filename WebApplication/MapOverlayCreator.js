@@ -70,14 +70,13 @@ function addOverlays(map) {
             this.latLongDisease[posnLat][posnLong].addIntensity();
         }
     }
-
     averageIntensity /= realPointCounts;
     map.totalOverlays = (realPointCounts);
-
+    clearOverlays(map);
     for (const x in this.latLongDisease) {
         for (const y in this.latLongDisease[x]) {
             if (this.latLongDisease[x][y] !== "") {
-                var power = (this.latLongDisease[x][y].intensity / averageIntensity)
+                var power = (this.latLongDisease[x][y].intensity / averageIntensity);
                 var toAdd = new google.maps.Rectangle({
                     bounds: this.latLongDisease[x][y].bounds,
                     editable: false,
