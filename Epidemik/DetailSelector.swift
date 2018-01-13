@@ -6,6 +6,7 @@
 //  Copyright © 2017 RBradford Studios. All rights reserved.
 //
 
+
 import Foundation
 import UIKit
 
@@ -24,12 +25,12 @@ public class DetailSelector: BarSelector {
 	
 	@objc override func update(sender:UIGestureRecognizer) -> CGFloat {
 		let ratio = super.update(sender: sender)
-		overlayCreator.numXY = Double(CGFloat(base)+CGFloat(totalVariability)*ratio)
+		//overlayCreator.numXY = Double(CGFloat(base)+CGFloat(totalVariability)*ratio)
 		return ratio
 	}
 	
 	func getRatio() -> CGFloat {
-		return CGFloat((overlayCreator.numXY-base)/totalVariability)
+		return 1
 	}
 	
 	required public init?(coder aDecoder: NSCoder) {

@@ -48,8 +48,6 @@ class Map: MKMapView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 		initTimeSelector()
 		
 		initPlayButton()
-		
-		//self.animateVsTime(start: newDate!, end: Date())
 	}
 	
 	required public init?(coder aDecoder: NSCoder) {
@@ -110,9 +108,9 @@ class Map: MKMapView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 	}
 	
 	func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-		let dataPolygon = overlay as! DiseasePolygon
+		let dataPolygon = overlay as! Disease
 		
-		let polygonView = MKPolygonRenderer(overlay: overlay)
+		let polygonView = MKCircleRenderer(overlay: overlay)
 		let power = CGFloat(dataPolygon.intensity / overlayCreator.averageIntensity)
 		let color = UIColor(displayP3Red: power*185.0/255.0, green: 35.0/255.0, blue: 58.0/255.0, alpha: power*2.0/4.0)
 		polygonView.strokeColor = color

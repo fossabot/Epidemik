@@ -28,7 +28,6 @@
 		0011DBD81F6C0EBA004212E1 /* EpidemikUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0011DBD71F6C0EBA004212E1 /* EpidemikUITests.swift */; };
 		0018BCD81FE0BDB7008DCDE5 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0018BCD71FE0BDB7008DCDE5 /* SettingsView.swift */; };
 		0032F3421F808295001A9633 /* MapOverlayCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0032F3411F808295001A9633 /* MapOverlayCreator.swift */; };
-		006858C91F8AA6F2007F6C7E /* DiseasePolygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006858C81F8AA6F2007F6C7E /* DiseasePolygon.swift */; };
 		0079189B1FF56C4900DB03D3 /* TransitionControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0079189A1FF56C4900DB03D3 /* TransitionControls.swift */; };
 		0079189D1FF58D8700DB03D3 /* Diseases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0079189C1FF58D8700DB03D3 /* Diseases.swift */; };
 		007918A11FF591D600DB03D3 /* UserAgreementPt3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007918A01FF591D600DB03D3 /* UserAgreementPt3.swift */; };
@@ -123,7 +122,6 @@
 		0018BCD71FE0BDB7008DCDE5 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		0032F3411F808295001A9633 /* MapOverlayCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapOverlayCreator.swift; sourceTree = "<group>"; };
 		005459151F749FCF00F73872 /* Epidemik.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Epidemik.entitlements; sourceTree = "<group>"; };
-		006858C81F8AA6F2007F6C7E /* DiseasePolygon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseasePolygon.swift; sourceTree = "<group>"; };
 		0079189A1FF56C4900DB03D3 /* TransitionControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionControls.swift; sourceTree = "<group>"; };
 		0079189C1FF58D8700DB03D3 /* Diseases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diseases.swift; sourceTree = "<group>"; };
 		007918A01FF591D600DB03D3 /* UserAgreementPt3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAgreementPt3.swift; sourceTree = "<group>"; };
@@ -317,7 +315,6 @@
 			children = (
 				0032F3411F808295001A9633 /* MapOverlayCreator.swift */,
 				00BC4F6F1F81746C0018D5D8 /* Map.swift */,
-				006858C81F8AA6F2007F6C7E /* DiseasePolygon.swift */,
 				00E9A4C61F8EFA6C008C95BD /* Disease.swift */,
 				00EE1AA21FCB4D58006FDBFD /* TimeSelector.swift */,
 			);
@@ -572,7 +569,6 @@
 				0083AD271F795C50007AEF87 /* DiseaseNameScreen.swift in Sources */,
 				00A5E7A41F6C414D004535D9 /* TutorialHolder.swift in Sources */,
 				0032F3421F808295001A9633 /* MapOverlayCreator.swift in Sources */,
-				006858C91F8AA6F2007F6C7E /* DiseasePolygon.swift in Sources */,
 				00A5E7A51F6C414D004535D9 /* NotificationsAsk.swift in Sources */,
 				0018BCD81FE0BDB7008DCDE5 /* SettingsView.swift in Sources */,
 				00BD462D1FE19AF50009A4B5 /* BarSelector.swift in Sources */,
