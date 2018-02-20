@@ -27,6 +27,8 @@ public class MainHolder: UIView {
 	
 	var transControls: TransitionControls!
 	
+	var dataCenter: DataCenter!
+	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		initMap()
@@ -36,6 +38,10 @@ public class MainHolder: UIView {
 		initChangeButtons()
 		initSettings()
 		initTransition()
+		self.dataCenter = DataCenter(diseaseReactor: DiseaseLoadingReactor(map: self.mapView), trendReactor: TrendLoadingReactor(trendsView: self.trendsView))
+		self.mapView.dataCenter = self.dataCenter
+		self.trendsView.dataCenter = self.dataCenter
+
 	}
 	
 	required public init?(coder aDecoder: NSCoder) {

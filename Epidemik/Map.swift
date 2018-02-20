@@ -27,8 +27,11 @@ class Map: MKMapView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 	
 	var playButton: UIButton!
 	
-	var overlayRenderers = Array<DiseaseRenderer>()
-			
+	var totalOverlays = 0
+	var overlaysDraw = 0
+	
+	var dataCenter: DataCenter!
+	
 	// Creates the map view, given a view frame, a lat,long width in meters, and a start lat,long in degrees
 	init(frame: CGRect, realLatWidth: Double, realLongWidth: Double, startLong: Double, startLat: Double) {
 		super.init(frame: frame)
@@ -38,19 +41,19 @@ class Map: MKMapView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 		latWidth = (Double(realLatWidth) * 360 / (CIRCUMFRENCE_OF_EARTH))
 		longWidth = (Double(realLongWidth) * 360 / (CIRCUMFRENCE_OF_EARTH))
 		
-		initMapPrefs()
-		
-		initOverlayCreator()
-		
-		initGestureControls()
-		
-		initTimeSelector()
-		
-		initPlayButton()
+		//self.animateVsTime(start: newDate!, end: Date())
 	}
 	
 	required public init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
+	}
+	
+	func initAfterData() {
+		initOverlayCreator()
+		initMapPrefs()
+		initPlayButton()
+		initTimeSelector()
+		initGestureControls()
 	}
 	
 	// Nothing -> Nothing
@@ -94,19 +97,30 @@ class Map: MKMapView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 		let longWidth = region.span.longitudeDelta
 		let startLat = region.center.latitude
 		let startLong = region.center.longitude
-		overlayCreator = MapOverlayCreator(map: self, longWidth: longWidth, latWidth: latWidth, startLong: startLong - longWidth/2, startLat: startLat - latWidth/2)
+		overlayCreator = MapOverlayCreator(map: self, longWidth: longWidth, latWidth: latWidth, startLong: startLong - longWidth/2, startLat: startLat - latWidth/2, dataCenter: dataCenter)
 	}
-
+	
+	func updateOverlays() {
+		let region = self.region
+		let latWidth = region.span.latitudeDelta
+		let longWidth = region.span.longitudeDelta
+		let startLat = region.center.latitude
+		let startLong = region.center.longitude
+		overlayCreator = MapOverlayCreator(map: self, longWidth: longWidth, latWidth: latWidth, startLong: startLong - longWidth/2, startLat: startLat - latWidth/2, dataCenter: dataCenter)
+	}
+	
 	func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-		let dataPolygon = overlay as! Disease
+		let dataPolygon = overlay as! DiseasePolygon
 		
+		let polygonView = MKPolygonRenderer(overlay: overlay)
 		let power = CGFloat(dataPolygon.intensity / overlayCreator.averageIntensity)
-		
-		let polygonView = DiseaseRenderer(overlay: overlay, map: overlayCreator)
 		let color = UIColor(displayP3Red: power*185.0/255.0, green: 35.0/255.0, blue: 58.0/255.0, alpha: power*2.0/4.0)
 		polygonView.strokeColor = color
 		polygonView.fillColor = color
-		overlayRenderers.append(polygonView)
+		overlaysDraw += 1
+		if(overlaysDraw == totalOverlays-1) {
+			overlayCreator.finishFiltering()
+		}
 		return polygonView
 	}
 	
@@ -125,7 +139,7 @@ class Map: MKMapView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 	
 	@objc func didDragMap(sender: UIGestureRecognizer!) {
 		if sender.state == .ended {
-			//overlayCreator.updateOverlay()
+			overlayCreator.updateOverlay()
 		}
 	}
 	
