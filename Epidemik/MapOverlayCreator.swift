@@ -83,8 +83,9 @@ public class MapOverlayCreator {
 				
 				let realLat = (Double(posnLat)*intervalLat+startLat)
 				let realLong = (Double(posnLong)*intervalLong+startLong)
-				let scale = latWidth / numXY
-				var points=[CLLocationCoordinate2DMake(realLat,  realLong),CLLocationCoordinate2DMake(realLat+scale,  realLong),CLLocationCoordinate2DMake(realLat+scale,  realLong+scale),CLLocationCoordinate2DMake(realLat,  realLong+scale)]
+				let scaleLat = latWidth / numXY
+				let scaleLong = longWidth / numXY
+				var points=[CLLocationCoordinate2DMake(realLat,  realLong),CLLocationCoordinate2DMake(realLat+scaleLat,  realLong),CLLocationCoordinate2DMake(realLat+scaleLat,  realLong+scaleLong),CLLocationCoordinate2DMake(realLat,  realLong+scaleLong)]
 				if posnLat >= latLongDisease.count || posnLong >= latLongDisease[posnLat].count {
 					continue
 				}
