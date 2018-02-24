@@ -10,14 +10,15 @@ import Foundation
 import UIKit
 import CoreLocation
 
-public class TrendsView: UIScrollView {
+public class GTrendsView: UIScrollView {
 	
 	var dataCenter: DataCenter!
-	
+	var blur: UIVisualEffectView!
 	public override init(frame: CGRect) {
 		super.init(frame: frame)
 		self.isScrollEnabled = true
 		self.autoresizingMask = UIViewAutoresizing.flexibleHeight
+		initBlur()
 	}
 	
 	required public init?(coder aDecoder: NSCoder) {
@@ -44,7 +45,17 @@ public class TrendsView: UIScrollView {
 		for view in self.subviews {
 			view.removeFromSuperview()
 		}
-		self.dataCenter.trendPoint.getAddressInfo()
+		self.dataCenter.trendPoint.loadData()
+	}
+	
+	func initBlur() {
+		let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.regular)
+		blur = UIVisualEffectView(effect: blurEffect)
+		//always fill the view
+		blur.frame = self.bounds
+		blur.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+		
+		self.addSubview(blur) //if you have more UIViews, use an insertSubview API to place it where needed
 	}
 	
 }

@@ -19,7 +19,6 @@ public class DiseaseNameScreen: UIView {
 	
 	var moreInfo: UIButton!
 	
-	var levelSelector: ButtonSelector!
 	var diseaseSelector: ScrollSelector!
 	
 	var superScreen: SicknessScreen!
@@ -99,14 +98,6 @@ public class DiseaseNameScreen: UIView {
 			self.submitButton.frame.origin.y += slideDown
 			self.backButton.frame.origin.y += slideDown
 		})
-	}
-	
-	
-	// A LevelSelector is a set of buttons in the middle of the screen
-	// Creates the selector that lets the user say how sick they are
-	func initLevelSelector() {
-		levelSelector = ButtonSelector(frame: CGRect(x: 0, y: self.frame.height/4, width: self.frame.width, height: self.frame.height/4), items: ["1", "2" , "3", "4", "5"])
-		self.addSubview(levelSelector)
 	}
 	
 	func initDiseaseSelectorTitle() {

@@ -25,6 +25,11 @@ public class DataCenter {
 	}
 	
 	func loadData() {
+		loadDiseaseData()
+		loadTrendData()
+	}
+	
+	func loadDiseaseData() {
 		diseasePoint.loadDiseasePointData()
 	}
 	
@@ -37,7 +42,7 @@ public class DataCenter {
 	}
 	
 	func loadTrendData() {
-		
+		self.trendPoint.loadData()
 	}
 	
 	func loadOtherData() {

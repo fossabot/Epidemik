@@ -22,8 +22,12 @@ public class SicknessScreen: UIView {
 	let buttonChampher = CGFloat(40.0)
 	let buttonFont = UIFont(name: "Helvetica-Bold", size: 22)
 	
-	override init (frame: CGRect) {
+	var doneButton: UIButton!
+	var mainHolder: MainHolder!
+	
+	init (frame: CGRect, mainHolder: MainHolder) {
 		super.init(frame: frame)
+		self.mainHolder = mainHolder
 		initButtonPerams()
 		initButton()
 	}
@@ -48,6 +52,7 @@ public class SicknessScreen: UIView {
 			initSickButton(x: self.frame.width/2 - buttonWidth/2)
 			QuickTouch.initSickQuickTouch()
 		}
+		initDoneButton(x: self.frame.width/2 - buttonWidth/2)
 	}
 	
 	// Creates the button that the user can press to say they are sick
@@ -59,6 +64,16 @@ public class SicknessScreen: UIView {
 		sicknessButton.backgroundColor = COLORS.COLOR_1
 		sicknessButton.addTarget(self, action: #selector(SicknessScreen.amSick(_:)), for: .touchUpInside)
 		self.addSubview(sicknessButton)
+	}
+	
+	func initDoneButton(x: CGFloat) {
+		doneButton = UIButton(frame: CGRect(x: x, y: 3*self.frame.height/4 - buttonHeight/2, width: buttonWidth, height: buttonHeight))
+		doneButton.layer.cornerRadius = buttonChampher
+		doneButton.setTitle("Done", for: UIControlState.normal)
+		doneButton.titleLabel?.font = buttonFont
+		doneButton.backgroundColor = COLORS.COLOR_1
+		doneButton.addTarget(self, action: #selector(SicknessScreen.amDone(_:)), for: .touchUpInside)
+		self.addSubview(doneButton)
 	}
 	
 	// Handles Sickness button presses
@@ -74,6 +89,10 @@ public class SicknessScreen: UIView {
 			(value: Bool) in
 			self.sicknessButton.removeFromSuperview()
 		})
+	}
+	
+	@objc func amDone(_ sender: UIButton?) {
+		self.mainHolder.removeSickness()
 	}
 	
 	// Creates the button that the user can say they are healthy in

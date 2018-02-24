@@ -22,7 +22,7 @@ class Map: MKMapView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 	var overlayCreator: MapOverlayCreator!
 	
 	var filterBar: TimeSelector!
-	
+
 	var CIRCUMFRENCE_OF_EARTH = 400750000.0 //In Meters
 	
 	var playButton: UIButton!
@@ -132,6 +132,7 @@ class Map: MKMapView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 		// add the gesture to the mapView
 		self.addGestureRecognizer(panGesture)
 	}
+	
 	
 	func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
 		return true

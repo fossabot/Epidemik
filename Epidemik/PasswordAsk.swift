@@ -1,22 +1,22 @@
 //
-//  AddressAsk.swift
+//  PasswordAsk.swift
 //  Epidemik
 //
-//  Created by Ryan Bradford on 9/24/17.
-//  Copyright © 2017 RBradford Studios. All rights reserved.
+//  Created by Ryan Bradford on 2/23/18.
+//  Copyright © 2018 RBradford Studios. All rights reserved.
 //
 
 import UIKit
 import UserNotifications
 import CoreLocation
 
-public class AddressAsk: GeneralAskScreen {
+public class PasswordAsk: GeneralAskScreen {
 	
-	var FILE_NAME = "address.epi"
-
+	var FILE_NAME = "password.epi"
+	
 	override public init(frame: CGRect, holder: TutorialHolder) {
 		super.init(frame: frame, holder: holder)
-		super.initDescription(text: "We Need Your Address to Properely Analyze Your Data")
+		super.initDescription(text: "We Need A Password to Store Your Encrypted Data")
 		self.continueArrow.setTitle("Continue", for: UIControlState.normal)
 	}
 	
@@ -30,7 +30,7 @@ public class AddressAsk: GeneralAskScreen {
 	}
 	
 	override func askForPermission() {
-		ADDRESS.askForNewAddress(message: "What is Your New Address?")
+		ADDRESS.askForNewAddress(message: "What is Your Password?")
 	}
 	
 }

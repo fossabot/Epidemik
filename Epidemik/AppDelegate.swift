@@ -34,7 +34,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	}
 	
 	func applicationWillEnterForeground(_ application: UIApplication) {
-		refreshSicknessScreen(application: application)
 	}
 	
 	func applicationDidBecomeActive(_ application: UIApplication) {
@@ -106,7 +105,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		case "MoreButton":
 			displayDiseaseSelector(application: application)
 		default:
-			displayDiseaseSelector(application: application)
+			refreshSicknessScreen(application: application)
 		}
 		return false
 	}
@@ -120,7 +119,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		let vc = application.keyWindow?.rootViewController as! ViewController
 		vc.refreshSicknessScreen()
 		vc.displayDiseaseSelector()
-		
 	}
 }
 

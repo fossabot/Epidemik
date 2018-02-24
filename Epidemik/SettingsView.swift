@@ -50,7 +50,7 @@ public class SettingsView: UIView {
 	
 	@objc func changeAddress(_ sender: UIButton?) {
 		ADDRESS.updateDeviceToken()
-		ADDRESS.askForNewAddress(message: "What is Your New Address?", currentView: self)
+		ADDRESS.askForNewAddress(message: "What is Your New Address?")
 	}
 	
 	func initDetailSelector() {

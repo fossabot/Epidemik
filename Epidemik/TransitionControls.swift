@@ -42,7 +42,7 @@ open class TransitionControls: NSObject {
 		mainView.endEditing(true)
 
 		if mainView.trendsView.frame.origin.x == 0.0 {
-			mainView.transisitionToSick(nil)
+			mainView.transisitionToPTrends(nil)
 		} else if mainView.sicknessView.frame.origin.x == 0.0 {
 			mainView.transisitionToMap(nil)
 		}
@@ -52,7 +52,7 @@ open class TransitionControls: NSObject {
 		mainView.endEditing(true)
 
 		if mainView.sicknessView.frame.origin.x == 0.0 {
-			mainView.transisitionToTrends(nil)
+			mainView.transisitionToGTrends(nil)
 		}
 	}
 

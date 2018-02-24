@@ -10,9 +10,9 @@ import Foundation
 
 class TrendLoadingReactor: IFunc<Int,Int> {
 	
-	var trendsView: TrendsView
+	var trendsView: GTrendsView
 	
-	init(trendsView: TrendsView) {
+	init(trendsView: GTrendsView) {
 		self.trendsView = trendsView
 	}
 	

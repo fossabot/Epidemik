@@ -13,12 +13,12 @@ public class MainHolder: UIView {
 	
 	var mapView: Map!
 	var sicknessView: SicknessScreen!
-	var trendsView: TrendsView!
-	var mapBlur: UIVisualEffectView!
+	var trendsView: GTrendsView!
+	var personalTrends: PTrendsView!
 	
 	var mapButton: UIButton!
-	var sickButton: UIButton!
-	var trendsButton: UIButton!
+	var pTrendsButton: UIButton!
+	var gTrendsButton: UIButton!
 	
 	var settingsButton: UIButton!
 	
@@ -32,24 +32,27 @@ public class MainHolder: UIView {
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		initMap()
-		initMapBlur()
-		initSickness()
+		initPersonalTrends()
 		initTrends()
-		initChangeButtons()
 		initSettings()
 		initTransition()
-		self.dataCenter = DataCenter(diseaseReactor: DiseaseLoadingReactor(map: self.mapView), trendReactor: TrendLoadingReactor(trendsView: self.trendsView))
-		self.mapView.dataCenter = self.dataCenter
-		self.trendsView.dataCenter = self.dataCenter
-
+		initData()
+		initSickness()
+		initChangeButtons()
 	}
 	
 	required public init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
 	}
 	
+	func initData() {
+		self.dataCenter = DataCenter(diseaseReactor: DiseaseLoadingReactor(map: self.mapView), trendReactor: TrendLoadingReactor(trendsView: self.trendsView))
+		self.mapView.dataCenter = self.dataCenter
+		self.trendsView.dataCenter = self.dataCenter
+	}
+	
 	func initSickness() {
-		sicknessView = SicknessScreen(frame: self.frame)
+		sicknessView = SicknessScreen(frame: self.frame, mainHolder: self)
 		self.addSubview(sicknessView)
 	}
 	
@@ -59,66 +62,50 @@ public class MainHolder: UIView {
 		self.addSubview(mapView)
 	}
 	
-	func initMapBlur() {
-		let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.regular)
-		mapBlur = UIVisualEffectView(effect: blurEffect)
-		//always fill the view
-		mapBlur.frame = mapView.bounds
-		mapBlur.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-		
-		mapView.addSubview(mapBlur) //if you have more UIViews, use an insertSubview API to place it where needed
+	func initTrends() {
+		trendsView = GTrendsView(frame: CGRect(x: self.frame.width, y: 0, width: self.frame.width, height: self.frame.height))
+		self.addSubview(trendsView)
 	}
 	
-	func initTrends() {
-		trendsView = TrendsView(frame: CGRect(x: self.frame.width, y: 0, width: self.frame.width, height: self.frame.height))
-		self.addSubview(trendsView)
+	func initPersonalTrends() {
+		personalTrends = PTrendsView(frame: CGRect(x: -self.frame.width, y:0, width: self.frame.width, height: self.frame.height))
+		self.addSubview(personalTrends)
 	}
 	
 	@objc func transisitionToMap(_ sender: UIButton?) {
 		UIView.animate(withDuration: 0.5, animations: {
-			self.mapBlur.alpha = 0
 			self.mapButton.alpha = 1
-			self.sickButton.alpha = 0.5
-			self.trendsButton.alpha = 0.5
+			self.pTrendsButton.alpha = 0.5
+			self.gTrendsButton.alpha = 0.5
 			self.sicknessView.alpha = 0
 			
-			self.sicknessView.frame.origin.x = self.frame.width
+			self.personalTrends.frame.origin.x = -self.frame.width
 			
 			self.trendsView.frame.origin.x = self.frame.width
 		})
 	}
 	
-	@objc func transisitionToSick(_ sender: UIButton?) {
-		if(sicknessView.frame.origin.x != 0) {
-			if(trendsView.frame.origin.x == 0 && sicknessView.frame.origin.x < 0) {
-				sicknessView.frame.origin.x = -self.frame.width
-			} else {
-				sicknessView.frame.origin.x = self.frame.width
-			}
-		}
+	@objc func transisitionToPTrends(_ sender: UIButton?) {
 		UIView.animate(withDuration: 0.5, animations: {
-			self.mapBlur.alpha = 1
-			
 			self.mapButton.alpha = 0.5
-			self.trendsButton.alpha = 0.5
-			self.sickButton.alpha = 1
+			self.gTrendsButton.alpha = 0.5
+			self.pTrendsButton.alpha = 1
 			
-			self.sicknessView.alpha = 1
-			self.sicknessView.frame.origin.x = 0
+			self.personalTrends.alpha = 1
+			self.personalTrends.frame.origin.x = 0
 			self.trendsView.frame.origin.x = self.frame.width
 			
 		})
 	}
 	
-	@objc func transisitionToTrends(_ sender: UIButton?) {
+	@objc func transisitionToGTrends(_ sender: UIButton?) {
 		UIView.animate(withDuration: 0.5, animations: {
-			self.mapBlur.alpha = 1
 			self.mapButton.alpha = 0.5
-			self.sickButton.alpha = 0.5
-			self.trendsButton.alpha = 1
+			self.pTrendsButton.alpha = 0.5
+			self.gTrendsButton.alpha = 1
 			
-			self.sicknessView.alpha = 0
-			self.sicknessView.frame.origin.x = -self.frame.width
+			self.personalTrends.alpha = 0
+			self.personalTrends.frame.origin.x = -self.frame.width
 			
 			self.trendsView.frame.origin.x = 0
 		})
@@ -132,31 +119,31 @@ public class MainHolder: UIView {
 	
 	func initTrendsButton() {
 		let trendsImage = UIImage(named: "trends.png")
-		trendsButton = UIButton(frame: CGRect(x: self.frame.width - 55, y: self.frame.height - 65, width: 50, height: 50))
-		trendsButton.backgroundColor = UIColor.clear
-		trendsButton.addTarget(self, action: #selector(MainHolder.transisitionToTrends(_:)), for: .touchUpInside)
-		trendsButton.setImage(trendsImage, for: .normal)
-		trendsButton.alpha = 0.5
-		self.addSubview(trendsButton)
+		gTrendsButton = UIButton(frame: CGRect(x: self.frame.width - 55, y: self.frame.height - 65, width: 50, height: 50))
+		gTrendsButton.backgroundColor = UIColor.clear
+		gTrendsButton.addTarget(self, action: #selector(MainHolder.transisitionToGTrends(_:)), for: .touchUpInside)
+		gTrendsButton.setImage(trendsImage, for: .normal)
+		gTrendsButton.alpha = 0.5
+		self.addSubview(gTrendsButton)
 	}
 	
 	func initSickButton() {
 		let sickImage = UIImage(named: "sickness.png")
-		sickButton = UIButton(frame: CGRect(x: self.frame.width/2 - 25, y: self.frame.height - 65, width: 50, height: 50))
-		sickButton.backgroundColor = UIColor.clear
-		sickButton.addTarget(self, action: #selector(MainHolder.transisitionToSick(_:)), for: .touchUpInside)
-		sickButton.setImage(sickImage, for: .normal)
-		sickButton.alpha = 1
-		self.addSubview(sickButton)
+		pTrendsButton = UIButton(frame: CGRect(x: 5, y: self.frame.height - 65, width: 50, height: 50))
+		pTrendsButton.backgroundColor = UIColor.clear
+		pTrendsButton.addTarget(self, action: #selector(MainHolder.transisitionToPTrends(_:)), for: .touchUpInside)
+		pTrendsButton.setImage(sickImage, for: .normal)
+		pTrendsButton.alpha = 0.5
+		self.addSubview(pTrendsButton)
 	}
 	
 	func initMapButton() {
 		let mapImage = UIImage(named: "globe2")
-		mapButton = UIButton(frame: CGRect(x: 5, y: self.frame.height - 65, width: 50, height: 50))
+		mapButton = UIButton(frame: CGRect(x: self.frame.width/2 - 25, y: self.frame.height - 65, width: 50, height: 50))
 		mapButton.backgroundColor = UIColor.clear
 		mapButton.addTarget(self, action: #selector(MainHolder.transisitionToMap(_:)), for: .touchUpInside)
 		mapButton.setImage(mapImage, for: .normal)
-		mapButton.alpha = 0.5
+		mapButton.alpha = 1
 		self.addSubview(mapButton)
 	}
 	
@@ -185,11 +172,10 @@ public class MainHolder: UIView {
 			sicknessView.removeFromSuperview()
 			initSickness()
 			sicknessView.frame.origin.x = currentX
-			transisitionToSick(nil)
 			self.bringSubview(toFront: settingsButton)
 			self.bringSubview(toFront: mapButton)
-			self.bringSubview(toFront: trendsButton)
-			self.bringSubview(toFront: sickButton)
+			self.bringSubview(toFront: gTrendsButton)
+			self.bringSubview(toFront: pTrendsButton)
 		}
 	}
 	
@@ -199,6 +185,12 @@ public class MainHolder: UIView {
 	
 	func initTransition() {
 		transControls = TransitionControls(mainView: self)
+	}
+	
+	func removeSickness() {
+		UIView.animate(withDuration: 0.5, animations: {
+			self.sicknessView.frame.origin.y -= self.frame.height
+		})
 	}
 	
 }

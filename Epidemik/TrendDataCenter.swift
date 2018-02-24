@@ -16,14 +16,14 @@ class TrendDataCenter {
 	
 	init(reactor: TrendLoadingReactor) {
 		self.reactor = reactor
-		self.getAddressInfo()
+		loadData()
 	}
 	
 	func getTrends() -> Array<Trend> {
 		return self.trends
 	}
 	
-	func getAddressInfo() {
+	func loadData() {
 		self.trends = Array<Trend>()
 		let address = FileRW.readFile(fileName: "address.epi")
 		

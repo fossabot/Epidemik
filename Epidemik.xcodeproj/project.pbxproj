@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		00067E212038CEC000170054 /* IFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00067E202038CEC000170054 /* IFunc.swift */; };
 		00067E232038CFF900170054 /* DiseaseLoadingReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00067E222038CFF900170054 /* DiseaseLoadingReactor.swift */; };
+		0007C2F5203CDCE8009EA7A8 /* PTrendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0007C2F4203CDCE8009EA7A8 /* PTrendsView.swift */; };
 		0008CE2C1FE6CFA1006FD767 /* QuickTouch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0008CE2B1FE6CFA1006FD767 /* QuickTouch.swift */; };
 		0008CE2E1FE6D158006FD767 /* ReportingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0008CE2D1FE6D158006FD767 /* ReportingService.swift */; };
 		0008CE361FE6FB09006FD767 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0008CE351FE6FB09006FD767 /* NotificationCenter.framework */; };
@@ -19,7 +20,6 @@
 		0008CE481FE6FD06006FD767 /* Trend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0008CE471FE6FD06006FD767 /* Trend.swift */; };
 		0008CE4C1FE706C8006FD767 /* FileRW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CD77FC1F7844C1002B5C78 /* FileRW.swift */; };
 		0008CE4D1FE706CC006FD767 /* Assets.xcassets in Sources */ = {isa = PBXBuildFile; fileRef = 0011DBBE1F6C0EBA004212E1 /* Assets.xcassets */; };
-		0010A42D1F8008A800D12495 /* ButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0010A42C1F8008A800D12495 /* ButtonExtension.swift */; };
 		0010A42F1F800DD000D12495 /* ScrollSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0010A42E1F800DD000D12495 /* ScrollSelector.swift */; };
 		00112527203889EF00C3D16A /* DataCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00112526203889EF00C3D16A /* DataCenter.swift */; };
 		0011DBB81F6C0EBA004212E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0011DBB71F6C0EBA004212E1 /* AppDelegate.swift */; };
@@ -38,6 +38,10 @@
 		007918A11FF591D600DB03D3 /* UserAgreementPt3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007918A01FF591D600DB03D3 /* UserAgreementPt3.swift */; };
 		0083AD251F795BD8007AEF87 /* SicknessScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0083AD241F795BD8007AEF87 /* SicknessScreen.swift */; };
 		0083AD271F795C50007AEF87 /* DiseaseNameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0083AD261F795C50007AEF87 /* DiseaseNameScreen.swift */; };
+		0087EADA2041062F00BDEEC8 /* UsernameAsk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0087EAD92041062F00BDEEC8 /* UsernameAsk.swift */; };
+		0087EADC2041063900BDEEC8 /* PasswordAsk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0087EADB2041063900BDEEC8 /* PasswordAsk.swift */; };
+		0087EADE2041091B00BDEEC8 /* Asker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0087EADD2041091B00BDEEC8 /* Asker.swift */; };
+		0087EAE120410AFA00BDEEC8 /* AddressResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0087EAE020410AFA00BDEEC8 /* AddressResponse.swift */; };
 		009CE9E21F8FFFFD00D224F0 /* MainHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009CE9E11F8FFFFD00D224F0 /* MainHolder.swift */; };
 		00A5E7A31F6C414D004535D9 /* ContinueArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A5E7A01F6C414D004535D9 /* ContinueArrow.swift */; };
 		00A5E7A41F6C414D004535D9 /* TutorialHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A5E7A11F6C414D004535D9 /* TutorialHolder.swift */; };
@@ -59,8 +63,7 @@
 		00EBE4B11F9D2EC1005A8E6B /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EBE4B01F9D2EC1005A8E6B /* ColorScheme.swift */; };
 		00EE1AA31FCB4D58006FDBFD /* TimeSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EE1AA21FCB4D58006FDBFD /* TimeSelector.swift */; };
 		00F2F04E1F7F0B8300BC3120 /* UserAgreementPt1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F2F04D1F7F0B8300BC3120 /* UserAgreementPt1.swift */; };
-		00F2F0521F7F1ECD00BC3120 /* ButtonSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F2F0511F7F1ECD00BC3120 /* ButtonSelector.swift */; };
-		00FC19101FB3DEB700D8FD97 /* TrendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FC190F1FB3DEB700D8FD97 /* TrendsView.swift */; };
+		00FC19101FB3DEB700D8FD97 /* GTrendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FC190F1FB3DEB700D8FD97 /* GTrendsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +107,7 @@
 /* Begin PBXFileReference section */
 		00067E202038CEC000170054 /* IFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IFunc.swift; sourceTree = "<group>"; };
 		00067E222038CFF900170054 /* DiseaseLoadingReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseLoadingReactor.swift; sourceTree = "<group>"; };
+		0007C2F4203CDCE8009EA7A8 /* PTrendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PTrendsView.swift; sourceTree = "<group>"; };
 		0008CE2B1FE6CFA1006FD767 /* QuickTouch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickTouch.swift; sourceTree = "<group>"; };
 		0008CE2D1FE6D158006FD767 /* ReportingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportingService.swift; sourceTree = "<group>"; };
 		0008CE331FE6FB09006FD767 /* EpidemikWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = EpidemikWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,7 +118,6 @@
 		0008CE451FE6FCD6006FD767 /* TrendsWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendsWidgetView.swift; sourceTree = "<group>"; };
 		0008CE471FE6FD06006FD767 /* Trend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trend.swift; sourceTree = "<group>"; };
 		0008CE4B1FE702A7006FD767 /* EpidemikWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EpidemikWidget.entitlements; sourceTree = "<group>"; };
-		0010A42C1F8008A800D12495 /* ButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtension.swift; sourceTree = "<group>"; };
 		0010A42E1F800DD000D12495 /* ScrollSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollSelector.swift; sourceTree = "<group>"; };
 		00112526203889EF00C3D16A /* DataCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCenter.swift; sourceTree = "<group>"; };
 		0011DBB41F6C0EBA004212E1 /* Epidemik.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Epidemik.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -140,6 +143,10 @@
 		007918A01FF591D600DB03D3 /* UserAgreementPt3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAgreementPt3.swift; sourceTree = "<group>"; };
 		0083AD241F795BD8007AEF87 /* SicknessScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SicknessScreen.swift; sourceTree = "<group>"; };
 		0083AD261F795C50007AEF87 /* DiseaseNameScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseNameScreen.swift; sourceTree = "<group>"; };
+		0087EAD92041062F00BDEEC8 /* UsernameAsk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameAsk.swift; sourceTree = "<group>"; };
+		0087EADB2041063900BDEEC8 /* PasswordAsk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordAsk.swift; sourceTree = "<group>"; };
+		0087EADD2041091B00BDEEC8 /* Asker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asker.swift; sourceTree = "<group>"; };
+		0087EAE020410AFA00BDEEC8 /* AddressResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressResponse.swift; sourceTree = "<group>"; };
 		009CE9E11F8FFFFD00D224F0 /* MainHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHolder.swift; sourceTree = "<group>"; };
 		00A5E7A01F6C414D004535D9 /* ContinueArrow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContinueArrow.swift; sourceTree = "<group>"; };
 		00A5E7A11F6C414D004535D9 /* TutorialHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialHolder.swift; sourceTree = "<group>"; };
@@ -161,8 +168,7 @@
 		00EBE4B01F9D2EC1005A8E6B /* ColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
 		00EE1AA21FCB4D58006FDBFD /* TimeSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelector.swift; sourceTree = "<group>"; };
 		00F2F04D1F7F0B8300BC3120 /* UserAgreementPt1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAgreementPt1.swift; sourceTree = "<group>"; };
-		00F2F0511F7F1ECD00BC3120 /* ButtonSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSelector.swift; sourceTree = "<group>"; };
-		00FC190F1FB3DEB700D8FD97 /* TrendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendsView.swift; sourceTree = "<group>"; };
+		00FC190F1FB3DEB700D8FD97 /* GTrendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTrendsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +204,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0007C2F2203CDCBC009EA7A8 /* Global Trends */ = {
+			isa = PBXGroup;
+			children = (
+				00FC190F1FB3DEB700D8FD97 /* GTrendsView.swift */,
+			);
+			name = "Global Trends";
+			sourceTree = "<group>";
+		};
+		0007C2F3203CDCCA009EA7A8 /* Personal Trends */ = {
+			isa = PBXGroup;
+			children = (
+				0007C2F4203CDCE8009EA7A8 /* PTrendsView.swift */,
+			);
+			name = "Personal Trends";
+			sourceTree = "<group>";
+		};
 		0008CE2A1FE6CF93006FD767 /* QuickTouch */ = {
 			isa = PBXGroup;
 			children = (
@@ -264,7 +286,6 @@
 			isa = PBXGroup;
 			children = (
 				00112525203889DA00C3D16A /* DataCenter */,
-				009CE9E11F8FFFFD00D224F0 /* MainHolder.swift */,
 				0008CE2A1FE6CF93006FD767 /* QuickTouch */,
 				0018BCD61FE0BDA7008DCDE5 /* Settings */,
 				00FC190E1FB3DEA900D8FD97 /* Trends */,
@@ -274,6 +295,7 @@
 				005459151F749FCF00F73872 /* Epidemik.entitlements */,
 				0011DBE51F6C3D63004212E1 /* Start Up */,
 				0011DBB71F6C0EBA004212E1 /* AppDelegate.swift */,
+				009CE9E11F8FFFFD00D224F0 /* MainHolder.swift */,
 				0011DBB91F6C0EBA004212E1 /* ViewController.swift */,
 				0011DBBB1F6C0EBA004212E1 /* Main.storyboard */,
 				0011DBBE1F6C0EBA004212E1 /* Assets.xcassets */,
@@ -304,15 +326,11 @@
 		0011DBE51F6C3D63004212E1 /* Start Up */ = {
 			isa = PBXGroup;
 			children = (
-				00A5E7A81F6C4170004535D9 /* GeneralAskScreen.swift */,
-				00A5E7A61F6C415E004535D9 /* AppDescription.swift */,
-				00A5E7A01F6C414D004535D9 /* ContinueArrow.swift */,
 				00A5E7A11F6C414D004535D9 /* TutorialHolder.swift */,
-				00A5E7A21F6C414D004535D9 /* NotificationsAsk.swift */,
-				00CD77F91F7843EA002B5C78 /* AddressAsk.swift */,
-				00F2F04D1F7F0B8300BC3120 /* UserAgreementPt1.swift */,
-				00EBE4AE1F9D2BE6005A8E6B /* UserAgreementPt2.swift */,
-				007918A01FF591D600DB03D3 /* UserAgreementPt3.swift */,
+				0087EAD82041061800BDEEC8 /* Account */,
+				0087EAD7204105FC00BDEEC8 /* Agreement */,
+				00A5E7A81F6C4170004535D9 /* GeneralAskScreen.swift */,
+				00A5E7A01F6C414D004535D9 /* ContinueArrow.swift */,
 			);
 			name = "Start Up";
 			sourceTree = "<group>";
@@ -349,6 +367,37 @@
 			name = Map;
 			sourceTree = "<group>";
 		};
+		0087EAD7204105FC00BDEEC8 /* Agreement */ = {
+			isa = PBXGroup;
+			children = (
+				00A5E7A61F6C415E004535D9 /* AppDescription.swift */,
+				00F2F04D1F7F0B8300BC3120 /* UserAgreementPt1.swift */,
+				00EBE4AE1F9D2BE6005A8E6B /* UserAgreementPt2.swift */,
+				007918A01FF591D600DB03D3 /* UserAgreementPt3.swift */,
+			);
+			name = Agreement;
+			sourceTree = "<group>";
+		};
+		0087EAD82041061800BDEEC8 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				00A5E7A21F6C414D004535D9 /* NotificationsAsk.swift */,
+				00CD77F91F7843EA002B5C78 /* AddressAsk.swift */,
+				0087EAD92041062F00BDEEC8 /* UsernameAsk.swift */,
+				0087EADB2041063900BDEEC8 /* PasswordAsk.swift */,
+			);
+			name = Account;
+			sourceTree = "<group>";
+		};
+		0087EADF20410AEB00BDEEC8 /* Address */ = {
+			isa = PBXGroup;
+			children = (
+				00BD46301FE1C6F20009A4B5 /* AddressChanger.swift */,
+				0087EAE020410AFA00BDEEC8 /* AddressResponse.swift */,
+			);
+			name = Address;
+			sourceTree = "<group>";
+		};
 		00AA1805203BB7C20071CA6A /* DiseaseData */ = {
 			isa = PBXGroup;
 			children = (
@@ -372,15 +421,14 @@
 		00F2F04F1F7F1E1400BC3120 /* General */ = {
 			isa = PBXGroup;
 			children = (
-				00BD46301FE1C6F20009A4B5 /* AddressChanger.swift */,
+				0087EADF20410AEB00BDEEC8 /* Address */,
 				00CD77FC1F7844C1002B5C78 /* FileRW.swift */,
 				00EBE4B01F9D2EC1005A8E6B /* ColorScheme.swift */,
-				00F2F0511F7F1ECD00BC3120 /* ButtonSelector.swift */,
-				0010A42C1F8008A800D12495 /* ButtonExtension.swift */,
 				0010A42E1F800DD000D12495 /* ScrollSelector.swift */,
 				00BD462C1FE19AF50009A4B5 /* BarSelector.swift */,
 				0079189A1FF56C4900DB03D3 /* TransitionControls.swift */,
 				00067E202038CEC000170054 /* IFunc.swift */,
+				0087EADD2041091B00BDEEC8 /* Asker.swift */,
 			);
 			name = General;
 			sourceTree = "<group>";
@@ -388,7 +436,8 @@
 		00FC190E1FB3DEA900D8FD97 /* Trends */ = {
 			isa = PBXGroup;
 			children = (
-				00FC190F1FB3DEB700D8FD97 /* TrendsView.swift */,
+				0007C2F3203CDCCA009EA7A8 /* Personal Trends */,
+				0007C2F2203CDCBC009EA7A8 /* Global Trends */,
 			);
 			name = Trends;
 			sourceTree = "<group>";
@@ -600,27 +649,27 @@
 				0079189D1FF58D8700DB03D3 /* Diseases.swift in Sources */,
 				00BD462F1FE19C620009A4B5 /* DetailSelector.swift in Sources */,
 				0010A42F1F800DD000D12495 /* ScrollSelector.swift in Sources */,
-				00FC19101FB3DEB700D8FD97 /* TrendsView.swift in Sources */,
+				00FC19101FB3DEB700D8FD97 /* GTrendsView.swift in Sources */,
 				0083AD251F795BD8007AEF87 /* SicknessScreen.swift in Sources */,
 				00BC4F701F81746C0018D5D8 /* Map.swift in Sources */,
 				00067E212038CEC000170054 /* IFunc.swift in Sources */,
 				00EBE4B11F9D2EC1005A8E6B /* ColorScheme.swift in Sources */,
 				009CE9E21F8FFFFD00D224F0 /* MainHolder.swift in Sources */,
 				007918A11FF591D600DB03D3 /* UserAgreementPt3.swift in Sources */,
-				00F2F0521F7F1ECD00BC3120 /* ButtonSelector.swift in Sources */,
 				00E9D5282038A9A900C353AF /* DiseaseDataCenter.swift in Sources */,
 				00A5E7A31F6C414D004535D9 /* ContinueArrow.swift in Sources */,
 				00BD46311FE1C6F20009A4B5 /* AddressChanger.swift in Sources */,
+				0087EADE2041091B00BDEEC8 /* Asker.swift in Sources */,
 				00D665511FB5348F00C3C680 /* Trend.swift in Sources */,
 				0079189B1FF56C4900DB03D3 /* TransitionControls.swift in Sources */,
 				00112527203889EF00C3D16A /* DataCenter.swift in Sources */,
 				00CD77FD1F7844C1002B5C78 /* FileRW.swift in Sources */,
 				0011DBBA1F6C0EBA004212E1 /* ViewController.swift in Sources */,
 				0061311C200A920B00A4E71B /* DiseaseRenderer.swift in Sources */,
-				0010A42D1F8008A800D12495 /* ButtonExtension.swift in Sources */,
 				0083AD271F795C50007AEF87 /* DiseaseNameScreen.swift in Sources */,
 				00AA180A203BB8440071CA6A /* TrendDataCenter.swift in Sources */,
 				00A5E7A41F6C414D004535D9 /* TutorialHolder.swift in Sources */,
+				0087EADA2041062F00BDEEC8 /* UsernameAsk.swift in Sources */,
 				0032F3421F808295001A9633 /* MapOverlayCreator.swift in Sources */,
 				00A5E7A51F6C414D004535D9 /* NotificationsAsk.swift in Sources */,
 				00067E232038CFF900170054 /* DiseaseLoadingReactor.swift in Sources */,
@@ -629,10 +678,13 @@
 				00AA1808203BB8370071CA6A /* TrendLoadingReactor.swift in Sources */,
 				00EBE4AF1F9D2BE6005A8E6B /* UserAgreementPt2.swift in Sources */,
 				00F2F04E1F7F0B8300BC3120 /* UserAgreementPt1.swift in Sources */,
+				0007C2F5203CDCE8009EA7A8 /* PTrendsView.swift in Sources */,
 				0008CE2C1FE6CFA1006FD767 /* QuickTouch.swift in Sources */,
+				0087EADC2041063900BDEEC8 /* PasswordAsk.swift in Sources */,
 				0008CE2E1FE6D158006FD767 /* ReportingService.swift in Sources */,
 				00EE1AA31FCB4D58006FDBFD /* TimeSelector.swift in Sources */,
 				00A5E7A71F6C415E004535D9 /* AppDescription.swift in Sources */,
+				0087EAE120410AFA00BDEEC8 /* AddressResponse.swift in Sources */,
 				0011DBB81F6C0EBA004212E1 /* AppDelegate.swift in Sources */,
 				00224BE82038C9CF002430D3 /* DiseasePolygon.swift in Sources */,
 			);
