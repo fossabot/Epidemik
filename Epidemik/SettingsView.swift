@@ -43,7 +43,7 @@ public class SettingsView: UIView {
 		addressChanger.backgroundColor = COLORS.COLOR_4
 		addressChanger.addTarget(self, action: #selector(SettingsView.changeAddress(_:)), for: .touchUpInside)
 		addressChanger.layer.cornerRadius = 20
-		addressChanger.titleLabel?.font = UIFont(name: "Helvetica", size: 23)
+		addressChanger.titleLabel?.font = UIFont(name: "Futura-CondensedMedium", size: 23)
 		addressChanger.setTitle("Change Address", for: .normal)
 		self.addSubview(addressChanger)
 	}
@@ -66,7 +66,7 @@ public class SettingsView: UIView {
 		bugReporter.backgroundColor = COLORS.COLOR_4
 		bugReporter.addTarget(self, action: #selector(SettingsView.reportBug(_:)), for: .touchUpInside)
 		bugReporter.layer.cornerRadius = 20
-		bugReporter.titleLabel?.font = UIFont(name: "Helvetica", size: 23)
+		bugReporter.titleLabel?.font = UIFont(name: "Futura-CondensedMedium", size: 23)
 		bugReporter.setTitle("Report a Bug", for: .normal)
 		self.addSubview(bugReporter)
 	}
@@ -80,7 +80,7 @@ public class SettingsView: UIView {
 	func createDetailTextBox(x: CGFloat, y: CGFloat, message: String) {
 		let toAdd = UITextView(frame: CGRect(x: x, y: y, width: (self.frame.width-smallButtonWidth)/2, height: smallButtonHeight))
 		toAdd.text = message
-		toAdd.font = UIFont(name: "Helvetica", size: 9)
+		toAdd.font = UIFont(name: "Futura-CondensedMedium", size: 9)
 		toAdd.isSelectable = false
 		toAdd.textColor = UIColor.white
 		toAdd.backgroundColor = UIColor.clear
@@ -94,7 +94,7 @@ public class SettingsView: UIView {
 		done.backgroundColor = COLORS.COLOR_3
 		done.addTarget(self, action: #selector(SettingsView.removeSelf(_:)), for: .touchUpInside)
 		done.layer.cornerRadius = 20
-		done.titleLabel?.font = UIFont(name: "Helvetica-Bold", size: 30)
+		done.titleLabel?.font = UIFont(name: "Futura-CondensedExtraBold", size: 30)
 		done.setTitle("Done", for: .normal)
 		self.addSubview(done)
 	}

@@ -20,7 +20,7 @@ public class SicknessScreen: UIView {
 	var buttonHeight: CGFloat!
 	
 	let buttonChampher = CGFloat(40.0)
-	let buttonFont = UIFont(name: "Helvetica-Bold", size: 22)
+	let buttonFont = UIFont(name: "Futura-CondensedExtraBold", size: 22)
 	
 	var doneButton: UIButton!
 	var mainHolder: MainHolder!

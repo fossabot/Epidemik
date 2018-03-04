@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	
 	var window: UIWindow?
 	var deviceToken: String?
-	var introHolder: TutorialHolder?
+	var accCreation: LoginScreen?
 	
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 		// Override point for customization after application launch.

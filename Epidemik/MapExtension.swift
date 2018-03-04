@@ -82,7 +82,7 @@ extension MKMapView {
 	}
 	
 	private func longitudeToPixelSpaceX(longitude: Double) -> Double {
-		return round(MERCATOR_OFFSET + MERCATOR_RADIUS * longitude * M_PI / 180.0)
+		return round(MERCATOR_OFFSET + MERCATOR_RADIUS * longitude * .pi / 180.0)
 	}
 	
 	private func latitudeToPixelSpaceY(latitude: Double) -> Double {
@@ -91,16 +91,16 @@ extension MKMapView {
 		} else if latitude == -90.0 {
 			return MERCATOR_OFFSET * 2
 		} else {
-			return round(MERCATOR_OFFSET - MERCATOR_RADIUS * Double(logf((1 + sinf(Float(latitude * M_PI) / 180.0)) / (1 - sinf(Float(latitude * M_PI) / 180.0))) / 2.0))
+			return round(MERCATOR_OFFSET - MERCATOR_RADIUS * Double(logf((1 + sinf(Float(latitude * .pi) / 180.0)) / (1 - sinf(Float(latitude * .pi) / 180.0))) / 2.0))
 		}
 	}
 	
 	private func pixelSpaceXToLongitude(pixelX: Double) -> Double {
-		return ((round(pixelX) - MERCATOR_OFFSET) / MERCATOR_RADIUS) * 180.0 / M_PI
+		return ((round(pixelX) - MERCATOR_OFFSET) / MERCATOR_RADIUS) * 180.0 / .pi
 	}
 	
 	
 	private func pixelSpaceYToLatitude(pixelY: Double) -> Double {
-		return (M_PI / 2.0 - 2.0 * atan(exp((round(pixelY) - MERCATOR_OFFSET) / MERCATOR_RADIUS))) * 180.0 / M_PI
+		return (.pi / 2.0 - 2.0 * atan(exp((round(pixelY) - MERCATOR_OFFSET) / MERCATOR_RADIUS))) * 180.0 / .pi
 	}
 }

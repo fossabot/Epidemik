@@ -25,7 +25,7 @@ import MapKit
 
 class ViewController: UIViewController {
 	
-	var appWalkThrough: TutorialHolder!
+	var accCreation: LoginScreen!
 	
 	var mainView: MainHolder!
 	
@@ -41,6 +41,7 @@ class ViewController: UIViewController {
 		// Do any additional setup after loading the view, typically from a nib.
 	}
 	
+	//Displays the Graphic before everything is loaded
 	func displayIntroGraphics() {
 		introGraphic = UIView(frame: self.view.frame)
 		introGraphic.backgroundColor = UIColor.white
@@ -68,12 +69,13 @@ class ViewController: UIViewController {
 	
 	// Creates the view that holds all the intro screens
 	func initWalkthrough() {
-		appWalkThrough = TutorialHolder(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)) //Calls initDatabase when done
-		self.view.addSubview(appWalkThrough)
-		self.view.sendSubview(toBack: appWalkThrough)
-		appWalkThrough.checkLocation()
+		accCreation = LoginScreen(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)) //Calls initDatabase when done
+		self.view.addSubview(accCreation)
+		self.view.sendSubview(toBack: accCreation)
+		self.removeIntroGraphics()
 	}
 	
+	// Removes the graphic that is there before things load
 	func removeIntroGraphics() {
 		UIView.animate(withDuration: 0.5, animations: {
 			self.introGraphic.frame.origin.x -= self.view.frame.width
@@ -83,15 +85,17 @@ class ViewController: UIViewController {
 		})
 	}
 	
+	// Removes the graphics that lead the user through account creation
 	func removeWalkthrough() {
 		UIView.animate(withDuration: 0.5, animations: {
-			self.appWalkThrough.frame.origin.x -= self.view.frame.width
+			self.accCreation.frame.origin.x -= self.view.frame.width
 		}, completion: {
 			(value: Bool) in
-			self.appWalkThrough.removeFromSuperview()
+			self.accCreation.removeFromSuperview()
 		})
 	}
 	
+	// Shows the map and all its parts
 	func showMainView() {
 		if (mainView == nil) {
 			initMainScreen()
@@ -107,12 +111,14 @@ class ViewController: UIViewController {
 		
 	}
 	
+	// Displays the sickness selection screen in an updated state
 	func refreshSicknessScreen() {
 		if mainView != nil {
 			mainView.refreshSicknessScreen()
 		}
 	}
 	
+	// Displays the screen where the user can sleect what sickness they have
 	func displayDiseaseSelector() {
 		if mainView != nil {
 			mainView.displayDiseaseSelector()
@@ -122,6 +128,7 @@ class ViewController: UIViewController {
 		}
 	}
 	
+	// Updates the trends based on any changes or a users new location
 	func updateTrends() {
 		if mainView != nil && mainView.trendsView
 			!= nil {

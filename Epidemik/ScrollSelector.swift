@@ -28,7 +28,7 @@ public class ScrollSelector: UIView, UIPickerViewDataSource, UIPickerViewDelegat
 		delayPicker.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
 		
 		timeTextField = UITextField()
-		timeTextField?.font = UIFont(name: "Helvetica-Bold", size: 20)
+		timeTextField?.font = UIFont(name: "Futura-CondensedExtraBold", size: 20)
 		
 		delayPicker?.dataSource = self
 		delayPicker?.delegate = self

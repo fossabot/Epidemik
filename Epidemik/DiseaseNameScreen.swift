@@ -62,7 +62,7 @@ public class DiseaseNameScreen: UIView {
 		searchBox = UITextField(frame: CGRect(x: 0, y: self.frame.width/2+30, width: self.frame.width, height: 30))
 		searchBox.textAlignment = .center
 		searchBox.backgroundColor = UIColor.clear
-		searchBox.font = UIFont(name: "Helvetica", size: 20)
+		searchBox.font = UIFont(name: "Futura-CondensedMedium", size: 20)
 		searchBox.text = "Search for your disease..."
 		searchBox.clearsOnBeginEditing = true
 		searchBox.addTarget(self, action: #selector(updateSearch), for: UIControlEvents.allEditingEvents)
@@ -105,7 +105,7 @@ public class DiseaseNameScreen: UIView {
 		selectorTitle.text = "Select Your Illness"
 		selectorTitle.textAlignment = .center
 		selectorTitle.backgroundColor = UIColor.clear
-		selectorTitle.font = UIFont(name: "Helvetica", size: 20)
+		selectorTitle.font = UIFont(name: "Futura-CondensedMedium", size: 20)
 		selectorTitle.autocorrectionType = UITextAutocorrectionType.no
 		self.addSubview(selectorTitle)
 	}
@@ -131,7 +131,7 @@ public class DiseaseNameScreen: UIView {
 	func initSendButton() {
 		submitButton = UIButton(frame: CGRect(x: self.frame.width/2+buttonInShift, y: 3*self.frame.height/4 - buttonUpShift, width: self.frame.width/2-2*buttonInShift, height: self.frame.height/4-2*buttonInShift))
 		submitButton.setTitle("SUBMIT", for: .normal)
-		submitButton.titleLabel?.font = UIFont(name: "Helvetica-Bold", size: 20)
+		submitButton.titleLabel?.font = UIFont(name: "Futura-CondensedExtraBold", size: 20)
 		submitButton.backgroundColor = COLORS.COLOR_2
 		submitButton.addTarget(self, action: #selector(gatherAndSendInfo), for: .touchUpInside)
 		submitButton.layer.cornerRadius = 15
@@ -144,7 +144,7 @@ public class DiseaseNameScreen: UIView {
 		backButton = UIButton(frame: CGRect(x: buttonInShift, y: 3*self.frame.height/4 - buttonUpShift, width: self.frame.width/2 - 2*buttonInShift, height: self.frame.height/4 - 2*buttonInShift))
 		backButton.setTitle("BACK", for: .normal)
 		backButton.backgroundColor = COLORS.COLOR_4
-		backButton.titleLabel?.font = UIFont(name: "Helvetica-Bold", size: 20)
+		backButton.titleLabel?.font = UIFont(name: "Futura-CondensedExtraBold", size: 20)
 		backButton.addTarget(self, action: #selector(back), for: .touchUpInside)
 		backButton.layer.cornerRadius = 15
 		self.addSubview(backButton)

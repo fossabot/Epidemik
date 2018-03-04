@@ -58,9 +58,9 @@ public class Trend {
 		let toReturn = UITextView(frame: CGRect(x: self.height, y: 0, width: width, height: 100))
 		toReturn.text = "Name: " + name + "\n  Infection Chance: " + String(round(10*weight)/10) + "%"
 		if width > 350 {
-			toReturn.font = UIFont(name: "Helvetica", size: 20)
+			toReturn.font = UIFont(name: "Futura-CondensedMedium", size: 20)
 		} else {
-			toReturn.font = UIFont(name: "Helvetica", size: 15)
+			toReturn.font = UIFont(name: "Futura-CondensedMedium", size: 15)
 		}
 		
 		toReturn.backgroundColor = UIColor.clear
