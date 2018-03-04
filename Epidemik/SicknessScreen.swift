@@ -28,6 +28,7 @@ public class SicknessScreen: UIView {
 	init (frame: CGRect, mainHolder: MainHolder) {
 		super.init(frame: frame)
 		self.mainHolder = mainHolder
+		initBlur()
 		initButtonPerams()
 		initButton()
 	}

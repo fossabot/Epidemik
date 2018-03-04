@@ -21,14 +21,9 @@ public class DiseaseDataCenter {
 	// Loads the text from the server given a lat, long, lat width, long height
 	// Calls the text->array, process, and draw
 	func loadDiseasePointData() {
-		let latitude = -1000
-		let longitude = -1000
-		let rangeLong = 2000
-		let rangeLat = 2000
 		var request = URLRequest(url: URL(string: "https://rbradford.thaumavor.io/iOS_Programs/Epidemik/getCurrentData.php")!)
 		request.httpMethod = "POST"
-		let postString = "latitude=" + String(latitude) + "&longitude=" + String(longitude) +
-			"&rangeLong=" + String(rangeLong) + "&rangeLat=" + String(rangeLat)
+		let postString = ""
 		request.httpBody = postString.data(using: .utf8)
 		let task = URLSession.shared.dataTask(with: request) { data, response, error in
 			

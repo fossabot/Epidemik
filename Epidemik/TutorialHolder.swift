@@ -17,6 +17,8 @@ public class TutorialHolder: UIView {
 	var descriptionScreen: AppDescription!
 	var notificationScreen: NotificationAsk!
 	var addressScreen: AddressAsk!
+	var usernameScreen: UsernameAsk!
+	var passwordScreen: PasswordAsk!
 	var userAgreementPt1: UserAgreementPt1!
 	var userAgreementPt2: UserAgreementPt2!
 	var userAgreementPt3: UserAgreementPt3!
@@ -37,6 +39,8 @@ public class TutorialHolder: UIView {
 		let offsetFrame = CGRect(x: self.frame.width, y: 0, width: self.frame.width, height: self.frame.height)
 		notificationScreen = NotificationAsk(frame: offsetFrame, holder: self)
 		addressScreen = AddressAsk(frame: offsetFrame, holder: self)
+		usernameScreen = UsernameAsk(frame: offsetFrame, holder: self)
+		passwordScreen = PasswordAsk(frame: offsetFrame, holder: self)
 		userAgreementPt1 = UserAgreementPt1(frame: offsetFrame, holder: self)
 		userAgreementPt2 = UserAgreementPt2(frame: offsetFrame, holder: self)
 		userAgreementPt3 = UserAgreementPt3(frame: offsetFrame, holder: self)
@@ -69,6 +73,8 @@ public class TutorialHolder: UIView {
 	}
 	
 	func initNotifications() {
+		addTutorialView(view: usernameScreen)
+		addTutorialView(view: passwordScreen)
 		addTutorialView(view: notificationScreen)
 	}
 	

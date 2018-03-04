@@ -30,7 +30,19 @@ public class PasswordAsk: GeneralAskScreen {
 	}
 	
 	override func askForPermission() {
-		ADDRESS.askForNewAddress(message: "What is Your Password?")
+		Asker.ask(title: "Password", placeHolder: "password", message: "What Do You Want Your Password to be?", isSecure: true, resp: PasswordResponse())
+		holder.goToNext()
+	}
+	
+}
+
+class PasswordResponse: IFunc<String, Int> {
+	
+	var FILE_NAME = "password.epi"
+	
+	override func apply(t: String) -> Int? {
+		FileRW.writeFile(fileName: FILE_NAME, contents: t)
+		return 1
 	}
 	
 }

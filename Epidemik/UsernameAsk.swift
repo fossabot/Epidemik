@@ -30,7 +30,19 @@ public class UsernameAsk: GeneralAskScreen {
 	}
 	
 	override func askForPermission() {
-		ADDRESS.askForNewAddress(message: "What is Your Username?")
+		Asker.ask(title: "Username", placeHolder: "username", message: "What Do You Want Your Username to be?", isSecure: false, resp: UsernameResponse())
+		holder.goToNext()
+	}
+	
+}
+
+class UsernameResponse: IFunc<String, Int> {
+	
+	var FILE_NAME = "username.epi"
+	
+	override func apply(t: String) -> Int? {
+		FileRW.writeFile(fileName: FILE_NAME, contents: t)
+		return 1
 	}
 	
 }

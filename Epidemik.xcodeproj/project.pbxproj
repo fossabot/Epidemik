@@ -29,6 +29,8 @@
 		0011DBC21F6C0EBA004212E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0011DBC01F6C0EBA004212E1 /* LaunchScreen.storyboard */; };
 		0011DBCD1F6C0EBA004212E1 /* EpidemikTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0011DBCC1F6C0EBA004212E1 /* EpidemikTests.swift */; };
 		0011DBD81F6C0EBA004212E1 /* EpidemikUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0011DBD71F6C0EBA004212E1 /* EpidemikUITests.swift */; };
+		0014D41B204C4550007D9E31 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0014D41A204C4550007D9E31 /* UIViewExtension.swift */; };
+		0014D41D204C4687007D9E31 /* MapExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0014D41C204C4687007D9E31 /* MapExtension.swift */; };
 		0018BCD81FE0BDB7008DCDE5 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0018BCD71FE0BDB7008DCDE5 /* SettingsView.swift */; };
 		00224BE82038C9CF002430D3 /* DiseasePolygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00224BE72038C9CF002430D3 /* DiseasePolygon.swift */; };
 		0032F3421F808295001A9633 /* MapOverlayCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0032F3411F808295001A9633 /* MapOverlayCreator.swift */; };
@@ -54,6 +56,7 @@
 		00BD462D1FE19AF50009A4B5 /* BarSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BD462C1FE19AF50009A4B5 /* BarSelector.swift */; };
 		00BD462F1FE19C620009A4B5 /* DetailSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BD462E1FE19C620009A4B5 /* DetailSelector.swift */; };
 		00BD46311FE1C6F20009A4B5 /* AddressChanger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BD46301FE1C6F20009A4B5 /* AddressChanger.swift */; };
+		00C56883204B110100BC5762 /* AccountCreation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C56882204B110100BC5762 /* AccountCreation.swift */; };
 		00CD77FA1F7843EA002B5C78 /* AddressAsk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CD77F91F7843EA002B5C78 /* AddressAsk.swift */; };
 		00CD77FD1F7844C1002B5C78 /* FileRW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CD77FC1F7844C1002B5C78 /* FileRW.swift */; };
 		00D665511FB5348F00C3C680 /* Trend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D665501FB5348F00C3C680 /* Trend.swift */; };
@@ -133,6 +136,8 @@
 		0011DBD31F6C0EBA004212E1 /* EpidemikUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EpidemikUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0011DBD71F6C0EBA004212E1 /* EpidemikUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpidemikUITests.swift; sourceTree = "<group>"; };
 		0011DBD91F6C0EBA004212E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0014D41A204C4550007D9E31 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		0014D41C204C4687007D9E31 /* MapExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapExtension.swift; sourceTree = "<group>"; };
 		0018BCD71FE0BDB7008DCDE5 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		00224BE72038C9CF002430D3 /* DiseasePolygon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseasePolygon.swift; sourceTree = "<group>"; };
 		0032F3411F808295001A9633 /* MapOverlayCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapOverlayCreator.swift; sourceTree = "<group>"; };
@@ -159,6 +164,7 @@
 		00BD462C1FE19AF50009A4B5 /* BarSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarSelector.swift; sourceTree = "<group>"; };
 		00BD462E1FE19C620009A4B5 /* DetailSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSelector.swift; sourceTree = "<group>"; };
 		00BD46301FE1C6F20009A4B5 /* AddressChanger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressChanger.swift; sourceTree = "<group>"; };
+		00C56882204B110100BC5762 /* AccountCreation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCreation.swift; sourceTree = "<group>"; };
 		00CD77F91F7843EA002B5C78 /* AddressAsk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressAsk.swift; sourceTree = "<group>"; };
 		00CD77FC1F7844C1002B5C78 /* FileRW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileRW.swift; sourceTree = "<group>"; };
 		00D665501FB5348F00C3C680 /* Trend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trend.swift; sourceTree = "<group>"; };
@@ -385,6 +391,7 @@
 				00CD77F91F7843EA002B5C78 /* AddressAsk.swift */,
 				0087EAD92041062F00BDEEC8 /* UsernameAsk.swift */,
 				0087EADB2041063900BDEEC8 /* PasswordAsk.swift */,
+				00C56882204B110100BC5762 /* AccountCreation.swift */,
 			);
 			name = Account;
 			sourceTree = "<group>";
@@ -422,13 +429,15 @@
 			isa = PBXGroup;
 			children = (
 				0087EADF20410AEB00BDEEC8 /* Address */,
-				00CD77FC1F7844C1002B5C78 /* FileRW.swift */,
-				00EBE4B01F9D2EC1005A8E6B /* ColorScheme.swift */,
-				0010A42E1F800DD000D12495 /* ScrollSelector.swift */,
-				00BD462C1FE19AF50009A4B5 /* BarSelector.swift */,
-				0079189A1FF56C4900DB03D3 /* TransitionControls.swift */,
-				00067E202038CEC000170054 /* IFunc.swift */,
 				0087EADD2041091B00BDEEC8 /* Asker.swift */,
+				00BD462C1FE19AF50009A4B5 /* BarSelector.swift */,
+				00EBE4B01F9D2EC1005A8E6B /* ColorScheme.swift */,
+				00CD77FC1F7844C1002B5C78 /* FileRW.swift */,
+				00067E202038CEC000170054 /* IFunc.swift */,
+				0010A42E1F800DD000D12495 /* ScrollSelector.swift */,
+				0079189A1FF56C4900DB03D3 /* TransitionControls.swift */,
+				0014D41A204C4550007D9E31 /* UIViewExtension.swift */,
+				0014D41C204C4687007D9E31 /* MapExtension.swift */,
 			);
 			name = General;
 			sourceTree = "<group>";
@@ -646,6 +655,7 @@
 				00CD77FA1F7843EA002B5C78 /* AddressAsk.swift in Sources */,
 				00E9A4C71F8EFA6C008C95BD /* Disease.swift in Sources */,
 				00A5E7A91F6C4170004535D9 /* GeneralAskScreen.swift in Sources */,
+				0014D41D204C4687007D9E31 /* MapExtension.swift in Sources */,
 				0079189D1FF58D8700DB03D3 /* Diseases.swift in Sources */,
 				00BD462F1FE19C620009A4B5 /* DetailSelector.swift in Sources */,
 				0010A42F1F800DD000D12495 /* ScrollSelector.swift in Sources */,
@@ -663,6 +673,7 @@
 				00D665511FB5348F00C3C680 /* Trend.swift in Sources */,
 				0079189B1FF56C4900DB03D3 /* TransitionControls.swift in Sources */,
 				00112527203889EF00C3D16A /* DataCenter.swift in Sources */,
+				00C56883204B110100BC5762 /* AccountCreation.swift in Sources */,
 				00CD77FD1F7844C1002B5C78 /* FileRW.swift in Sources */,
 				0011DBBA1F6C0EBA004212E1 /* ViewController.swift in Sources */,
 				0061311C200A920B00A4E71B /* DiseaseRenderer.swift in Sources */,
@@ -684,6 +695,7 @@
 				0008CE2E1FE6D158006FD767 /* ReportingService.swift in Sources */,
 				00EE1AA31FCB4D58006FDBFD /* TimeSelector.swift in Sources */,
 				00A5E7A71F6C415E004535D9 /* AppDescription.swift in Sources */,
+				0014D41B204C4550007D9E31 /* UIViewExtension.swift in Sources */,
 				0087EAE120410AFA00BDEEC8 /* AddressResponse.swift in Sources */,
 				0011DBB81F6C0EBA004212E1 /* AppDelegate.swift in Sources */,
 				00224BE82038C9CF002430D3 /* DiseasePolygon.swift in Sources */,

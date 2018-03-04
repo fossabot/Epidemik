@@ -165,4 +165,10 @@ class Map: MKMapView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 		}
 	}
 	
+	func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+		if mapView.getZoomLevel() > 10 {
+			mapView.setCenter(coordinate: mapView.centerCoordinate, zoomLevel: 10, animated: true)
+		}
+	}
+	
 }

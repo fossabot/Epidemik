@@ -17,32 +17,17 @@ public class Reporting {
 	public static func amSick(diseaseName: String) {
 		let address = FileRW.readFile(fileName: "address.epi")
 		FileRW.writeFile(fileName: "sickness.epi", contents: "sick")
-		
+		let username = 	FileRW.readFile(fileName: "username.epi")
+
 		let date = NSDate()
 		let dateFormatter = DateFormatter()
 		dateFormatter.dateFormat = "yyyy-MM-dd"
 		let dateString = dateFormatter.string(from:date as Date)
 		
-		if (address != "" && diseaseName != "") {
-			let geocoder = CLGeocoder()
-			geocoder.geocodeAddressString(address!, completionHandler: {(placemarks, error) -> Void in
-				if(error != nil) {
-				} else if let buffer = placemarks?[0] {
-					let location = buffer.location;
-					self.sendToServer(latitude: String(describing: location!.coordinate.latitude), longitude: String(describing: location!.coordinate.longitude), diseaseName: diseaseName, date: dateString)
-					QuickTouch.initHealthyQuickTouch()
-				} else {
-				}
-			})
-		} else {
-		}
-	}
-	
-	static func sendToServer(latitude: String, longitude: String, diseaseName: String, date: String) {
 		var request = URLRequest(url: URL(string: "https://rbradford.thaumavor.io/iOS_Programs/Epidemik/recieveDisease.php")!)
 		request.httpMethod = "POST"
-		let postString = "date="+date + "&latitude=" + latitude + "&longitude=" + longitude
-			+ "&disease_name=" + diseaseName + "&deviceID=" + UIDevice.current.identifierForVendor!.uuidString
+		var postString = "date=" + dateString + "&username=" + username!
+		postString = postString + "&disease_name=" + diseaseName
 		FileRW.writeFile(fileName: "sickness.epi", contents: postString)
 		request.httpBody = postString.data(using: .utf8)
 		let task = URLSession.shared.dataTask(with: request) { data, response, error in

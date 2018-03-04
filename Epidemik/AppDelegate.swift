@@ -58,8 +58,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 			deviceToken = "0"
 		}
 		var request = URLRequest(url: URL(string: "https://rbradford.thaumavor.io/iOS_Programs/Epidemik/Notifications/recieveDeviceID.php")!)
+		let username = FileRW.readFile(fileName: "username.epi")
+		let password = FileRW.readFile(fileName: "password.epi")
 		request.httpMethod = "POST"
-		let postString = "deviceToken="+self.deviceToken! + "&latitude=" + latitude + "&longitude=" + longitude
+		var postString = "username=" + username! + "&password=" + password!
+		postString = postString + "&deviceToken="+self.deviceToken! + "&latitude=" + latitude + "&longitude=" + longitude
 		request.httpBody = postString.data(using: .utf8)
 		let task = URLSession.shared.dataTask(with: request) { data, response, error in
 			
