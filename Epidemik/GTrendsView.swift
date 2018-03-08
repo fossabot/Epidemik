@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import CoreLocation
 
 public class GTrendsView: UIScrollView {
 	

@@ -23,7 +23,7 @@ public class DiseaseDataCenter {
 	func loadDiseasePointData() {
 		var request = URLRequest(url: URL(string: "https://rbradford.thaumavor.io/iOS_Programs/Epidemik/getCurrentData.php")!)
 		request.httpMethod = "POST"
-		let postString = ""
+		let postString = "get=true"
 		request.httpBody = postString.data(using: .utf8)
 		let task = URLSession.shared.dataTask(with: request) { data, response, error in
 			

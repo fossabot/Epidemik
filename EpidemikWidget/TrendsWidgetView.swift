@@ -27,24 +27,14 @@ public class TrendsWidgetView: UIScrollView {
 	}
 	
 	func getAddressInfo() {
-		let address = FileRW.readFile(fileName: "address.epi")
-		if (address != "") {
-			let geocoder = CLGeocoder()
-			geocoder.geocodeAddressString(address!, completionHandler: {(placemarks, error) -> Void in
-				if(error != nil) {
-				} else if let buffer = placemarks?[0] {
-					let location = buffer.location;
-					self.getTrends(latitude: (location?.coordinate.latitude)!, longitude: (location?.coordinate.longitude)!)
-				}
-			})
-		}
+		let username = FileRW.readFile(fileName: "username.epi")
+		getTrends(username: username!)
 	}
 	
-	func getTrends(latitude: Double, longitude: Double) {
+	func getTrends(username: String) {
 		var request = URLRequest(url: URL(string: "https://rbradford.thaumavor.io/iOS_Programs/Epidemik/getTrends.php")!)
 		request.httpMethod = "POST"
-		let postString = "latitude=" + String(latitude) + "&longitude=" + String(longitude) +
-		"&get=hi"
+		let postString = "username=" + username + "&get=hi"
 		request.httpBody = postString.data(using: .utf8)
 		let task = URLSession.shared.dataTask(with: request) { data, response, error in
 			

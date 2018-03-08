@@ -13,7 +13,6 @@ import UserNotifications
 class AppDelegate: UIResponder, UIApplicationDelegate {
 	
 	var window: UIWindow?
-	var deviceToken: String?
 	var accCreation: LoginScreen?
 	
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -45,44 +44,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	}
 	
 	func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-
+		accCreation?.createAccount(deviceID: "null")
 	}
 	
 	func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
 		let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
-		self.deviceToken = deviceTokenString
-	}
-	
-	func sendDeviceTokenToServer(latitude: String, longitude: String, viewController: ViewController?) {
-		if deviceToken == nil {
-			deviceToken = "0"
-		}
-		var request = URLRequest(url: URL(string: "https://rbradford.thaumavor.io/iOS_Programs/Epidemik/Notifications/recieveDeviceID.php")!)
-		let username = FileRW.readFile(fileName: "username.epi")
-		let password = FileRW.readFile(fileName: "password.epi")
-		request.httpMethod = "POST"
-		var postString = "username=" + username! + "&password=" + password!
-		postString = postString + "&deviceToken="+self.deviceToken! + "&latitude=" + latitude + "&longitude=" + longitude
-		request.httpBody = postString.data(using: .utf8)
-		let task = URLSession.shared.dataTask(with: request) { data, response, error in
-			
-			guard let _ = data, error == nil else {
-				print("error=\(String(describing: error))")
-				return
-			}
-			if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
-				print("statusCode should be 200, but is \(httpStatus.statusCode)")
-				print("response = \(String(describing: response))")
-				return
-			}
-			let responseString = String(data: data!, encoding: .utf8)
-			if viewController != nil {
-				DispatchQueue.main.sync {
-					viewController!.showMainView()
-				}
-			}
-		}
-		task.resume()
+		accCreation?.createAccount(deviceID: deviceTokenString)
 	}
 	
 	func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {

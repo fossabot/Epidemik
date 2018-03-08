@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 import UserNotifications
-import CoreLocation
 
 public class SettingsView: UIView {
 	
