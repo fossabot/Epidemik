@@ -13,6 +13,7 @@ public class GTrendsView: UIScrollView {
 	
 	var dataCenter: DataCenter!
 	var blur: UIVisualEffectView!
+	
 	public override init(frame: CGRect) {
 		super.init(frame: frame)
 		self.isScrollEnabled = true

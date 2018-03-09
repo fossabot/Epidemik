@@ -26,11 +26,7 @@ class ADDRESS {
 			geocoder.geocodeAddressString(address, completionHandler: {(placemarks, error) -> Void in
 				if let buffer = placemarks?[0] {
 					let location = buffer.location;
-					UIApplication.shared.keyWindow?.rootViewController?.view.endEditing(true)
-					let vc = UIApplication.shared.delegate?.window??.rootViewController as! ViewController
-					vc.updateTrends()
-					let appDelegate = UIApplication.shared.delegate as! AppDelegate
-					//appDelegate.sendDeviceTokenToServer(latitude: String(describing: location!.coordinate.latitude), longitude: String(describing: location!.coordinate.longitude), viewController:  UIApplication.shared.delegate?.window??.rootViewController as? ViewController)
+					self.sendToServer(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
 				}
 			})
 		} else {
@@ -38,13 +34,32 @@ class ADDRESS {
 		}
 	}
 	
-	public static func setError() {
-		askForNewAddress(message: "Please Enter A Valid Address")
+	static func sendToServer(latitude: Double, longitude: Double) {
+		var request = URLRequest(url: URL(string: "https://rbradford.thaumavor.io/iOS_Programs/Epidemik/changeAddress.php")!)
+		request.httpMethod = "POST"
+		let username = FileRW.readFile(fileName: "username.epi")!
+		let postString = "username=" + username + "&latitude=" + String(latitude) + "&longitude=" + String(longitude)
+		print(postString)
+		request.httpBody = postString.data(using: .utf8)
+		let task = URLSession.shared.dataTask(with: request) { data, response, error in
+			
+			guard let _ = data, error == nil else {
+				print("error=\(String(describing: error))")
+				return
+			}
+			if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
+				print("statusCode should be 200, but is \(httpStatus.statusCode)")
+				print("response = \(String(describing: response))")
+				return
+			}
+			let responseString = String(data: data!, encoding: .utf8)
+			print(responseString)
+		}
+		task.resume()
 	}
 	
-	public static func updateDeviceToken() {
-		UNUserNotificationCenter.current().requestAuthorization(options:[.alert, .sound]){ (granted, error) in }
-		UIApplication.shared.registerForRemoteNotifications()
+	public static func setError() {
+		askForNewAddress(message: "Please Enter A Valid Address")
 	}
 	
 }

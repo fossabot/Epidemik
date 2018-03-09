@@ -18,7 +18,7 @@ public class DataCenter {
 	
 	init(diseaseReactor: DiseaseLoadingReactor, trendReactor: TrendLoadingReactor) {
 		self.diseaseReactor = diseaseReactor
-		self.diseasePoint = DiseaseDataCenter(diseaseReactor: self.diseaseReactor)
+		self.diseasePoint = DiseaseDataCenter(loadingReactor: self.diseaseReactor)
 		
 		self.trendReactor = trendReactor
 		self.trendPoint = TrendDataCenter(reactor: self.trendReactor)

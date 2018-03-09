@@ -70,8 +70,12 @@ class ViewController: UIViewController {
 	// Creates the view that holds all the intro screens
 	func initWalkthrough() {
 		accCreation = LoginScreen(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)) //Calls initDatabase when done
-		self.view.addSubview(accCreation)
-		self.view.sendSubview(toBack: accCreation)
+		if(accCreation.shouldAdd) {
+			self.view.addSubview(accCreation)
+			self.view.sendSubview(toBack: accCreation)
+		} else {
+			initMainScreen()
+		}
 		self.removeIntroGraphics()
 	}
 	

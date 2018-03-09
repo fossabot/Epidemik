@@ -11,10 +11,10 @@ import Foundation
 public class DiseaseDataCenter {
 	
 	var datapoints = Array<Disease>()
-	var diseaseReactor: DiseaseLoadingReactor
+	var loadingReactor: DiseaseLoadingReactor
 	
-	init(diseaseReactor: DiseaseLoadingReactor) {
-		self.diseaseReactor = diseaseReactor
+	init(loadingReactor: DiseaseLoadingReactor) {
+		self.loadingReactor = loadingReactor
 		loadDiseasePointData()
 	}
 	
@@ -45,19 +45,11 @@ public class DiseaseDataCenter {
 	// Processes the text from the server and loads it to a local array
 	func loadDiseaseTextToArray(toDraw: String) {
 		let latArray = toDraw.split(separator: "\n")
-		for lat in 0 ..< latArray.count {
-			let longArray = latArray[lat].split(separator: ",")
-			let latitude = (Double(longArray[0])!)
-			let longitude = (Double(longArray[1])!)
-			let name = String(longArray[2])
-			let date = String(longArray[3])
-			var date_healthy = String(longArray[4])
-			date_healthy = date_healthy.trimmingCharacters(in: CharacterSet.init(charactersIn: "\""))
-			let newDisease = Disease(lat: latitude, long: longitude, diseaseName: name, date: date, date_healthy: date_healthy)
-			self.datapoints.append(newDisease)
+		for line in latArray {
+			self.datapoints.append(Disease(text: String(line)))
 		}
 		DispatchQueue.main.sync {
-			self.diseaseReactor.apply(t: 1)
+			self.loadingReactor.apply(t: 1)
 		}
 	}
 	

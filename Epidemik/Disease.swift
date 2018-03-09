@@ -28,4 +28,15 @@ public class Disease {
 		self.date = dateFormatter.date(from: date)!
 	}
 	
+	convenience init(text: String) {
+		let longArray = text.split(separator: ",")
+		let latitude = (Double(longArray[0])!)
+		let longitude = (Double(longArray[1])!)
+		let name = String(longArray[2])
+		let date = String(longArray[3])
+		var date_healthy = String(longArray[4])
+		date_healthy = date_healthy.trimmingCharacters(in: CharacterSet.init(charactersIn: "\""))
+		self.init(lat: latitude, long: longitude, diseaseName: name, date: date, date_healthy: date_healthy)
+	}
+	
 }

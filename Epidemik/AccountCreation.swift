@@ -32,6 +32,7 @@ class LoginScreen: UIView, UITextFieldDelegate {
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
+		setShouldAdd()
 		initTextBoxes()
 		addLoginButton()
 		addCreateAccountButton()

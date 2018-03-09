@@ -30,17 +30,11 @@ public class MapOverlayCreator {
 	
 	var averageIntensity: Double = 1.0
 	
-	var filterDate = Date()
-	
 	var minLat: Double!
 	var minLong: Double!
 	
 	var maxLat: Double!
 	var maxLong: Double!
-	
-	var toFilter = Array<Date>()
-	
-	var filtering = false
 	
 	var dataCenter: DataCenter!
 	
@@ -67,7 +61,6 @@ public class MapOverlayCreator {
 	// Combine create and process into one
 	// Processes the array, and makes the visual graphic look slightly nicer
 	func createOverlays(date: Date) {
-		map.overlaysDraw = 0
 		map.removeOverlays(map.overlays)
 		latLongDisease = [[DiseasePolygon?]](repeating: [DiseasePolygon?](repeating: nil, count: Int(numXY)), count: Int(numXY))
 		var realPointCounts = 1.0
@@ -101,12 +94,6 @@ public class MapOverlayCreator {
 		}
 		
 		averageIntensity /= realPointCounts
-		map.totalOverlays = Int(realPointCounts)
-		if(map.totalOverlays == 1) {
-			finishFiltering()
-			return
-		}
-		
 		let _ = latLongDisease.map {
 			$0.map {
 				if($0 != nil && $0!.intensity > 0.1) {
@@ -115,14 +102,6 @@ public class MapOverlayCreator {
 			}
 		}
 	}
-	
-	func finishFiltering() {
-		if(toFilter.count > 0) {
-			toFilter.remove(at: 0)
-		}
-		filtering = false
-	}
-	
 	
 	func updateOverlay() {
 		let latWidth = map.region.span.latitudeDelta*2
@@ -138,26 +117,14 @@ public class MapOverlayCreator {
 		self.createOverlays(date: Date())
 	}
 	
-	func filterDates() {
+	func filterDate(toFilter: Date) {
 		DispatchQueue.global().async {
-			while self.toFilter.count > 0 {
-				if(!self.filtering) {
-					self.filtering = true
-					DispatchQueue.main.sync {
-						self.createOverlays(date:self.filterDate)
-					}
-				} else {
-					usleep(5000)
-				}
-			}
+			self.createOverlays(date:toFilter)
 		}
 	}
 	
 	func filterDate(newDate: Date) { //Need to make way more efficient
-		toFilter.append(newDate)
-		if toFilter.count == 1 {
-			filterDates()
-		}
+		filterDate(toFilter: newDate)
 	}
 	
 }

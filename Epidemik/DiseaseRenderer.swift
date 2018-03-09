@@ -19,10 +19,6 @@ public class DiseaseRenderer: MKCircleRenderer {
 	}
 	
 	override public func draw(_ mapRect: MKMapRect, zoomScale: MKZoomScale, in context: CGContext) {
-		let dataPolygon = self.overlay as! Disease
-		if !(dataPolygon.date_healthy > map.filterDate && dataPolygon.date < map.filterDate) {
-			return
-		}
 		super.draw(mapRect, zoomScale: zoomScale, in: context)
 	}
 	
