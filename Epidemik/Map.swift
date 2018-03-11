@@ -140,7 +140,7 @@ class Map: MKMapView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 	func filterDate(ratio: Double) {
 		let sixMonths = 15770000.0
 		let newDate = Date().addingTimeInterval(sixMonths*ratio - sixMonths)
-		overlayCreator.filterDate(newDate: newDate)
+		overlayCreator.filterDate(toFilter: newDate)
 	}
 	
 	@objc func animateVsTime(sender:UIGestureRecognizer) {
@@ -150,7 +150,7 @@ class Map: MKMapView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 				let sixMonths = 15770000.0
 				let newDate = today.addingTimeInterval(sixMonths*Double(i)/100.0 - sixMonths)
 				DispatchQueue.main.sync {
-					self.overlayCreator.filterDate(newDate: newDate)
+					self.overlayCreator.filterDate(toFilter: newDate)
 					self.filterBar.updateBar(ratio: Double(i)/100.0)
 				}
 				usleep(100000)

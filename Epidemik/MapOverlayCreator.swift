@@ -38,6 +38,8 @@ public class MapOverlayCreator {
 	
 	var dataCenter: DataCenter!
 	
+	var filterDate = Date()
+	
 	init(map: Map, longWidth: Double, latWidth: Double, startLong: Double, startLat: Double, dataCenter: DataCenter) {
 		self.latLongDisease = [[DiseasePolygon]](repeating: [DiseasePolygon](repeating: DiseasePolygon(), count: Int(numXY)), count: Int(numXY))
 		self.dataCenter = dataCenter
@@ -114,17 +116,14 @@ public class MapOverlayCreator {
 		self.latWidth = latWidth
 		self.longWidth = longWidth
 		
-		self.createOverlays(date: Date())
+		self.createOverlays(date: self.filterDate)
 	}
 	
 	func filterDate(toFilter: Date) {
 		DispatchQueue.global().async {
+			self.filterDate = toFilter
 			self.createOverlays(date:toFilter)
 		}
-	}
-	
-	func filterDate(newDate: Date) { //Need to make way more efficient
-		filterDate(toFilter: newDate)
 	}
 	
 }

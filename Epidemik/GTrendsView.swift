@@ -17,8 +17,10 @@ public class GTrendsView: UIScrollView {
 	public override init(frame: CGRect) {
 		super.init(frame: frame)
 		self.isScrollEnabled = true
+		self.alwaysBounceVertical = true
 		self.autoresizingMask = UIViewAutoresizing.flexibleHeight
-		initBlur()
+		myInitBlur()
+		initPullToRefresh()
 	}
 	
 	required public init?(coder aDecoder: NSCoder) {
@@ -46,6 +48,26 @@ public class GTrendsView: UIScrollView {
 			view.removeFromSuperview()
 		}
 		self.dataCenter.trendPoint.loadData()
+	}
+	
+	func initPullToRefresh() {
+		refreshControl = UIRefreshControl()
+		refreshControl!.addTarget(self, action: #selector(GTrendsView.updateData(_:)), for: UIControlEvents.valueChanged)
+		self.addSubview(refreshControl!)
+	}
+	
+	@objc func updateData(_ sender: UIButton?) {
+		refreshControl!.endRefreshing()
+	}
+	
+	func myInitBlur() {
+		let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.regular)
+		blur = UIVisualEffectView(effect: blurEffect)
+		//always fill the view
+		blur.frame = CGRect(x: 0, y: -self.frame.height, width: self.frame.width, height: self.frame.height*5)
+		blur.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+		
+		self.addSubview(blur) //if you have more UIViews, use an insertSubview API to place it where needed
 	}
 	
 }
