@@ -14,7 +14,6 @@ class StatusDataCenter {
 	
 	init(sicknessScreen: SicknessScreen) {
 		self.sicknessScreen = sicknessScreen
-		getUserStatus()
 	}
 	
 	//Inits the sickness buttons and writes the post string if applicable

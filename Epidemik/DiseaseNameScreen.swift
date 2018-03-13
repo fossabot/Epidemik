@@ -31,6 +31,7 @@ public class DiseaseNameScreen: UIView {
 	init (frame: CGRect, superScreen: SicknessScreen) {
 		self.superScreen = superScreen
 		super.init(frame: frame)
+		initBlur()
 		initSadFace()
 		//initLevelSelector()
 		initDiseaseSelector()
