@@ -16,16 +16,20 @@ public class Disease {
 	var date: Date
 	var date_healthy: Date
 	
+	var nullData: Date
+	
 	init(lat: Double, long: Double, diseaseName: String, date: String, date_healthy: String) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         self.date_healthy = dateFormatter.date(from: date_healthy)!
-        
+
 		self.lat = lat
 		self.long = long
 		self.diseaseName = diseaseName
     
 		self.date = dateFormatter.date(from: date)!
+		
+		self.nullData = dateFormatter.date(from: "4099-11-30")!
 	}
 	
 	convenience init(text: String) {

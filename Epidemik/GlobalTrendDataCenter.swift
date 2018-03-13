@@ -8,14 +8,13 @@
 
 import Foundation
 
-class TrendDataCenter {
+class GlobalTrendDataCenter {
 	
 	var trends = Array<Trend>()
-	var reactor: TrendLoadingReactor
+	var reactor: GlobalTrendLoadingReactor
 	
-	init(reactor: TrendLoadingReactor) {
+	init(reactor: GlobalTrendLoadingReactor) {
 		self.reactor = reactor
-		loadData()
 	}
 	
 	func getTrends() -> Array<Trend> {

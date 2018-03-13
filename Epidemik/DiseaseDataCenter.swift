@@ -15,7 +15,6 @@ public class DiseaseDataCenter {
 	
 	init(loadingReactor: DiseaseLoadingReactor) {
 		self.loadingReactor = loadingReactor
-		loadDiseasePointData()
 	}
 	
 	// Loads the text from the server given a lat, long, lat width, long height

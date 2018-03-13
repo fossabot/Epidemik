@@ -42,7 +42,6 @@ public class Reporting {
 				return
 			}
 			let responseString = String(data: data!, encoding: .utf8)
-			print(responseString ?? "")
 		}
 		task.resume()
 	}
@@ -73,10 +72,6 @@ public class Reporting {
 			
 		}
 		task.resume()
-	}
-	
-	static func isUserSick() -> Bool {
-		return (FileRW.readFile(fileName: FILE_NAME) != nil && FileRW.readFile(fileName: FILE_NAME) != "")
 	}
 	
 }

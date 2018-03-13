@@ -42,8 +42,6 @@ open class TransitionControls: NSObject {
 		mainView.endEditing(true)
 
 		if mainView.trendsView.frame.origin.x == 0.0 {
-			mainView.transisitionToPTrends(nil)
-		} else if mainView.sicknessView.frame.origin.x == 0.0 {
 			mainView.transisitionToMap(nil)
 		}
 	}
@@ -51,8 +49,8 @@ open class TransitionControls: NSObject {
 	@objc func transitionRight(sender: UIGestureRecognizer!) {
 		mainView.endEditing(true)
 
-		if mainView.sicknessView.frame.origin.x == 0.0 {
-			mainView.transisitionToGTrends(nil)
+		if mainView.personalTrends.frame.origin.x == 0.0 {
+			mainView.transisitionToMap(nil)
 		}
 	}
 

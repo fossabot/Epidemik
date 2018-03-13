@@ -15,16 +15,17 @@ public class PersonalTrendDataCenter {
 	
 	init(loadingReactor: PersonalTrendLoadingReactor) {
 		self.loadingReactor = loadingReactor
-		loadDiseasePointData()
 	}
 	
 	// Loads the text from the server given a lat, long, lat width, long height
 	// Calls the text->array, process, and draw
-	func loadDiseasePointData() {
+	func loadData() {
+		print("loading")
 		var request = URLRequest(url: URL(string: "https://rbradford.thaumavor.io/iOS_Programs/Epidemik/getPersonalData.php")!)
 		request.httpMethod = "POST"
 		let username = FileRW.readFile(fileName: "username.epi")!
 		let postString = "username=" + username + "&get=true"
+		print(postString)
 		request.httpBody = postString.data(using: .utf8)
 		let task = URLSession.shared.dataTask(with: request) { data, response, error in
 			
@@ -50,35 +51,39 @@ public class PersonalTrendDataCenter {
 			self.datapoints.append(Disease(text: String(line)))
 		}
 		DispatchQueue.main.sync {
+			print("loaded")
 			self.loadingReactor.apply(t: 1)
 		}
 	}
 	
 	// Returns the date when you are most likely to get sick
 	func getAverageDateSick() -> Date {
-		var yearSum = 0.0
 		var monthSum = 0.0
 		var daySum = 0.0
 		
 		for disease in self.datapoints {
-			yearSum = yearSum + Double(Calendar.current.component(Calendar.Component.year, from: disease.date))
 			monthSum = monthSum + Double(Calendar.current.component(Calendar.Component.month, from: disease.date))
 			daySum = daySum + Double(Calendar.current.component(Calendar.Component.day, from: disease.date))
 
 		}
-		let year  = String(round(yearSum/Double(datapoints.count)))
-		let month  = String(round(monthSum/Double(datapoints.count)))
-		let day  = String(round(daySum/Double(datapoints.count)))
+		let month  = String(Int(round(monthSum/Double(datapoints.count))))
+		let day  = String(Int(round(daySum/Double(datapoints.count))))
 		let dateFormatter = DateFormatter()
-		dateFormatter.dateFormat = "yyyy-MM-dd"
-		return dateFormatter.date(from: year + "-" + month + "-" + day)!
+		dateFormatter.dateFormat = "MM-dd"
+		print(month + "-" + day)
+		return dateFormatter.date(from: month + "-" + day)!
 	}
 	
 	//Returns the average length you are sick for
 	func getAverageLengthSickInDays() -> Double {
 		var totalTime = 0.0
 		for disease in datapoints {
-			totalTime = totalTime + disease.date_healthy.timeIntervalSince(disease.date)
+			if(disease.date_healthy != disease.nullData) {
+				totalTime = totalTime + disease.date_healthy.timeIntervalSince(disease.date)
+			}
+		}
+		if(datapoints.count == 0) {
+			return 0
 		}
 		return round(10.0*totalTime / (Double(datapoints.count)*86400.0)) / 10.0
 	}
@@ -89,6 +94,9 @@ public class PersonalTrendDataCenter {
 			return 0
 		} else {
 			let totalLength = datapoints.last!.date.timeIntervalSince(datapoints.first!.date)
+			if(totalLength == 0) {
+				return Double(datapoints.count)
+			}
 			return round(10.0*Double(datapoints.count) / (totalLength/31540000)) / 10.0
 		}
 	}

@@ -13,6 +13,7 @@ public class GTrendsView: UIScrollView {
 	
 	var dataCenter: DataCenter!
 	var blur: UIVisualEffectView!
+	var trendDisplays: Array<UIView> = Array<UIView>()
 	
 	public override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -37,6 +38,7 @@ public class GTrendsView: UIScrollView {
 			self.addSubview(toDisplay)
 			lastY = CGFloat(i) * (6.0/5.0*toDisplay.frame.height)
 			lastY += startShift + 2*toDisplay.frame.height
+			trendDisplays.append(toDisplay)
 		}
 		if(trends.count > 0) {
 			self.contentSize = CGSize(width: self.frame.width, height: lastY)
@@ -47,7 +49,7 @@ public class GTrendsView: UIScrollView {
 		for view in self.subviews {
 			view.removeFromSuperview()
 		}
-		self.dataCenter.trendPoint.loadData()
+		self.dataCenter.globalTrendData.loadData()
 	}
 	
 	func initPullToRefresh() {
@@ -58,6 +60,14 @@ public class GTrendsView: UIScrollView {
 	
 	@objc func updateData(_ sender: UIButton?) {
 		refreshControl!.endRefreshing()
+		dataCenter.loadTrendData()
+	}
+	
+	func removeAllCurrentTrends() {
+		for view in trendDisplays {
+			view.removeFromSuperview()
+		}
+		trendDisplays = Array<UIView>()
 	}
 	
 	func myInitBlur() {

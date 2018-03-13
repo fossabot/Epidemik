@@ -26,26 +26,51 @@ public class PTrendsView: UIScrollView {
 	}
 	
 	func displayTrends() {
-		let trends = dataCenter.getTrendData()
-		let startShift = self.frame.height / 6
-		var lastY = CGFloat(0.0)
-		for i in 0 ..< trends.count {
-			let toDisplay = trends[i].getUIView(width: Double(self.frame.width))
-			toDisplay.frame.origin.y = CGFloat(i) * (6.0/5.0*toDisplay.frame.height) + startShift
-			self.addSubview(toDisplay)
-			lastY = CGFloat(i) * (6.0/5.0*toDisplay.frame.height)
-			lastY += startShift + 2*toDisplay.frame.height
-		}
-		if(trends.count > 0) {
-			self.contentSize = CGSize(width: self.frame.width, height: lastY)
-		}
+		drawGraph()
+		tellSicknessPerYear()
+		tellAverageTimeSick()
+		tellMostCommonTimeSick()
 	}
 	
 	func updateTrends() {
 		for view in self.subviews {
 			view.removeFromSuperview()
 		}
-		self.dataCenter.trendPoint.loadData()
+		self.dataCenter.globalTrendData.loadData()
+	}
+	
+	func drawGraph() {
+		let y = self.frame.height / 6 + 300
+		let rect = CGRect(x: 20, y: y, width: self.frame.width - 40, height: self.frame.height - y - 50)
+		let toAdd = SicknessGraph(frame: rect, personData: self.dataCenter.personalTrendData.datapoints)
+		self.addSubview(toAdd)
+	}
+	
+	func tellSicknessPerYear() {
+		let text = "You are sick for an average of \n" + String(dataCenter.personalTrendData.getSicknessPerYear()) + " times per year"
+		let toDisplay = Trend(toDisplay: text)
+		let uiForm = toDisplay.getUIView(width: Double(self.frame.width))
+		uiForm.frame.origin.y = self.frame.height / 6
+		self.addSubview(uiForm)
+	}
+	
+	func tellAverageTimeSick() {
+		let text = "You are sick for an average of \n" + String(dataCenter.personalTrendData.getAverageLengthSickInDays()) + " days at a time"
+		let toDisplay = Trend(toDisplay: text)
+		let uiForm = toDisplay.getUIView(width: Double(self.frame.width))
+		uiForm.frame.origin.y = self.frame.height / 6 + 100
+		self.addSubview(uiForm)
+	}
+	
+	func tellMostCommonTimeSick() {
+		let toUse = dataCenter.personalTrendData.getAverageDateSick()
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateFormat = "MMMM"
+		let text = "You usually get sick in " + dateFormatter.string(from: toUse)
+		let toDisplay = Trend(toDisplay: text)
+		let uiForm = toDisplay.getUIView(width: Double(self.frame.width))
+		uiForm.frame.origin.y = self.frame.height / 6 + 200
+		self.addSubview(uiForm)
 	}
 	
 }

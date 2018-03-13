@@ -10,4 +10,15 @@ import Foundation
 
 class PersonalTrendLoadingReactor: IFunc<Int,Int> {
 	
+	var pTrendsView: PTrendsView
+	
+	init(pTrendsView: PTrendsView) {
+		self.pTrendsView = pTrendsView
+	}
+	
+	override func apply(t: Int) -> Int? {
+		pTrendsView.displayTrends()
+		return 1
+	}
+	
 }

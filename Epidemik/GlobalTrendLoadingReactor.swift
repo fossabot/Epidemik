@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TrendLoadingReactor: IFunc<Int,Int> {
+class GlobalTrendLoadingReactor: IFunc<Int,Int> {
 	
 	var trendsView: GTrendsView
 	
@@ -17,6 +17,7 @@ class TrendLoadingReactor: IFunc<Int,Int> {
 	}
 	
 	override func apply(t: Int) -> Int? {
+		trendsView.removeAllCurrentTrends()
 		trendsView.displayTrends()
 		return 1
 	}

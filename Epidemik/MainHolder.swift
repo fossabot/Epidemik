@@ -36,9 +36,10 @@ public class MainHolder: UIView {
 		initTrends()
 		initSettings()
 		initTransition()
-		initData()
-		initSickness()
 		initChangeButtons()
+		initSickness()
+		initData()
+		
 	}
 	
 	required public init?(coder aDecoder: NSCoder) {
@@ -46,9 +47,10 @@ public class MainHolder: UIView {
 	}
 	
 	func initData() {
-		self.dataCenter = DataCenter(diseaseReactor: DiseaseLoadingReactor(map: self.mapView), trendReactor: TrendLoadingReactor(trendsView: self.trendsView))
+		self.dataCenter = DataCenter(diseaseReactor: DiseaseLoadingReactor(map: self.mapView), trendReactor: GlobalTrendLoadingReactor(trendsView: self.trendsView), personalTrendReactor: PersonalTrendLoadingReactor(pTrendsView: self.personalTrends), sicknessScreen: self.sicknessView)
 		self.mapView.dataCenter = self.dataCenter
 		self.trendsView.dataCenter = self.dataCenter
+		self.personalTrends.dataCenter = dataCenter
 	}
 	
 	func initSickness() {

@@ -13,6 +13,7 @@ public class Trend {
 	
 	var name: String!
 	var weight: Double!
+	var toDisplay: String!
 	public static var nothing = "Nothing Spreading"
 	
 	var height = 60.0
@@ -21,8 +22,15 @@ public class Trend {
 	init(name: String, weight: Double) {
 		self.name = name
 		self.weight = weight
+		self.toDisplay = "Name: " + name + "\n  Infection Chance: " + String(round(10*weight)/10) + "%"
 	}
 
+	init(toDisplay: String) {
+		self.toDisplay = toDisplay
+		self.name = "    "
+		self.weight = 100
+	}
+	
 	func toString() -> String {
 		return name + "," + String(weight)
 	}
@@ -56,7 +64,7 @@ public class Trend {
 	
 	func initLabel(width: Double) -> UIView {
 		let toReturn = UITextView(frame: CGRect(x: self.height, y: 0, width: width, height: 100))
-		toReturn.text = "Name: " + name + "\n  Infection Chance: " + String(round(10*weight)/10) + "%"
+		toReturn.text = self.toDisplay
 		if width > 350 {
 			toReturn.font = UIFont(name: "Futura-CondensedMedium", size: 20)
 		} else {

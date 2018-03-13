@@ -10,43 +10,62 @@ import Foundation
 
 public class DataCenter {
 	
-	var diseasePoint: DiseaseDataCenter
+	var diseaseData: DiseaseDataCenter
 	var diseaseReactor: DiseaseLoadingReactor
 	
-	var trendPoint: TrendDataCenter
-	var trendReactor: TrendLoadingReactor
+	var globalTrendData: GlobalTrendDataCenter
+	var globalTrendReactor: GlobalTrendLoadingReactor
 	
-	init(diseaseReactor: DiseaseLoadingReactor, trendReactor: TrendLoadingReactor) {
+	var personalTrendData: PersonalTrendDataCenter
+	var personalTrendReactor: PersonalTrendLoadingReactor
+	
+	var statusData: StatusDataCenter
+	
+	init(diseaseReactor: DiseaseLoadingReactor, trendReactor: GlobalTrendLoadingReactor, personalTrendReactor: PersonalTrendLoadingReactor, sicknessScreen: SicknessScreen) {
 		self.diseaseReactor = diseaseReactor
-		self.diseasePoint = DiseaseDataCenter(loadingReactor: self.diseaseReactor)
+		self.diseaseData = DiseaseDataCenter(loadingReactor: self.diseaseReactor)
 		
-		self.trendReactor = trendReactor
-		self.trendPoint = TrendDataCenter(reactor: self.trendReactor)
+		self.globalTrendReactor = trendReactor
+		self.globalTrendData = GlobalTrendDataCenter(reactor: self.globalTrendReactor)
+		
+		self.personalTrendReactor = personalTrendReactor
+		self.personalTrendData = PersonalTrendDataCenter(loadingReactor: personalTrendReactor)
+		
+		statusData = StatusDataCenter(sicknessScreen: sicknessScreen)
+		
+		self.loadData()
 	}
 	
 	func loadData() {
 		loadDiseaseData()
 		loadTrendData()
+		loadPersonalTrendData()
+		loadStatusData()
 	}
 	
 	func loadDiseaseData() {
-		diseasePoint.loadDiseasePointData()
+		diseaseData.loadDiseasePointData()
 	}
 	
 	func getDiseaseData(date: Date) -> Array<Disease> {
-		return diseasePoint.getAppropriateData(date:date)
+		return diseaseData.getAppropriateData(date:date)
 	}
 	
 	func getTrendData() -> Array<Trend> {
-		return trendPoint.getTrends()
+		return globalTrendData.getTrends()
 	}
 	
 	func loadTrendData() {
-		self.trendPoint.loadData()
+		self.globalTrendData.loadData()
 	}
 	
-	func loadOtherData() {
-		
+	func loadPersonalTrendData() {
+		self.personalTrendData.loadData()
 	}
+	
+	func loadStatusData() {
+		self.statusData.getUserStatus()
+	}
+
 	
 }
