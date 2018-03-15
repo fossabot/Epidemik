@@ -60,6 +60,9 @@ public class PersonalTrendDataCenter {
 	func getAverageDateSick() -> Date {
 		var monthSum = 0.0
 		var daySum = 0.0
+		if(self.datapoints.count == 0) {
+			return Date()
+		}
 		
 		for disease in self.datapoints {
 			monthSum = monthSum + Double(Calendar.current.component(Calendar.Component.month, from: disease.date))
@@ -97,7 +100,7 @@ public class PersonalTrendDataCenter {
 			if(totalLength == 0) {
 				return Double(datapoints.count)
 			}
-			return round(10.0*Double(datapoints.count) / (totalLength/31540000)) / 10.0
+			return round(10.0*Double(datapoints.count) / (0.5 + totalLength/31540000)) / 10.0
 		}
 	}
 	

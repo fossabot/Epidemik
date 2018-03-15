@@ -15,13 +15,18 @@ class LoginScreen: UIView, UITextFieldDelegate {
 
 	var FILE_NAME = "username.epi"
 	
-	var usernameTextBox: UITextField!
-	var passwordTextBox: UITextField!
-	var addressTextBox: UITextField?
+	var usernameTextBox: AccCreationTextBox!
+	var passwordTextBox: AccCreationTextBox!
+	var addressTextBox: AccCreationTextBox?
 	
 	var shouldAdd: Bool = true
 	
 	var loginButton: UIButton!
+	var loginButtonLabel: UILabel!
+	
+	var createAccButton: UIButton!
+	
+	var logoImageView: UIImageView!
 	
 	var vc = UIApplication.shared.delegate?.window??.rootViewController as! ViewController
 	
@@ -30,16 +35,24 @@ class LoginScreen: UIView, UITextFieldDelegate {
 	var latitude: Double?
 	var longitude: Double?
 	
+	var slidUp = false
+	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		setShouldAdd()
-		initTextBoxes()
-		addLoginButton()
-		addCreateAccountButton()
+		self.backgroundColor = UIColor.white
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
+	}
+	
+	override func draw(_ rect: CGRect) {
+		initTextBoxes()
+		addLoginButton()
+		addCreateAccountButton()
+		addLogo()
+		self.backgroundColor = UIColor.white
 	}
 	
 	func login(username: String, password: String) {
@@ -100,28 +113,37 @@ class LoginScreen: UIView, UITextFieldDelegate {
 	}
 	
 	func initTextBoxes() {
-		usernameTextBox = UITextField(frame: CGRect(x: 20, y: self.frame.height/2 - 200, width: self.frame.width - 40, height: 50))
-		usernameTextBox.backgroundColor = UIColor.blue
-		usernameTextBox.autocorrectionType = .no
-		usernameTextBox.autocapitalizationType = .none
+		let selfHeight = self.frame.height / 15.0
+		let xOffset = self.frame.width / 12
+		let usernameImage = UIImage(named: "username.png")
+		usernameTextBox = AccCreationTextBox(frame: CGRect(x: xOffset, y: self.frame.height/2 - 3.0*selfHeight/2.0, width: self.frame.width - 2.0*xOffset, height: selfHeight), toDisplay: usernameImage!)
 		usernameTextBox.delegate = self
+		usernameTextBox.text = "username"
 		self.addSubview(usernameTextBox)
 		
-		passwordTextBox = UITextField(frame: CGRect(x: 20, y: self.frame.height/2 - 100, width: self.frame.width - 40, height: 50))
-		passwordTextBox.backgroundColor = UIColor.blue
-		passwordTextBox.autocorrectionType = .no
-		passwordTextBox.autocapitalizationType = .none
+		let passwordImage = UIImage(named: "password.png")
+		passwordTextBox = AccCreationTextBox(frame: CGRect(x: xOffset, y: self.frame.height/2 + selfHeight / 2, width: self.frame.width - 2*xOffset, height: selfHeight), toDisplay: passwordImage!)
+		passwordTextBox.isSecureTextEntry = true
 		passwordTextBox.delegate = self
+		passwordTextBox.text = "password"
 		self.addSubview(passwordTextBox)
 	}
 	
 	func addLoginButton() {
-		loginButton = UIButton(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: 100))
-		loginButton.backgroundColor = UIColor.red
+		let xOffset = self.frame.width / 12
+		let width = self.frame.width - 2.0*xOffset
+		let height = self.frame.height / 15
+		loginButton = UIButton(frame: CGRect(x: xOffset, y: self.frame.height / 2 + 5*height/2, width: width, height: height))
+		loginButton.backgroundColor = UIColor(displayP3Red: 0.95, green: 0.92, blue: 0.92, alpha: 1)
 		loginButton.addTarget(self, action: #selector(LoginScreen.loginReactor(_:)), for: .touchUpInside)
+		let text = UILabel()
+		text.text = "Login"
+		text.font = UIFont(name: "Futura-CondensedMedium", size: 20)
+		text.frame = CGRect(x: 0, y: 0, width: width, height: height)
+		text.textAlignment = .center
+		loginButton.addSubview(text)
 		self.addSubview(loginButton)
 	}
-	
 	
 	@objc func loginReactor(_ sender: UIButton?) {
 		self.login(username: self.usernameTextBox.text!, password: self.passwordTextBox.text!)
@@ -129,26 +151,69 @@ class LoginScreen: UIView, UITextFieldDelegate {
 	
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 		self.endEditing(true)
+		if(!slidUp) {
+			return false
+		}
+		slidUp = false
+		UIView.animate(withDuration: 0.5, animations: {
+			self.usernameTextBox.frame.origin.y += self.frame.height/4
+			self.passwordTextBox.frame.origin.y += self.frame.height/4
+			self.addressTextBox?.frame.origin.y += self.frame.height/4
+			self.logoImageView.frame.origin.y += self.frame.height/4
+			self.loginButton.frame.origin.y += self.frame.height/4
+		})
 		return false
 	}
 	
+	func textFieldDidBeginEditing(_ textField: UITextField) {
+		if(slidUp) {
+			return
+		}
+		slidUp = true
+		UIView.animate(withDuration: 0.5, animations: {
+			self.usernameTextBox.frame.origin.y -= self.frame.height/4
+			self.passwordTextBox.frame.origin.y -= self.frame.height/4
+			self.addressTextBox?.frame.origin.y -= self.frame.height/4
+			self.logoImageView.frame.origin.y -= self.frame.height/4
+			self.loginButton.frame.origin.y -= self.frame.height/4
+		})
+	}
+	
 	@objc func accCreateInitReactor(_ sender: UIButton?) {
-		addressTextBox = UITextField(frame: CGRect(x: 20, y: self.frame.height/2, width: self.frame.width-40, height: 50))
-		addressTextBox!.backgroundColor = UIColor.blue
-		addressTextBox!.autocorrectionType = .no
-		addressTextBox!.autocapitalizationType = .none
+		let xOffset = self.frame.width / 12
+		let width = self.frame.width - 2.0*xOffset
+		let height = self.frame.height / 15
+		let addressImage = UIImage(named: "address.png")
+		addressTextBox = AccCreationTextBox(frame: CGRect(x: self.frame.width, y: self.frame.height/2 + 5*height/2.0, width: width, height: height), toDisplay: addressImage!)
+		addressTextBox?.text = "address"
 		addressTextBox!.delegate = self
 		self.addSubview(addressTextBox!)
 		
 		loginButton.removeTarget(self, action: #selector(LoginScreen.loginReactor(_:)), for: .touchUpInside)
 		loginButton.addTarget(self, action: #selector(LoginScreen.accCreateReactor(_:)), for: .touchUpInside)
+		
+		self.loginButtonLabel.text = "Create A New Account"
+		
+		UIView.animate(withDuration: 0.5, animations: {
+			self.loginButton.frame.origin.y += 3*height/2
+			self.addressTextBox?.frame.origin.x = xOffset
+			self.createAccButton.frame.origin.x -= self.frame.width
+		})
 	}
 	
 	func addCreateAccountButton() {
-		let createAcc = UIButton(frame: CGRect(x: 0, y: self.frame.height/2+100, width: self.frame.width, height: 50))
-		createAcc.backgroundColor = UIColor.green
-		createAcc.addTarget(self, action: #selector(LoginScreen.accCreateInitReactor(_:)), for: .touchUpInside)
-		self.addSubview(createAcc)
+		let selfHeight = self.frame.height / 12
+		let selfWidth = 5*self.frame.width / 12
+		createAccButton = UIButton(frame: CGRect(x: (self.frame.width - selfWidth) / 2, y: self.frame.height - selfHeight, width: selfWidth, height: selfHeight))
+		createAccButton.backgroundColor = UIColor.clear
+		self.loginButtonLabel = UILabel()
+		self.loginButtonLabel.text = "Create an Account"
+		self.loginButtonLabel.font = UIFont(name: "Futura-CondensedMedium", size: 12)
+		self.loginButtonLabel.frame = CGRect(x: 0, y: 0, width: selfWidth, height: selfHeight)
+		self.loginButtonLabel.textAlignment = .center
+		createAccButton.addSubview(self.loginButtonLabel)
+		createAccButton.addTarget(self, action: #selector(LoginScreen.accCreateInitReactor(_:)), for: .touchUpInside)
+		self.addSubview(createAccButton)
 	}
 	
 	@objc func accCreateReactor(_ sender: UIButton?) {
@@ -217,6 +282,15 @@ class LoginScreen: UIView, UITextFieldDelegate {
 		}
 		task.resume()
 
+	}
+	
+	func addLogo() {
+		let epidemikImage = UIImage(named: "epidemik.png")
+		let imageWidth = self.frame.width / 3
+		logoImageView = UIImageView(frame: CGRect(x: (self.frame.width - imageWidth)/2, y: self.frame.height
+			/ 20, width: imageWidth, height: imageWidth))
+		logoImageView.image = epidemikImage
+		self.addSubview(logoImageView)
 	}
 	
 	
