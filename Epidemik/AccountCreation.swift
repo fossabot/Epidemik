@@ -226,6 +226,8 @@ class LoginScreen: UIView, UITextFieldDelegate {
 				if let buffer = placemarks?[0] {
 					let location = buffer.location;
 					self.askForNotifications(username: username, password: password, latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
+				} else {
+					self.warnUser(message: "please enter a valid address")
 				}
 			})
 		} else {
