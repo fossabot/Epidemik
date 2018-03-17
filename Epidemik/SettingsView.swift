@@ -19,6 +19,7 @@ public class SettingsView: UIView {
 	var addressChanger: UIButton!
 	var detailSelector: BarSelector!
 	var bugReporter: UIButton!
+	var logOut: UIButton!
 
 	var mainView: MainHolder!
 	
@@ -27,7 +28,7 @@ public class SettingsView: UIView {
 		self.mainView.endEditing(true)
 		super.init(frame: frame)
 		smallButtonWidth = 3*frame.width/5
-		smallButtonHeight = self.frame.height/8
+		smallButtonHeight = self.frame.height/12
 		smallButtonGap = self.frame.height/16
 		
 		self.backgroundColor = COLORS.COLOR_1
@@ -35,6 +36,7 @@ public class SettingsView: UIView {
 		initDone()
 		initDetailSelector()
 		initBugReporter()
+		initLogOut()
 	}
 	
 	func initAddressChanger() {
@@ -73,6 +75,22 @@ public class SettingsView: UIView {
 		UIApplication.shared.open(URL(string: "http://rbradford.thaumavor.io/contact.html")!, options: [:], completionHandler: { (notUsed) in
 			self.removeFromSuperview()
 		})
+	}
+	
+	func initLogOut() {
+		let logOut = UIButton(frame: CGRect(x: (self.frame.width-smallButtonWidth)/2, y: 4*smallButtonGap+3*smallButtonHeight, width: smallButtonWidth, height: smallButtonHeight))
+		logOut.backgroundColor = COLORS.COLOR_4
+		logOut.addTarget(self, action: #selector(SettingsView.logOut(_:)), for: .touchUpInside)
+		logOut.layer.cornerRadius = 20
+		logOut.titleLabel?.font = UIFont(name: "Futura-CondensedMedium", size: 23)
+		logOut.setTitle("Log Out", for: .normal)
+		self.addSubview(logOut)
+	}
+	
+	@objc func logOut(_ sender: UIButton?) {
+		FileRW.writeFile(fileName: "username.epi", contents: "")
+		let vc = UIApplication.shared.keyWindow?.rootViewController as! ViewController!
+		vc?.restart()
 	}
 	
 	func createDetailTextBox(x: CGFloat, y: CGFloat, message: String) {

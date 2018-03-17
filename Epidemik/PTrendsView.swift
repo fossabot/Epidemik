@@ -26,6 +26,10 @@ public class PTrendsView: UIScrollView {
 	}
 	
 	func displayTrends() {
+		for subview in self.subviews {
+			subview.removeFromSuperview()
+		}
+		initBlur()
 		drawGraph()
 		tellSicknessPerYear()
 		tellAverageTimeSick()

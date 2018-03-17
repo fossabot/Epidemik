@@ -140,5 +140,12 @@ class ViewController: UIViewController {
 		}
 	}
 	
+	func restart() {
+		self.mainView.removeFromSuperview()
+		self.displayIntroGraphics() //Display the intro graphic again
+		//Maybe have it do something fancy?
+		self.initWalkthrough()
+	}
+	
 }
 
