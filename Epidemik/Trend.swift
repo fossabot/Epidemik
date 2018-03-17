@@ -11,9 +11,10 @@ import UIKit
 
 public class Trend {
 	
-	var name: String!
-	var weight: Double!
-	var toDisplay: String!
+	var name: String
+	var weight: Double
+	var toDisplay: String
+	var displayButton: Bool
 	public static var nothing = "Nothing Spreading"
 	
 	var height = 60.0
@@ -22,6 +23,7 @@ public class Trend {
 	init(name: String, weight: Double) {
 		self.name = name
 		self.weight = weight
+		self.displayButton = true
 		self.toDisplay = "Name: " + name + "\n  Infection Chance: " + String(round(10*weight)/10) + "%"
 	}
 
@@ -29,6 +31,7 @@ public class Trend {
 		self.toDisplay = toDisplay
 		self.name = "    "
 		self.weight = 100
+		self.displayButton =  false
 	}
 	
 	func toString() -> String {
@@ -40,6 +43,9 @@ public class Trend {
 		toAdd.addSubview(initBlur(width: width))
 		toAdd.addSubview(initImage())
 		toAdd.addSubview(initLabel(width: width))
+		if(self.displayButton) {
+			toAdd.addSubview(initButton(width: width))
+		}
 		return toAdd
 	}
 	
@@ -48,6 +54,29 @@ public class Trend {
 		let cornerImageHolder = UIImageView(frame: CGRect(x: 0, y: 0, width: self.height, height: self.height))
 		cornerImageHolder.image = cornerImage
 		return cornerImageHolder
+	}
+	
+	func initButton(width: Double) -> UIButton {
+		let buttonWidth = width / 3
+		let reactButton = UIButton(frame: CGRect(x: width - buttonWidth, y: 0, width: buttonWidth, height: self.height))
+		reactButton.addTarget(self, action: #selector(Trend.showTrend(_:)), for: .touchUpInside)
+		reactButton.backgroundColor = UIColor.clear
+		let arrowImage = UIImage(named: "arrow.png")
+		let arrowView = UIImageView(frame: CGRect(x: 0, y: 10, width: buttonWidth - 50, height: self.height - 20))
+		arrowView.image = arrowImage
+		reactButton.addSubview(arrowView)
+		return reactButton
+	}
+	
+	@objc func showTrend(_ sender: UIButton?) {
+		let vc = UIApplication.shared.keyWindow?.rootViewController
+		let graphDisplay = DiseaseGraph(frame: vc!.view.frame, diseaseName: self.name)
+		graphDisplay.frame.origin.x += graphDisplay.frame.width
+		vc!.view.addSubview(graphDisplay)
+		
+		UIView.animate(withDuration: 0.5, animations: {
+			graphDisplay.frame.origin.x -= graphDisplay.frame.width
+		})
 	}
 	
 	func initBlur(width: Double) -> UIView {

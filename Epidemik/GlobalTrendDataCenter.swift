@@ -65,4 +65,6 @@ class GlobalTrendDataCenter {
 		reactor.apply(t: 1)
 	}
 	
+	
+	
 }

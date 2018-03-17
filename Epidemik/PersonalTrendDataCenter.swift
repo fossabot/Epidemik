@@ -20,12 +20,10 @@ public class PersonalTrendDataCenter {
 	// Loads the text from the server given a lat, long, lat width, long height
 	// Calls the text->array, process, and draw
 	func loadData() {
-		print("loading")
 		var request = URLRequest(url: URL(string: "https://rbradford.thaumavor.io/iOS_Programs/Epidemik/getPersonalData.php")!)
 		request.httpMethod = "POST"
 		let username = FileRW.readFile(fileName: "username.epi")!
 		let postString = "username=" + username + "&get=true"
-		print(postString)
 		request.httpBody = postString.data(using: .utf8)
 		let task = URLSession.shared.dataTask(with: request) { data, response, error in
 			
@@ -35,7 +33,6 @@ public class PersonalTrendDataCenter {
 			}
 			if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
 				print("statusCode should be 200, but is \(httpStatus.statusCode)")
-				print("response = \(String(describing: response))")
 				return
 			}
 			let responseString = String(data: data!, encoding: .utf8)
@@ -51,7 +48,6 @@ public class PersonalTrendDataCenter {
 			self.datapoints.append(Disease(text: String(line)))
 		}
 		DispatchQueue.main.sync {
-			print("loaded")
 			self.loadingReactor.apply(t: 1)
 		}
 	}
@@ -73,7 +69,6 @@ public class PersonalTrendDataCenter {
 		let day  = String(Int(round(daySum/Double(datapoints.count))))
 		let dateFormatter = DateFormatter()
 		dateFormatter.dateFormat = "MM-dd"
-		print(month + "-" + day)
 		return dateFormatter.date(from: month + "-" + day)!
 	}
 	

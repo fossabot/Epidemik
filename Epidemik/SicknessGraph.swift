@@ -77,10 +77,8 @@ class SicknessGraph: UIView {
 		let bumpUp = 10 + lineInset
 		dataLine.move(to: CGPoint(x: bumpUp, y: self.frame.height - bumpUp))
 		for data in self.personData {
-			print(CGFloat(data.date.timeIntervalSince(startDate!)) * pixelPerTimeInterval)
 			dataLine.addLine(to: CGPoint(x: CGFloat(data.date.timeIntervalSince(startDate!)) * pixelPerTimeInterval + bumpUp, y: self.frame.height - bumpUp))
 			dataLine.addLine(to: CGPoint(x: CGFloat(data.date.timeIntervalSince(startDate!)) * pixelPerTimeInterval + bumpUp, y: bumpUp))
-			print(CGFloat(data.date_healthy.timeIntervalSince(startDate!)) * pixelPerTimeInterval + bumpUp)
 			if(data.date_healthy == data.nullData) {
 				dataLine.addLine(to: CGPoint(x: CGFloat(endDate.timeIntervalSince(startDate!)) * pixelPerTimeInterval + bumpUp, y: bumpUp))
 				dataLine.stroke()

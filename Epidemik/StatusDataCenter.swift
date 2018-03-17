@@ -18,12 +18,10 @@ class StatusDataCenter {
 	
 	//Inits the sickness buttons and writes the post string if applicable
 	func getUserStatus() {
-		print("loading")
 		var request = URLRequest(url: URL(string: "https://rbradford.thaumavor.io/iOS_Programs/Epidemik/getPersonalStatus.php")!)
 		request.httpMethod = "POST"
 		let username = FileRW.readFile(fileName: "username.epi")!
 		let postString = "username=" + username
-		print(postString)
 		request.httpBody = postString.data(using: .utf8)
 		let task = URLSession.shared.dataTask(with: request) { data, response, error in
 			
@@ -33,7 +31,6 @@ class StatusDataCenter {
 			}
 			if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
 				print("statusCode should be 200, but is \(httpStatus.statusCode)")
-				print("response = \(String(describing: response))")
 				return
 			}
 			let responseString = String(data: data!, encoding: .utf8)
