@@ -72,8 +72,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		case "FluButton":
 			Reporting.amSick(diseaseName: "Flu")
 			refreshSicknessScreen(application: application)
-		case "MoreButton":
-			displayDiseaseSelector(application: application)
 		default:
 			refreshSicknessScreen(application: application)
 		}

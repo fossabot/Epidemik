@@ -19,9 +19,8 @@ public class QuickTouch {
 	public static func initSickQuickTouch() { // Displays a few sickness options
 		let commonColdItem = UIApplicationShortcutItem(type: "CommonColdButton", localizedTitle: "Common Cold")
 		let fluItem = UIApplicationShortcutItem(type: "FluButton", localizedTitle: "Flu")
-		let moreItem = UIApplicationShortcutItem(type: "MoreButton", localizedTitle: "Other")
 
-		UIApplication.shared.shortcutItems = [moreItem, fluItem, commonColdItem]
+		UIApplication.shared.shortcutItems = [fluItem, commonColdItem]
 	}
 	
 }

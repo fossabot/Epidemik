@@ -43,7 +43,7 @@ class LoadingGraphic: UIView {
 	
 	func startAnimation() {
 		UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveLinear, animations: {
-			self.animateImage.transform = self.animateImage.transform.rotated(by: CGFloat(M_PI))
+			self.animateImage.transform = self.animateImage.transform.rotated(by: .pi)
 		}) { finished in
 			if(self.shouldContinue) {
 				self.startAnimation()

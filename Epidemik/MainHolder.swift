@@ -57,6 +57,9 @@ public class MainHolder: UIView {
 	}
 	
 	func initSickness() {
+		if(sicknessView != nil) {
+			sicknessView.removeFromSuperview()
+		}
 		sicknessView = SicknessScreen(frame: self.frame, mainHolder: self)
 		self.addSubview(sicknessView)
 	}
@@ -188,6 +191,9 @@ public class MainHolder: UIView {
 			self.bringSubview(toFront: mapButton)
 			self.bringSubview(toFront: gTrendsButton)
 			self.bringSubview(toFront: pTrendsButton)
+			initLoading()
+			dataCenter.statusData.sicknessScreen = sicknessView
+			dataCenter.loadStatusData()
 		}
 	}
 	
