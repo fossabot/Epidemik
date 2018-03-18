@@ -61,6 +61,7 @@
 		00E9D5282038A9A900C353AF /* DiseaseDataCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E9D5272038A9A900C353AF /* DiseaseDataCenter.swift */; };
 		00EBE4B11F9D2EC1005A8E6B /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EBE4B01F9D2EC1005A8E6B /* ColorScheme.swift */; };
 		00EE1AA31FCB4D58006FDBFD /* TimeSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EE1AA21FCB4D58006FDBFD /* TimeSelector.swift */; };
+		00F45FFD205F167100BF880F /* LoadingGraphic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F45FFC205F167100BF880F /* LoadingGraphic.swift */; };
 		00FC19101FB3DEB700D8FD97 /* GTrendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FC190F1FB3DEB700D8FD97 /* GTrendsView.swift */; };
 /* End PBXBuildFile section */
 
@@ -164,6 +165,7 @@
 		00E9D5272038A9A900C353AF /* DiseaseDataCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseDataCenter.swift; sourceTree = "<group>"; };
 		00EBE4B01F9D2EC1005A8E6B /* ColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
 		00EE1AA21FCB4D58006FDBFD /* TimeSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelector.swift; sourceTree = "<group>"; };
+		00F45FFC205F167100BF880F /* LoadingGraphic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingGraphic.swift; sourceTree = "<group>"; };
 		00FC190F1FB3DEB700D8FD97 /* GTrendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTrendsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -265,6 +267,7 @@
 				00112526203889EF00C3D16A /* DataCenter.swift */,
 				00E9A4C61F8EFA6C008C95BD /* Disease.swift */,
 				00D665501FB5348F00C3C680 /* Trend.swift */,
+				00F45FFC205F167100BF880F /* LoadingGraphic.swift */,
 			);
 			name = DataCenter;
 			sourceTree = "<group>";
@@ -643,6 +646,7 @@
 				00BD462F1FE19C620009A4B5 /* DetailSelector.swift in Sources */,
 				00315DE0205846770060D56E /* SicknessGraph.swift in Sources */,
 				0010A42F1F800DD000D12495 /* ScrollSelector.swift in Sources */,
+				00F45FFD205F167100BF880F /* LoadingGraphic.swift in Sources */,
 				00FC19101FB3DEB700D8FD97 /* GTrendsView.swift in Sources */,
 				0083AD251F795BD8007AEF87 /* SicknessScreen.swift in Sources */,
 				00BC4F701F81746C0018D5D8 /* Map.swift in Sources */,

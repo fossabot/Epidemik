@@ -62,23 +62,47 @@ public class SicknessScreen: UIView {
 	
 	// Creates the button that the user can press to say they are sick
 	func initSickButton(x: CGFloat) {
-		sicknessButton = UIButton(frame: CGRect(x: x, y: sickYCord, width: buttonWidth, height: buttonHeight))
+		sicknessButton = UIButton(frame: CGRect(x: self.frame.width + x, y: sickYCord, width: buttonWidth, height: buttonHeight))
 		sicknessButton.layer.cornerRadius = buttonChampher
 		sicknessButton.setTitle("SICK :(", for: UIControlState.normal)
 		sicknessButton.titleLabel?.font = buttonFont
 		sicknessButton.backgroundColor = COLORS.COLOR_1
 		sicknessButton.addTarget(self, action: #selector(SicknessScreen.amSick(_:)), for: .touchUpInside)
 		self.addSubview(sicknessButton)
+		
+		UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveLinear, animations: {
+			self.sicknessButton.frame.origin.x -= self.frame.width
+		})
+	}
+	
+	// Creates the button that the user can say they are healthy in
+	func initHealthyButton() {
+		healthyButton = UIButton(frame: CGRect(x: self.frame.width + self.frame.width/2 - buttonWidth/2, y: sickYCord, width: buttonWidth, height: buttonHeight))
+		healthyButton.layer.cornerRadius = buttonChampher
+		healthyButton.backgroundColor = COLORS.COLOR_5
+		healthyButton.titleLabel?.font = buttonFont
+		healthyButton.setTitleColor(UIColor.black, for: .normal)
+		healthyButton.setTitle("HEALTHY!", for: UIControlState.normal)
+		healthyButton.addTarget(self, action: #selector(SicknessScreen.amHealthy(_:)), for: .touchUpInside)
+		self.addSubview(healthyButton)
+		
+		UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveLinear, animations: {
+			self.healthyButton.frame.origin.x -= self.frame.width
+		})
 	}
 	
 	func initDoneButton(x: CGFloat) {
-		doneButton = UIButton(frame: CGRect(x: x, y: doneYCord, width: buttonWidth, height: buttonHeight))
+		doneButton = UIButton(frame: CGRect(x: self.frame.width + x, y: doneYCord, width: buttonWidth, height: buttonHeight))
 		doneButton.layer.cornerRadius = buttonChampher
 		doneButton.setTitle("Done", for: UIControlState.normal)
 		doneButton.titleLabel?.font = buttonFont
 		doneButton.backgroundColor = COLORS.COLOR_1
 		doneButton.addTarget(self, action: #selector(SicknessScreen.amDone(_:)), for: .touchUpInside)
 		self.addSubview(doneButton)
+		
+		UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveLinear, animations: {
+			self.doneButton.frame.origin.x -= self.frame.width
+		})
 	}
 	
 	// Handles Sickness button presses
@@ -98,18 +122,6 @@ public class SicknessScreen: UIView {
 	
 	@objc func amDone(_ sender: UIButton?) {
 		self.mainHolder.removeSickness()
-	}
-	
-	// Creates the button that the user can say they are healthy in
-	func initHealthyButton() {
-		healthyButton = UIButton(frame: CGRect(x: self.frame.width/2 - buttonWidth/2, y: sickYCord, width: buttonWidth, height: buttonHeight))
-		healthyButton.layer.cornerRadius = buttonChampher
-		healthyButton.backgroundColor = COLORS.COLOR_5
-		healthyButton.titleLabel?.font = buttonFont
-		healthyButton.setTitleColor(UIColor.black, for: .normal)
-		healthyButton.setTitle("HEALTHY!", for: UIControlState.normal)
-		healthyButton.addTarget(self, action: #selector(SicknessScreen.amHealthy(_:)), for: .touchUpInside)
-		self.addSubview(healthyButton)
 	}
 	
 	// Handles the healthy press

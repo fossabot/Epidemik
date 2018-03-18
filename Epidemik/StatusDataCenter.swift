@@ -34,13 +34,16 @@ class StatusDataCenter {
 				return
 			}
 			let responseString = String(data: data!, encoding: .utf8)
+			sleep(1)
 			if(responseString == "" || responseString == nil) {
 				DispatchQueue.main.sync {
+					self.sicknessScreen.mainHolder.loadingView.stopAnimation()
 					self.sicknessScreen.initButton(isSick: false)
 				}
 			} else {
 				FileRW.writeFile(fileName: "sickness.epi", contents: responseString!)
 				DispatchQueue.main.sync {
+					self.sicknessScreen.mainHolder.loadingView.stopAnimation()
 					self.sicknessScreen.initButton(isSick: true)
 				}
 			}

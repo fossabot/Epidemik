@@ -22,6 +22,8 @@ public class MainHolder: UIView {
 	
 	var settingsButton: UIButton!
 	
+	var loadingView: LoadingGraphic!
+	
 	var settings: SettingsView!
 	var isSettings = false
 	
@@ -39,6 +41,7 @@ public class MainHolder: UIView {
 		initChangeButtons()
 		initSickness()
 		initData()
+		initLoading()
 		
 	}
 	
@@ -157,6 +160,13 @@ public class MainHolder: UIView {
 		settingsButton.addTarget(self, action: #selector(MainHolder.showSettings(_:)), for: .touchUpInside)
 		settingsButton.window?.windowLevel = UIWindowLevelStatusBar
 		self.addSubview(settingsButton)
+	}
+	
+	func initLoading() {
+		let xInset = CGFloat(80.0)
+		loadingView = LoadingGraphic(frame: CGRect(x: xInset, y: self.frame.height/CGFloat(3.0), width: self.frame.width - 2*xInset, height: self.frame.width - 2*xInset))
+		self.addSubview(loadingView)
+		self.loadingView.startAnimation()
 	}
 	
 	@objc func showSettings(_ sender: UIButton?) {
