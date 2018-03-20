@@ -37,8 +37,8 @@ class SicknessGraph: UIView {
 		let paragraphStyle = NSMutableParagraphStyle()
 		paragraphStyle.alignment = .center
 		let attributes = [NSAttributedStringKey.paragraphStyle  :  paragraphStyle,
-						  NSAttributedStringKey.font            :   UIFont(name: "Futura-CondensedMedium", size: 10),
-						  NSAttributedStringKey.foregroundColor : UIColor.black,]
+						  NSAttributedStringKey.font            :   PRESETS.FONT_SMALL!,
+						  NSAttributedStringKey.foregroundColor : UIColor.black,] as [NSAttributedStringKey : Any]
 		let sickText = "Sick"
 		let sickAttText = NSAttributedString(string: sickText, attributes: attributes)
 		let sickRT = CGRect(x: 0, y: lineInset, width: lineInset, height: lineInset)
@@ -74,6 +74,7 @@ class SicknessGraph: UIView {
 		let graphWidth = self.frame.width - lineInset*2
 		let pixelPerTimeInterval = graphWidth / CGFloat((endDate.timeIntervalSince(startDate!)))
 		let dataLine = UIBezierPath()
+		dataLine.lineWidth = 3
 		let bumpUp = 10 + lineInset
 		dataLine.move(to: CGPoint(x: bumpUp, y: self.frame.height - bumpUp))
 		for data in self.personData {
@@ -88,6 +89,7 @@ class SicknessGraph: UIView {
 			dataLine.addLine(to: CGPoint(x: CGFloat(data.date_healthy.timeIntervalSince(startDate!)) * pixelPerTimeInterval + bumpUp, y: self.frame.height - bumpUp))
 		}
 		dataLine.addLine(to: CGPoint(x: CGFloat(endDate.timeIntervalSince(startDate!)) * pixelPerTimeInterval + bumpUp, y: self.frame.height - bumpUp))
+		PRESETS.RED.set()
 		dataLine.stroke()
 		
 	}

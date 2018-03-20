@@ -31,7 +31,8 @@ public class SettingsView: UIView {
 		smallButtonHeight = self.frame.height/12
 		smallButtonGap = self.frame.height/16
 		
-		self.backgroundColor = COLORS.COLOR_1
+		//self.backgroundColor = COLORS.COLOR_1
+		initBlur()
 		initAddressChanger()
 		initDone()
 		initDetailSelector()
@@ -41,10 +42,10 @@ public class SettingsView: UIView {
 	
 	func initAddressChanger() {
 		addressChanger = UIButton(frame: CGRect(x: (self.frame.width-smallButtonWidth)/2, y: smallButtonGap, width: smallButtonWidth, height: smallButtonHeight))
-		addressChanger.backgroundColor = COLORS.COLOR_4
+		addressChanger.backgroundColor = PRESETS.GRAY
 		addressChanger.addTarget(self, action: #selector(SettingsView.changeAddress(_:)), for: .touchUpInside)
 		addressChanger.layer.cornerRadius = 20
-		addressChanger.titleLabel?.font = UIFont(name: "Futura-CondensedMedium", size: 23)
+		addressChanger.titleLabel?.font = PRESETS.FONT_BIG
 		addressChanger.setTitle("Change Address", for: .normal)
 		self.addSubview(addressChanger)
 	}
@@ -63,10 +64,10 @@ public class SettingsView: UIView {
 	
 	func initBugReporter() {
 		bugReporter = UIButton(frame: CGRect(x: (self.frame.width-smallButtonWidth)/2, y: 3*smallButtonGap+2*smallButtonHeight, width: smallButtonWidth, height: smallButtonHeight))
-		bugReporter.backgroundColor = COLORS.COLOR_4
+		bugReporter.backgroundColor = PRESETS.GRAY
 		bugReporter.addTarget(self, action: #selector(SettingsView.reportBug(_:)), for: .touchUpInside)
 		bugReporter.layer.cornerRadius = 20
-		bugReporter.titleLabel?.font = UIFont(name: "Futura-CondensedMedium", size: 23)
+		bugReporter.titleLabel?.font = PRESETS.FONT_BIG
 		bugReporter.setTitle("Report a Bug", for: .normal)
 		self.addSubview(bugReporter)
 	}
@@ -79,10 +80,10 @@ public class SettingsView: UIView {
 	
 	func initLogOut() {
 		let logOut = UIButton(frame: CGRect(x: (self.frame.width-smallButtonWidth)/2, y: 4*smallButtonGap+3*smallButtonHeight, width: smallButtonWidth, height: smallButtonHeight))
-		logOut.backgroundColor = COLORS.COLOR_4
+		logOut.backgroundColor = PRESETS.GRAY
 		logOut.addTarget(self, action: #selector(SettingsView.logOut(_:)), for: .touchUpInside)
 		logOut.layer.cornerRadius = 20
-		logOut.titleLabel?.font = UIFont(name: "Futura-CondensedMedium", size: 23)
+		logOut.titleLabel?.font = PRESETS.FONT_BIG
 		logOut.setTitle("Log Out", for: .normal)
 		self.addSubview(logOut)
 	}
@@ -96,9 +97,9 @@ public class SettingsView: UIView {
 	func createDetailTextBox(x: CGFloat, y: CGFloat, message: String) {
 		let toAdd = UITextView(frame: CGRect(x: x, y: y, width: (self.frame.width-smallButtonWidth)/2, height: smallButtonHeight))
 		toAdd.text = message
-		toAdd.font = UIFont(name: "Futura-CondensedMedium", size: 9)
+		toAdd.font = PRESETS.FONT_SMALL
 		toAdd.isSelectable = false
-		toAdd.textColor = UIColor.white
+		toAdd.textColor = UIColor.black
 		toAdd.backgroundColor = UIColor.clear
 		toAdd.textAlignment = NSTextAlignment.center
 		toAdd.isEditable = false
@@ -107,10 +108,10 @@ public class SettingsView: UIView {
 	
 	func initDone() {
 		let done = UIButton(frame: CGRect(x: 20, y: 3*self.frame.height/4, width: self.frame.width-40, height: self.frame.height/5))
-		done.backgroundColor = COLORS.COLOR_3
+		done.backgroundColor = PRESETS.RED
 		done.addTarget(self, action: #selector(SettingsView.removeSelf(_:)), for: .touchUpInside)
 		done.layer.cornerRadius = 20
-		done.titleLabel?.font = UIFont(name: "Futura-CondensedExtraBold", size: 30)
+		done.titleLabel?.font = PRESETS.FONT_BIG
 		done.setTitle("Done", for: .normal)
 		self.addSubview(done)
 	}

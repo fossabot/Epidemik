@@ -20,6 +20,7 @@ public class PersonalTrendDataCenter {
 	// Loads the text from the server given a lat, long, lat width, long height
 	// Calls the text->array, process, and draw
 	func loadData() {
+		datapoints = Array<Disease>()
 		var request = URLRequest(url: URL(string: "https://rbradford.thaumavor.io/iOS_Programs/Epidemik/getPersonalData.php")!)
 		request.httpMethod = "POST"
 		let username = FileRW.readFile(fileName: "username.epi")!

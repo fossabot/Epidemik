@@ -16,7 +16,7 @@ public class BarSelector: UIButton {
 	override public init(frame: CGRect) {
 		super.init(frame: frame)
 		colorFrame = UIView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
-		colorFrame.backgroundColor = COLORS.COLOR_2
+		colorFrame.backgroundColor = PRESETS.RED
 		self.addSubview(colorFrame)
 		
 		self.backgroundColor = UIColor.white

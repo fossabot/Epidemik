@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00022F572061CDF400B88999 /* Presets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EBE4B01F9D2EC1005A8E6B /* Presets.swift */; };
 		00067E212038CEC000170054 /* IFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00067E202038CEC000170054 /* IFunc.swift */; };
 		00067E232038CFF900170054 /* DiseaseLoadingReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00067E222038CFF900170054 /* DiseaseLoadingReactor.swift */; };
 		0007B17E2051D7A800355DD9 /* PersonalTrendDataCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0007B17D2051D7A800355DD9 /* PersonalTrendDataCenter.swift */; };
@@ -19,7 +20,6 @@
 		0008CE3C1FE6FB09006FD767 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0008CE3A1FE6FB09006FD767 /* MainInterface.storyboard */; };
 		0008CE401FE6FB09006FD767 /* EpidemikWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0008CE331FE6FB09006FD767 /* EpidemikWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		0008CE461FE6FCD6006FD767 /* TrendsWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0008CE451FE6FCD6006FD767 /* TrendsWidgetView.swift */; };
-		0008CE481FE6FD06006FD767 /* Trend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0008CE471FE6FD06006FD767 /* Trend.swift */; };
 		0008CE4C1FE706C8006FD767 /* FileRW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CD77FC1F7844C1002B5C78 /* FileRW.swift */; };
 		0008CE4D1FE706CC006FD767 /* Assets.xcassets in Sources */ = {isa = PBXBuildFile; fileRef = 0011DBBE1F6C0EBA004212E1 /* Assets.xcassets */; };
 		0010A42F1F800DD000D12495 /* ScrollSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0010A42E1F800DD000D12495 /* ScrollSelector.swift */; };
@@ -34,6 +34,7 @@
 		0014D41B204C4550007D9E31 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0014D41A204C4550007D9E31 /* UIViewExtension.swift */; };
 		0014D41D204C4687007D9E31 /* MapExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0014D41C204C4687007D9E31 /* MapExtension.swift */; };
 		0018BCD81FE0BDB7008DCDE5 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0018BCD71FE0BDB7008DCDE5 /* SettingsView.swift */; };
+		002032352061D470005EBC9B /* Trend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0008CE471FE6FD06006FD767 /* Trend.swift */; };
 		00224BE82038C9CF002430D3 /* DiseasePolygon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00224BE72038C9CF002430D3 /* DiseasePolygon.swift */; };
 		00315DE0205846770060D56E /* SicknessGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00315DDF205846770060D56E /* SicknessGraph.swift */; };
 		00315DE320584F440060D56E /* StatusDataCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00315DE220584F440060D56E /* StatusDataCenter.swift */; };
@@ -59,7 +60,7 @@
 		00D665511FB5348F00C3C680 /* Trend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D665501FB5348F00C3C680 /* Trend.swift */; };
 		00E9A4C71F8EFA6C008C95BD /* Disease.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E9A4C61F8EFA6C008C95BD /* Disease.swift */; };
 		00E9D5282038A9A900C353AF /* DiseaseDataCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E9D5272038A9A900C353AF /* DiseaseDataCenter.swift */; };
-		00EBE4B11F9D2EC1005A8E6B /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EBE4B01F9D2EC1005A8E6B /* ColorScheme.swift */; };
+		00EBE4B11F9D2EC1005A8E6B /* Presets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EBE4B01F9D2EC1005A8E6B /* Presets.swift */; };
 		00EE1AA31FCB4D58006FDBFD /* TimeSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EE1AA21FCB4D58006FDBFD /* TimeSelector.swift */; };
 		00F45FFD205F167100BF880F /* LoadingGraphic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F45FFC205F167100BF880F /* LoadingGraphic.swift */; };
 		00FC19101FB3DEB700D8FD97 /* GTrendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FC190F1FB3DEB700D8FD97 /* GTrendsView.swift */; };
@@ -163,7 +164,7 @@
 		00D665501FB5348F00C3C680 /* Trend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trend.swift; sourceTree = "<group>"; };
 		00E9A4C61F8EFA6C008C95BD /* Disease.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Disease.swift; sourceTree = "<group>"; };
 		00E9D5272038A9A900C353AF /* DiseaseDataCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseDataCenter.swift; sourceTree = "<group>"; };
-		00EBE4B01F9D2EC1005A8E6B /* ColorScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
+		00EBE4B01F9D2EC1005A8E6B /* Presets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presets.swift; sourceTree = "<group>"; };
 		00EE1AA21FCB4D58006FDBFD /* TimeSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelector.swift; sourceTree = "<group>"; };
 		00F45FFC205F167100BF880F /* LoadingGraphic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingGraphic.swift; sourceTree = "<group>"; };
 		00FC190F1FB3DEB700D8FD97 /* GTrendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTrendsView.swift; sourceTree = "<group>"; };
@@ -419,7 +420,7 @@
 				0087EADF20410AEB00BDEEC8 /* Address */,
 				0087EADD2041091B00BDEEC8 /* Asker.swift */,
 				00BD462C1FE19AF50009A4B5 /* BarSelector.swift */,
-				00EBE4B01F9D2EC1005A8E6B /* ColorScheme.swift */,
+				00EBE4B01F9D2EC1005A8E6B /* Presets.swift */,
 				00CD77FC1F7844C1002B5C78 /* FileRW.swift */,
 				00067E202038CEC000170054 /* IFunc.swift */,
 				0010A42E1F800DD000D12495 /* ScrollSelector.swift */,
@@ -628,11 +629,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				002032352061D470005EBC9B /* Trend.swift in Sources */,
+				00022F572061CDF400B88999 /* Presets.swift in Sources */,
 				0008CE4D1FE706CC006FD767 /* Assets.xcassets in Sources */,
 				0008CE4C1FE706C8006FD767 /* FileRW.swift in Sources */,
 				0008CE461FE6FCD6006FD767 /* TrendsWidgetView.swift in Sources */,
 				0008CE391FE6FB09006FD767 /* TodayViewController.swift in Sources */,
-				0008CE481FE6FD06006FD767 /* Trend.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -653,7 +655,7 @@
 				004E1452205C7D490055ADA3 /* DiseaseGraph.swift in Sources */,
 				00067E212038CEC000170054 /* IFunc.swift in Sources */,
 				0007B17E2051D7A800355DD9 /* PersonalTrendDataCenter.swift in Sources */,
-				00EBE4B11F9D2EC1005A8E6B /* ColorScheme.swift in Sources */,
+				00EBE4B11F9D2EC1005A8E6B /* Presets.swift in Sources */,
 				009CE9E21F8FFFFD00D224F0 /* MainHolder.swift in Sources */,
 				00E9D5282038A9A900C353AF /* DiseaseDataCenter.swift in Sources */,
 				00BD46311FE1C6F20009A4B5 /* AddressChanger.swift in Sources */,

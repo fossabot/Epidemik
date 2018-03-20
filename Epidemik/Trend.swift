@@ -95,9 +95,9 @@ public class Trend {
 		let toReturn = UITextView(frame: CGRect(x: self.height, y: 0, width: width, height: 100))
 		toReturn.text = self.toDisplay
 		if width > 350 {
-			toReturn.font = UIFont(name: "Futura-CondensedMedium", size: 20)
+			toReturn.font = PRESETS.FONT_BIG
 		} else {
-			toReturn.font = UIFont(name: "Futura-CondensedMedium", size: 15)
+			toReturn.font = PRESETS.FONT_MEDIUM
 		}
 		
 		toReturn.backgroundColor = UIColor.clear

@@ -11,14 +11,18 @@ import UIKit
 
 extension UIView {
 	
-	func initBlur() {
-		let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.regular)
+	func initBlur(blurType: UIBlurEffectStyle) {
+		let blurEffect = UIBlurEffect(style: blurType)
 		let blur = UIVisualEffectView(effect: blurEffect)
 		//always fill the view
 		blur.frame = self.bounds
 		blur.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 		
 		self.addSubview(blur) //if you have more UIViews, use an insertSubview API to place it where needed
+	}
+	
+	func initBlur() {
+		self.initBlur(blurType: UIBlurEffectStyle.regular)
 	}
 	
 }

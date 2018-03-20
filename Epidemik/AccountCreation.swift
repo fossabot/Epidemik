@@ -138,7 +138,7 @@ class LoginScreen: UIView, UITextFieldDelegate {
 		loginButton.addTarget(self, action: #selector(LoginScreen.loginReactor(_:)), for: .touchUpInside)
 		let text = UILabel()
 		text.text = "Login"
-		text.font = UIFont(name: "Futura-CondensedMedium", size: 20)
+		text.font = PRESETS.FONT_BIG
 		text.frame = CGRect(x: 0, y: 0, width: width, height: height)
 		text.textAlignment = .center
 		loginButton.addSubview(text)
@@ -208,7 +208,7 @@ class LoginScreen: UIView, UITextFieldDelegate {
 		createAccButton.backgroundColor = UIColor.clear
 		self.loginButtonLabel = UILabel()
 		self.loginButtonLabel.text = "Create an Account"
-		self.loginButtonLabel.font = UIFont(name: "Futura-CondensedMedium", size: 12)
+		self.loginButtonLabel.font = PRESETS.FONT_MEDIUM
 		self.loginButtonLabel.frame = CGRect(x: 0, y: 0, width: selfWidth, height: selfHeight)
 		self.loginButtonLabel.textAlignment = .center
 		createAccButton.addSubview(self.loginButtonLabel)

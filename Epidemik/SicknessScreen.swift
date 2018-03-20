@@ -20,7 +20,7 @@ public class SicknessScreen: UIView {
 	var buttonHeight: CGFloat!
 	
 	let buttonChampher = CGFloat(40.0)
-	let buttonFont = UIFont(name: "Futura-CondensedExtraBold", size: 22)
+	let buttonFont = PRESETS.FONT_BIG_BOLD
 	
 	var doneButton: UIButton!
 	var mainHolder: MainHolder!
@@ -66,7 +66,7 @@ public class SicknessScreen: UIView {
 		sicknessButton.layer.cornerRadius = buttonChampher
 		sicknessButton.setTitle("SICK :(", for: UIControlState.normal)
 		sicknessButton.titleLabel?.font = buttonFont
-		sicknessButton.backgroundColor = COLORS.COLOR_1
+		sicknessButton.backgroundColor = UIColor.gray
 		sicknessButton.addTarget(self, action: #selector(SicknessScreen.amSick(_:)), for: .touchUpInside)
 		self.addSubview(sicknessButton)
 		
@@ -79,9 +79,9 @@ public class SicknessScreen: UIView {
 	func initHealthyButton() {
 		healthyButton = UIButton(frame: CGRect(x: self.frame.width + self.frame.width/2 - buttonWidth/2, y: sickYCord, width: buttonWidth, height: buttonHeight))
 		healthyButton.layer.cornerRadius = buttonChampher
-		healthyButton.backgroundColor = COLORS.COLOR_5
+		healthyButton.backgroundColor = PRESETS.WHITE
 		healthyButton.titleLabel?.font = buttonFont
-		healthyButton.setTitleColor(UIColor.black, for: .normal)
+		healthyButton.setTitleColor(UIColor.gray, for: .normal)
 		healthyButton.setTitle("HEALTHY!", for: UIControlState.normal)
 		healthyButton.addTarget(self, action: #selector(SicknessScreen.amHealthy(_:)), for: .touchUpInside)
 		self.addSubview(healthyButton)
@@ -96,7 +96,7 @@ public class SicknessScreen: UIView {
 		doneButton.layer.cornerRadius = buttonChampher
 		doneButton.setTitle("Done", for: UIControlState.normal)
 		doneButton.titleLabel?.font = buttonFont
-		doneButton.backgroundColor = COLORS.COLOR_1
+		doneButton.backgroundColor = PRESETS.RED
 		doneButton.addTarget(self, action: #selector(SicknessScreen.amDone(_:)), for: .touchUpInside)
 		self.addSubview(doneButton)
 		

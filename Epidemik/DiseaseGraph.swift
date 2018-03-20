@@ -71,8 +71,8 @@ class DiseaseGraph: UIView {
 	func addBackButton() {
 		backButton = UIButton(frame: CGRect(x: 20, y: self.frame.height - 120, width: self.frame.width - 40, height: 100))
 		backButton.setTitle("BACK", for: .normal)
-		backButton.backgroundColor = COLORS.COLOR_4
-		backButton.titleLabel?.font = UIFont(name: "Futura-CondensedExtraBold", size: 20)
+		backButton.backgroundColor = PRESETS.RED
+		backButton.titleLabel?.font = PRESETS.FONT_BIG_BOLD
 		backButton.addTarget(self, action: #selector(back), for: .touchUpInside)
 		backButton.layer.cornerRadius = 15
 		self.addSubview(backButton)
@@ -109,8 +109,8 @@ class DiseaseGraphDrawing: UIView {
 		let paragraphStyle = NSMutableParagraphStyle()
 		paragraphStyle.alignment = .center
 		let attributes = [NSAttributedStringKey.paragraphStyle  :  paragraphStyle,
-						  NSAttributedStringKey.font            :   UIFont(name: "Futura-CondensedMedium", size: 10),
-						  NSAttributedStringKey.foregroundColor : UIColor.black,]
+						  NSAttributedStringKey.font            :   PRESETS.FONT_SMALL!,
+						  NSAttributedStringKey.foregroundColor : UIColor.black,] as [NSAttributedStringKey : Any]
 		
 		let lineInset = CGFloat(40.0)
 		let realWidth = self.frame.width - 2*lineInset
