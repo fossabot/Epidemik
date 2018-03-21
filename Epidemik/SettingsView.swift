@@ -107,7 +107,10 @@ public class SettingsView: UIView {
 	}
 	
 	func initDone() {
-		let done = UIButton(frame: CGRect(x: 20, y: 3*self.frame.height/4, width: self.frame.width-40, height: self.frame.height/5))
+		print(4*smallButtonGap+5*smallButtonHeight)
+		print(self.frame.height)
+		let y = 4*smallButtonGap+5*smallButtonHeight
+		let done = UIButton(frame: CGRect(x: 20, y: y, width: self.frame.width-40, height: self.frame.height - y - smallButtonGap))
 		done.backgroundColor = PRESETS.RED
 		done.addTarget(self, action: #selector(SettingsView.removeSelf(_:)), for: .touchUpInside)
 		done.layer.cornerRadius = 20
