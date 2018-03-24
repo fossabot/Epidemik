@@ -184,6 +184,15 @@ function addOverlay() {
     ]
   },
   {
+    "featureType": "poi.park",
+    "elementType": "labels",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
     "featureType": "poi.place_of_worship",
     "stylers": [
       {

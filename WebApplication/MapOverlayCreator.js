@@ -13,14 +13,18 @@ var allRects = [];
 function getData(map) {
     // Sending and receiving data in JSON format using POST method
     var URL = "https://rbradford.thaumavor.io/iOS_Programs/Epidemik/getCurrentData.php";
+    var post = "get=true";
     var responseFunction = function (data, status) {
         processText(data, map);
     };
-    $.post(URL, responseFunction);
+    $.post(URL, post, responseFunction);
 }
 
 function addOverlays(map) {
     var bounds = map.getBounds();
+    if(bounds === undefined) {
+        return;
+    }
     var ne = bounds.getNorthEast(); // LatLng of the north-east corner
     var sw = bounds.getSouthWest(); // LatLng of the south-west corder
     var startLat = sw.lat();

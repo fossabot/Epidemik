@@ -12,19 +12,20 @@
         <script src = "Disease.js"></script>
         <script src = "MapOverlayCreator.js"></script>
         <script src = "Map.js"></script>
+        <script src = "Login.js"></script>
         <script async defer
                 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQDNSjsR5fSbsRwOOoPLMLRL1_WsEoUtY&callback=initMap">
         </script>
     </div>
     <div class="buttons"> 
         <button class="healthy" id="sickOrHealthy" value="sick" onclick="handleClick()"><span>Sick</span></button>
-        <img class="trendsButton" id="trendsButton" src="hamburgButton.png" onclick="DoSomething();" />
+        <img class="trendsButton" id="trendsButton" src="hamburgButton.png" onclick="properlyShowTrends();" />
     </div>
     <div id="trendsView">
         <div id="trend">Trends</div>
     </div>
     <script src = "TrendsAnimation.js"></script>
     <script src = "CreateTrends.js"></script>
-    <script> updateButtonUI();</script>
+    <script> checkLogin();</script>
 </body>
 </html>

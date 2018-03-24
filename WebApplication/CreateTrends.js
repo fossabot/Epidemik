@@ -4,13 +4,11 @@
  * and open the template in the editor.
  */
 
-getLocation(getTrends);
+getTrends(localStorage['username']);
 
-function getTrends(lat, long) {
+function getTrends(username) {
     var postString = 
-            "latitude=" + lat
-            + "&longitude=" + long + 
-            "&get=hi";
+            "get=true&username=" + username;
     var URL = "https://rbradford.thaumavor.io/iOS_Programs/Epidemik/getTrends.php";
     var responseFunction = function (data, status) {
         addTrends(data);
@@ -36,7 +34,11 @@ function addTrend(name, weight) {
     newdiv.id = 'trend';                      //add an id
     newdiv.textContent = name + ": " + weight + "% Infection Chance";
     trendsView.appendChild(newdiv);                 //append to the doc.body
-    trendsView.insertAfter(newdiv,trendsView.firstChild); //OR insert it
+    insertAfter(newdiv,trendsView.firstChild); //OR insert it
+}
+
+function insertAfter(newNode, referenceNode) {
+    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
 }
 
 

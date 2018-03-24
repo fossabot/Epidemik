@@ -32,7 +32,7 @@ and open the template in the editor.
     height: 7.5%;
     top: 10px;
     left: 42.5%;
-    position: relative;
+    position: absolute;
     transition: all 0.5s;
     cursor: pointer;
     margin: 5px;
@@ -73,7 +73,7 @@ and open the template in the editor.
     height: 8%;
     left: 0%;
     top: 0px;
-    position: absolute;
+    position: relative;
     transition: all 0.5s;
     cursor: pointer;
     margin: 5px;
@@ -99,7 +99,7 @@ and open the template in the editor.
     text-align: center;
     text-decoration: none;
     font-size: 16px;
-    position: relative;
+    position: absolute;
     -moz-appearance: none;
     -webkit-appearance: none;
     appearance: none;

@@ -26,5 +26,3 @@ function setLocation(location) {
 function handleError(error) {
 
 }
-
-

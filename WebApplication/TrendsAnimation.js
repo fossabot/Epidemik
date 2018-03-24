@@ -6,14 +6,14 @@
 
 var trendsAreShown = false;
 
-$("#trendsButton").click(function (e) {
+function properlyShowTrends() {
     if (trendsAreShown) {
         hideTrends();
     } else {
         showTrends();
     }
     trendsAreShown = !trendsAreShown;
-});
+}
 
 function showTrends() {
     width = $(document).width() / 5;
@@ -21,7 +21,7 @@ function showTrends() {
         width: width,
         left: 10
     }, 1000, function () {
-        // Animation complete.
+        console.log($("#trendsView").width)
     });
 }
 

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Epidemik Login</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="login.css">
+    </head>
+    <body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src = "CreateAnAccount.js"></script>
+        <script src = "GetLocation.js"></script>
+        <div class="imgcontainer">
+            <img src="epidemik.png" alt="logo" class="logo">
+        </div>
+
+        <div class="container" id = "loginTexts">
+            <label><b>Username</b></label>
+            <input type="text" id = "usernameText" placeholder="Enter Username" name="uname" required>
+
+            <label><b>Password</b></label>
+            <input type="password" id="passwordText" placeholder="Enter Password" name="psw" required>
+        </div>
+
+        <button type="submit" onclick="loginReact();">Login</button>
+
+        <div class="container" style="background-color:#f1f1f1" id = "buttons">
+            <button 
+                type="button" 
+                class="cancelbtn"
+                id = "createAcc"
+                onclick="addAddress();">Create An Account</button>
+        </div>
+    </body>
+</html>

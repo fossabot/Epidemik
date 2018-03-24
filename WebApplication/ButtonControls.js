@@ -57,6 +57,8 @@ function handleError(error) {
 }
 
 function updateButtonUI() {
+    isSick = (localStorage['sickRequest'] !== null)
+        && (localStorage['sickRequest'] !== "null") && localStorage['sickRequest'] !== undefined && localStorage['sickRequest'] !== "";
     if (isSick) { //Handle Becoming Healthy
         document.getElementById("sickOrHealthy").style.backgroundColor = "#4CAF50";
         document.getElementById("sickOrHealthy").getElementsByTagName("span")[0].innerHTML = "Healthy";
