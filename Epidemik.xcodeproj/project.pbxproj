@@ -22,6 +22,9 @@
 		0008CE461FE6FCD6006FD767 /* TrendsWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0008CE451FE6FCD6006FD767 /* TrendsWidgetView.swift */; };
 		0008CE4C1FE706C8006FD767 /* FileRW.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CD77FC1F7844C1002B5C78 /* FileRW.swift */; };
 		0008CE4D1FE706CC006FD767 /* Assets.xcassets in Sources */ = {isa = PBXBuildFile; fileRef = 0011DBBE1F6C0EBA004212E1 /* Assets.xcassets */; };
+		000F3D062066DCAF00A191A6 /* DiseaseQuestionair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000F3D052066DCAF00A191A6 /* DiseaseQuestionair.swift */; };
+		000F3D082066E30C00A191A6 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000F3D072066E30C00A191A6 /* CheckBox.swift */; };
+		000F3D0A2066ED0300A191A6 /* DiseaseQuestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000F3D092066ED0300A191A6 /* DiseaseQuestions.swift */; };
 		0010A42F1F800DD000D12495 /* ScrollSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0010A42E1F800DD000D12495 /* ScrollSelector.swift */; };
 		00112527203889EF00C3D16A /* DataCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00112526203889EF00C3D16A /* DataCenter.swift */; };
 		0011DBB81F6C0EBA004212E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0011DBB71F6C0EBA004212E1 /* AppDelegate.swift */; };
@@ -120,6 +123,9 @@
 		0008CE451FE6FCD6006FD767 /* TrendsWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendsWidgetView.swift; sourceTree = "<group>"; };
 		0008CE471FE6FD06006FD767 /* Trend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trend.swift; sourceTree = "<group>"; };
 		0008CE4B1FE702A7006FD767 /* EpidemikWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EpidemikWidget.entitlements; sourceTree = "<group>"; };
+		000F3D052066DCAF00A191A6 /* DiseaseQuestionair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseQuestionair.swift; sourceTree = "<group>"; };
+		000F3D072066E30C00A191A6 /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
+		000F3D092066ED0300A191A6 /* DiseaseQuestions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseQuestions.swift; sourceTree = "<group>"; };
 		0010A42E1F800DD000D12495 /* ScrollSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollSelector.swift; sourceTree = "<group>"; };
 		00112526203889EF00C3D16A /* DataCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCenter.swift; sourceTree = "<group>"; };
 		0011DBB41F6C0EBA004212E1 /* Epidemik.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Epidemik.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -269,6 +275,7 @@
 				00E9A4C61F8EFA6C008C95BD /* Disease.swift */,
 				00D665501FB5348F00C3C680 /* Trend.swift */,
 				00F45FFC205F167100BF880F /* LoadingGraphic.swift */,
+				000F3D092066ED0300A191A6 /* DiseaseQuestions.swift */,
 			);
 			name = DataCenter;
 			sourceTree = "<group>";
@@ -370,6 +377,7 @@
 				0083AD261F795C50007AEF87 /* DiseaseNameScreen.swift */,
 				0008CE2D1FE6D158006FD767 /* ReportingService.swift */,
 				0079189C1FF58D8700DB03D3 /* Diseases.swift */,
+				000F3D052066DCAF00A191A6 /* DiseaseQuestionair.swift */,
 			);
 			name = "Sickness Registration";
 			sourceTree = "<group>";
@@ -427,6 +435,7 @@
 				0079189A1FF56C4900DB03D3 /* TransitionControls.swift */,
 				0014D41A204C4550007D9E31 /* UIViewExtension.swift */,
 				0014D41C204C4687007D9E31 /* MapExtension.swift */,
+				000F3D072066E30C00A191A6 /* CheckBox.swift */,
 			);
 			name = General;
 			sourceTree = "<group>";
@@ -655,6 +664,7 @@
 				004E1452205C7D490055ADA3 /* DiseaseGraph.swift in Sources */,
 				00067E212038CEC000170054 /* IFunc.swift in Sources */,
 				0007B17E2051D7A800355DD9 /* PersonalTrendDataCenter.swift in Sources */,
+				000F3D062066DCAF00A191A6 /* DiseaseQuestionair.swift in Sources */,
 				00EBE4B11F9D2EC1005A8E6B /* Presets.swift in Sources */,
 				009CE9E21F8FFFFD00D224F0 /* MainHolder.swift in Sources */,
 				00E9D5282038A9A900C353AF /* DiseaseDataCenter.swift in Sources */,
@@ -670,6 +680,7 @@
 				0061311C200A920B00A4E71B /* DiseaseRenderer.swift in Sources */,
 				0083AD271F795C50007AEF87 /* DiseaseNameScreen.swift in Sources */,
 				00AA180A203BB8440071CA6A /* GlobalTrendDataCenter.swift in Sources */,
+				000F3D082066E30C00A191A6 /* CheckBox.swift in Sources */,
 				0032F3421F808295001A9633 /* MapOverlayCreator.swift in Sources */,
 				00067E232038CFF900170054 /* DiseaseLoadingReactor.swift in Sources */,
 				0018BCD81FE0BDB7008DCDE5 /* SettingsView.swift in Sources */,
@@ -680,6 +691,7 @@
 				0008CE2C1FE6CFA1006FD767 /* QuickTouch.swift in Sources */,
 				0008CE2E1FE6D158006FD767 /* ReportingService.swift in Sources */,
 				00EE1AA31FCB4D58006FDBFD /* TimeSelector.swift in Sources */,
+				000F3D0A2066ED0300A191A6 /* DiseaseQuestions.swift in Sources */,
 				0014D41B204C4550007D9E31 /* UIViewExtension.swift in Sources */,
 				0087EAE120410AFA00BDEEC8 /* AddressResponse.swift in Sources */,
 				0007B1802051D89D00355DD9 /* PersonalTrendLoadingReactor.swift in Sources */,

@@ -14,13 +14,19 @@ class DiseaseGraph: UIView {
 	var dates = Array<Date>()
 	var weights = Array<Double>()
 	var backButton: UIButton!
-	
+	var blur: UIVisualEffectView!
+
 	init(frame: CGRect, diseaseName: String) {
 		super.init(frame: frame)
 		self.backgroundColor = UIColor.clear
 		initBlur()
+		myInitBlur()
+		blur.frame = CGRect(x: 10, y: 50, width: self.frame.width - 20, height: 400)
+		blur.layer.cornerRadius = 20
+		blur.clipsToBounds = true
 		loadData(diseaseName: diseaseName)
 		addBackButton()
+		
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
@@ -63,7 +69,7 @@ class DiseaseGraph: UIView {
 			weights.append(weight)
 		}
 		DispatchQueue.main.sync {
-			let drawing = DiseaseGraphDrawing(frame: CGRect(x: 0, y: 50, width: self.frame.width, height: 300), dates: dates, weights: weights)
+			let drawing = DiseaseGraphDrawing(frame: CGRect(x: 10, y: 50, width: self.frame.width - 20, height: 400), dates: dates, weights: weights)
 			self.addSubview(drawing)
 		}
 	}
@@ -83,6 +89,16 @@ class DiseaseGraph: UIView {
 			self.frame.origin.x += self.frame.width
 		})
 	}
+	
+	func myInitBlur() {
+		let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.prominent)
+		blur = UIVisualEffectView(effect: blurEffect)
+		//always fill the view
+		blur.frame = CGRect(x: 0, y: -self.frame.height, width: self.frame.width, height: self.frame.height*5)
+		blur.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+		self.addSubview(blur) //if you have more UIViews, use an insertSubview API to place it where needed
+	}
+	
 }
 
 class DiseaseGraphDrawing: UIView {
@@ -111,13 +127,16 @@ class DiseaseGraphDrawing: UIView {
 		let attributes = [NSAttributedStringKey.paragraphStyle  :  paragraphStyle,
 						  NSAttributedStringKey.font            :   PRESETS.FONT_SMALL!,
 						  NSAttributedStringKey.foregroundColor : UIColor.black,] as [NSAttributedStringKey : Any]
+		let attributes2 = [NSAttributedStringKey.paragraphStyle  :  paragraphStyle,
+						  NSAttributedStringKey.font            :   PRESETS.FONT_BIG!,
+						  NSAttributedStringKey.foregroundColor : UIColor.black,] as [NSAttributedStringKey : Any]
 		
 		let lineInset = CGFloat(40.0)
 		let realWidth = self.frame.width - 2*lineInset
 		let realHeight = self.frame.height - 2*lineInset
 		
 		let titleText = "Percent Sick"
-		let titleAttText = NSAttributedString(string: titleText, attributes: attributes)
+		let titleAttText = NSAttributedString(string: titleText, attributes: attributes2)
 		let titleRT = CGRect(x: 0, y: 20, width: self.frame.width, height: lineInset)
 		titleAttText.draw(in: titleRT)
 		
@@ -170,7 +189,7 @@ class DiseaseGraphDrawing: UIView {
 			let nextY = min(CGFloat(weights[i])*realHeight - lineInset, realHeight - lineInset)
 			graphLine.addLine(to: CGPoint(x: nextX, y: realHeight - nextY))
 		}
-		UIColor.black.set()
+		PRESETS.RED.set()
 		graphLine.lineWidth = 2
 		graphLine.stroke()
 	}

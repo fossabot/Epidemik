@@ -69,7 +69,9 @@ public class MapOverlayCreator {
 		let intervalLat = latWidth / numXY
 		let intervalLong = longWidth / numXY
 		let toUse = dataCenter.getDiseaseData(date: date)
+		var counter = 0
 		for data in toUse {
+			counter += 1
 			let deltaLat = data.lat - startLat
 			let deltaLong = data.long - startLong
 			if deltaLong > 0 && deltaLat > 0 && deltaLat < latWidth && deltaLong < longWidth {

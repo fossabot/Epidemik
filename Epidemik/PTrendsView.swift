@@ -92,7 +92,6 @@ public class PTrendsView: UIScrollView {
 		//always fill the view
 		blur.frame = CGRect(x: 0, y: -self.frame.height, width: self.frame.width, height: self.frame.height*5)
 		blur.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-		print("My Blur")
 		self.addSubview(blur) //if you have more UIViews, use an insertSubview API to place it where needed
 	}
 	

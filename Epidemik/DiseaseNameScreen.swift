@@ -28,16 +28,15 @@ public class DiseaseNameScreen: UIView {
 	let buttonInShift = CGFloat(25.0)
 	let buttonUpShift = CGFloat(20.0)
 	
+	var questionair: DiseaseQuestionair!
+	
 	init (frame: CGRect, superScreen: SicknessScreen) {
 		self.superScreen = superScreen
 		super.init(frame: frame)
 		initBlur()
 		initSadFace()
-		//initLevelSelector()
 		initDiseaseSelector()
-		//initDiseaseSelectorTitle()
 		initTextBox()
-		//initMoreInfoButton()
 		initSendButton()
 		initBackButton()
 		self.backgroundColor = UIColor.clear
@@ -165,10 +164,12 @@ public class DiseaseNameScreen: UIView {
 	
 	// Slides the disease selection screen on-screen and moves the healthy button off screen
 	func forwards() {
+		questionair = DiseaseQuestionair(frame: CGRect(x: self.frame.width, y: 0, width: self.frame.width, height: self.frame.height), disease_name: diseaseSelector.timeTextField!.text!, superScreen: self.superScreen)
 		superScreen.sicknessButton.removeFromSuperview()
+		self.superScreen.addSubview(questionair)
 		UIView.animate(withDuration: 0.5, animations: {
 			self.frame.origin.x -= self.frame.width
-			self.superScreen.healthyButton.frame.origin.x -= self.frame.width
+			self.questionair.frame.origin.x -= self.frame.width
 		}, completion: {
 			(value: Bool) in
 			self.removeFromSuperview()
