@@ -18,6 +18,7 @@ class DiseaseLoadingReactor: IFunc<Int,Int> {
 	
 	override func apply(t: Int) -> Int? {
 		map.initAfterData()
+		map.shouldAnimateTime = false
 		return 1
 	}
 }

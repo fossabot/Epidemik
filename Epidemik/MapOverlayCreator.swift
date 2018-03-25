@@ -63,7 +63,9 @@ public class MapOverlayCreator {
 	// Combine create and process into one
 	// Processes the array, and makes the visual graphic look slightly nicer
 	func createOverlays(date: Date) {
-		map.removeOverlays(map.overlays)
+		for var overlay in map.overlays {
+			map.remove(overlay)
+		}
 		latLongDisease = [[DiseasePolygon?]](repeating: [DiseasePolygon?](repeating: nil, count: Int(numXY)), count: Int(numXY))
 		var realPointCounts = 1.0
 		let intervalLat = latWidth / numXY

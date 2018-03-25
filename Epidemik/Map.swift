@@ -22,12 +22,14 @@ class Map: MKMapView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 	var overlayCreator: MapOverlayCreator!
 	
 	var filterBar: TimeSelector!
-
+	
 	var CIRCUMFRENCE_OF_EARTH = 400750000.0 //In Meters
 	
 	var playButton: UIButton!
 	
 	var dataCenter: DataCenter!
+	
+	var shouldAnimateTime = true
 	
 	// Creates the map view, given a view frame, a lat,long width in meters, and a start lat,long in degrees
 	init(frame: CGRect, realLatWidth: Double, realLongWidth: Double, startLong: Double, startLat: Double) {
@@ -39,6 +41,8 @@ class Map: MKMapView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 		latWidth = (Double(realLatWidth) * 360 / (CIRCUMFRENCE_OF_EARTH))
 		longWidth = (Double(realLongWidth) * 360 / (CIRCUMFRENCE_OF_EARTH))
 		
+		initTimeSelector()
+		animateTimeSelector()
 		//self.animateVsTime(start: newDate!, end: Date())
 	}
 	
@@ -50,7 +54,6 @@ class Map: MKMapView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 		initOverlayCreator()
 		initMapPrefs()
 		initPlayButton()
-		initTimeSelector()
 		initGestureControls()
 	}
 	
@@ -62,6 +65,29 @@ class Map: MKMapView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 		filterBar.setTitle("Timeline", for: .normal)
 		filterBar.titleLabel!.font = PRESETS.FONT_MEDIUM
 		self.addSubview(filterBar)
+	}
+	
+	func animateTimeSelector() {
+		UIView.animate(withDuration: 0.7, delay: 0.0, options: .curveLinear, animations: {
+			if(self.filterBar.colorFrame.frame.width == self.filterBar.frame.width) {
+				let toSet = CGRect(x: self.filterBar.colorFrame.frame.origin.x, y: self.filterBar.colorFrame.frame.origin.y, width: 0, height: self.filterBar.colorFrame.frame.height)
+				self.filterBar.colorFrame.frame = toSet
+			} else {
+				let toSet = CGRect(x: self.filterBar.colorFrame.frame.origin.x, y: self.filterBar.colorFrame.frame.origin.y, width: self.filterBar.frame.width, height: self.filterBar.colorFrame.frame.height)
+				self.filterBar.colorFrame.frame = toSet
+			}
+		}) { finished in
+			if(self.shouldAnimateTime) {
+				self.animateTimeSelector()
+			} else {
+				UIView.animate(withDuration: 0.7, delay: 0.0, options: .curveLinear, animations: {
+					
+					let toSet = CGRect(x: self.filterBar.colorFrame.frame.origin.x, y: self.filterBar.colorFrame.frame.origin.y, width: self.filterBar.frame.width, height: self.filterBar.colorFrame.frame.height)
+					self.filterBar.colorFrame.frame = toSet
+				})
+			}
+			
+		}
 	}
 	
 	// Nothing -> Nothing
@@ -112,7 +138,7 @@ class Map: MKMapView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 		
 		let polygonView = MKPolygonRenderer(overlay: overlay)
 		let power = CGFloat(dataPolygon.intensity / overlayCreator.averageIntensity)
-		let color = UIColor(displayP3Red: power*185.0/255.0, green: 35.0/255.0, blue: 58.0/255.0, alpha: power*2.0/4.0)
+		let color = UIColor(displayP3Red: power*185.0/255.0, green: 35.0/255.0, blue: 58.0/255.0, alpha: power*1.0/4.0)
 		polygonView.strokeColor = color
 		polygonView.fillColor = color
 		return polygonView
