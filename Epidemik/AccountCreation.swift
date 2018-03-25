@@ -75,12 +75,12 @@ class LoginScreen: UIView, UITextFieldDelegate {
 			if(responseString != nil && responseString == "1") {
 				FileRW.writeFile(fileName: self.FILE_NAME, contents: username)
 				DispatchQueue.main.sync {
-					self.endEditing(true)
+					self.slideBackDown()
 					self.slideSelfAway(duration: 0.5)
 				}
 			} else {
 				DispatchQueue.main.sync {
-					self.endEditing(true)
+					self.slideBackDown()
 					self.warnUser(message: "your login was incorrect")
 				}
 			}
@@ -150,9 +150,14 @@ class LoginScreen: UIView, UITextFieldDelegate {
 	}
 	
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+		slideBackDown()
+		return false
+	}
+	
+	func slideBackDown() {
 		self.endEditing(true)
 		if(!slidUp) {
-			return false
+			return
 		}
 		slidUp = false
 		UIView.animate(withDuration: 0.5, animations: {
@@ -162,7 +167,6 @@ class LoginScreen: UIView, UITextFieldDelegate {
 			self.logoImageView.frame.origin.y += self.frame.height/4
 			self.loginButton.frame.origin.y += self.frame.height/4
 		})
-		return false
 	}
 	
 	func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -271,12 +275,12 @@ class LoginScreen: UIView, UITextFieldDelegate {
 			if(responseString != nil && responseString == "1") {
 				FileRW.writeFile(fileName: self.FILE_NAME, contents: self.username!)
 				DispatchQueue.main.sync {
-					self.endEditing(true)
+					self.slideBackDown()
 					self.slideSelfAway(duration: 0.5)
 				}
 			} else {
 				DispatchQueue.main.sync {
-					self.endEditing(true)
+					self.slideBackDown()
 					self.warnUser(message: "this login already exists")
 				}
 			}
