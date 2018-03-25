@@ -18,7 +18,7 @@ public class MapOverlayCreator {
 	var latWidth: Double!
 	var longWidth: Double!
 	
-	var numXY = 30.0
+	var numXY = 50.0
 	
 	var latLongDisease: [[DiseasePolygon?]]
 	

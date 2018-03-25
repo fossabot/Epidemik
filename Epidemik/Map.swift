@@ -20,28 +20,26 @@ class Map: MKMapView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 	var mapOverlay: MKOverlay!
 	
 	var overlayCreator: MapOverlayCreator!
-	
-	var filterBar: TimeSelector!
-	
+		
 	var CIRCUMFRENCE_OF_EARTH = 400750000.0 //In Meters
-	
-	var playButton: UIButton!
-	
+		
 	var dataCenter: DataCenter!
 	
 	var shouldAnimateTime = true
 	
+	var settingsButton: UIButton!
+	
 	// Creates the map view, given a view frame, a lat,long width in meters, and a start lat,long in degrees
-	init(frame: CGRect, realLatWidth: Double, realLongWidth: Double, startLong: Double, startLat: Double) {
+	init(frame: CGRect, realLatWidth: Double, realLongWidth: Double, startLong: Double, startLat: Double, settingsButton: UIButton) {
 		super.init(frame: frame)
 		self.startLong = startLong
 		self.startLat = startLat
+		self.settingsButton = settingsButton
 		
 		
 		latWidth = (Double(realLatWidth) * 360 / (CIRCUMFRENCE_OF_EARTH))
 		longWidth = (Double(realLongWidth) * 360 / (CIRCUMFRENCE_OF_EARTH))
 		
-		initTimeSelector()
 		animateTimeSelector()
 		//self.animateVsTime(start: newDate!, end: Date())
 	}
@@ -53,54 +51,17 @@ class Map: MKMapView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 	func initAfterData() {
 		initOverlayCreator()
 		initMapPrefs()
-		initPlayButton()
 		initGestureControls()
 	}
 	
-	// Nothing -> Nothing
-	// Inits the bar that can be used to selcted the filter date
-	func initTimeSelector() {
-		let frame = CGRect(x: self.frame.width*3/16, y: self.frame.height/16, width: self.frame.width*5/8, height: self.frame.height/16)
-		filterBar = TimeSelector(frame: frame, map: self)
-		filterBar.setTitle("Timeline", for: .normal)
-		filterBar.titleLabel!.font = PRESETS.FONT_MEDIUM
-		self.addSubview(filterBar)
-	}
-	
 	func animateTimeSelector() {
-		UIView.animate(withDuration: 0.7, delay: 0.0, options: .curveLinear, animations: {
-			if(self.filterBar.colorFrame.frame.width == self.filterBar.frame.width) {
-				let toSet = CGRect(x: self.filterBar.colorFrame.frame.origin.x, y: self.filterBar.colorFrame.frame.origin.y, width: 0, height: self.filterBar.colorFrame.frame.height)
-				self.filterBar.colorFrame.frame = toSet
-			} else {
-				let toSet = CGRect(x: self.filterBar.colorFrame.frame.origin.x, y: self.filterBar.colorFrame.frame.origin.y, width: self.filterBar.frame.width, height: self.filterBar.colorFrame.frame.height)
-				self.filterBar.colorFrame.frame = toSet
-			}
+		UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveLinear, animations: {
+			self.settingsButton.transform = self.settingsButton.transform.rotated(by: .pi)
 		}) { finished in
 			if(self.shouldAnimateTime) {
 				self.animateTimeSelector()
-			} else {
-				UIView.animate(withDuration: 0.7, delay: 0.0, options: .curveLinear, animations: {
-					
-					let toSet = CGRect(x: self.filterBar.colorFrame.frame.origin.x, y: self.filterBar.colorFrame.frame.origin.y, width: self.filterBar.frame.width, height: self.filterBar.colorFrame.frame.height)
-					self.filterBar.colorFrame.frame = toSet
-				})
 			}
-			
 		}
-	}
-	
-	// Nothing -> Nothing
-	// inits the play button
-	func initPlayButton() {
-		playButton = UIButton(frame: CGRect(x: self.frame.width*13/16 + self.frame.height/64, y: self.frame.height/16, width: self.frame.height/16, height: self.frame.height/16))
-		playButton.backgroundColor = UIColor.clear
-		let image = UIImage(named: "play.png")
-		playButton.setBackgroundImage(image, for: .normal)
-		self.addSubview(playButton)
-		
-		let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.animateVsTime(sender:)));
-		playButton.addGestureRecognizer(gestureRecognizer)
 	}
 	
 	// Nothing -> Map
@@ -168,21 +129,6 @@ class Map: MKMapView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 		let sixMonths = 15770000.0
 		let newDate = Date().addingTimeInterval(sixMonths*ratio - sixMonths)
 		overlayCreator.filterDate(toFilter: newDate)
-	}
-	
-	@objc func animateVsTime(sender:UIGestureRecognizer) {
-		let today = Date()
-		DispatchQueue.global().async {
-			for i in 1 ..< 101 {
-				let sixMonths = 15770000.0
-				let newDate = today.addingTimeInterval(sixMonths*Double(i)/100.0 - sixMonths)
-				DispatchQueue.main.sync {
-					self.overlayCreator.filterDate(toFilter: newDate)
-					self.filterBar.updateBar(ratio: Double(i)/100.0)
-				}
-				usleep(100000)
-			}
-		}
 	}
 	
 	func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {

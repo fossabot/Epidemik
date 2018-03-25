@@ -64,7 +64,6 @@
 		00E9A4C71F8EFA6C008C95BD /* Disease.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E9A4C61F8EFA6C008C95BD /* Disease.swift */; };
 		00E9D5282038A9A900C353AF /* DiseaseDataCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E9D5272038A9A900C353AF /* DiseaseDataCenter.swift */; };
 		00EBE4B11F9D2EC1005A8E6B /* Presets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EBE4B01F9D2EC1005A8E6B /* Presets.swift */; };
-		00EE1AA31FCB4D58006FDBFD /* TimeSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EE1AA21FCB4D58006FDBFD /* TimeSelector.swift */; };
 		00F45FFD205F167100BF880F /* LoadingGraphic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F45FFC205F167100BF880F /* LoadingGraphic.swift */; };
 		00FC19101FB3DEB700D8FD97 /* GTrendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FC190F1FB3DEB700D8FD97 /* GTrendsView.swift */; };
 /* End PBXBuildFile section */
@@ -171,7 +170,6 @@
 		00E9A4C61F8EFA6C008C95BD /* Disease.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Disease.swift; sourceTree = "<group>"; };
 		00E9D5272038A9A900C353AF /* DiseaseDataCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseDataCenter.swift; sourceTree = "<group>"; };
 		00EBE4B01F9D2EC1005A8E6B /* Presets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presets.swift; sourceTree = "<group>"; };
-		00EE1AA21FCB4D58006FDBFD /* TimeSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelector.swift; sourceTree = "<group>"; };
 		00F45FFC205F167100BF880F /* LoadingGraphic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingGraphic.swift; sourceTree = "<group>"; };
 		00FC190F1FB3DEB700D8FD97 /* GTrendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTrendsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -387,7 +385,6 @@
 			children = (
 				0032F3411F808295001A9633 /* MapOverlayCreator.swift */,
 				00BC4F6F1F81746C0018D5D8 /* Map.swift */,
-				00EE1AA21FCB4D58006FDBFD /* TimeSelector.swift */,
 				0061311B200A920B00A4E71B /* DiseaseRenderer.swift */,
 				00224BE72038C9CF002430D3 /* DiseasePolygon.swift */,
 			);
@@ -690,7 +687,6 @@
 				0007C2F5203CDCE8009EA7A8 /* PTrendsView.swift in Sources */,
 				0008CE2C1FE6CFA1006FD767 /* QuickTouch.swift in Sources */,
 				0008CE2E1FE6D158006FD767 /* ReportingService.swift in Sources */,
-				00EE1AA31FCB4D58006FDBFD /* TimeSelector.swift in Sources */,
 				000F3D0A2066ED0300A191A6 /* DiseaseQuestions.swift in Sources */,
 				0014D41B204C4550007D9E31 /* UIViewExtension.swift in Sources */,
 				0087EAE120410AFA00BDEEC8 /* AddressResponse.swift in Sources */,

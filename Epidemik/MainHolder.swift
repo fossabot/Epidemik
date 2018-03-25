@@ -33,12 +33,14 @@ public class MainHolder: UIView {
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
+		initSettings()
 		initMap()
 		initPersonalTrends()
 		initTrends()
-		initSettings()
 		initTransition()
 		initChangeButtons()
+		initBringBackSicknessButton()
+		self.bringSubview(toFront: settingsButton)
 		initSickness()
 		initData()
 		initLoading()
@@ -66,7 +68,7 @@ public class MainHolder: UIView {
 	
 	func initMap() {
 		let leftFrame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
-		mapView = Map(frame: leftFrame, realLatWidth: 5000, realLongWidth: 5000, startLong: -71.0628642, startLat: 42.4706918)
+		mapView = Map(frame: leftFrame, realLatWidth: 5000, realLongWidth: 5000, startLong: -71.0628642, startLat: 42.4706918, settingsButton: settingsButton)
 		self.addSubview(mapView)
 	}
 	
@@ -208,6 +210,22 @@ public class MainHolder: UIView {
 	func removeSickness() {
 		UIView.animate(withDuration: 0.5, animations: {
 			self.sicknessView.frame.origin.y -= self.frame.height
+		})
+	}
+	
+	func initBringBackSicknessButton() {
+		let bringBackButton = UIButton(frame: CGRect(x: 29*self.frame.width/32-self.frame.height/32, y: self.frame.height/16, width: self.frame.height/16, height: self.frame.height/16))
+		bringBackButton.setImage(UIImage(named: "sickness2.png"), for: .normal)
+		bringBackButton.addTarget(self, action: #selector(bringBackSickness), for: .touchUpInside)
+		self.addSubview(bringBackButton)
+	}
+	
+	@objc func bringBackSickness(_ sender: UIButton?) {
+		print(sicknessView.frame.origin.y)
+		self.addSubview(sicknessView)
+		UIView.animate(withDuration: 0.5, animations: {
+			self.sicknessView.frame.origin.y += self.frame.height
+			self.sicknessView.alpha = 1
 		})
 	}
 	

@@ -107,9 +107,9 @@ public class PTrendsView: UIScrollView {
 	}
 	
 	func initLabel() {
-		let toAdd = UILabel(frame: CGRect(x: 50, y: 10, width: self.frame.width - 100, height: 50))
+		let toAdd = UILabel(frame: CGRect(x: 50, y: 20, width: self.frame.width - 100, height: 50))
 		toAdd.text = "Personal Trends"
-		toAdd.font = PRESETS.FONT_BIG
+		toAdd.font = PRESETS.FONT_BIG_BOLD
 		toAdd.textAlignment = .center
 		self.addSubview(toAdd)
 	}

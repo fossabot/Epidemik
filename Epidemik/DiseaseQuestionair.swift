@@ -46,7 +46,7 @@ public class DiseaseQuestionair: UIView {
 		self.addSubview(title)
 		
 		let checkAllThatApply = UILabel(frame: CGRect(x: 20, y: 60, width: self.frame.width - 40, height: 20))
-		checkAllThatApply.text = "(check all that apply)"
+		checkAllThatApply.text = "(check all symptoms that apply)"
 		checkAllThatApply.font = PRESETS.FONT_MEDIUM
 		checkAllThatApply.textAlignment = .center
 		self.addSubview(checkAllThatApply)

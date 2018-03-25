@@ -58,11 +58,11 @@ public class Trend {
 	
 	func initButton(width: Double) -> UIButton {
 		let buttonWidth = width / 3
-		let reactButton = UIButton(frame: CGRect(x: width - buttonWidth, y: 0, width: buttonWidth, height: self.height))
+		let reactButton = UIButton(frame: CGRect(x: 10+width - buttonWidth, y: 0, width: buttonWidth, height: self.height))
 		reactButton.addTarget(self, action: #selector(Trend.showTrend(_:)), for: .touchUpInside)
 		reactButton.backgroundColor = UIColor.clear
 		let arrowImage = UIImage(named: "arrow.png")
-		let arrowView = UIImageView(frame: CGRect(x: 0, y: 10, width: buttonWidth - 50, height: self.height - 20))
+		let arrowView = UIImageView(frame: CGRect(x: 0, y: 10, width: buttonWidth - 60, height: self.height - 20))
 		arrowView.image = arrowImage
 		reactButton.addSubview(arrowView)
 		return reactButton
