@@ -221,7 +221,6 @@ public class MainHolder: UIView {
 	}
 	
 	@objc func bringBackSickness(_ sender: UIButton?) {
-		print(sicknessView.frame.origin.y)
 		self.addSubview(sicknessView)
 		UIView.animate(withDuration: 0.5, animations: {
 			self.sicknessView.frame.origin.y += self.frame.height

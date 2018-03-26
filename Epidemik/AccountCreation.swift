@@ -294,7 +294,7 @@ class LoginScreen: UIView, UITextFieldDelegate {
 		let epidemikImage = UIImage(named: "epidemik.png")
 		let imageWidth = self.frame.width / 3
 		logoImageView = UIImageView(frame: CGRect(x: (self.frame.width - imageWidth)/2, y: self.frame.height
-			/ 20, width: imageWidth, height: imageWidth))
+			/ 20 + 40, width: imageWidth, height: imageWidth))
 		logoImageView.image = epidemikImage
 		self.addSubview(logoImageView)
 	}

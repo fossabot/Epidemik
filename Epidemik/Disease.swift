@@ -18,6 +18,15 @@ public class Disease {
 	
 	var nullData: Date
 	
+	init(lat: Double, long: Double, diseaseName: String, date: Date, date_healthy: Date) {
+		self.lat = lat
+		self.long = long
+		self.diseaseName = diseaseName
+		self.date = date
+		self.date_healthy = date_healthy
+		self.nullData = Date()
+	}
+	
 	init(lat: Double, long: Double, diseaseName: String, date: String, date_healthy: String) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -36,11 +45,15 @@ public class Disease {
 		let longArray = text.split(separator: ",")
 		let latitude = (Double(longArray[0])!)
 		let longitude = (Double(longArray[1])!)
-		let name = String(longArray[2])
-		let date = String(longArray[3])
-		var date_healthy = String(longArray[4])
-		date_healthy = date_healthy.trimmingCharacters(in: CharacterSet.init(charactersIn: "\""))
-		self.init(lat: latitude, long: longitude, diseaseName: name, date: date, date_healthy: date_healthy)
+		if(longArray.count > 2) {
+			let name = String(longArray[2])
+			let date = String(longArray[3])
+			var date_healthy = String(longArray[4])
+			date_healthy = date_healthy.trimmingCharacters(in: CharacterSet.init(charactersIn: "\""))
+			self.init(lat: latitude, long: longitude, diseaseName: name, date: date, date_healthy: date_healthy)
+		} else {
+			self.init(lat: latitude, long: longitude, diseaseName: "", date: Date(), date_healthy: Date())
+		}
 	}
 	
 }

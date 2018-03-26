@@ -64,7 +64,7 @@ public class SicknessScreen: UIView {
 	func initSickButton(x: CGFloat) {
 		sicknessButton = UIButton(frame: CGRect(x: self.frame.width + x, y: sickYCord, width: buttonWidth, height: buttonHeight))
 		sicknessButton.layer.cornerRadius = buttonChampher
-		sicknessButton.setTitle("SICK :(", for: UIControlState.normal)
+		sicknessButton.setTitle("SICK", for: UIControlState.normal)
 		sicknessButton.titleLabel?.font = buttonFont
 		sicknessButton.backgroundColor = UIColor.gray
 		sicknessButton.addTarget(self, action: #selector(SicknessScreen.amSick(_:)), for: .touchUpInside)
