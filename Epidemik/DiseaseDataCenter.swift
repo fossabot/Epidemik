@@ -52,11 +52,8 @@ public class DiseaseDataCenter {
 		}
 	}
 	
-	func getAppropriateData(date: Date) -> Array<Disease> {
-		let toReturn = datapoints.filter({
-			($0.date_healthy > date && $0.date < date)
-		})
-		return toReturn
+	func getAppropriateData() -> Array<Disease> {
+		return datapoints
 	}
 	
 }

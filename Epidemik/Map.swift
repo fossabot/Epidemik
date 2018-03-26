@@ -124,13 +124,7 @@ class Map: MKMapView, MKMapViewDelegate, UIGestureRecognizerDelegate {
 			overlayCreator.updateOverlay()
 		}
 	}
-	
-	func filterDate(ratio: Double) {
-		let sixMonths = 15770000.0
-		let newDate = Date().addingTimeInterval(sixMonths*ratio - sixMonths)
-		overlayCreator.filterDate(toFilter: newDate)
-	}
-	
+
 	func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
 		if mapView.getZoomLevel() > 10 {
 			mapView.setCenter(coordinate: mapView.centerCoordinate, zoomLevel: 10, animated: true)

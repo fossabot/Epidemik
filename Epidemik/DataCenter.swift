@@ -47,8 +47,8 @@ public class DataCenter {
 		diseaseData.loadDiseasePointData()
 	}
 	
-	func getDiseaseData(date: Date) -> Array<Disease> {
-		return diseaseData.getAppropriateData(date:date)
+	func getDiseaseData() -> Array<Disease> {
+		return diseaseData.getAppropriateData()
 	}
 	
 	func getTrendData() -> Array<Trend> {

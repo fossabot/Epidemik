@@ -38,8 +38,6 @@ public class MapOverlayCreator {
 	
 	var dataCenter: DataCenter!
 	
-	var filterDate = Date()
-	
 	init(map: Map, longWidth: Double, latWidth: Double, startLong: Double, startLat: Double, dataCenter: DataCenter) {
 		self.latLongDisease = [[DiseasePolygon]](repeating: [DiseasePolygon](repeating: DiseasePolygon(), count: Int(numXY)), count: Int(numXY))
 		self.dataCenter = dataCenter
@@ -57,20 +55,18 @@ public class MapOverlayCreator {
 		
 		self.map = map
 		
-		self.createOverlays(date: Date())
+		self.createOverlays()
 	}
 	
 	// Combine create and process into one
 	// Processes the array, and makes the visual graphic look slightly nicer
-	func createOverlays(date: Date) {
-		for var overlay in map.overlays {
-			map.remove(overlay)
-		}
+	func createOverlays() {
+		map.removeOverlays(map.overlays)
 		latLongDisease = [[DiseasePolygon?]](repeating: [DiseasePolygon?](repeating: nil, count: Int(numXY)), count: Int(numXY))
 		var realPointCounts = 1.0
 		let intervalLat = latWidth / numXY
 		let intervalLong = longWidth / numXY
-		let toUse = dataCenter.getDiseaseData(date: date)
+		let toUse = dataCenter.getDiseaseData()
 		var counter = 0
 		for data in toUse {
 			counter += 1
@@ -120,14 +116,7 @@ public class MapOverlayCreator {
 		self.latWidth = latWidth
 		self.longWidth = longWidth
 		
-		self.createOverlays(date: self.filterDate)
-	}
-	
-	func filterDate(toFilter: Date) {
-		DispatchQueue.global().async {
-			self.filterDate = toFilter
-			self.createOverlays(date:toFilter)
-		}
+		self.createOverlays()
 	}
 	
 }
