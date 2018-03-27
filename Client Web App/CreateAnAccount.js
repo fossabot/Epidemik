@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 
+/* global google */
+
 var username;
 var password;
 
@@ -38,10 +40,9 @@ function login(username, password) {
     var URL = "https://rbradford.thaumavor.io/iOS_Programs/Epidemik/Notifications/recieveDeviceID.php";
     var post = "deviceID=&username=" + username.value + "&password=" + password.value + "&login=true";
     var responseFunction = function (data, status) {
-        console.log(data);
         if(data === "1") { //Login Sucessful
             localStorage['username'] = username.value;
-            window.location.href = "index.html";
+            window.location.href = localStorage['prevPath'];
         } else {
             username.value = "Please Enter A Valid Login";
         }
@@ -54,7 +55,24 @@ function createAccount(username, password, address) {
     // Sending and receiving data in JSON format using POST method
     this.username = username.value;
     this.password = password.value;
-    getLocation(recieveLocation);
+    var geocoder = new google.maps.Geocoder();
+    var address = address.value;
+
+    //Function to covert address to Latitude and Longitude
+    var getLocation =  function(address) {
+      var geocoder = new google.maps.Geocoder();
+      geocoder.geocode( { 'address': address}, function(results, status) {
+        if (status === google.maps.GeocoderStatus.OK) {
+            var latitude = results[0].geometry.location.lat();
+            var longitude = results[0].geometry.location.lng();
+            recieveLocation(latitude, longitude);
+        } 
+      }); 
+    };
+
+    //Call the function with address as parameter
+    getLocation(address);
+
 }
 
 function recieveLocation(lat, long) {
@@ -63,8 +81,8 @@ function recieveLocation(lat, long) {
             + "&latitude=" + lat + "&longitude=" + long + "&create=true";
     var responseFunction = function (data, status) {
         if(data === "1") { //Login Sucessful
-            localStorage['username'] = username.value;
-            window.location.href = "index.html";
+            localStorage['username'] = username;
+            window.location.href = localStorage['prevPath'];
         } else {
             document.getElementById("usernameText").value = "This account already exists";
         }

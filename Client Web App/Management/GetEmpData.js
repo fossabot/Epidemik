@@ -6,9 +6,8 @@
 
 
 function getEmpData() {
-    
     var URL = "https://rbradford.thaumavor.io/iOS_Programs/Epidemik/Management/getEmployeeStatus.php";
-    var post = "email=" + localStorage['bEmail'];
+    var post = "email=" + localStorage['username'];
     var responseFunction = function (data, status) {
         processText(data);
     };
@@ -32,7 +31,6 @@ function processText(text) {
         
         var newdiv = document.createElement('p');   //create a p
         newdiv.id = 'sickness';                      //add an id
-        console.log(parts[1]);
         if(isHealthy) {
             newdiv.textContent = username + " is not sick today";
         } else {

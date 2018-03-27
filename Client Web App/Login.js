@@ -4,28 +4,30 @@
  * and open the template in the editor.
  */
 
-function checkLogin() {
+
+function checkLogin(prevPath) {
+    localStorage['prevPath'] = prevPath;
     if(localStorage['username'] === null || localStorage['username'] === "" 
-            || localStorage['username'] === "null" || localStorage['username'] === undefined) {
+            || localStorage['username'] === "null" || localStorage['username'] === undefined
+            || localStorage['username'] === "undefined") {
         displayLogin();
     } else {
-        getStatus();
+        if(this.prevPath === "index.html") {
+            getStatus();
+        }
     }
     
 }
 
 function displayLogin() {
-    console.log("switching");
     window.location.href = "login.html";
 }
 
 function getStatus() {
     var URL = "https://rbradford.thaumavor.io/iOS_Programs/Epidemik/getPersonalStatus.php";
     var post = "username=" + localStorage['username'];
-    console.log(post);
     var responseFunction = function (data, status) {
         localStorage['sickRequest'] = data;
-        console.log(data + "response");
         updateButtonUI();
     };
     $.post(URL, post, responseFunction);

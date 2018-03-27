@@ -10,10 +10,9 @@ function addEmp($username) {
 }
 
 function callAddEmp() {
-    
     var toAdd = window.prompt("Enter the Employee Username","username");
     var URL = "https://rbradford.thaumavor.io/iOS_Programs/Epidemik/Management/addEmployee.php";
-    var post = "email=" + localStorage['bEmail'] + "&employee=" + toAdd;
+    var post = "email=" + localStorage['username'] + "&employee=" + toAdd;
     var responseFunction = function (data, status) {
         getEmpData();
     };
