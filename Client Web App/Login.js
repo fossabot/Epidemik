@@ -12,7 +12,8 @@ function checkLogin(prevPath) {
             || localStorage['username'] === "undefined") {
         displayLogin();
     } else {
-        if(this.prevPath === "index.html") {
+        
+        if(prevPath === "index.html") {
             getStatus();
         }
     }

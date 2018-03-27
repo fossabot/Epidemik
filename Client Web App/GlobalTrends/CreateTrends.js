@@ -35,8 +35,6 @@ function addTrend(name, weight) {
     newdiv.textContent = name + ": " + weight + "% Infection Chance";
 
     trendsView.appendChild(newdiv);                 //append to the doc.body
-
-    console.log(trendsView);
 }
 
 

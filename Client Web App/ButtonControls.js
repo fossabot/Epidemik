@@ -15,13 +15,13 @@ function handleClick() {
         isSick = false;
         localStorage['sickRequest'] = null;
     } else { //Handle Becoming Sick
-        getLocation(getInfection);
+        getInfection();
         isSick = true;
     }
     updateButtonUI();
 }
 
-function getInfection(lat, long) {
+function getInfection() {
     var today = new Date();
     var dd = today.getDate();
     var mm = today.getMonth() + 1; //January is 0!
@@ -33,14 +33,11 @@ function getInfection(lat, long) {
     if (mm < 10) {
         mm = '0' + mm;
     }
-    localStorage['lat'] = lat;
-    localStorage['long'] = long;
+    var username = localStorage['username'];
     var today = yyyy + '-' + mm + '-' + dd;
     var postString = "date=" + today +
-            "&latitude=" + lat +
-            "&longitude=" + long +
-            "&disease_name=" + "General Sickness" +
-            "&deviceID=" + getDeviceID();
+            "&username=" + username +
+            "&disease_name=" + "General Sickness";
     localStorage['sickRequest'] = postString;
     sendPOST(postString);
 }
@@ -59,6 +56,7 @@ function handleError(error) {
 function updateButtonUI() {
     isSick = (localStorage['sickRequest'] !== null)
         && (localStorage['sickRequest'] !== "null") && localStorage['sickRequest'] !== undefined && localStorage['sickRequest'] !== "";
+    console.log(isSick);
     if (isSick) { //Handle Becoming Healthy
         document.getElementById("sickOrHealthy").style.backgroundColor = "#4CAF50";
         document.getElementById("sickOrHealthy").getElementsByTagName("span")[0].innerHTML = "Healthy";
