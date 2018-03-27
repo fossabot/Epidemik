@@ -19,13 +19,19 @@
     </div>
     <div class="buttons"> 
         <button class="healthy" id="sickOrHealthy" value="sick" onclick="handleClick()"><span>Sick</span></button>
-        <img class="trendsButton" id="trendsButton" src="hamburgButton.png" onclick="properlyShowTrends();" />
+        <img class="trendsButton" id="trendsButton" src="trends.png" onclick="properlyShowTrends();" />
     </div>
     <div id="trendsView">
         <div id="trend">Trends</div>
     </div>
-    <script src = "TrendsAnimation.js"></script>
-    <script src = "CreateTrends.js"></script>
+    <div class="buttons"> 
+        <img class="pTrendsButton" id="pTrendsButton" src="sickness.png" onclick="properlyShowTrends();" />
+    </div>
+    <div id="personalTrendsView">
+        <div id="pTrend">Trends</div>
+    </div>
+    <script src = "GlobalTrends/TrendsAnimation.js"></script>
+    <script src = "GlobalTrends/CreateTrends.js"></script>
     <script> checkLogin();</script>
 </body>
 </html>

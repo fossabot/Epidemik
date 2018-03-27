@@ -85,8 +85,8 @@ and open the template in the editor.
     background: #4CAF50; 
     width: 0px; 
     height: 50%;
-    overflow:hidden;
-    white-space: nowrap;
+    overflow: auto;
+    white-space: normal;
 
 }
 
@@ -99,7 +99,7 @@ and open the template in the editor.
     text-align: center;
     text-decoration: none;
     font-size: 16px;
-    position: absolute;
+    position: relative;
     -moz-appearance: none;
     -webkit-appearance: none;
     appearance: none;

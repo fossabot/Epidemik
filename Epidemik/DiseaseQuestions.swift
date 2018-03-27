@@ -15,7 +15,7 @@ public class DISEASE_QUESTIONS {
 	public static var GAST_QUESTIONS = ["I have vomited today", "I have diarrhea", "I am nauseous", "I have cramps", "I have a fever"]
 	public static var STAPH_QUESTIONS = ["I have swelling", "I am feeling very itchy", "I have a rash", "I have a fever", "I have blisters"]
 	public static var STREP_QUESTIONS = ["I have a sore throat", "I have swelling", "I have a fever", "I am aching all over", "I have a headache"]
-	public static var LYME_QUESTIONS = ["There's a bull's eye rash on my body", "I have a fever", "I have a headache", "I am feeling tired", "I am very stiff"]
+	public static var LYME_QUESTIONS = ["I have a bull's eye rash", "I have a fever", "I have a headache", "I am feeling tired", "I am very stiff"]
 	public static var TEB_QUESTIONS = ["I have a cough", "I am sweating at night", "I have chills", "I am very tired", "I am not hungry"]
 	public static var PINK_QUESTIONS = ["My eyes are itchy", "My eyes are watering", "My eyes are red", "I have discharge", "My eyes are swelling"]
 	public static var HAND_QUESTIONS = ["I have rashes", "I have blisters", "I am coughing", "I have a headache", "I have mouth sores"]
