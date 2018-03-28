@@ -1,0 +1,29 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 21, 2018, 8:08:10 PM
+    Author     : ryan_bradford
+*/
+
+/* Bordered form */
+.employeeID {
+    display: inline-block;
+    width: 100px;
+}
+
+.sicknessStatus {
+    display: inline-block;
+    width: 100px;
+    text-align: center
+}
+
+#sicktrue {
+    background-color: red;
+}
+
+#sickfalse {
+    background-color: green
+}
