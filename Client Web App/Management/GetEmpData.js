@@ -42,7 +42,7 @@ function processText(text) {
             sicknessLabel.textContent = "sick";
         }
         var removeButton = document.createElement('button');
-        removeButton.className = "removeEmp";
+        removeButton.className = "remEmpButton";
         removeButton.id = username;
         removeButton.onclick = removeEmployee;
         removeButton.textContent = "remove employee";
