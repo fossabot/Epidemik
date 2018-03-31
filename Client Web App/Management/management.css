@@ -19,6 +19,10 @@ and open the template in the editor.
     padding: 10px 10px;
 }
 
+.employeeData {
+    padding-top: 10px;
+}
+
 /* Bordered form */
 .employeeID {
     display: inline-block;
@@ -35,7 +39,7 @@ and open the template in the editor.
     text-align: center;
     width: 15%;
     height: 5%;
-    margin-left: 25%;
+    margin-left: 11.5%;
 }
 
 .remEmpButton {
@@ -54,7 +58,7 @@ and open the template in the editor.
     height: 5%;
     position: absolute;
     cursor: pointer;
-    margin-left: 18.5%;
+    margin-left: 8%;
 }
 
 .title {

@@ -28,8 +28,13 @@ function processText(text) {
         }
         var username = parts[0];
         var isHealthy = parts[1] === "";
+        var weekdaysSick = parts[2];
+        if(weekdaysSick === "") {
+            weekdaysSick = "0";
+        }
         
         var overallDiv = document.createElement('div');   //create a p
+        overallDiv.className = "employeeData";
         var employeeIDPart = document.createElement('label');
         employeeIDPart.className = "employeeID";
         employeeIDPart.textContent = username;
@@ -41,6 +46,10 @@ function processText(text) {
         } else {
             sicknessLabel.textContent = "sick";
         }
+        var timesSickLabel = document.createElement('label');
+        timesSickLabel.className = "sicknessStatus";
+        timesSickLabel.id = "numSickness";
+        timesSickLabel.textContent = weekdaysSick + " Sickdays Used";
         var removeButton = document.createElement('button');
         removeButton.className = "remEmpButton";
         removeButton.id = username;
@@ -49,6 +58,7 @@ function processText(text) {
         
         overallDiv.appendChild(employeeIDPart);
         overallDiv.appendChild(sicknessLabel);
+        overallDiv.appendChild(timesSickLabel);
         overallDiv.appendChild(removeButton);
         statusDisplay.appendChild(overallDiv);
     }
