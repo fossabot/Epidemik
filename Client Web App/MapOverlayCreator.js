@@ -45,9 +45,6 @@ function addOverlays(map) {
     var intervalLong = longWidth / numXY;
     for (const i in this.diseases) {
         var data = this.diseases[i];
-        if(!data.active) {
-            continue;
-        }
         var deltaLat = data.lat - startLat;
         let deltaLong = data.long - startLong;
         if (deltaLong > 0 && deltaLat > 0 && deltaLat < latWidth && deltaLong < longWidth) {
@@ -101,10 +98,10 @@ function processText(text, map) {
     this.splits = text.split("\n");
     for (const i in splits) {
         var parts = splits[i].split(",");
-        if (parts.length < 4) {
+        if (parts.length < 1) {
             break;
         }
-        var newDisease = new Disease(parts[0], parts[1], parts[2], parts[3], parts[4]);
+        var newDisease = new Disease(parts[0], parts[1]);
         this.diseases.push(newDisease);
     }
     addOverlays(map);
