@@ -15,31 +15,9 @@ function handleClick() {
         isSick = false;
         localStorage['sickRequest'] = null;
     } else { //Handle Becoming Sick
-        getInfection();
-        isSick = true;
+        window.location.href = "sickness.html"
     }
     updateButtonUI();
-}
-
-function getInfection() {
-    var today = new Date();
-    var dd = today.getDate();
-    var mm = today.getMonth() + 1; //January is 0!
-
-    var yyyy = today.getFullYear();
-    if (dd < 10) {
-        dd = '0' + dd;
-    }
-    if (mm < 10) {
-        mm = '0' + mm;
-    }
-    var username = localStorage['username'];
-    var today = yyyy + '-' + mm + '-' + dd;
-    var postString = "date=" + today +
-            "&username=" + username +
-            "&disease_name=" + "General Sickness";
-    localStorage['sickRequest'] = postString;
-    sendPOST(postString);
 }
 
 function sendPOST(toSend) {
