@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <link rel="stylesheet" href="Sickness/sickness.css" type="text/css"/>
+
+        <title>Sickness Selector</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="Sickness/SendSickness.js"></script>
+        <div class = "ButtonHolder">  
+            <button onclick = "go_back()" class = "back" >Back</button>
+            <button onclick = "send_sickness()" class = "submit">Submit</button>
+        </div>
+        <div class = "selector">
+            <B class = "SelectorTitle" >Select Your Sickness</B> <BR>
+            <select class = "disease_selector" id = "disease_selector">
+                <option value="Common Cold">Common Cold</option>
+                <option value="Influenza (Flu)">Influenza (Flu)</option>
+                <option value="Strep Throat">Strep Throat</option>
+                <option value="Gastroenteritis (Stomach Flu)">Gastroenteritis (Stomach Flu)</option>
+                <option value="Staph Infection">Staph Infection</option>
+                <option value="Lyme Disease">Lyme Disease</option>
+                <option value="Tuberculosis">Tuberculosis</option>
+                <option value="Hand Foot and Mouth">Hand Foot and Mouth</option>
+                <option value="Pink Eye">Pink Eye</option>
+                <option value="Other">Other</option>
+               
+            </select>
+        </div>
+    </body>
+</html>

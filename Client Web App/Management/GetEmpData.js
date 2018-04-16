@@ -28,15 +28,50 @@ function processText(text) {
         }
         var username = parts[0];
         var isHealthy = parts[1] === "";
-        
-        var newdiv = document.createElement('p');   //create a p
-        newdiv.id = 'sickness';                      //add an id
-        if(isHealthy) {
-            newdiv.textContent = username + " is not sick today";
-        } else {
-            newdiv.textContent = username + " is sick today";
+        var weekdaysSick = parts[2];
+        if(weekdaysSick === "") {
+            weekdaysSick = "0";
         }
-        statusDisplay.appendChild(newdiv);
+        
+        var overallDiv = document.createElement('div');   //create a p
+        overallDiv.className = "employeeData";
+        var employeeIDPart = document.createElement('label');
+        employeeIDPart.className = "employeeID";
+        employeeIDPart.textContent = username;
+        var sicknessLabel = document.createElement('label');
+        sicknessLabel.className = "sicknessStatus";
+        sicknessLabel.id = "sick" + !isHealthy;
+        if(isHealthy) {
+            sicknessLabel.textContent = "not sick";
+        } else {
+            sicknessLabel.textContent = "sick";
+        }
+        var timesSickLabel = document.createElement('label');
+        timesSickLabel.className = "sicknessStatus";
+        timesSickLabel.id = "numSickness";
+        timesSickLabel.textContent = weekdaysSick + " Sickdays Used";
+        var removeButton = document.createElement('button');
+        removeButton.className = "remEmpButton";
+        removeButton.id = username;
+        removeButton.onclick = removeEmployee;
+        removeButton.textContent = "remove employee";
+        
+        overallDiv.appendChild(employeeIDPart);
+        overallDiv.appendChild(sicknessLabel);
+        overallDiv.appendChild(timesSickLabel);
+        overallDiv.appendChild(removeButton);
+        statusDisplay.appendChild(overallDiv);
     }
+    
+    //<div id = "employeeID"> </div> <div id = "sicknessStatus"> </div>
+}
+
+function removeEmployee() {
+    var URL = "https://rbradford.thaumavor.io/iOS_Programs/Epidemik/Management/removeEmployee.php";
+    var post = "email=" + localStorage['username'] + "&employee=" + this.id;
+    var responseFunction = function (data, status) {
+        getEmpData();
+    };
+    $.post(URL, post, responseFunction);
 }
 

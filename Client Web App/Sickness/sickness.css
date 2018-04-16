@@ -1,0 +1,46 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 7, 2018, 12:49:02 PM
+    Author     : ryan_bradford
+*/
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.back {
+    background-color: #f44336;
+}
+
+.ButtonHolder {
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+.SelectorTitle {
+    margin-left: 25%;
+    align-self: center;
+    width: 50%;
+}
+
+.selector {
+    margin: auto;
+    background-color: #f1f1f1;
+    width: 20%;
+}
+
+.disease_selector {
+    width: 50%;
+    margin-left: 25%;
+    align-self: center;
+}

@@ -4,11 +4,6 @@
  * and open the template in the editor.
  */
 
-function addEmp($username) {
-    
-    
-}
-
 function callAddEmp() {
     var toAdd = window.prompt("Enter the Employee Username","username");
     var URL = "https://rbradford.thaumavor.io/iOS_Programs/Epidemik/Management/addEmployee.php";
@@ -17,7 +12,6 @@ function callAddEmp() {
         getEmpData();
     };
     $.post(URL, post, responseFunction);
-    
 }
 
 

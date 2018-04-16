@@ -9,17 +9,21 @@ and open the template in the editor.
         <title>Staff Sickness Management</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="Management/management.css">
     </head>
     <body>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src = "Management/AddEmp.js"></script>
         <script src = "Management/GetEmpData.js"></script>
         <script src = "Login.js"></script>
+        <p class = "title">Employee Summary</p>
         <div id = "employees">
-            
+            <!--<label class = "employeeID"> </label> 
+            <label class = "sicknessStatus"> </label>
+            <button class = "removeEmp" id = employeeName >Remove Employee</button> -->
         </div>
         <script> checkLogin("management.html");</script>
         <script> getEmpData();</script>
-        <button type="button" onclick="callAddEmp()">Add Employee By Username</button>
+        <button class = "addEmpButton" onclick="callAddEmp()"><span>Add Employee</span></button>
     </body>
 </html>
